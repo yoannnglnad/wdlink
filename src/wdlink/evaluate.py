@@ -25,16 +25,23 @@ SYSTEMS: dict[str, RankingConfig] = {
     "A1 graph verbalisation only": dataclasses.replace(DEFAULT_RANKING, beta=0.0),
     "A2 graph coherence only": dataclasses.replace(DEFAULT_RANKING, verbalise_graph=False),
     "A3 naive coherence": dataclasses.replace(DEFAULT_RANKING, coherence="naive"),
+    "A4 no entity types": dataclasses.replace(DEFAULT_RANKING, types="none"),
+    "A5 spaCy NER entity types": dataclasses.replace(DEFAULT_RANKING, types="ner"),
     "GraphRAG (full)": DEFAULT_RANKING,
 }
 BASELINE, GRAPHRAG = "baseline (text only)", "GraphRAG (full)"
-THETA_GRID = [round(0.30 + 0.02 * i, 2) for i in range(26)]  # 0.30 .. 0.80
+THETA_GRID = [round(0.20 + 0.02 * i, 2) for i in range(31)]  # 0.20 .. 0.80
 BETA_GRID = [0.1, 0.2, 0.3, 0.5, 0.7, 1.0]
 RECALL_KS = (1, 5, 10, 20, 40)
 
 
 def load(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    """Read a JSONL split. KORE50-DYWC also annotates pronouns and common nouns: only its
+    named-entity mentions (kore50_core) are kept."""
+    docs = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    for doc in docs:
+        doc["mentions"] = [m for m in doc["mentions"] if m.get("kore50_core", True)]
+    return [d for d in docs if d["mentions"]]
 
 
 def prepare_all(linker: Linker, docs: list[dict]) -> list[tuple[dict, Prepared, Prepared]]:
@@ -144,16 +151,25 @@ def a2kb(prepared: list, cfg: RankingConfig) -> dict:
 
 
 def tune(prepared: list, cfg: RankingConfig) -> RankingConfig:
-    """Grid search on dev: NIL threshold, and beta when the system uses coherence."""
+    """Grid search on dev: NIL threshold, and beta when the system uses coherence.
+
+    Ties are frequent on a small dev set, so the middle of the best plateau is taken rather
+    than its edge (the lowest threshold would almost never return NIL).
+    """
     betas = BETA_GRID if cfg.beta > 0 else [0.0]
-    best, best_acc = cfg, -1.0
-    for beta in betas:
-        for theta in THETA_GRID:
-            trial = dataclasses.replace(cfg, beta=beta, nil_threshold=theta)
-            acc = accuracy(d2kb(prepared, trial))
-            if acc > best_acc + 1e-9:
-                best, best_acc = trial, acc
-    return best
+    scores = {
+        (beta, theta): accuracy(
+            d2kb(prepared, dataclasses.replace(cfg, beta=beta, nil_threshold=theta))
+        )
+        for beta in betas
+        for theta in THETA_GRID
+    }
+    best = max(scores.values())
+    plateau = [k for k, acc in scores.items() if acc >= best - 1e-9]
+    plateau_betas = sorted({b for b, _ in plateau})
+    beta = plateau_betas[len(plateau_betas) // 2]
+    thetas = sorted(t for b, t in plateau if b == beta)
+    return dataclasses.replace(cfg, beta=beta, nil_threshold=thetas[len(thetas) // 2])
 
 
 def mcnemar(rows_a: list[dict], rows_b: list[dict]) -> dict:

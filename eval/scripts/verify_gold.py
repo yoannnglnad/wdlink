@@ -149,7 +149,8 @@ def main(paths):
     errors, warnings = [], []
     docs = [d for p in paths for d in load(p, errors, warnings)]
     mentions = [(d["id"], m) for d in docs for m in d.get("mentions", [])]
-    qids = [m["qid"] for _, m in mentions if isinstance(m.get("qid"), str) and QID_RE.match(m["qid"])]
+    qids = [m["qid"] for _, m in mentions
+            if isinstance(m.get("qid"), str) and QID_RE.match(m["qid"])]
     entities = get_entities(qids, "labels|descriptions|aliases|claims")
     class_ids = {c for q in qids for c in p31_ids(entities.get(q, {}))}
     class_labels = {k: term(v, "labels") for k, v in get_entities(class_ids, "labels").items()}
@@ -178,10 +179,10 @@ def main(paths):
 
     widths = (9, 26, 11, 32, 50, 40, 7)
     header = ("doc", "surface", "qid", "label", "description", "P31", "name")
-    print(" | ".join(h.ljust(w) for h, w in zip(header, widths)))
+    print(" | ".join(h.ljust(w) for h, w in zip(header, widths, strict=True)))
     print("-+-".join("-" * w for w in widths))
     for row in rows:
-        print(" | ".join(str(c)[:w].ljust(w) for c, w in zip(row, widths)))
+        print(" | ".join(str(c)[:w].ljust(w) for c, w in zip(row, widths, strict=True)))
 
     n_nil = sum(1 for _, m in mentions if m.get("qid") is None)
     print(f"\n{len(docs)} docs, {len(mentions)} mentions ({n_nil} NIL), "

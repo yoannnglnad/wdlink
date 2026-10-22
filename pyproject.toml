@@ -15,6 +15,10 @@ dependencies = [
     "requests>=2.34",
 ]
 
+[project.optional-dependencies]
+# transformer NER (89.9 F1 vs 84.3 for sm) — larger download, used for the NER comparison
+trf = ["en-core-web-trf"]
+
 [project.scripts]
 wdlink = "wdlink.cli:main"
 
@@ -22,6 +26,7 @@ wdlink = "wdlink.cli:main"
 dev = ["pytest>=9.1", "ruff>=0.17"]
 
 [tool.uv.sources]
+en-core-web-trf = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.8.0/en_core_web_trf-3.8.0-py3-none-any.whl" }
 en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" }
 
 [build-system]

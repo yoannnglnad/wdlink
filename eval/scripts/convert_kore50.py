@@ -3,7 +3,12 @@
 Source: KORE 50^DYWC (Noullet, Mix, Faerber, LREC 2020), file KORE_50_Wikidata.ttl
 from kore50-lrec2020.zip. Stdlib only; parses the Turtle subset used by the file.
 
-Usage: python3 -I convert_kore50.py <KORE_50_Wikidata.ttl> <output.jsonl>
+Usage: python3 -I convert_kore50.py <KORE_50_Wikidata.ttl> <output.jsonl> [<kore50-nif-dbpedia.ttl>]
+
+With the original KORE50 NIF file (3rd argument), each mention gets "kore50_core": true when
+its (doc, start, end, surface) matches an original KORE50 mention; core mentions are
+"ambiguous": true / note "KORE50-DYWC core", the others (pronouns, articles, common nouns
+added by DYWC) "ambiguous": false / note "KORE50-DYWC extra".
 """
 
 import json
@@ -31,6 +36,8 @@ NOTE = "KORE50-DYWC"
 # DYWC renumbers the 50 documents CEL01..CEL50 in the original KORE50 order. Verified by
 # exact text match against kore50-nif-dbpedia.ttl (same zip): blocks of 10 per category.
 KORE50_CATEGORIES = ["CEL", "MUS", "BUS", "SPO", "POL"]
+# Original KORE50 context IRIs end in "/MUS01#char=0," (or "/MUS01" for one context).
+KORE50_DOC_RE = re.compile(r"/([A-Z]{3}\d\d)(?:#|$)")
 
 
 def kore50_doc_id(dywc_id):
@@ -173,16 +180,55 @@ def doc_sort_key(ctx_iri):
     return (0, int(m.group(1)[3:])) if m else (1, ctx_iri)
 
 
-def main(in_path, out_path):
-    with open(in_path, "rb") as fh:
+def read_ttl(path):
+    with open(path, "rb") as fh:
         raw = fh.read()
     try:
-        src = raw.decode("utf-8")
+        return raw.decode("utf-8")
     except UnicodeDecodeError:
-        # The 2020 DYWC .ttl files are Latin-1 encoded (e.g. "M\xfcller"), not UTF-8 as Turtle requires.
-        src = raw.decode("latin-1")
-        print("NOTE input is not valid UTF-8; decoded as Latin-1")
-    graph = parse(src)
+        # The 2020 DYWC .ttl files are Latin-1 encoded (e.g. "M\xfcller"),
+        # not UTF-8 as Turtle requires.
+        print(f"NOTE {path} is not valid UTF-8; decoded as Latin-1")
+        return raw.decode("latin-1")
+
+
+def load_kore50(path):
+    """Original KORE50 NIF: ({doc_id: text}, {(doc_id, start, end): surface})."""
+    graph = parse(read_ttl(path))
+    texts, spans = {}, {}
+    for subj, props in graph.items():
+        m = KORE50_DOC_RE.search(subj)
+        if m and IS_STRING in props:
+            texts[m.group(1)] = one(props, IS_STRING, subj)[1]
+    for subj, props in graph.items():
+        if REF_CONTEXT not in props:
+            continue
+        doc = KORE50_DOC_RE.search(subj).group(1)
+        ref_doc = KORE50_DOC_RE.search(one(props, REF_CONTEXT, subj)[1]).group(1)
+        if ref_doc != doc:
+            # POL10 "Kennedy" points to POL09 as referenceContext;
+            # its IRI and offsets belong to POL10.
+            name = subj.rsplit("/", 1)[1]
+            print(f"NOTE KORE50 {name}: referenceContext {ref_doc} ignored, using {doc}")
+        start, end = int(one(props, BEGIN, subj)[1]), int(one(props, END, subj)[1])
+        surface = one(props, ANCHOR, subj)[1]
+        text = texts[doc]
+        if text[start:end] != surface:
+            # kore50-nif-dbpedia.ttl counts UTF-8 bytes in docs with non-ASCII text
+            # (e.g. "Müller" = 0,7).
+            data = text.encode("utf-8")
+            assert data[start:end].decode("utf-8") == surface, (subj, surface)
+            start, end = len(data[:start].decode("utf-8")), len(data[:end].decode("utf-8"))
+            print(f"NOTE KORE50 {doc} {surface!r}: byte offsets converted to [{start}:{end}]")
+        assert text[start:end] == surface, (subj, surface)
+        spans[(doc, start, end)] = surface
+    return texts, spans
+
+
+def main(in_path, out_path, kore50_path=None):
+    graph = parse(read_ttl(in_path))
+    kore50_texts, kore50_spans = load_kore50(kore50_path) if kore50_path else (None, None)
+    matched_core = set()
 
     contexts = {
         s: p for s, p in graph.items() if ("iri", NIF_CONTEXT) in p.get(RDF_TYPE, [])
@@ -225,7 +271,8 @@ def main(in_path, out_path):
             qid = m.group(2)
             if m.group(1) == "wiki":
                 stats["normalized_wiki_page_iri"] += 1
-                print(f"NOTE normalized {ref} -> {qid} ({surface!r} in {DOC_ID_RE.search(ctx).group(1)})")
+                where = DOC_ID_RE.search(ctx).group(1)
+                print(f"NOTE normalized {ref} -> {qid} ({surface!r} in {where})")
         elif NIL_RE.search(ref):
             qid = None
             stats["nil"] += 1
@@ -234,7 +281,8 @@ def main(in_path, out_path):
             print(f"DROP non-Wikidata IRI {ref} ({surface!r})")
             continue
         docs[ctx]["mentions"].append(
-            {"start": start, "end": end, "surface": surface, "qid": qid, "ambiguous": True, "note": NOTE}
+            {"start": start, "end": end, "surface": surface, "qid": qid,
+             "ambiguous": True, "note": NOTE}
         )
 
     for subj, start, end, surface, got in mismatches:
@@ -256,19 +304,37 @@ def main(in_path, out_path):
                 doc["text"] = "".join(text)
                 for x in doc["mentions"]:
                     x["start"], x["end"] = new_pos[x["start"]], new_pos[x["end"]]
-                print(f"NOTE removed stray backslashes before quotes in {DOC_ID_RE.search(ctx).group(1)}")
+                where = DOC_ID_RE.search(ctx).group(1)
+                print(f"NOTE removed stray backslashes before quotes in {where}")
             if doc["text"].endswith(".?"):
-                # Original KORE50 ends these sentences with U+FEFF; the Latin-1 export turned it into '?'.
+                # Original KORE50 ends these sentences with U+FEFF;
+                # the Latin-1 export turned it into '?'.
                 doc["text"] = doc["text"][:-1]
                 assert all(x["end"] <= len(doc["text"]) for x in doc["mentions"])
-                print(f"NOTE removed trailing '?' (lost U+FEFF) in {DOC_ID_RE.search(ctx).group(1)}")
+                where = DOC_ID_RE.search(ctx).group(1)
+                print(f"NOTE removed trailing '?' (lost U+FEFF) in {where}")
             m = DOC_ID_RE.search(ctx)
             doc_id = "kore50-" + (kore50_doc_id(m.group(1)) if m else ctx)
             mentions = sorted(doc["mentions"], key=lambda x: (x["start"], x["end"]))
             for x in mentions:
                 assert doc["text"][x["start"] : x["end"]] == x["surface"]
+            if kore50_spans is not None:
+                kid = doc_id[len("kore50-") :]
+                # Original texts differ only by a trailing U+FEFF (POL03, POL04),
+                # after the end of every mention.
+                if kore50_texts.get(kid, "").rstrip("﻿") != doc["text"]:
+                    print(f"WARN text differs from original KORE50 {kid}")
+                for x in mentions:
+                    key = (kid, x["start"], x["end"])
+                    core = kore50_spans.get(key) == x["surface"]
+                    if core:
+                        matched_core.add(key)
+                    x["ambiguous"] = core
+                    x["note"] = NOTE + (" core" if core else " extra")
+                    x["kore50_core"] = core
             n_mentions += len(mentions)
-            out.write(json.dumps({"id": doc_id, "text": doc["text"], "mentions": mentions}, ensure_ascii=False) + "\n")
+            row = {"id": doc_id, "text": doc["text"], "mentions": mentions}
+            out.write(json.dumps(row, ensure_ascii=False) + "\n")
 
     print(f"documents: {len(docs)}")
     print(f"phrases in source: {stats['phrases_total']}")
@@ -277,11 +343,17 @@ def main(in_path, out_path):
     print(f"normalized /wiki/Qn IRIs: {stats['normalized_wiki_page_iri']}")
     for key in sorted(k for k in stats if k.startswith("dropped_")):
         print(f"{key}: {stats[key]}")
+    if kore50_spans is not None:
+        print(f"kore50_core mentions: {len(matched_core)}; extra: {n_mentions - len(matched_core)}")
+        missing = sorted(set(kore50_spans) - matched_core)
+        print("original KORE50 mentions without a Wikidata-linked DYWC counterpart:", len(missing))
+        for doc, start, end in missing:
+            print(f"  {doc} [{start}:{end}] {kore50_spans[(doc, start, end)]!r}")
     if mismatches:
         sys.exit(1)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    if len(sys.argv) not in (3, 4):
         sys.exit(__doc__)
-    main(sys.argv[1], sys.argv[2])
+    main(*sys.argv[1:])

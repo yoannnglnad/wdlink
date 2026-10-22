@@ -7,3 +7,4 @@ __pycache__/
 .agents/
 .claude/
 eval/raw/
+eval/data/kore50_dywc.jsonl

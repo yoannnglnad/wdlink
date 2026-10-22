@@ -15,7 +15,15 @@ from wdlink import config
 from wdlink.config import DEFAULT_RANKING, RankingConfig
 from wdlink.embed import Embedder
 from wdlink.extract import extract_mentions, load_nlp, mentions_from_spans
-from wdlink.graph import annotate_links, build_graph, enrich, graph_card, to_networkx
+from wdlink.graph import (
+    annotate_links,
+    build_graph,
+    enrich,
+    fact_text,
+    graph_card,
+    to_networkx,
+    verbalise,
+)
 from wdlink.models import Candidate, LinkedMention, Mention
 from wdlink.rank import GraphIndex, describe, rank
 from wdlink.retrieve import basic_card, prerank, retrieve_candidates
@@ -36,7 +44,7 @@ class Prepared:
     labels: dict[str, str]
     sims_basic: list[np.ndarray] = field(default_factory=list)  # context vs label+description
     sims_graph: list[np.ndarray] = field(default_factory=list)  # context vs graph-augmented card
-    cards: dict[str, str] = field(default_factory=dict)
+    cards: list[dict[str, str]] = field(default_factory=list)  # per mention: qid -> card
 
 
 class Linker:
@@ -66,13 +74,26 @@ class Linker:
 
         prepared = Prepared(text, mentions, all_qids, kept, graph, view, index, labels)
         for m, cands in zip(mentions, kept, strict=True):
-            basic = [basic_card(c) for c in cands]
-            augmented = [graph_card(c, view) for c in cands]
-            prepared.cards.update({c.qid: a for c, a in zip(cands, augmented, strict=True)})
-            vectors = self.embedder.encode([m.context] + basic + augmented)
+            prepared.sims_basic.append(np.zeros(0))
+            prepared.sims_graph.append(np.zeros(0))
+            prepared.cards.append({})
+            if not cands:
+                continue
+            # retrieve: verbalise each candidate's subgraph, keep the facts closest to the context
+            facts = [verbalise(view, c.qid) for c in cands]
+            texts = [fact_text(c, f) for c, fs in zip(cands, facts, strict=True) for f in fs]
+            vectors = self.embedder.encode([m.context] + [basic_card(c) for c in cands] + texts)
             ctx, n = vectors[0], len(cands)
-            prepared.sims_basic.append(vectors[1 : 1 + n] @ ctx if n else np.zeros(0))
-            prepared.sims_graph.append(vectors[1 + n :] @ ctx if n else np.zeros(0))
+            fact_sims, offset, cards = vectors[1 + n :] @ ctx, 0, []
+            for c, fs in zip(cands, facts, strict=True):
+                sims = fact_sims[offset : offset + len(fs)]
+                offset += len(fs)
+                top = sorted(np.argsort(-sims)[: config.FACTS_PER_CARD])
+                cards.append(graph_card(c, [fs[i] for i in top]))
+            # augment: the card with the retrieved facts is what the context is compared with
+            prepared.cards[-1] = {c.qid: card for c, card in zip(cands, cards, strict=True)}
+            prepared.sims_basic[-1] = vectors[1 : 1 + n] @ ctx
+            prepared.sims_graph[-1] = self.embedder.encode(cards) @ ctx
         return prepared
 
     @staticmethod
@@ -111,7 +132,7 @@ def _candidate_json(c: Candidate) -> dict:
 
 def to_json(prepared: Prepared, linked: list[LinkedMention], cfg: RankingConfig) -> dict:
     mentions = []
-    for lm in linked:
+    for i, lm in enumerate(linked):
         best = lm.selected or (lm.candidates[0] if lm.candidates else None)
         mentions.append(
             {
@@ -128,7 +149,7 @@ def to_json(prepared: Prepared, linked: list[LinkedMention], cfg: RankingConfig)
                 else {
                     "features": best.features,
                     "graph_links": best.evidence.get("graph", [])[:5],
-                    "card": prepared.cards.get(best.qid)
+                    "card": prepared.cards[i].get(best.qid)
                     if cfg.verbalise_graph
                     else basic_card(best),
                     "search_queries": lm.mention.queries,

@@ -189,13 +189,37 @@ class WikidataClient:
         self.cache.set("search_rest", key, results)
         return results
 
-    def search_many(self, queries: list[str]) -> dict[str, dict[str, list[dict]]]:
-        """Run both searches for every query, a few requests in parallel."""
+    def search_humans(self, query: str, limit: int = config.HUMAN_SEARCH_LIMIT) -> list[dict]:
+        """People matching the query: CirrusSearch restricted with haswbstatement:P31=Q5."""
+        key = f"{query}|{limit}"
+        hit = self.cache.get("search_humans", key)
+        if hit is not None:
+            return hit
+        data = self._action(
+            action="query",
+            list="search",
+            srsearch=f"{query} haswbstatement:P31=Q5",
+            srlimit=limit,
+            srnamespace=0,
+        )
+        results = [{"id": r["title"]} for r in data.get("query", {}).get("search", [])]
+        self.cache.set("search_humans", key, results)
+        return results
+
+    def search_many(
+        self, queries: list[str], human_queries: list[str] = ()
+    ) -> dict[str, dict[str, list[dict]]]:
+        """Run both searches for every query (and the human search when asked), in parallel."""
         unique = list(dict.fromkeys(queries))
+        humans = list(dict.fromkeys(human_queries))
         with ThreadPoolExecutor(config.MAX_PARALLEL_REQUESTS) as pool:
             wbs = list(pool.map(self.search_wbs, unique))
             rest = list(pool.map(self.search_rest, unique))
-        return {q: {"wbs": w, "rest": r} for q, w, r in zip(unique, wbs, rest, strict=True)}
+            people = list(pool.map(self.search_humans, humans))
+        out = {q: {"wbs": w, "rest": r} for q, w, r in zip(unique, wbs, rest, strict=True)}
+        for q, hits in zip(humans, people, strict=True):
+            out.setdefault(q, {})["humans"] = hits
+        return out
 
     # --- Entity data ----------------------------------------------------------------------
 

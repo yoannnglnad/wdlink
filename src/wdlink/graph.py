@@ -199,17 +199,18 @@ def verbalise(view: nx.MultiDiGraph, qid: str) -> list[tuple[str, str]]:
         values = sorted(set(by_prop.get(prop, [])), key=lambda q: int(q[1:]))
         for v in values[: config.MAX_VALUES_PER_PROPERTY_IN_CARD]:
             facts.append((CARD_PROPERTIES[prop], view.nodes[v].get("label", v)))
-    return facts[: config.MAX_FACTS_IN_CARD]
+    return facts[: config.MAX_FACTS_PER_CANDIDATE]
 
 
-def graph_card(c: Candidate, view: nx.MultiDiGraph) -> str:
-    """Label + description + verbalised neighbourhood: the "augmented" text used by GraphRAG."""
-    grouped: dict[str, list[str]] = {}
-    for prop_label, value in verbalise(view, c.qid):
-        grouped.setdefault(prop_label, []).append(value)
-    facts = "; ".join(f"{p}: {', '.join(vs)}" for p, vs in grouped.items())
+def fact_text(c: Candidate, fact: tuple[str, str]) -> str:
+    return f"{c.label} — {fact[0]}: {fact[1]}"
+
+
+def graph_card(c: Candidate, facts: list[tuple[str, str]]) -> str:
+    """Label + description + the retrieved graph facts: the "augmented" text used by GraphRAG."""
     head = f"{c.label}, {c.description}" if c.description else c.label
-    return f"{head}. {facts}" if facts else head
+    body = "; ".join(f"{p}: {v}" for p, v in facts)
+    return f"{head}. {body}" if body else head
 
 
 def annotate_links(g: Graph, text: str, linked: list[LinkedMention], run_params: dict) -> None:

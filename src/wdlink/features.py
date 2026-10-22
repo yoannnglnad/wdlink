@@ -19,22 +19,25 @@ def normalise(s: str) -> str:
 
 
 def name_similarity(surface: str, label: str, aliases: list[str]) -> float:
-    """1.0 exact label, 0.9 exact alias, otherwise a damped fuzzy token match."""
+    """1.0 exact label, 0.9 exact alias, otherwise a damped fuzzy match against the label.
+
+    Aliases only count when exact: a fuzzy alias match lets "Darwin, Northern Territory"
+    score high for the mention "Northern Territory".
+    """
     m = normalise(surface)
     if m == normalise(label):
         return 1.0
     names = [normalise(a) for a in aliases]
     if m in names:
         return 0.9
-    best = max(fuzz.token_set_ratio(m, n) for n in [normalise(label), *names])
-    return 0.8 * best / 100
+    return 0.8 * fuzz.ratio(m, normalise(label)) / 100
 
 
-def type_compatibility(mention: Mention, cand: Candidate) -> float:
+def type_compatibility(mention: Mention, cand: Candidate, use_ner: bool = True) -> float:
     """1 compatible, 0.5 unknown, 0 incompatible with the mention's expected type."""
     if mention.is_common_noun:
         return 0.0 if cand.types & config.COMMON_NOUN_INCOMPATIBLE else 1.0
-    allowed = config.NER_TYPE_MAP.get(mention.ner_label or "")
+    allowed = config.NER_TYPE_MAP.get(mention.ner_label or "") if use_ner else None
     if not allowed or not cand.types:
         return 0.5
     return 1.0 if cand.types & allowed else 0.0

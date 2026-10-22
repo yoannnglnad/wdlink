@@ -13,7 +13,9 @@ from wdlink.wikidata import WikidataClient
 
 def retrieve_candidates(mentions: list[Mention], client: WikidataClient) -> list[list[Candidate]]:
     """All candidates of every mention, with terms (label, description, aliases)."""
-    results = client.search_many([q for m in mentions for q in m.queries])
+    results = client.search_many(
+        [q for m in mentions for q in m.queries], [m.text for m in mentions if _is_bare_name(m)]
+    )
     per_mention: list[list[Candidate]] = []
     for m in mentions:
         found: dict[str, Candidate] = {}
@@ -37,6 +39,11 @@ def retrieve_candidates(mentions: list[Mention], client: WikidataClient) -> list
             )
         cands[:] = [c for c in cands if c.label and not _is_housekeeping(c.description)]
     return per_mention
+
+
+def _is_bare_name(m: Mention) -> bool:
+    """A single capitalised word, e.g. a surname used alone ("Lincoln", "Turing")."""
+    return not m.is_common_noun and m.text.isalpha() and m.text[:1].isupper()
 
 
 def _is_housekeeping(description: str) -> bool:

@@ -65,7 +65,8 @@ def test_name_similarity_levels():
 
 def test_common_noun_rejects_works_and_people():
     m = mention("radioactivity", common=True)
-    assert type_compatibility(m, cand("Q1081068", types={"Q7366", "Q17537576"})) == 0.0
+    assert type_compatibility(m, cand("Q1081068", types={"Q134556", "Q2188189"})) == 0.0
+    assert type_compatibility(m, cand("Q15967387", types={"Q7397", "Q17537576"})) == 1.0
     assert type_compatibility(m, cand("Q11448", types={"Q483247"})) == 1.0
 
 

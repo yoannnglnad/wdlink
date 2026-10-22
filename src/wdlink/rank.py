@@ -95,7 +95,7 @@ def local_scores(
     weights = {
         "txt": cfg.w_txt,
         "name": cfg.w_name,
-        "type": cfg.w_type if cfg.use_types else 0.0,
+        "type": cfg.w_type if cfg.types != "none" else 0.0,
         "pop": cfg.w_pop if cfg.use_popularity else 0.0,
     }
     total = sum(weights.values())
@@ -107,7 +107,7 @@ def local_scores(
             f = {
                 "txt": max(0.0, float(s)),
                 "name": name_similarity(m.text, c.label, c.aliases),
-                "type": type_compatibility(m, c),
+                "type": type_compatibility(m, c, use_ner=cfg.types == "ner"),
                 "pop": popularity(c, max_sl),
             }
             c.features = {k: round(v, 4) for k, v in f.items()}
