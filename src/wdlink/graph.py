@@ -45,7 +45,9 @@ def qid_of(uri) -> str:
     return str(uri).rsplit("/", 1)[-1]
 
 
-def enrich(per_mention: list[list[Candidate]], client: WikidataClient) -> dict[str, str]:
+def enrich(
+    per_mention: list[list[Candidate]], client: WikidataClient, exclude_housekeeping: bool = True
+) -> dict[str, str]:
     """Fetch types, sitelinks and relations; drop housekeeping items. Returns neighbour labels."""
     qids = list(dict.fromkeys(c.qid for cands in per_mention for c in cands))
     types = client.get_types(qids)
@@ -59,7 +61,8 @@ def enrich(per_mention: list[list[Candidate]], client: WikidataClient) -> dict[s
                 t.get("sitelinks", 0),
             )
             c.relations = [(p, v) for p, v in relations.get(c.qid, [])]
-        cands[:] = [c for c in cands if not set(c.p31) & config.EXCLUDED_CLASSES]
+        if exclude_housekeeping:
+            cands[:] = [c for c in cands if not set(c.p31) & config.EXCLUDED_CLASSES]
     candidate_set = {c.qid for cands in per_mention for c in cands}
     neighbours = {
         v
@@ -80,7 +83,10 @@ def build_graph(
     mentions: list[Mention],
     per_mention: list[list[Candidate]],
     neighbour_labels: dict[str, str],
+    all_relations: bool = False,
 ) -> Graph:
+    """The document's local SKOS graph. Neighbours come from the whitelisted descriptive
+    properties, or from every item-valued statement with `all_relations` (benchmark only)."""
     g = Graph()
     for prefix, ns in [
         ("skos", SKOS),
@@ -132,7 +138,7 @@ def build_graph(
             for p, v in c.relations:
                 if p in config.NEGATIVE_PROPERTIES:
                     continue
-                if v not in candidate_set and p not in CARD_PROPERTIES:
+                if v not in candidate_set and p not in CARD_PROPERTIES and not all_relations:
                     continue
                 if v not in candidate_set:
                     add_concept(v, neighbour_labels.get(v, v))

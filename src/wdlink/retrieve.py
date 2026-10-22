@@ -5,16 +5,20 @@ then a cheap pre-ranking keeps the CANDIDATES_FOR_GRAPH most plausible ones for 
 """
 
 from wdlink import config
+from wdlink.config import DEFAULT_PIPELINE, PipelineConfig
 from wdlink.embed import Embedder
 from wdlink.features import name_similarity
 from wdlink.models import Candidate, Mention
 from wdlink.wikidata import WikidataClient
 
 
-def retrieve_candidates(mentions: list[Mention], client: WikidataClient) -> list[list[Candidate]]:
+def retrieve_candidates(
+    mentions: list[Mention], client: WikidataClient, pcfg: PipelineConfig = DEFAULT_PIPELINE
+) -> list[list[Candidate]]:
     """All candidates of every mention, with terms (label, description, aliases)."""
+    human_queries = [m.text for m in mentions if _is_bare_name(m)] if pcfg.human_search else []
     results = client.search_many(
-        [q for m in mentions for q in m.queries], [m.text for m in mentions if _is_bare_name(m)]
+        [q for m in mentions for q in m.queries], human_queries, pcfg.search_apis, pcfg.search_limit
     )
     per_mention: list[list[Candidate]] = []
     for m in mentions:
@@ -37,7 +41,11 @@ def retrieve_candidates(mentions: list[Mention], client: WikidataClient) -> list
                 t.get("description", ""),
                 t.get("aliases", []),
             )
-        cands[:] = [c for c in cands if c.label and not _is_housekeeping(c.description)]
+        cands[:] = [
+            c
+            for c in cands
+            if c.label and not (pcfg.exclude_housekeeping and _is_housekeeping(c.description))
+        ]
     return per_mention
 
 
@@ -55,9 +63,12 @@ def prerank(
     mentions: list[Mention],
     per_mention: list[list[Candidate]],
     embedder: Embedder,
-    keep: int = config.CANDIDATES_FOR_GRAPH,
+    pcfg: PipelineConfig = DEFAULT_PIPELINE,
 ) -> list[list[Candidate]]:
     """Cheap ranking (no graph): context/description similarity, name match, search rank."""
+    keep = pcfg.candidates_for_graph
+    if pcfg.prerank == "search_rank":  # ablation: trust the search engines' order
+        return [sorted(cands, key=lambda c: c.search_rank)[:keep] for cands in per_mention]
     w = config.PRERANK_WEIGHTS
     kept = []
     for m, cands in zip(mentions, per_mention, strict=True):

@@ -35,7 +35,9 @@ def softmax(xs: list[float], temperature: float) -> np.ndarray:
 class GraphIndex:
     """Neighbourhoods, idf weights and direct edges, read once from the NetworkX view."""
 
-    def __init__(self, view: nx.MultiDiGraph, candidate_qids: set[str]):
+    def __init__(
+        self, view: nx.MultiDiGraph, candidate_qids: set[str], all_relations: bool = False
+    ):
         self.view = view
         self.neighbours: dict[str, set[str]] = {}
         for q in candidate_qids:
@@ -45,6 +47,7 @@ class GraphIndex:
                     v
                     for _, v, d in view.out_edges(q, data=True)
                     if d["prop"] in config.RELATION_PROPERTIES
+                    or (all_relations and d["prop"] not in COHERENCE_EXCLUDED_PROPS)
                 }
             self.neighbours[q] = out
         df: dict[str, int] = {}
@@ -106,7 +109,7 @@ def local_scores(
         for c, s in zip(cands, sim, strict=True):
             f = {
                 "txt": max(0.0, float(s)),
-                "name": name_similarity(m.text, c.label, c.aliases),
+                "name": name_similarity(m.text, c.label, c.aliases, cfg.name_match),
                 "type": type_compatibility(m, c, use_ner=cfg.types == "ner"),
                 "pop": popularity(c, max_sl),
             }
@@ -161,6 +164,44 @@ def coherence(
     return out
 
 
+def ppr_coherence(
+    per_mention: list[list[Candidate]],
+    local: list[np.ndarray],
+    index: GraphIndex,
+    cfg: RankingConfig,
+) -> list[np.ndarray]:
+    """Alternative G: personalised PageRank (Pershina et al., 2015) over the local graph.
+
+    The walk restarts on the other mentions' candidates, weighted by p_L; a candidate's
+    stationary probability, scaled by the best candidate of its mention, is its coherence.
+    """
+    graph = nx.Graph()
+    for u, v, d in index.view.edges(data=True):
+        if d["prop"] not in COHERENCE_EXCLUDED_PROPS:
+            graph.add_edge(u, v)
+    probs = [softmax(list(L), cfg.softmax_temperature) if len(L) else L for L in local]
+    out = []
+    for i, cands in enumerate(per_mention):
+        own = {c.qid for c in cands}
+        seeds: dict[str, float] = {}
+        for j, others in enumerate(per_mention):
+            if j == i:
+                continue
+            for o, p in zip(others, probs[j], strict=True):
+                if o.qid in graph and o.qid not in own:
+                    seeds[o.qid] = seeds.get(o.qid, 0.0) + float(p)
+        scores = np.zeros(len(cands))
+        if seeds:
+            pr = nx.pagerank(graph, alpha=config.PPR_DAMPING, personalization=seeds)
+            scores = np.array([pr.get(c.qid, 0.0) for c in cands])
+            if scores.max() > 0:
+                scores = scores / scores.max()
+        for c in cands:
+            c.evidence["graph"] = []
+        out.append(scores)
+    return out
+
+
 def select(
     mentions: list[Mention],
     per_mention: list[list[Candidate]],
@@ -177,7 +218,10 @@ def select(
         for c, l_score, g_score in zip(cands, local[i], g, strict=True):
             c.features["local"] = round(float(l_score), 4)
             c.features["coherence"] = round(float(g_score), 4)
-            c.score = float(l_score + cfg.beta * g_score)
+            if cfg.fusion == "convex":
+                c.score = float((1 - cfg.beta) * l_score + cfg.beta * g_score)
+            else:
+                c.score = float(l_score + cfg.beta * g_score)
         ranked = sorted(cands, key=lambda c: -c.score)
         top = ranked[0]
         second = ranked[1].score if len(ranked) > 1 else -math.inf
@@ -201,7 +245,9 @@ def rank(
 ) -> list[LinkedMention]:
     local = local_scores(mentions, per_mention, sims, cfg)
     coh = None
-    if cfg.beta > 0:
+    if cfg.beta > 0 and cfg.coherence == "ppr":
+        coh = ppr_coherence(per_mention, local, index, cfg)
+    elif cfg.beta > 0:
         coh = coherence(per_mention, local, index, labels, [m.text for m in mentions], cfg)
     else:
         for cands in per_mention:

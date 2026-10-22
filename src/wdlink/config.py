@@ -39,6 +39,9 @@ CONTEXT_WINDOW_SENTENCES = 1  # sentences on each side of the mention used as it
 
 # --- Candidate retrieval ---------------------------------------------------------------------
 
+# Each search API is always asked for its maximum page (50) and the result is cached; the
+# configured limit is applied locally, so recall@k curves cost no extra request.
+SEARCH_FETCH_LIMIT = 50
 SEARCH_LIMIT = 20  # per search API (wbsearchentities and REST search), union is taken
 # A bare capitalised word ("Lincoln", "Mercury") is also searched among humans only:
 # both search APIs rank places and works first and miss the famous bearer of the name.
@@ -174,7 +177,34 @@ EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 EMBEDDING_BATCH = 64
 
 
+# --- Pipeline (everything decided before ranking) -------------------------------------------
+
+
+@dataclass(frozen=True)
+class PipelineConfig:
+    """Extraction, retrieval and enrichment choices (benchmarked in eval/benchmarks)."""
+
+    spacy_model: str = SPACY_MODEL
+    embedding_model: str = EMBEDDING_MODEL
+    generic_noun_max_zipf: float | None = GENERIC_NOUN_MAX_ZIPF  # None keeps every noun chunk
+    context_window: int | None = CONTEXT_WINDOW_SENTENCES  # None = the whole document
+    surname_expansion: bool = True
+    search_apis: tuple[str, ...] = ("wbs", "rest")  # among "wbs", "rest", "cirrus"
+    human_search: bool = True
+    search_limit: int = SEARCH_LIMIT
+    exclude_housekeeping: bool = True
+    prerank: str = "mixed"  # "mixed" (similarity + name + rank) or "search_rank"
+    candidates_for_graph: int = CANDIDATES_FOR_GRAPH
+    facts_per_card: int | None = FACTS_PER_CARD  # None = every verbalised fact
+    all_relations: bool = False  # neighbourhoods from every property instead of the whitelist
+
+
+DEFAULT_PIPELINE = PipelineConfig()
+
+
 # --- Ranking ---------------------------------------------------------------------------------
+
+PPR_DAMPING = 0.85  # personalised PageRank continuation probability (restart = 0.15)
 
 
 @dataclass(frozen=True)
@@ -190,8 +220,13 @@ class RankingConfig:
     beta: float = 0.20  # tuned on dev
     # the card embedded for s_txt: label+description only, or also the verbalised graph facts
     verbalise_graph: bool = True
-    # coherence variant: "weighted" (idf + softmax weights + c1/c2) or "naive" (ablation A3)
+    # coherence variant: "weighted" (idf + softmax weights + c1/c2), "naive" (ablation A3),
+    # or "ppr" (personalised PageRank over the local graph, Pershina et al. 2015)
     coherence: str = "weighted"
+    # "additive": S = L + beta*G (no penalty without evidence); "convex": (1-beta)*L + beta*G
+    fusion: str = "additive"
+    # fuzzy name match against the label only, or against label and aliases (token-set)
+    name_match: str = "label"
     softmax_temperature: float = 0.1  # sharpness of p_L(c') used to weight other mentions
     direct_edge_strength: float = 1.0
     # selection: link only if S1 >= nil_threshold and S1 - S2 >= min_margin, else NIL

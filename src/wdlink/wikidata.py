@@ -148,77 +148,85 @@ class WikidataClient:
 
     def search_wbs(self, query: str, limit: int = config.SEARCH_LIMIT) -> list[dict]:
         """Prefix search on labels and aliases (all languages) via wbsearchentities."""
-        key = f"{query}|{limit}"
-        hit = self.cache.get("search_wbs", key)
-        if hit is not None:
-            return hit
-        data = self._action(
-            action="wbsearchentities",
-            search=query,
-            language=config.LANGUAGE,
-            uselang=config.LANGUAGE,
-            type="item",
-            limit=limit,
-        )
-        results = [
-            {"id": r["id"], "label": r.get("label", ""), "description": r.get("description", "")}
-            for r in data.get("search", [])
-        ]
-        self.cache.set("search_wbs", key, results)
-        return results
+        key = f"{query}|{config.SEARCH_FETCH_LIMIT}"
+        hits = self.cache.get("search_wbs", key)
+        if hits is None:
+            data = self._action(
+                action="wbsearchentities",
+                search=query,
+                language=config.LANGUAGE,
+                uselang=config.LANGUAGE,
+                type="item",
+                limit=config.SEARCH_FETCH_LIMIT,
+            )
+            hits = [{"id": r["id"]} for r in data.get("search", [])]
+            self.cache.set("search_wbs", key, hits)
+        return hits[:limit]
 
     def search_rest(self, query: str, limit: int = config.SEARCH_LIMIT) -> list[dict]:
         """Full-text search on labels and aliases via the Wikibase REST API."""
-        key = f"{query}|{limit}"
-        hit = self.cache.get("search_rest", key)
-        if hit is not None:
-            return hit
-        data = self._request(
-            "GET",
-            config.REST_SEARCH_API,
-            params={"q": query, "language": config.LANGUAGE, "limit": limit},
-        )
-        results = [
-            {
-                "id": r["id"],
-                "label": (r.get("display-label") or {}).get("value", ""),
-                "description": (r.get("description") or {}).get("value", ""),
-            }
-            for r in data.get("results", [])
-        ]
-        self.cache.set("search_rest", key, results)
-        return results
+        key = f"{query}|{config.SEARCH_FETCH_LIMIT}"
+        hits = self.cache.get("search_rest", key)
+        if hits is None:
+            data = self._request(
+                "GET",
+                config.REST_SEARCH_API,
+                params={
+                    "q": query,
+                    "language": config.LANGUAGE,
+                    "limit": config.SEARCH_FETCH_LIMIT,
+                },
+            )
+            hits = [{"id": r["id"]} for r in data.get("results", [])]
+            self.cache.set("search_rest", key, hits)
+        return hits[:limit]
+
+    def search_cirrus(
+        self,
+        query: str,
+        limit: int = config.SEARCH_LIMIT,
+        kind: str = "cirrus",
+        statement_filter: str = "",
+    ) -> list[dict]:
+        """CirrusSearch full-text search (action=query&list=search), optionally filtered."""
+        fetch = config.SEARCH_FETCH_LIMIT if kind == "cirrus" else limit
+        key = f"{query}|{fetch}"
+        hits = self.cache.get(f"search_{kind}", key)
+        if hits is None:
+            data = self._action(
+                action="query",
+                list="search",
+                srsearch=f"{query} {statement_filter}".strip(),
+                srlimit=fetch,
+                srnamespace=0,
+            )
+            hits = [{"id": r["title"]} for r in data.get("query", {}).get("search", [])]
+            self.cache.set(f"search_{kind}", key, hits)
+        return hits[:limit]
 
     def search_humans(self, query: str, limit: int = config.HUMAN_SEARCH_LIMIT) -> list[dict]:
         """People matching the query: CirrusSearch restricted with haswbstatement:P31=Q5."""
-        key = f"{query}|{limit}"
-        hit = self.cache.get("search_humans", key)
-        if hit is not None:
-            return hit
-        data = self._action(
-            action="query",
-            list="search",
-            srsearch=f"{query} haswbstatement:P31=Q5",
-            srlimit=limit,
-            srnamespace=0,
-        )
-        results = [{"id": r["title"]} for r in data.get("query", {}).get("search", [])]
-        self.cache.set("search_humans", key, results)
-        return results
+        return self.search_cirrus(query, limit, "humans", "haswbstatement:P31=Q5")
 
     def search_many(
-        self, queries: list[str], human_queries: list[str] = ()
+        self,
+        queries: list[str],
+        human_queries: list[str] = (),
+        apis: tuple[str, ...] = ("wbs", "rest"),
+        limit: int = config.SEARCH_LIMIT,
     ) -> dict[str, dict[str, list[dict]]]:
-        """Run both searches for every query (and the human search when asked), in parallel."""
+        """Run the selected searches for every query (and the human search), in parallel."""
+        search = {"wbs": self.search_wbs, "rest": self.search_rest, "cirrus": self.search_cirrus}
         unique = list(dict.fromkeys(queries))
-        humans = list(dict.fromkeys(human_queries))
+        out: dict[str, dict[str, list[dict]]] = {q: {} for q in unique}
         with ThreadPoolExecutor(config.MAX_PARALLEL_REQUESTS) as pool:
-            wbs = list(pool.map(self.search_wbs, unique))
-            rest = list(pool.map(self.search_rest, unique))
-            people = list(pool.map(self.search_humans, humans))
-        out = {q: {"wbs": w, "rest": r} for q, w, r in zip(unique, wbs, rest, strict=True)}
-        for q, hits in zip(humans, people, strict=True):
-            out.setdefault(q, {})["humans"] = hits
+            for api in apis:
+                hits = pool.map(lambda q, f=search[api]: f(q, limit), unique)
+                for q, h in zip(unique, hits, strict=True):
+                    out[q][api] = h
+            humans = list(dict.fromkeys(human_queries))
+            for q, h in zip(humans, pool.map(self.search_humans, humans), strict=True):
+                out.setdefault(q, {})["humans"] = h
         return out
 
     # --- Entity data ----------------------------------------------------------------------

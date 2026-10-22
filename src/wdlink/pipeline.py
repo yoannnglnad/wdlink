@@ -11,8 +11,7 @@ import networkx as nx
 import numpy as np
 from rdflib import Graph
 
-from wdlink import config
-from wdlink.config import DEFAULT_RANKING, RankingConfig
+from wdlink.config import DEFAULT_PIPELINE, DEFAULT_RANKING, PipelineConfig, RankingConfig
 from wdlink.embed import Embedder
 from wdlink.extract import extract_mentions, load_nlp, mentions_from_spans
 from wdlink.graph import (
@@ -45,6 +44,7 @@ class Prepared:
     sims_basic: list[np.ndarray] = field(default_factory=list)  # context vs label+description
     sims_graph: list[np.ndarray] = field(default_factory=list)  # context vs graph-augmented card
     cards: list[dict[str, str]] = field(default_factory=list)  # per mention: qid -> card
+    pcfg: PipelineConfig = DEFAULT_PIPELINE
 
 
 class Linker:
@@ -52,27 +52,29 @@ class Linker:
         self,
         client: WikidataClient | None = None,
         embedder: Embedder | None = None,
-        spacy_model: str = config.SPACY_MODEL,
+        pcfg: PipelineConfig = DEFAULT_PIPELINE,
     ):
+        self.pcfg = pcfg
         self.client = client or WikidataClient()
-        self.embedder = embedder or Embedder()
-        self.nlp = load_nlp(spacy_model)
+        self.embedder = embedder or Embedder(pcfg.embedding_model)
+        self.nlp = load_nlp(pcfg.spacy_model)
 
     def prepare(self, text: str, spans: list[tuple[int, int]] | None = None) -> Prepared:
+        pcfg = self.pcfg
         if spans is None:
-            _, mentions = extract_mentions(text, self.nlp)
+            _, mentions = extract_mentions(text, self.nlp, pcfg)
         else:
-            mentions = mentions_from_spans(text, spans, self.nlp)
-        found = retrieve_candidates(mentions, self.client)
+            mentions = mentions_from_spans(text, spans, self.nlp, pcfg)
+        found = retrieve_candidates(mentions, self.client, pcfg)
         all_qids = [[c.qid for c in cands] for cands in found]
-        kept = prerank(mentions, found, self.embedder)
-        neighbour_labels = enrich(kept, self.client)
-        graph = build_graph(text, mentions, kept, neighbour_labels)
+        kept = prerank(mentions, found, self.embedder, pcfg)
+        neighbour_labels = enrich(kept, self.client, pcfg.exclude_housekeeping)
+        graph = build_graph(text, mentions, kept, neighbour_labels, pcfg.all_relations)
         view = to_networkx(graph)
-        index = GraphIndex(view, {c.qid for cands in kept for c in cands})
+        index = GraphIndex(view, {c.qid for cands in kept for c in cands}, pcfg.all_relations)
         labels = {c.qid: c.label for cands in kept for c in cands} | neighbour_labels
 
-        prepared = Prepared(text, mentions, all_qids, kept, graph, view, index, labels)
+        prepared = Prepared(text, mentions, all_qids, kept, graph, view, index, labels, pcfg=pcfg)
         for m, cands in zip(mentions, kept, strict=True):
             prepared.sims_basic.append(np.zeros(0))
             prepared.sims_graph.append(np.zeros(0))
@@ -88,7 +90,8 @@ class Linker:
             for c, fs in zip(cands, facts, strict=True):
                 sims = fact_sims[offset : offset + len(fs)]
                 offset += len(fs)
-                top = sorted(np.argsort(-sims)[: config.FACTS_PER_CARD])
+                k = len(fs) if pcfg.facts_per_card is None else pcfg.facts_per_card
+                top = sorted(np.argsort(-sims)[:k])
                 cards.append(graph_card(c, [fs[i] for i in top]))
             # augment: the card with the retrieved facts is what the context is compared with
             prepared.cards[-1] = {c.qid: card for c, card in zip(cands, cards, strict=True)}
@@ -115,7 +118,7 @@ class Linker:
             prepared.graph,
             text,
             linked,
-            {"embedding_model": config.EMBEDDING_MODEL, **describe(cfg)},
+            {"embedding_model": self.pcfg.embedding_model, **describe(cfg)},
         )
         return to_json(prepared, linked, cfg), prepared.graph
 

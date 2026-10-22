@@ -7,7 +7,7 @@ import logging
 import sys
 from pathlib import Path
 
-from wdlink.config import DEFAULT_RANKING
+from wdlink.config import DEFAULT_PIPELINE, DEFAULT_RANKING
 
 
 def _print_table(result: dict) -> None:
@@ -36,7 +36,8 @@ def cmd_link(args: argparse.Namespace) -> None:
     cfg = DEFAULT_RANKING
     if args.no_graph:
         cfg = dataclasses.replace(cfg, beta=0.0, verbalise_graph=False)
-    result, graph = Linker(spacy_model=args.spacy_model).link(text, cfg)
+    pcfg = dataclasses.replace(DEFAULT_PIPELINE, spacy_model=args.spacy_model)
+    result, graph = Linker(pcfg=pcfg).link(text, cfg)
     _print_table(result)
     if args.json:
         Path(args.json).write_text(json.dumps(result, indent=2, ensure_ascii=False))

@@ -7,6 +7,7 @@ from spacy.tokens import Doc, Span
 from wordfreq import zipf_frequency
 
 from wdlink import config
+from wdlink.config import DEFAULT_PIPELINE, PipelineConfig
 from wdlink.models import Mention
 
 STRIP_POS = {"DET", "PRON", "NUM", "PUNCT"}
@@ -29,15 +30,19 @@ def _trim(span: Span) -> Span | None:
     return doc[start:end] if end > start else None
 
 
-def _context(span: Span) -> str:
+def _context(span: Span, window: int | None) -> str:
+    """The sentence of the mention plus `window` sentences on each side (None: whole text)."""
+    if window is None:
+        return span.doc.text
     sents = list(span.doc.sents)
     idx = next(i for i, s in enumerate(sents) if s.start <= span.start < s.end)
-    w = config.CONTEXT_WINDOW_SENTENCES
-    return " ".join(s.text for s in sents[max(0, idx - w) : idx + w + 1])
+    return " ".join(s.text for s in sents[max(0, idx - window) : idx + window + 1])
 
 
-def _is_specific(span: Span) -> bool:
+def _is_specific(span: Span, max_zipf: float | None) -> bool:
     """Keep proper nouns, compounds and rare nouns; drop generic words like "research"."""
+    if max_zipf is None:
+        return span.root.pos_ in {"NOUN", "PROPN"}
     if any(t.pos_ == "PROPN" for t in span):
         return True
     if span.root.pos_ not in {"NOUN", "PROPN"}:
@@ -45,13 +50,10 @@ def _is_specific(span: Span) -> bool:
     if len(span) > 1 and any(t.dep_ == "compound" for t in span):
         return True
     content = [t for t in span if t.pos_ in {"NOUN", "ADJ"} and not t.is_stop]
-    return any(
-        zipf_frequency(t.text.lower(), config.LANGUAGE) < config.GENERIC_NOUN_MAX_ZIPF
-        for t in content
-    )
+    return any(zipf_frequency(t.text.lower(), config.LANGUAGE) < max_zipf for t in content)
 
 
-def _mention(span: Span, source: str, ner_label: str | None) -> Mention:
+def _mention(span: Span, source: str, ner_label: str | None, window: int | None) -> Mention:
     is_common = ner_label is None and not any(
         t.pos_ == "PROPN" or t.text[:1].isupper() for t in span
     )
@@ -61,15 +63,17 @@ def _mention(span: Span, source: str, ner_label: str | None) -> Mention:
         end=span.end_char,
         source=source,
         ner_label=ner_label,
-        context=_context(span),
+        context=_context(span, window),
         is_common_noun=is_common,
         queries=[span.text],
     )
 
 
-def extract_mentions(text: str, nlp=None) -> tuple[Doc, list[Mention]]:
+def extract_mentions(
+    text: str, nlp=None, pcfg: PipelineConfig = DEFAULT_PIPELINE
+) -> tuple[Doc, list[Mention]]:
     """Named entities first; noun chunks only where they do not overlap an entity."""
-    nlp = nlp or load_nlp()
+    nlp = nlp or load_nlp(pcfg.spacy_model)
     doc = nlp(text)
     mentions: list[Mention] = []
     taken = set()
@@ -79,23 +83,26 @@ def extract_mentions(text: str, nlp=None) -> tuple[Doc, list[Mention]]:
         span = _trim(ent)
         if span is None:
             continue
-        mentions.append(_mention(span, "ner", ent.label_))
+        mentions.append(_mention(span, "ner", ent.label_, pcfg.context_window))
         taken.update(range(ent.start, ent.end))
     for chunk in doc.noun_chunks:
         span = _trim(chunk)
         if span is None or taken.intersection(range(span.start, span.end)):
             continue
-        if _is_specific(span):
-            mentions.append(_mention(span, "noun_chunk", None))
+        if _is_specific(span, pcfg.generic_noun_max_zipf):
+            mentions.append(_mention(span, "noun_chunk", None, pcfg.context_window))
             taken.update(range(span.start, span.end))
     mentions.sort(key=lambda m: m.start)
-    expand_short_mentions(mentions)
+    if pcfg.surname_expansion:
+        expand_short_mentions(mentions)
     return doc, mentions
 
 
-def mentions_from_spans(text: str, spans: list[tuple[int, int]], nlp=None) -> list[Mention]:
+def mentions_from_spans(
+    text: str, spans: list[tuple[int, int]], nlp=None, pcfg: PipelineConfig = DEFAULT_PIPELINE
+) -> list[Mention]:
     """Build mentions for given (gold) spans, reusing spaCy for context and NER type."""
-    nlp = nlp or load_nlp()
+    nlp = nlp or load_nlp(pcfg.spacy_model)
     doc = nlp(text)
     mentions = []
     for start, end in spans:
@@ -110,11 +117,12 @@ def mentions_from_spans(text: str, spans: list[tuple[int, int]], nlp=None) -> li
             ),
             None,
         )
-        m = _mention(span, "gold", ner_label)
+        m = _mention(span, "gold", ner_label, pcfg.context_window)
         m.text, m.start, m.end, m.queries = text[start:end], start, end, [text[start:end]]
         m.is_common_noun = ner_label is None and not any(c.isupper() for c in m.text)
         mentions.append(m)
-    expand_short_mentions(mentions)
+    if pcfg.surname_expansion:
+        expand_short_mentions(mentions)
     return mentions
 
 

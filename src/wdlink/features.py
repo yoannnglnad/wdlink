@@ -18,7 +18,7 @@ def normalise(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
-def name_similarity(surface: str, label: str, aliases: list[str]) -> float:
+def name_similarity(surface: str, label: str, aliases: list[str], fuzzy: str = "label") -> float:
     """1.0 exact label, 0.9 exact alias, otherwise a damped fuzzy match against the label.
 
     Aliases only count when exact: a fuzzy alias match lets "Darwin, Northern Territory"
@@ -30,6 +30,8 @@ def name_similarity(surface: str, label: str, aliases: list[str]) -> float:
     names = [normalise(a) for a in aliases]
     if m in names:
         return 0.9
+    if fuzzy == "aliases":  # benchmark variant: lenient token-set match on label and aliases
+        return 0.8 * max(fuzz.token_set_ratio(m, n) for n in [normalise(label), *names]) / 100
     return 0.8 * fuzz.ratio(m, normalise(label)) / 100
 
 

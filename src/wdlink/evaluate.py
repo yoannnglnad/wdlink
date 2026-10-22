@@ -14,7 +14,7 @@ import math
 import time
 from pathlib import Path
 
-from wdlink.config import DEFAULT_RANKING, RankingConfig
+from wdlink.config import DEFAULT_PIPELINE, DEFAULT_RANKING, RankingConfig
 from wdlink.pipeline import Linker, Prepared
 from wdlink.rank import softmax
 from wdlink.wikidata import WikidataClient
@@ -322,7 +322,8 @@ def main(args: argparse.Namespace) -> None:
     data_dir, out_dir = Path(args.data_dir), Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     client = WikidataClient(offline=args.offline)
-    linker = Linker(client=client, spacy_model=args.spacy_model)
+    pcfg = dataclasses.replace(DEFAULT_PIPELINE, spacy_model=args.spacy_model)
+    linker = Linker(client=client, pcfg=pcfg)
 
     splits = {p.stem: load(p) for p in sorted(data_dir.glob("*.jsonl"))}
     prepared = {name: prepare_all(linker, docs) for name, docs in splits.items()}
