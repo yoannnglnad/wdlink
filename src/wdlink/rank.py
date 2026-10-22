@@ -202,7 +202,7 @@ def ppr_coherence(
         if seeds:
             pr = nx.pagerank(graph, alpha=config.PPR_DAMPING, personalization=seeds)
             scores = np.array([pr.get(c.qid, 0.0) for c in cands])
-            if scores.max() > 0:
+            if scores.size and scores.max() > 0:
                 scores = scores / scores.max()
         for c in cands:
             c.evidence["graph"] = []

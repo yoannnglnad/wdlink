@@ -272,3 +272,12 @@ def test_bootstrap_of_identical_systems_is_zero():
 
     rows = [{"doc": f"d{i % 4}", "correct": i % 3 == 0} for i in range(30)]
     assert bootstrap_delta(rows, rows) == (0.0, 0.0, 0.0)
+
+
+def test_ppr_handles_a_mention_without_candidates():
+    mentions = [mention("Qwxz", 0), *_tie_case()[0]]
+    per_mention = [[], *_tie_case()[1]]
+    sims = [[], *_tie_case()[2]]
+    cfg = dataclasses.replace(DEFAULT_RANKING, coherence="ppr")
+    linked = _rank(per_mention, mentions, sims, cfg)
+    assert linked[0].decision == "nil_no_candidate"
