@@ -215,3 +215,60 @@ def test_offline_mode_never_calls_network(tmp_path):
     client = WikidataClient(cache_dir=tmp_path, offline=True)
     with pytest.raises(RuntimeError, match="offline"):
         client.search_wbs("Paris")
+
+
+# --- variants and evaluation helpers ------------------------------------------------------------
+
+
+def _tie_case():
+    mentions = [mention("Paris", 0, "GPE"), mention("Eiffel Tower", 10, "FAC")]
+    paris_fr = cand("Q90", "Paris", {"Q515"}, sitelinks=100)
+    paris_tx = cand("Q830149", "Paris", {"Q515"}, sitelinks=100)
+    tower = cand("Q243", "Eiffel Tower", {"Q41176"}, [("P131", "Q90")], sitelinks=100)
+    return mentions, [[paris_fr, paris_tx], [tower]], [[0.5, 0.5], [0.8]]
+
+
+def test_personalised_pagerank_prefers_the_connected_reading():
+    mentions, per_mention, sims = _tie_case()
+    linked = _rank(
+        per_mention, mentions, sims, dataclasses.replace(DEFAULT_RANKING, coherence="ppr")
+    )
+    assert linked[0].selected.qid == "Q90"
+
+
+def test_convex_fusion_formula():
+    mentions, per_mention, sims = _tie_case()
+    cfg = dataclasses.replace(DEFAULT_RANKING, fusion="convex", beta=0.5)
+    linked = _rank(per_mention, mentions, sims, cfg)
+    c = linked[0].candidates[0]
+    assert c.score == pytest.approx(
+        0.5 * c.features["local"] + 0.5 * c.features["coherence"], abs=1e-3
+    )
+
+
+def test_threshold_sweep_reproduces_select():
+    """evaluate.decide must take exactly the decision rank.select takes."""
+    from wdlink.evaluate import decide
+
+    mentions, per_mention, sims = _tie_case()
+    for theta in (0.2, 0.5, 0.9):
+        for margin in (0.0, 0.05):
+            cfg = dataclasses.replace(DEFAULT_RANKING, nil_threshold=theta, min_margin=margin)
+            for lm in _rank(per_mention, mentions, sims, cfg):
+                ranked = [(c.qid, c.score) for c in lm.candidates]
+                expected = lm.selected.qid if lm.selected else None
+                assert decide(ranked, theta, margin) == expected
+
+
+def test_search_pages_are_cached_once_and_truncated(tmp_path):
+    client = WikidataClient(cache_dir=tmp_path, offline=True)
+    client.cache.set("search_wbs", "Paris|50", [{"id": f"Q{i}"} for i in range(1, 51)])
+    assert [h["id"] for h in client.search_wbs("Paris", 3)] == ["Q1", "Q2", "Q3"]
+    assert len(client.search_wbs("Paris", 20)) == 20
+
+
+def test_bootstrap_of_identical_systems_is_zero():
+    from wdlink.bench import bootstrap_delta
+
+    rows = [{"doc": f"d{i % 4}", "correct": i % 3 == 0} for i in range(30)]
+    assert bootstrap_delta(rows, rows) == (0.0, 0.0, 0.0)
