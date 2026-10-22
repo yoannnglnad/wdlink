@@ -1,0 +1,411 @@
+{
+  "suite": "coherence",
+  "question": "How should graph connections to the other mentions be scored?",
+  "dev_docs": 52,
+  "dev_mentions": 191,
+  "folds": 5,
+  "results": [
+    {
+      "variant": "no coherence",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8691099476439791,
+      "accuracy_in_kb": 0.8901734104046243,
+      "accuracy_ambiguous": 0.7878787878787878,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.8855421686746988,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9568074527898922,
+      "ece": 0.0876975051459132,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8901734104046243,
+      "ranked_recall@3": 0.9364161849710982,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "ms_per_doc": 1086.8226906922455,
+      "delta_vs_reference": -0.005235602094240838,
+      "delta_ci95": [
+        -0.017241379310344827,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.0,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.0,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.0,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.0,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.0,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "naive (Jaccard, unweighted mean)",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8691099476439791,
+      "accuracy_in_kb": 0.8901734104046243,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9439252336448598,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.8855421686746988,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.955483730664703,
+      "ece": 0.0927487222588779,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8901734104046243,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "ms_per_doc": 1086.8226906922455,
+      "delta_vs_reference": -0.005235602094240838,
+      "delta_ci95": [
+        -0.016216216216216217,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "weighted pairwise (idf, p_L, max per mention)",
+      "reference": true,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9645609733605948,
+      "ece": 0.09021542362237486,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "ms_per_doc": 1086.8226906922455,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "personalised PageRank",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.8333333333333334,
+      "accuracy_unambiguous": 0.9345794392523364,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9777799468059343,
+      "ece": 0.11888075012760171,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.953757225433526,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "ms_per_doc": 1086.8226906922455,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        -0.024875621890547265,
+        0.02631578947368421
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.42,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "weighted, all properties as neighbours",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9643934915337243,
+      "ece": 0.09004794179550436,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 2836,
+      "ms_per_doc": 609.1648389423286,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "weighted, convex fusion (1-\u03b2)L + \u03b2G",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9548492731109096,
+      "ece": 0.08050372337268978,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "ms_per_doc": 1086.8226906922455,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.2,
+          "theta": 0.32,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.34,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.32,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.32,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.32,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    }
+  ]
+}

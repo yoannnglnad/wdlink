@@ -1,0 +1,273 @@
+{
+  "suite": "entity_types",
+  "question": "How should entity types enter the local score?",
+  "dev_docs": 52,
+  "dev_mentions": 191,
+  "folds": 5,
+  "results": [
+    {
+      "variant": "no type signal",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9720374156610561,
+      "ece": 0.09769186592283624,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.2,
+          "theta": 0.4,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.4,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.4,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.4,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.4,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "casing rule only",
+      "reference": true,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9645609733605948,
+      "ece": 0.09021542362237486,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "spaCy sm NER labels",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8010471204188482,
+      "accuracy_in_kb": 0.815028901734104,
+      "accuracy_ambiguous": 0.6818181818181818,
+      "accuracy_unambiguous": 0.897196261682243,
+      "accuracy_isolated": 0.5714285714285714,
+      "accuracy_with_context": 0.8253012048192772,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.963022119153587,
+      "ece": 0.16197499873473878,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.815028901734104,
+      "ranked_recall@3": 0.9364161849710982,
+      "ranked_recall@5": 0.9364161849710982,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "delta_vs_reference": -0.07329842931937172,
+      "delta_ci95": [
+        -0.11518324607329843,
+        -0.03636363636363636
+      ],
+      "mcnemar_p": 0.001312255859375,
+      "tuned_per_fold": [
+        {
+          "beta": 1.0,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 1.0,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.3,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 1.0,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.3,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "spaCy trf NER labels",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8638743455497382,
+      "accuracy_in_kb": 0.884393063583815,
+      "accuracy_ambiguous": 0.7727272727272727,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 0.8571428571428571,
+      "accuracy_with_context": 0.8855421686746988,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9701440678354436,
+      "ece": 0.1062697222857053,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.884393063583815,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.9479768786127167,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "delta_vs_reference": -0.010471204188481676,
+      "delta_ci95": [
+        -0.0380952380952381,
+        0.01507537688442211
+      ],
+      "mcnemar_p": 0.6875,
+      "tuned_per_fold": [
+        {
+          "beta": 0.3,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.3,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.3,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.3,
+          "theta": 0.36,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    }
+  ]
+}
