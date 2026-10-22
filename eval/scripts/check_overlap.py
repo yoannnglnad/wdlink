@@ -2,9 +2,10 @@
 
 Usage: python3 eval/scripts/check_overlap.py [eval/data/dev.jsonl] [eval/data/test.jsonl]
 
-Prints only two counts, never any test content:
+Prints only counts, never any test content:
   - dev docs whose text shares at least one 6-word shingle with any test doc
   - (surface, qid) pairs present in both splits (NIL pairs count with qid null)
+  - gold QIDs present in both splits (used for the "distinct QIDs" total in the README)
 With --ids, also prints the ids of the overlapping dev docs (dev ids only), so they can be rewritten.
 Words are lowercased runs of letters/digits, so punctuation and case are ignored.
 Dependencies: stdlib only.
@@ -41,8 +42,10 @@ def main(argv):
     test_sh = set().union(*(shingles(d["text"]) for d in test))
     leaking = [d["id"] for d in dev if shingles(d["text"]) & test_sh]
     shared_pairs = pairs(dev) & pairs(test)
+    shared_qids = {q for _, q in pairs(dev) if q} & {q for _, q in pairs(test) if q}
     print(f"dev docs sharing a {N}-word shingle with test: {len(leaking)}")
     print(f"(surface, qid) pairs present in both splits: {len(shared_pairs)}")
+    print(f"gold QIDs present in both splits: {len(shared_qids)}")
     if show_ids and leaking:
         print("overlapping dev ids:", ", ".join(leaking))
     return 0
