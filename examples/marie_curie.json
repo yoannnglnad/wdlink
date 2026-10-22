@@ -1,0 +1,574 @@
+{
+  "text": "Marie Curie conducted research on radioactivity in Paris and won the Nobel Prize in Physics.",
+  "mentions": [
+    {
+      "mention": "Marie Curie",
+      "start": 0,
+      "end": 11,
+      "source": "ner",
+      "ner_label": "PERSON",
+      "decision": "linked",
+      "selected": {
+        "qid": "Q7186",
+        "uri": "http://www.wikidata.org/entity/Q7186",
+        "label": "Marie Curie",
+        "description": "Polish-born French physicist and chemist (1867–1934)",
+        "score": 1.0091
+      },
+      "confidence": 0.9141,
+      "evidence": {
+        "features": {
+          "txt": 0.7939,
+          "name": 1.0,
+          "type": 1.0,
+          "pop": 1.0,
+          "local": 0.8969,
+          "coherence": 0.3738
+        },
+        "graph_links": [
+          {
+            "mention": "Paris",
+            "qid": "Q90",
+            "label": "Paris",
+            "relatedness": 1.0,
+            "weight": 0.4286,
+            "direct": [
+              [
+                "P551",
+                "out"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q10855271",
+              "Q142"
+            ],
+            "overlap": 0.0327
+          },
+          {
+            "mention": "Nobel Prize in Physics",
+            "qid": "Q38104",
+            "label": "Nobel Prize in Physics",
+            "relatedness": 1.0,
+            "weight": 0.4135,
+            "direct": [
+              [
+                "P166",
+                "out"
+              ],
+              [
+                "P1411",
+                "out"
+              ],
+              [
+                "P1346",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [],
+            "overlap": 0.0
+          },
+          {
+            "mention": "radioactivity",
+            "qid": "Q11448",
+            "label": "radioactivity",
+            "relatedness": 1.0,
+            "weight": 0.2791,
+            "direct": [
+              [
+                "P101",
+                "out"
+              ]
+            ],
+            "shared_neighbours": [],
+            "overlap": 0.0
+          }
+        ],
+        "card": "Marie Curie, Polish-born French physicist and chemist (1867–1934). instance of: human; place of birth: Warsaw, Freta Street; place of death: Sancellemoz; country of citizenship: France, Russian Empire; occupation: physicist, chemist, university teacher; field of work: physics, polonium, radium, chemistry; award received: Nobel Prize in Physics, Nobel Prize in Chemistry, Order of the White Eagle",
+        "search_queries": [
+          "Marie Curie"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q24800609",
+          "uri": "http://www.wikidata.org/entity/Q24800609",
+          "label": "Marie Curie",
+          "description": "scientific article published in January 1976",
+          "score": 0.6439,
+          "features": {
+            "txt": 0.7378,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.6439,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q30668387",
+          "uri": "http://www.wikidata.org/entity/Q30668387",
+          "label": "Marie-Curie",
+          "description": "future metro station in Montreal, Quebec, Canada",
+          "score": 0.5645,
+          "features": {
+            "txt": 0.6231,
+            "name": 1.0,
+            "type": 0.0,
+            "pop": 0.3527,
+            "local": 0.5645,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q26963166",
+          "uri": "http://www.wikidata.org/entity/Q26963166",
+          "label": "Marie Curie: The Courage of Knowledge",
+          "description": "2016 film by Marie Noëlle",
+          "score": 0.5638,
+          "features": {
+            "txt": 0.6335,
+            "name": 0.9,
+            "type": 0.0,
+            "pop": 0.4346,
+            "local": 0.5619,
+            "coherence": 0.0062
+          }
+        },
+        {
+          "qid": "Q52900475",
+          "uri": "http://www.wikidata.org/entity/Q52900475",
+          "label": "Marie Curie",
+          "description": "technical institute in Milan, Milan, Lombardy, Italy",
+          "score": 0.5301,
+          "features": {
+            "txt": 0.6603,
+            "name": 1.0,
+            "type": 0.0,
+            "pop": 0.0,
+            "local": 0.5301,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q16997351",
+          "uri": "http://www.wikidata.org/entity/Q16997351",
+          "label": "Marie Curie",
+          "description": "charity in the UK",
+          "score": 0.5239,
+          "features": {
+            "txt": 0.5724,
+            "name": 1.0,
+            "type": 0.0,
+            "pop": 0.2513,
+            "local": 0.5239,
+            "coherence": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "mention": "radioactivity",
+      "start": 34,
+      "end": 47,
+      "source": "noun_chunk",
+      "ner_label": null,
+      "decision": "linked",
+      "selected": {
+        "qid": "Q11448",
+        "uri": "http://www.wikidata.org/entity/Q11448",
+        "label": "radioactivity",
+        "description": "process by which an unstable atom emits radiation",
+        "score": 0.8488
+      },
+      "confidence": 0.455,
+      "evidence": {
+        "features": {
+          "txt": 0.5408,
+          "name": 1.0,
+          "type": 1.0,
+          "pop": 1.0,
+          "local": 0.7704,
+          "coherence": 0.2613
+        },
+        "graph_links": [
+          {
+            "mention": "Marie Curie",
+            "qid": "Q7186",
+            "label": "Marie Curie",
+            "relatedness": 1.0,
+            "weight": 0.784,
+            "direct": [
+              [
+                "P101",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [],
+            "overlap": 0.0
+          }
+        ],
+        "card": "radioactivity, process by which an unstable atom emits radiation. subclass of: physical phenomenon, physical process; discoverer or inventor: Antoine Henri Becquerel",
+        "search_queries": [
+          "radioactivity"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q317949",
+          "uri": "http://www.wikidata.org/entity/Q317949",
+          "label": "activity",
+          "description": "physical quantity in nuclear physics, measured in becquerel, revealing the average number of nucleuses experiencing a spontaneous reaction per second",
+          "score": 0.6753,
+          "features": {
+            "txt": 0.5105,
+            "name": 0.9,
+            "type": 1.0,
+            "pop": 0.6004,
+            "local": 0.6753,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q77139322",
+          "uri": "http://www.wikidata.org/entity/Q77139322",
+          "label": "Radioactivity",
+          "description": "scientific article published on 01 April 1958",
+          "score": 0.6599,
+          "features": {
+            "txt": 0.6197,
+            "name": 1.0,
+            "type": 1.0,
+            "pop": 0.0,
+            "local": 0.6599,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q80911816",
+          "uri": "http://www.wikidata.org/entity/Q80911816",
+          "label": "RADIOACTIVITY",
+          "description": "scientific article published on 01 September 1940",
+          "score": 0.657,
+          "features": {
+            "txt": 0.6139,
+            "name": 1.0,
+            "type": 1.0,
+            "pop": 0.0,
+            "local": 0.657,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q76406613",
+          "uri": "http://www.wikidata.org/entity/Q76406613",
+          "label": "Radioactivity",
+          "description": "scientific article published on 01 February 1963",
+          "score": 0.6565,
+          "features": {
+            "txt": 0.613,
+            "name": 1.0,
+            "type": 1.0,
+            "pop": 0.0,
+            "local": 0.6565,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q106929543",
+          "uri": "http://www.wikidata.org/entity/Q106929543",
+          "label": "Radioactivity",
+          "description": "scientific article",
+          "score": 0.6564,
+          "features": {
+            "txt": 0.6129,
+            "name": 1.0,
+            "type": 1.0,
+            "pop": 0.0,
+            "local": 0.6564,
+            "coherence": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "mention": "Paris",
+      "start": 51,
+      "end": 56,
+      "source": "ner",
+      "ner_label": "GPE",
+      "decision": "linked",
+      "selected": {
+        "qid": "Q90",
+        "uri": "http://www.wikidata.org/entity/Q90",
+        "label": "Paris",
+        "description": "capital and most populous city in France",
+        "score": 0.8411
+      },
+      "confidence": 0.6136,
+      "evidence": {
+        "features": {
+          "txt": 0.5254,
+          "name": 1.0,
+          "type": 1.0,
+          "pop": 1.0,
+          "local": 0.7627,
+          "coherence": 0.2613
+        },
+        "graph_links": [
+          {
+            "mention": "Marie Curie",
+            "qid": "Q7186",
+            "label": "Marie Curie",
+            "relatedness": 1.0,
+            "weight": 0.784,
+            "direct": [
+              [
+                "P551",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q10855271",
+              "Q142"
+            ],
+            "overlap": 0.0327
+          }
+        ],
+        "card": "Paris, capital and most populous city in France. instance of: metropolis, global city, megalopolis, commune of France; country: France; located in the administrative territorial entity: Grand Paris; award received: Croix de guerre 1914–1918, Companion of the Liberation, Knight of the Legion of Honour; member of: International Union for Conservation of Nature, C40 Cities Climate Leadership Group, League of Historical Cities, World Tourism Cities Federation; part of: Île-de-France; named after: Parisii; contains the administrative territorial entity: 1st arrondissement of Paris",
+        "search_queries": [
+          "Paris"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q830149",
+          "uri": "http://www.wikidata.org/entity/Q830149",
+          "label": "Paris",
+          "description": "city in and county seat of Lamar County, Texas, United States",
+          "score": 0.6806,
+          "features": {
+            "txt": 0.4523,
+            "name": 1.0,
+            "type": 1.0,
+            "pop": 0.6961,
+            "local": 0.6806,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q576584",
+          "uri": "http://www.wikidata.org/entity/Q576584",
+          "label": "Paris",
+          "description": "city in Illinois",
+          "score": 0.6759,
+          "features": {
+            "txt": 0.4562,
+            "name": 1.0,
+            "type": 1.0,
+            "pop": 0.652,
+            "local": 0.6759,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q162121",
+          "uri": "http://www.wikidata.org/entity/Q162121",
+          "label": "Paris",
+          "description": "genus of plants",
+          "score": 0.5374,
+          "features": {
+            "txt": 0.4803,
+            "name": 1.0,
+            "type": 0.0,
+            "pop": 0.6483,
+            "local": 0.5374,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q167646",
+          "uri": "http://www.wikidata.org/entity/Q167646",
+          "label": "Paris",
+          "description": "mythological son of Priam, king of Troy",
+          "score": 0.5294,
+          "features": {
+            "txt": 0.4401,
+            "name": 1.0,
+            "type": 0.0,
+            "pop": 0.7288,
+            "local": 0.5294,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q483020",
+          "uri": "http://www.wikidata.org/entity/Q483020",
+          "label": "Paris Saint-Germain FC",
+          "description": "association football club in Paris, France having two UCL",
+          "score": 0.506,
+          "features": {
+            "txt": 0.4093,
+            "name": 0.9,
+            "type": 0.0,
+            "pop": 0.7865,
+            "local": 0.5026,
+            "coherence": 0.0112
+          }
+        }
+      ]
+    },
+    {
+      "mention": "Nobel Prize in Physics",
+      "start": 69,
+      "end": 91,
+      "source": "ner",
+      "ner_label": "WORK_OF_ART",
+      "decision": "linked",
+      "selected": {
+        "qid": "Q38104",
+        "uri": "http://www.wikidata.org/entity/Q38104",
+        "label": "Nobel Prize in Physics",
+        "description": "yearly physics award given by the Royal Swedish Academy of Sciences",
+        "score": 0.8844
+      },
+      "confidence": 0.6022,
+      "evidence": {
+        "features": {
+          "txt": 0.612,
+          "name": 1.0,
+          "type": 1.0,
+          "pop": 1.0,
+          "local": 0.806,
+          "coherence": 0.2613
+        },
+        "graph_links": [
+          {
+            "mention": "Marie Curie",
+            "qid": "Q7186",
+            "label": "Marie Curie",
+            "relatedness": 1.0,
+            "weight": 0.784,
+            "direct": [
+              [
+                "P1346",
+                "out"
+              ],
+              [
+                "P166",
+                "in"
+              ],
+              [
+                "P1411",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [],
+            "overlap": 0.0
+          }
+        ],
+        "card": "Nobel Prize in Physics, yearly physics award given by the Royal Swedish Academy of Sciences. instance of: Nobel Prize, physics award; subclass of: Nobel Prize; country: Sweden; location: Stockholm; part of: Nobel Prize; named after: Alfred Nobel",
+        "search_queries": [
+          "Nobel Prize in Physics"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q48912969",
+          "uri": "http://www.wikidata.org/entity/Q48912969",
+          "label": "Nobel Prize in Physics 2013",
+          "description": "",
+          "score": 0.6397,
+          "features": {
+            "txt": 0.6157,
+            "name": 0.8,
+            "type": 1.0,
+            "pop": 0.1458,
+            "local": 0.6397,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q141290712",
+          "uri": "http://www.wikidata.org/entity/Q141290712",
+          "label": "Nobel Prize in Physics 2026",
+          "description": "",
+          "score": 0.6315,
+          "features": {
+            "txt": 0.5993,
+            "name": 0.8,
+            "type": 1.0,
+            "pop": 0.1458,
+            "local": 0.6315,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q50589856",
+          "uri": "http://www.wikidata.org/entity/Q50589856",
+          "label": "Nobel Prize in Physics 2012",
+          "description": "",
+          "score": 0.6222,
+          "features": {
+            "txt": 0.5807,
+            "name": 0.8,
+            "type": 1.0,
+            "pop": 0.1458,
+            "local": 0.6222,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q58942268",
+          "uri": "http://www.wikidata.org/entity/Q58942268",
+          "label": "Nobel Prize in Physics",
+          "description": "scientific article published in Nature",
+          "score": 0.6219,
+          "features": {
+            "txt": 0.6938,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.6219,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q120798386",
+          "uri": "http://www.wikidata.org/entity/Q120798386",
+          "label": "Nobel Prize in Physics 2023",
+          "description": "",
+          "score": 0.6205,
+          "features": {
+            "txt": 0.5773,
+            "name": 0.8,
+            "type": 1.0,
+            "pop": 0.1458,
+            "local": 0.6205,
+            "coherence": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "graph": {
+    "triples": 1446,
+    "concepts": 206,
+    "relations": 203
+  },
+  "config": {
+    "w_txt": 0.5,
+    "w_name": 0.2,
+    "w_type": 0.15,
+    "w_pop": 0.15,
+    "beta": 0.3,
+    "verbalise_graph": true,
+    "coherence": "weighted",
+    "softmax_temperature": 0.1,
+    "direct_edge_strength": 1.0,
+    "nil_threshold": 0.45,
+    "min_margin": 0.0,
+    "confidence_temperature": 0.1,
+    "use_types": true,
+    "use_popularity": true
+  }
+}

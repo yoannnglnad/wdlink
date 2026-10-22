@@ -1,0 +1,1675 @@
+@prefix c: <http://example.org/wdlink/concept/> .
+@prefix ex: <http://example.org/wdlink/> .
+@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .
+@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:broaderGeneric rdfs:subPropertyOf skos:broader .
+
+ex:broaderInstantive rdfs:subPropertyOf skos:broader .
+
+ex:broaderPartitive rdfs:subPropertyOf skos:broader .
+
+<http://example.org/wdlink/doc/6ff0f6083519#char=0,11> a nif:Phrase ;
+    ex:hasCandidate c:Q110634101,
+        c:Q114939443,
+        c:Q16997351,
+        c:Q24800609,
+        c:Q26963166,
+        c:Q30668387,
+        c:Q52900475,
+        c:Q52904085,
+        c:Q56628069,
+        c:Q7186 ;
+    nif:anchorOf "Marie Curie" ;
+    nif:beginIndex "0"^^xsd:nonNegativeInteger ;
+    nif:endIndex "11"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/6ff0f6083519#char=0,92> ;
+    itsrdf:taClassRef wd:Q5 ;
+    itsrdf:taConfidence 9.141e-01 ;
+    itsrdf:taIdentRef wd:Q7186 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
+
+<http://example.org/wdlink/doc/6ff0f6083519#char=34,47> a nif:Phrase ;
+    ex:hasCandidate c:Q106929543,
+        c:Q11448,
+        c:Q134992329,
+        c:Q317949,
+        c:Q73578350,
+        c:Q76406613,
+        c:Q77139322,
+        c:Q78952231,
+        c:Q80911816,
+        c:Q82039321 ;
+    nif:anchorOf "radioactivity" ;
+    nif:beginIndex "34"^^xsd:nonNegativeInteger ;
+    nif:endIndex "47"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/6ff0f6083519#char=0,92> ;
+    itsrdf:taConfidence 4.55e-01 ;
+    itsrdf:taIdentRef wd:Q11448 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
+
+<http://example.org/wdlink/doc/6ff0f6083519#char=51,56> a nif:Phrase ;
+    ex:hasCandidate c:Q1158980,
+        c:Q162121,
+        c:Q16684871,
+        c:Q167646,
+        c:Q3365239,
+        c:Q483020,
+        c:Q576584,
+        c:Q830149,
+        c:Q90 ;
+    nif:anchorOf "Paris" ;
+    nif:beginIndex "51"^^xsd:nonNegativeInteger ;
+    nif:endIndex "56"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/6ff0f6083519#char=0,92> ;
+    itsrdf:taClassRef wd:Q1066984,
+        wd:Q108178728,
+        wd:Q11418818,
+        wd:Q1187811,
+        wd:Q1200957,
+        wd:Q134445478,
+        wd:Q1422929,
+        wd:Q1549591,
+        wd:Q200250,
+        wd:Q208511,
+        wd:Q2240381,
+        wd:Q22923920,
+        wd:Q471822,
+        wd:Q484170,
+        wd:Q51929311 ;
+    itsrdf:taConfidence 6.136e-01 ;
+    itsrdf:taIdentRef wd:Q90 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
+
+<http://example.org/wdlink/doc/6ff0f6083519#char=69,91> a nif:Phrase ;
+    ex:hasCandidate c:Q120798386,
+        c:Q136659584,
+        c:Q141290712,
+        c:Q38104,
+        c:Q48911839,
+        c:Q48912926,
+        c:Q48912962,
+        c:Q48912969,
+        c:Q50589856,
+        c:Q58942268 ;
+    nif:anchorOf "Nobel Prize in Physics" ;
+    nif:beginIndex "69"^^xsd:nonNegativeInteger ;
+    nif:endIndex "91"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/6ff0f6083519#char=0,92> ;
+    itsrdf:taClassRef wd:Q107494520,
+        wd:Q7191 ;
+    itsrdf:taConfidence 6.022e-01 ;
+    itsrdf:taIdentRef wd:Q38104 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
+
+ex:narrowerPartitive rdfs:subPropertyOf skos:narrower .
+
+c:Q106929543 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article"@en ;
+    skos:exactMatch wd:Q106929543 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Radioactivity"@en .
+
+c:Q110634101 a skos:Concept ;
+    ex:broaderInstantive c:Q2175765 ;
+    ex:sitelinks 0 ;
+    skos:exactMatch wd:Q110634101 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en ;
+    skos:related c:Q142,
+        c:Q211134 ;
+    wdt:P131 c:Q211134 ;
+    wdt:P17 c:Q142 ;
+    wdt:P31 c:Q2175765 .
+
+c:Q114939443 a skos:Concept ;
+    ex:broaderInstantive c:Q3331189 ;
+    ex:sitelinks 0 ;
+    schema1:description "2022 Czech book edition"@en ;
+    skos:exactMatch wd:Q114939443 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en ;
+    skos:related c:Q108143753,
+        c:Q7186 ;
+    wdt:P31 c:Q3331189 ;
+    wdt:P50 c:Q108143753 ;
+    wdt:P921 c:Q7186 .
+
+c:Q1158980 a skos:Concept ;
+    ex:broaderInstantive c:Q3409032 ;
+    ex:sitelinks 9 ;
+    schema1:description "unisex given name"@en ;
+    skos:altLabel "Paris (first name)"@en,
+        "Paris (given name)"@en ;
+    skos:exactMatch wd:Q1158980 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    wdt:P31 c:Q3409032 .
+
+c:Q120798386 a skos:Concept ;
+    ex:broaderInstantive c:Q38104 ;
+    ex:sitelinks 1 ;
+    skos:exactMatch wd:Q120798386 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2023"@en ;
+    skos:related c:Q130292886 ;
+    wdt:P156 c:Q130292886 ;
+    wdt:P31 c:Q38104 .
+
+c:Q134992329 a skos:Concept ;
+    ex:broaderInstantive c:Q7889 ;
+    ex:sitelinks 0 ;
+    schema1:description "video game developed by Synthetic Mind Corp."@en ;
+    skos:exactMatch wd:Q134992329 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Radioactivity"@en ;
+    skos:related c:Q23916,
+        c:Q270948,
+        c:Q343568 ;
+    wdt:P136 c:Q23916,
+        c:Q270948,
+        c:Q343568 ;
+    wdt:P31 c:Q7889 .
+
+c:Q136659584 a skos:Concept ;
+    ex:broaderInstantive c:Q618779 ;
+    ex:sitelinks 1 ;
+    schema1:description "controversies around the Nobel Prize in Physics"@en ;
+    skos:exactMatch wd:Q136659584 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics controversies"@en ;
+    wdt:P31 c:Q618779 .
+
+c:Q141290712 a skos:Concept ;
+    ex:broaderInstantive c:Q38104,
+        c:Q618779 ;
+    ex:sitelinks 1 ;
+    skos:exactMatch wd:Q141290712 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2026"@en ;
+    skos:related c:Q136450924 ;
+    wdt:P155 c:Q136450924 ;
+    wdt:P31 c:Q38104,
+        c:Q618779 .
+
+c:Q162121 a skos:Concept ;
+    ex:broaderInstantive c:Q16521 ;
+    ex:sitelinks 45 ;
+    schema1:description "genus of plants"@en ;
+    skos:exactMatch wd:Q162121 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    wdt:P31 c:Q16521 .
+
+c:Q16684871 a skos:Concept ;
+    ex:broaderInstantive c:Q207452 ;
+    ex:broaderPartitive c:Q4514086 ;
+    ex:sitelinks 2 ;
+    skos:exactMatch wd:Q16684871 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q2634589 ;
+    wdt:P176 c:Q2634589 ;
+    wdt:P31 c:Q207452 ;
+    wdt:P361 c:Q4514086 .
+
+c:Q167646 a skos:Concept ;
+    ex:broaderInstantive c:Q22988604 ;
+    ex:sitelinks 73 ;
+    schema1:description "mythological son of Priam, king of Troy"@en ;
+    skos:altLabel "Alexander"@en,
+        "Alexandros"@en ;
+    skos:exactMatch wd:Q167646 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q12059906,
+        c:Q164061,
+        c:Q170473,
+        c:Q193433,
+        c:Q20828900,
+        c:Q2665478,
+        c:Q3646670,
+        c:Q390461,
+        c:Q62344048,
+        c:Q858671 ;
+    wdt:P106 c:Q12059906 ;
+    wdt:P22 c:Q170473 ;
+    wdt:P25 c:Q193433 ;
+    wdt:P26 c:Q164061,
+        c:Q858671 ;
+    wdt:P31 c:Q22988604 ;
+    wdt:P40 c:Q20828900,
+        c:Q2665478,
+        c:Q3646670,
+        c:Q390461,
+        c:Q62344048 .
+
+c:Q16997351 a skos:Concept ;
+    ex:broaderInstantive c:Q708676 ;
+    ex:sitelinks 3 ;
+    schema1:description "charity in the UK"@en ;
+    skos:altLabel "Marie Curie Cancer Care"@en ;
+    skos:exactMatch wd:Q16997351 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en ;
+    skos:related c:Q145,
+        c:Q7186,
+        c:Q84 ;
+    wdt:P138 c:Q7186 ;
+    wdt:P159 c:Q84 ;
+    wdt:P17 c:Q145 ;
+    wdt:P31 c:Q708676 .
+
+c:Q24800609 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published in January 1976"@en ;
+    skos:exactMatch wd:Q24800609 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en .
+
+c:Q30668387 a skos:Concept ;
+    ex:broaderInstantive c:Q928830 ;
+    ex:sitelinks 6 ;
+    schema1:description "future metro station in Montreal, Quebec, Canada"@en ;
+    skos:altLabel "Technoparc"@en ;
+    skos:exactMatch wd:Q30668387 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie-Curie"@en ;
+    skos:related c:Q16,
+        c:Q2117999 ;
+    wdt:P131 c:Q2117999 ;
+    wdt:P17 c:Q16 ;
+    wdt:P31 c:Q928830 .
+
+c:Q317949 a skos:Concept ;
+    ex:broaderGeneric c:Q107715,
+        c:Q1144560,
+        c:Q98690850 ;
+    ex:sitelinks 16 ;
+    schema1:description "physical quantity in nuclear physics, measured in becquerel, revealing the average number of nucleuses experiencing a spontaneous reaction per second"@en ;
+    skos:altLabel "activity of a radionuclide"@en,
+        "activity referred to a radionuclide"@en,
+        "radioactive activity"@en,
+        "radioactivity"@en ;
+    skos:exactMatch wd:Q317949 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "activity"@en ;
+    wdt:P279 c:Q107715,
+        c:Q1144560,
+        c:Q98690850 .
+
+c:Q3365239 a skos:Concept ;
+    ex:broaderInstantive c:Q207452 ;
+    ex:sitelinks 4 ;
+    schema1:description "1849 Russian ship of the line"@en ;
+    skos:exactMatch wd:Q3365239 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    wdt:P31 c:Q207452 .
+
+c:Q483020 a skos:Concept ;
+    ex:broaderInstantive c:Q476028 ;
+    ex:narrowerPartitive c:Q2945336 ;
+    ex:sitelinks 103 ;
+    schema1:description "association football club in Paris, France having two UCL"@en ;
+    skos:altLabel "PSG"@en,
+        "PSGFC"@en,
+        "Paris"@en,
+        "Paris SG"@en,
+        "Paris Saint Germain"@en,
+        "Paris Saint-Germain F.C."@en,
+        "Paris Saint-Germain FC"@en,
+        "Paris Saint-Germain Football Club"@en ;
+    skos:exactMatch wd:Q483020 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris Saint-Germain FC"@en ;
+    skos:related c:Q142,
+        c:Q60847808,
+        c:Q90 ;
+    wdt:P138 c:Q60847808 ;
+    wdt:P159 c:Q90 ;
+    wdt:P17 c:Q142 ;
+    wdt:P31 c:Q476028 ;
+    wdt:P527 c:Q2945336 .
+
+c:Q48911839 a skos:Concept ;
+    ex:broaderInstantive c:Q38104 ;
+    ex:sitelinks 0 ;
+    skos:exactMatch wd:Q48911839 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2016"@en ;
+    wdt:P31 c:Q38104 .
+
+c:Q48912926 a skos:Concept ;
+    ex:broaderInstantive c:Q38104,
+        c:Q618779 ;
+    ex:sitelinks 0 ;
+    skos:exactMatch wd:Q48912926 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2015"@en ;
+    wdt:P31 c:Q38104,
+        c:Q618779 .
+
+c:Q48912962 a skos:Concept ;
+    ex:broaderInstantive c:Q38104 ;
+    ex:sitelinks 0 ;
+    skos:exactMatch wd:Q48912962 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2014"@en ;
+    wdt:P31 c:Q38104 .
+
+c:Q48912969 a skos:Concept ;
+    ex:broaderInstantive c:Q38104 ;
+    ex:sitelinks 1 ;
+    skos:exactMatch wd:Q48912969 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2013"@en ;
+    wdt:P31 c:Q38104 .
+
+c:Q50589856 a skos:Concept ;
+    ex:broaderInstantive c:Q38104 ;
+    ex:sitelinks 1 ;
+    skos:exactMatch wd:Q50589856 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2012"@en ;
+    wdt:P31 c:Q38104 .
+
+c:Q52900475 a skos:Concept ;
+    ex:broaderInstantive c:Q3803834 ;
+    ex:sitelinks 0 ;
+    schema1:description "technical institute in Milan, Milan, Lombardy, Italy"@en ;
+    skos:exactMatch wd:Q52900475 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en ;
+    skos:related c:Q38,
+        c:Q490 ;
+    wdt:P131 c:Q490 ;
+    wdt:P17 c:Q38 ;
+    wdt:P31 c:Q3803834 .
+
+c:Q52904085 a skos:Concept ;
+    ex:broaderInstantive c:Q9826 ;
+    ex:sitelinks 0 ;
+    schema1:description "high school in Savignano sul Rubicone, Forlì-Cesena, Emilia-Romagna, Italy"@en ;
+    skos:exactMatch wd:Q52904085 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en ;
+    skos:related c:Q38,
+        c:Q7186,
+        c:Q99957 ;
+    wdt:P131 c:Q99957 ;
+    wdt:P138 c:Q7186 ;
+    wdt:P17 c:Q38 ;
+    wdt:P31 c:Q9826 .
+
+c:Q56628069 a skos:Concept ;
+    ex:broaderInstantive c:Q7725634 ;
+    ex:sitelinks 0 ;
+    schema1:description "book"@en ;
+    skos:exactMatch wd:Q56628069 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en ;
+    skos:related c:Q56627963 ;
+    wdt:P31 c:Q7725634 ;
+    wdt:P50 c:Q56627963 .
+
+c:Q576584 a skos:Concept ;
+    ex:broaderInstantive c:Q1093829 ;
+    ex:sitelinks 46 ;
+    schema1:description "city in Illinois"@en ;
+    skos:altLabel "Paris Illinois"@en,
+        "Paris, IL"@en,
+        "Paris, Illinois"@en ;
+    skos:exactMatch wd:Q576584 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q30,
+        c:Q484124 ;
+    wdt:P131 c:Q484124 ;
+    wdt:P1376 c:Q484124 ;
+    wdt:P17 c:Q30 ;
+    wdt:P31 c:Q1093829 .
+
+c:Q58942268 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published in Nature"@en ;
+    skos:exactMatch wd:Q58942268 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics"@en .
+
+c:Q73578350 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published on 01 January 2001"@en ;
+    skos:exactMatch wd:Q73578350 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Radioactivity"@en .
+
+c:Q76406613 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published on 01 February 1963"@en ;
+    skos:exactMatch wd:Q76406613 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Radioactivity"@en .
+
+c:Q77139322 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published on 01 April 1958"@en ;
+    skos:exactMatch wd:Q77139322 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Radioactivity"@en .
+
+c:Q78952231 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published on 01 January 1960"@en ;
+    skos:exactMatch wd:Q78952231 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Radioactivity"@en .
+
+c:Q80911816 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published on 01 September 1940"@en ;
+    skos:exactMatch wd:Q80911816 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "RADIOACTIVITY"@en .
+
+c:Q82039321 a skos:Concept ;
+    ex:sitelinks 0 ;
+    schema1:description "scientific article published on 01 August 2008"@en ;
+    skos:exactMatch wd:Q82039321 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Radioactivity"@en .
+
+c:Q830149 a skos:Concept ;
+    ex:broaderInstantive c:Q1093829,
+        c:Q62049 ;
+    ex:sitelinks 60 ;
+    schema1:description "city in and county seat of Lamar County, Texas, United States"@en ;
+    skos:altLabel "Paris, TX"@en,
+        "Paris, Texas"@en ;
+    skos:exactMatch wd:Q830149 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q113313,
+        c:Q30,
+        c:Q90 ;
+    wdt:P131 c:Q113313 ;
+    wdt:P1376 c:Q113313 ;
+    wdt:P138 c:Q90 ;
+    wdt:P17 c:Q30 ;
+    wdt:P31 c:Q1093829,
+        c:Q62049 .
+
+c:Q1048461 a skos:Concept ;
+    skos:exactMatch wd:Q1048461 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Flying University"@en .
+
+c:Q1066984 a skos:Concept ;
+    skos:exactMatch wd:Q1066984 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "financial center"@en .
+
+c:Q107494520 a skos:Concept ;
+    skos:exactMatch wd:Q107494520 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "physics award"@en .
+
+c:Q107715 a skos:Concept ;
+    skos:exactMatch wd:Q107715 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "physical quantity"@en .
+
+c:Q108143753 a skos:Concept ;
+    skos:exactMatch wd:Q108143753 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "María Isabel Sánchez Vegara"@en .
+
+c:Q108178728 a skos:Concept ;
+    skos:exactMatch wd:Q108178728 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "national capital"@en .
+
+c:Q110932341 a skos:Concept ;
+    skos:exactMatch wd:Q110932341 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Bronisława Skłodowska"@en .
+
+c:Q1128 a skos:Concept ;
+    skos:exactMatch wd:Q1128 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "radium"@en .
+
+c:Q11297474 a skos:Concept ;
+    skos:exactMatch wd:Q11297474 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Pierre and Marie Curie"@en .
+
+c:Q11418818 a skos:Concept ;
+    skos:exactMatch wd:Q11418818 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "commercial capital city"@en .
+
+c:Q11424 a skos:Concept ;
+    skos:exactMatch wd:Q11424 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "film"@en .
+
+c:Q1144560 a skos:Concept ;
+    skos:exactMatch wd:Q1144560 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "rate"@en .
+
+c:Q1187811 a skos:Concept ;
+    skos:exactMatch wd:Q1187811 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "college town"@en .
+
+c:Q1200957 a skos:Concept ;
+    skos:exactMatch wd:Q1200957 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "tourist destination"@en .
+
+c:Q12059906 a skos:Concept ;
+    skos:exactMatch wd:Q12059906 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "herder"@en .
+
+c:Q125121451 a skos:Concept ;
+    skos:exactMatch wd:Q125121451 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Honorary Fellow of the Royal Society Te Apārangi"@en .
+
+c:Q1293220 a skos:Concept ;
+    skos:exactMatch wd:Q1293220 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "physical phenomenon"@en .
+
+c:Q130232 a skos:Concept ;
+    skos:exactMatch wd:Q130232 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "drama film"@en .
+
+c:Q130292886 a skos:Concept ;
+    skos:exactMatch wd:Q130292886 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2024"@en .
+
+c:Q1332315 a skos:Concept ;
+    skos:exactMatch wd:Q1332315 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Elliott Cresson Medal"@en .
+
+c:Q134445478 a skos:Concept ;
+    skos:exactMatch wd:Q134445478 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "cultural capital"@en .
+
+c:Q136450924 a skos:Concept ;
+    skos:exactMatch wd:Q136450924 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics 2025"@en .
+
+c:Q137915278 a skos:Concept ;
+    skos:exactMatch wd:Q137915278 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "72 scientist women names on the Eiffel tower"@en .
+
+c:Q13917 a skos:Concept ;
+    skos:exactMatch wd:Q13917 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Île-de-France"@en .
+
+c:Q1419938 a skos:Concept ;
+    skos:exactMatch wd:Q1419938 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Matteucci Medal"@en .
+
+c:Q1422929 a skos:Concept ;
+    skos:exactMatch wd:Q1422929 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "primate city"@en .
+
+c:Q145 a skos:Concept ;
+    skos:exactMatch wd:Q145 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "United Kingdom"@en .
+
+c:Q1471 a skos:Concept ;
+    skos:exactMatch wd:Q1471 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Seine"@en .
+
+c:Q1549591 a skos:Concept ;
+    skos:exactMatch wd:Q1549591 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "big city"@en .
+
+c:Q15647945 a skos:Concept ;
+    skos:exactMatch wd:Q15647945 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Commission on Isotopic Abundances and Atomic Weights"@en .
+
+c:Q1575786 a skos:Concept ;
+    skos:exactMatch wd:Q1575786 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Royal Czech Society of Sciences"@en .
+
+c:Q16 a skos:Concept ;
+    skos:exactMatch wd:Q16 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Canada"@en .
+
+c:Q161741 a skos:Concept ;
+    skos:exactMatch wd:Q161741 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "1st arrondissement of Paris"@en .
+
+c:Q1622272 a skos:Concept ;
+    skos:exactMatch wd:Q1622272 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "university teacher"@en .
+
+c:Q163948 a skos:Concept ;
+    skos:exactMatch wd:Q163948 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "10ᵗʰ arrondissement of Paris"@en .
+
+c:Q164061 a skos:Concept ;
+    skos:exactMatch wd:Q164061 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Helen of Troy"@en .
+
+c:Q16521 a skos:Concept ;
+    skos:exactMatch wd:Q16521 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "taxon"@en .
+
+c:Q169293 a skos:Concept ;
+    skos:exactMatch wd:Q169293 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "11th arrondissement of Paris"@en .
+
+c:Q169470 a skos:Concept ;
+    skos:exactMatch wd:Q169470 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "physicist"@en .
+
+c:Q170473 a skos:Concept ;
+    skos:exactMatch wd:Q170473 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Priam"@en .
+
+c:Q171689 a skos:Concept ;
+    skos:exactMatch wd:Q171689 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "12th arrondissement of Paris"@en .
+
+c:Q17320256 a skos:Concept ;
+    skos:exactMatch wd:Q17320256 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "physical process"@en .
+
+c:Q175129 a skos:Concept ;
+    skos:exactMatch wd:Q175129 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "13th arrondissement of Paris"@en .
+
+c:Q1754 a skos:Concept ;
+    skos:exactMatch wd:Q1754 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Stockholm"@en .
+
+c:Q183 a skos:Concept ;
+    skos:exactMatch wd:Q183 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Germany"@en .
+
+c:Q187153 a skos:Concept ;
+    skos:exactMatch wd:Q187153 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "14th arrondissement of Paris"@en .
+
+c:Q191066 a skos:Concept ;
+    skos:exactMatch wd:Q191066 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "15th arrondissement of Paris"@en .
+
+c:Q191583 a skos:Concept ;
+    skos:exactMatch wd:Q191583 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Royal Swedish Academy of Sciences"@en .
+
+c:Q193433 a skos:Concept ;
+    skos:exactMatch wd:Q193433 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Hecuba"@en .
+
+c:Q194420 a skos:Concept ;
+    skos:exactMatch wd:Q194420 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "16th arrondissement of Paris"@en .
+
+c:Q197297 a skos:Concept ;
+    skos:exactMatch wd:Q197297 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "17th arrondissement of Paris"@en .
+
+c:Q200126 a skos:Concept ;
+    skos:exactMatch wd:Q200126 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "18th arrondissement of Paris"@en .
+
+c:Q200250 a skos:Concept ;
+    skos:exactMatch wd:Q200250 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "metropolis"@en .
+
+c:Q204622 a skos:Concept ;
+    skos:exactMatch wd:Q204622 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "19th arrondissement of Paris"@en .
+
+c:Q20828900 a skos:Concept ;
+    skos:exactMatch wd:Q20828900 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Idaeus"@en .
+
+c:Q208511 a skos:Concept ;
+    skos:exactMatch wd:Q208511 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "global city"@en .
+
+c:Q20853550 a skos:Concept ;
+    skos:exactMatch wd:Q20853550 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "honorary doctor of the Jagiellonian University of Krakow"@en .
+
+c:Q209549 a skos:Concept ;
+    skos:exactMatch wd:Q209549 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "2nd arrondissement of Paris"@en .
+
+c:Q210720 a skos:Concept ;
+    skos:exactMatch wd:Q210720 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "20th arrondissement of Paris"@en .
+
+c:Q211134 a skos:Concept ;
+    skos:exactMatch wd:Q211134 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Échirolles"@en .
+
+c:Q2117999 a skos:Concept ;
+    skos:exactMatch wd:Q2117999 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Saint-Laurent"@en .
+
+c:Q214654 a skos:Concept ;
+    skos:exactMatch wd:Q214654 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Sorbonne"@en .
+
+c:Q2175765 a skos:Concept ;
+    skos:exactMatch wd:Q2175765 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "tram stop"@en .
+
+c:Q220842 a skos:Concept ;
+    skos:exactMatch wd:Q220842 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Davy Medal"@en .
+
+c:Q223140 a skos:Concept ;
+    skos:exactMatch wd:Q223140 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "3rd arrondissement of Paris"@en .
+
+c:Q2240381 a skos:Concept ;
+    skos:exactMatch wd:Q2240381 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "fashion capital"@en .
+
+c:Q22923920 a skos:Concept ;
+    skos:exactMatch wd:Q22923920 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "territorial collectivity of France with special status"@en .
+
+c:Q22988604 a skos:Concept ;
+    skos:exactMatch wd:Q22988604 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "mythological Greek character"@en .
+
+c:Q230068 a skos:Concept ;
+    skos:exactMatch wd:Q230068 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Ève Curie"@en .
+
+c:Q230127 a skos:Concept ;
+    skos:exactMatch wd:Q230127 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "4th arrondissement of Paris"@en .
+
+c:Q2329 a skos:Concept ;
+    skos:exactMatch wd:Q2329 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "chemistry"@en .
+
+c:Q2364887 a skos:Concept ;
+    skos:exactMatch wd:Q2364887 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Sancellemoz"@en .
+
+c:Q2370801 a skos:Concept ;
+    skos:exactMatch wd:Q2370801 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Academy of Sciences of the USSR"@en .
+
+c:Q23810 a skos:Concept ;
+    skos:exactMatch wd:Q23810 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Alfred Nobel"@en .
+
+c:Q238723 a skos:Concept ;
+    skos:exactMatch wd:Q238723 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "5th arrondissement of Paris"@en .
+
+c:Q23916 a skos:Concept ;
+    skos:exactMatch wd:Q23916 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "adventure video game"@en .
+
+c:Q24041517 a skos:Concept ;
+    skos:exactMatch wd:Q24041517 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Treatise on Radioactivity"@en .
+
+c:Q2451973 a skos:Concept ;
+    skos:exactMatch wd:Q2451973 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Curie Institute"@en .
+
+c:Q245546 a skos:Concept ;
+    skos:exactMatch wd:Q245546 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "6th arrondissement of Paris"@en .
+
+c:Q253439 a skos:Concept ;
+    skos:exactMatch wd:Q253439 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Royal Netherlands Academy of Arts and Sciences"@en .
+
+c:Q259463 a skos:Concept ;
+    skos:exactMatch wd:Q259463 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "7th arrondissement of Paris"@en .
+
+c:Q2634589 a skos:Concept ;
+    skos:exactMatch wd:Q2634589 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Black Sea Shipyard"@en .
+
+c:Q2665478 a skos:Concept ;
+    skos:exactMatch wd:Q2665478 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Corythus"@en .
+
+c:Q270 a skos:Concept ;
+    skos:exactMatch wd:Q270 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Warsaw"@en .
+
+c:Q270230 a skos:Concept ;
+    skos:exactMatch wd:Q270230 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "8th arrondissement of Paris"@en .
+
+c:Q270948 a skos:Concept ;
+    skos:exactMatch wd:Q270948 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "action game"@en .
+
+c:Q2727598 a skos:Concept ;
+    skos:exactMatch wd:Q2727598 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Croix de guerre 1914–1918"@en .
+
+c:Q275118 a skos:Concept ;
+    skos:exactMatch wd:Q275118 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "9th arrondissement of Paris"@en .
+
+c:Q2761462 a skos:Concept ;
+    skos:exactMatch wd:Q2761462 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "International Committee on Intellectual Cooperation"@en .
+
+c:Q28494733 a skos:Concept ;
+    skos:exactMatch wd:Q28494733 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Noëlle"@en .
+
+c:Q29026864 a skos:Concept ;
+    skos:exactMatch wd:Q29026864 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Cameron Prize of the University of Edinburgh"@en .
+
+c:Q2945336 a skos:Concept ;
+    skos:exactMatch wd:Q2945336 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris Saint-Germain FC Youth Academy"@en .
+
+c:Q2990283 a skos:Concept ;
+    skos:exactMatch wd:Q2990283 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Companion of the Liberation"@en .
+
+c:Q3064332 a skos:Concept ;
+    skos:exactMatch wd:Q3064332 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Science Faculty of Paris"@en .
+
+c:Q3331189 a skos:Concept ;
+    skos:exactMatch wd:Q3331189 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "version, edition or translation"@en .
+
+c:Q3332215 a skos:Concept ;
+    skos:exactMatch wd:Q3332215 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "John Scott Award"@en .
+
+c:Q337555 a skos:Concept ;
+    skos:exactMatch wd:Q337555 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Académie Nationale de Médecine"@en .
+
+c:Q34 a skos:Concept ;
+    skos:exactMatch wd:Q34 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Sweden"@en .
+
+c:Q3409032 a skos:Concept ;
+    skos:exactMatch wd:Q3409032 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "unisex given name"@en .
+
+c:Q34266 a skos:Concept ;
+    skos:exactMatch wd:Q34266 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Russian Empire"@en .
+
+c:Q343568 a skos:Concept ;
+    skos:exactMatch wd:Q343568 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "action-adventure game"@en .
+
+c:Q36 a skos:Concept ;
+    skos:exactMatch wd:Q36 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Poland"@en .
+
+c:Q3603955 a skos:Concept ;
+    skos:exactMatch wd:Q3603955 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Accademia Tiberina"@en .
+
+c:Q3646670 a skos:Concept ;
+    skos:exactMatch wd:Q3646670 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Bunicus"@en .
+
+c:Q37463 a skos:Concept ;
+    skos:exactMatch wd:Q37463 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Pierre Curie"@en .
+
+c:Q3803834 a skos:Concept ;
+    skos:exactMatch wd:Q3803834 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "istituto tecnico"@en .
+
+c:Q390461 a skos:Concept ;
+    skos:exactMatch wd:Q390461 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Aganus"@en .
+
+c:Q4021169 a skos:Concept ;
+    skos:exactMatch wd:Q4021169 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Władysław Skłodowski"@en .
+
+c:Q41269 a skos:Concept ;
+    skos:exactMatch wd:Q41269 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Antoine Henri Becquerel"@en .
+
+c:Q413 a skos:Concept ;
+    skos:exactMatch wd:Q413 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "physics"@en .
+
+c:Q4345832 a skos:Concept ;
+    skos:exactMatch wd:Q4345832 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Saint Petersburg Academy of Sciences"@en .
+
+c:Q44585 a skos:Concept ;
+    skos:exactMatch wd:Q44585 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Chemistry"@en .
+
+c:Q4514086 a skos:Concept ;
+    skos:exactMatch wd:Q4514086 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Black Sea Fleet of the Russian Empire"@en .
+
+c:Q46 a skos:Concept ;
+    skos:exactMatch wd:Q46 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Europe"@en .
+
+c:Q466089 a skos:Concept ;
+    skos:exactMatch wd:Q466089 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "American Philosophical Society"@en .
+
+c:Q46636944 a skos:Concept ;
+    skos:exactMatch wd:Q46636944 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "prix Gegner"@en .
+
+c:Q4677703 a skos:Concept ;
+    skos:exactMatch wd:Q4677703 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Actonian Prize"@en .
+
+c:Q4710826 a skos:Concept ;
+    skos:exactMatch wd:Q4710826 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Albert Medal"@en .
+
+c:Q471822 a skos:Concept ;
+    skos:exactMatch wd:Q471822 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "megalopolis"@en .
+
+c:Q476028 a skos:Concept ;
+    skos:exactMatch wd:Q476028 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "association football club"@en .
+
+c:Q48268 a skos:Concept ;
+    skos:exactMatch wd:Q48268 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "International Union for Conservation of Nature"@en .
+
+c:Q484170 a skos:Concept ;
+    skos:exactMatch wd:Q484170 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "commune of France"@en .
+
+c:Q485087 a skos:Concept ;
+    skos:exactMatch wd:Q485087 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "C40 Cities Climate Leadership Group"@en .
+
+c:Q4888659 a skos:Concept ;
+    skos:exactMatch wd:Q4888659 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Benjamin Franklin Medal"@en .
+
+c:Q490 a skos:Concept ;
+    skos:exactMatch wd:Q490 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Milan"@en .
+
+c:Q5 a skos:Concept ;
+    skos:exactMatch wd:Q5 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "human"@en .
+
+c:Q51929311 a skos:Concept ;
+    skos:exactMatch wd:Q51929311 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "largest city"@en .
+
+c:Q543804 a skos:Concept ;
+    skos:exactMatch wd:Q543804 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "German Academy of Sciences Leopoldina"@en .
+
+c:Q56627963 a skos:Concept ;
+    skos:exactMatch wd:Q56627963 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Robert William Reid"@en .
+
+c:Q593644 a skos:Concept ;
+    skos:exactMatch wd:Q593644 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "chemist"@en .
+
+c:Q60847808 a skos:Concept ;
+    skos:exactMatch wd:Q60847808 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Saint-Germain-en-Laye"@en .
+
+c:Q62049 a skos:Concept ;
+    skos:exactMatch wd:Q62049 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "county seat"@en .
+
+c:Q62344048 a skos:Concept ;
+    skos:exactMatch wd:Q62344048 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Helena"@en .
+
+c:Q645928 a skos:Concept ;
+    skos:exactMatch wd:Q645928 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "biographical film"@en .
+
+c:Q656902 a skos:Concept ;
+    skos:exactMatch wd:Q656902 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Parisii"@en .
+
+c:Q6706991 a skos:Concept ;
+    skos:exactMatch wd:Q6706991 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Lwów Scientific Society"@en .
+
+c:Q67652870 a skos:Concept ;
+    skos:exactMatch wd:Q67652870 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "World Tourism Cities Federation"@en .
+
+c:Q708676 a skos:Concept ;
+    skos:exactMatch wd:Q708676 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "charitable organization"@en .
+
+c:Q7504 a skos:Concept ;
+    skos:exactMatch wd:Q7504 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Irène Joliot-Curie"@en .
+
+c:Q7725634 a skos:Concept ;
+    skos:exactMatch wd:Q7725634 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "literary work"@en .
+
+c:Q7889 a skos:Concept ;
+    skos:exactMatch wd:Q7889 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "video game"@en .
+
+c:Q83172 a skos:Concept ;
+    skos:exactMatch wd:Q83172 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Russian Academy of Sciences"@en .
+
+c:Q84 a skos:Concept ;
+    skos:exactMatch wd:Q84 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "London"@en .
+
+c:Q84020 a skos:Concept ;
+    skos:exactMatch wd:Q84020 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Order of the White Eagle"@en .
+
+c:Q858671 a skos:Concept ;
+    skos:exactMatch wd:Q858671 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Oenone"@en .
+
+c:Q902788 a skos:Concept ;
+    skos:exactMatch wd:Q902788 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Willard Gibbs Award"@en .
+
+c:Q928830 a skos:Concept ;
+    skos:exactMatch wd:Q928830 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "metro station"@en .
+
+c:Q9365159 a skos:Concept ;
+    skos:exactMatch wd:Q9365159 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Freta Street"@en .
+
+c:Q9383191 a skos:Concept ;
+    skos:exactMatch wd:Q9383191 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "10th Secondary School named after Queen Jadwiga in Warsaw"@en .
+
+c:Q9383972 a skos:Concept ;
+    skos:exactMatch wd:Q9383972 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "League of Historical Cities"@en .
+
+c:Q96746729 a skos:Concept ;
+    skos:exactMatch wd:Q96746729 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris Centre"@en .
+
+c:Q979 a skos:Concept ;
+    skos:exactMatch wd:Q979 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "polonium"@en .
+
+c:Q9826 a skos:Concept ;
+    skos:exactMatch wd:Q9826 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "high school"@en .
+
+c:Q98690850 a skos:Concept ;
+    skos:exactMatch wd:Q98690850 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "reciprocal duration"@en .
+
+c:Q99957 a skos:Concept ;
+    skos:exactMatch wd:Q99957 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Savignano sul Rubicone"@en .
+
+c:Q113313 a skos:Concept ;
+    skos:exactMatch wd:Q113313 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Lamar County"@en .
+
+c:Q11448 a skos:Concept ;
+    ex:broaderGeneric c:Q1293220,
+        c:Q17320256 ;
+    ex:sitelinks 111 ;
+    schema1:description "process by which an unstable atom emits radiation"@en ;
+    skos:altLabel "nuclear decay"@en,
+        "radioactive decay"@en ;
+    skos:exactMatch wd:Q11448 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "radioactivity"@en ;
+    skos:related c:Q41269 ;
+    wdt:P279 c:Q1293220,
+        c:Q17320256 ;
+    wdt:P61 c:Q41269 .
+
+c:Q16665915 a skos:Concept ;
+    skos:exactMatch wd:Q16665915 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Grand Paris"@en .
+
+c:Q209842 a skos:Concept ;
+    skos:exactMatch wd:Q209842 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "University of Paris"@en .
+
+c:Q26963166 a skos:Concept ;
+    ex:broaderInstantive c:Q11424 ;
+    ex:sitelinks 10 ;
+    schema1:description "2016 film by Marie Noëlle"@en ;
+    skos:altLabel "Marie Curie"@en ;
+    skos:exactMatch wd:Q26963166 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie: The Courage of Knowledge"@en ;
+    skos:related c:Q130232,
+        c:Q142,
+        c:Q183,
+        c:Q28494733,
+        c:Q36,
+        c:Q645928 ;
+    wdt:P136 c:Q130232,
+        c:Q645928 ;
+    wdt:P31 c:Q11424 ;
+    wdt:P495 c:Q142,
+        c:Q183,
+        c:Q36 ;
+    wdt:P57 c:Q28494733 .
+
+c:Q484124 a skos:Concept ;
+    skos:exactMatch wd:Q484124 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Edgar County"@en .
+
+c:Q10855271 a skos:Concept ;
+    skos:exactMatch wd:Q10855271 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Knight of the Legion of Honour"@en .
+
+c:Q1093829 a skos:Concept ;
+    skos:exactMatch wd:Q1093829 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "city in the United States"@en .
+
+c:Q207452 a skos:Concept ;
+    skos:exactMatch wd:Q207452 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "ship of the line"@en .
+
+c:Q30 a skos:Concept ;
+    skos:exactMatch wd:Q30 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "United States"@en .
+
+c:Q38 a skos:Concept ;
+    skos:exactMatch wd:Q38 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Italy"@en .
+
+<http://example.org/wdlink/doc/6ff0f6083519#char=0,92> a nif:Context ;
+    nif:isString "Marie Curie conducted research on radioactivity in Paris and won the Nobel Prize in Physics." .
+
+<http://example.org/wdlink/doc/6ff0f6083519/run> a prov:Activity ;
+    ex:beta 3e-01 ;
+    ex:coherence "weighted" ;
+    ex:confidence_temperature 1e-01 ;
+    ex:direct_edge_strength 1e+00 ;
+    ex:embedding_model "BAAI/bge-small-en-v1.5" ;
+    ex:min_margin 0e+00 ;
+    ex:nil_threshold 4.5e-01 ;
+    ex:softmax_temperature 1e-01 ;
+    ex:use_popularity true ;
+    ex:use_types true ;
+    ex:verbalise_graph true ;
+    ex:w_name 2e-01 ;
+    ex:w_pop 1.5e-01 ;
+    ex:w_txt 5e-01 ;
+    ex:w_type 1.5e-01 ;
+    prov:endedAtTime "2026-10-22T13:51:10.777502+00:00"^^xsd:dateTime .
+
+c:Q618779 a skos:Concept ;
+    skos:exactMatch wd:Q618779 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "award"@en .
+
+c:Q7191 a skos:Concept ;
+    skos:exactMatch wd:Q7191 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize"@en .
+
+c:Q90 a skos:Concept ;
+    ex:broaderInstantive c:Q1066984,
+        c:Q108178728,
+        c:Q11418818,
+        c:Q1187811,
+        c:Q1200957,
+        c:Q134445478,
+        c:Q1422929,
+        c:Q1549591,
+        c:Q200250,
+        c:Q208511,
+        c:Q2240381,
+        c:Q22923920,
+        c:Q471822,
+        c:Q484170,
+        c:Q51929311 ;
+    ex:broaderPartitive c:Q13917 ;
+    ex:sitelinks 366 ;
+    schema1:description "capital and most populous city in France"@en ;
+    skos:altLabel "City of Light"@en,
+        "City of Love"@en,
+        "Lutetia"@en,
+        "Paris"@en ;
+    skos:exactMatch wd:Q90 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q10855271,
+        c:Q142,
+        c:Q1471,
+        c:Q161741,
+        c:Q163948,
+        c:Q16665915,
+        c:Q169293,
+        c:Q171689,
+        c:Q175129,
+        c:Q187153,
+        c:Q191066,
+        c:Q194420,
+        c:Q197297,
+        c:Q200126,
+        c:Q204622,
+        c:Q209549,
+        c:Q210720,
+        c:Q223140,
+        c:Q230127,
+        c:Q238723,
+        c:Q245546,
+        c:Q259463,
+        c:Q270230,
+        c:Q2727598,
+        c:Q275118,
+        c:Q2990283,
+        c:Q46,
+        c:Q48268,
+        c:Q485087,
+        c:Q656902,
+        c:Q67652870,
+        c:Q9383972,
+        c:Q96746729 ;
+    wdt:P131 c:Q16665915 ;
+    wdt:P1376 c:Q142,
+        c:Q16665915 ;
+    wdt:P138 c:Q656902 ;
+    wdt:P150 c:Q161741,
+        c:Q163948,
+        c:Q169293,
+        c:Q171689,
+        c:Q175129,
+        c:Q187153,
+        c:Q191066,
+        c:Q194420,
+        c:Q197297,
+        c:Q200126,
+        c:Q204622,
+        c:Q209549,
+        c:Q210720,
+        c:Q223140,
+        c:Q230127,
+        c:Q238723,
+        c:Q245546,
+        c:Q259463,
+        c:Q270230,
+        c:Q275118,
+        c:Q96746729 ;
+    wdt:P166 c:Q10855271,
+        c:Q2727598,
+        c:Q2990283 ;
+    wdt:P17 c:Q142 ;
+    wdt:P206 c:Q1471 ;
+    wdt:P30 c:Q46 ;
+    wdt:P31 c:Q1066984,
+        c:Q108178728,
+        c:Q11418818,
+        c:Q1187811,
+        c:Q1200957,
+        c:Q134445478,
+        c:Q1422929,
+        c:Q1549591,
+        c:Q200250,
+        c:Q208511,
+        c:Q2240381,
+        c:Q22923920,
+        c:Q471822,
+        c:Q484170,
+        c:Q51929311 ;
+    wdt:P361 c:Q13917 ;
+    wdt:P463 c:Q48268,
+        c:Q485087,
+        c:Q67652870,
+        c:Q9383972 .
+
+c:Q7186 a skos:Concept ;
+    ex:broaderInstantive c:Q5 ;
+    ex:sitelinks 248 ;
+    schema1:description "Polish-born French physicist and chemist (1867–1934)"@en ;
+    skos:altLabel "Madame Curie"@en,
+        "Madame Pierre Curie"@en,
+        "Maria Curie-Skłodowska"@en,
+        "Maria Salomea Skłodowska"@en,
+        "Maria Skłodowska-Curie"@en,
+        "Marie Curie-Skłodowska"@en,
+        "Marie Salomée Skłodowska Curie"@en,
+        "Marie Skłodowska-Curie"@en,
+        "Mme Curie"@en ;
+    skos:exactMatch wd:Q7186 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Marie Curie"@en ;
+    skos:related c:Q1048461,
+        c:Q10855271,
+        c:Q110932341,
+        c:Q1128,
+        c:Q11297474,
+        c:Q11448,
+        c:Q125121451,
+        c:Q1332315,
+        c:Q137915278,
+        c:Q1419938,
+        c:Q142,
+        c:Q15647945,
+        c:Q1575786,
+        c:Q1622272,
+        c:Q169470,
+        c:Q191583,
+        c:Q20853550,
+        c:Q209842,
+        c:Q214654,
+        c:Q220842,
+        c:Q230068,
+        c:Q2329,
+        c:Q2364887,
+        c:Q2370801,
+        c:Q24041517,
+        c:Q2451973,
+        c:Q253439,
+        c:Q26963166,
+        c:Q270,
+        c:Q2761462,
+        c:Q29026864,
+        c:Q3064332,
+        c:Q3332215,
+        c:Q337555,
+        c:Q34266,
+        c:Q3603955,
+        c:Q37463,
+        c:Q38104,
+        c:Q4021169,
+        c:Q413,
+        c:Q4345832,
+        c:Q44585,
+        c:Q466089,
+        c:Q46636944,
+        c:Q4677703,
+        c:Q4710826,
+        c:Q4888659,
+        c:Q543804,
+        c:Q593644,
+        c:Q6706991,
+        c:Q7504,
+        c:Q83172,
+        c:Q84020,
+        c:Q90,
+        c:Q902788,
+        c:Q9365159,
+        c:Q9383191,
+        c:Q979 ;
+    wdt:P101 c:Q1128,
+        c:Q11448,
+        c:Q2329,
+        c:Q413,
+        c:Q979 ;
+    wdt:P106 c:Q1622272,
+        c:Q169470,
+        c:Q593644 ;
+    wdt:P108 c:Q209842,
+        c:Q214654,
+        c:Q2451973 ;
+    wdt:P1411 c:Q38104 ;
+    wdt:P1441 c:Q26963166 ;
+    wdt:P166 c:Q10855271,
+        c:Q125121451,
+        c:Q1332315,
+        c:Q137915278,
+        c:Q1419938,
+        c:Q20853550,
+        c:Q220842,
+        c:Q29026864,
+        c:Q3332215,
+        c:Q38104,
+        c:Q44585,
+        c:Q46636944,
+        c:Q4677703,
+        c:Q4710826,
+        c:Q4888659,
+        c:Q84020,
+        c:Q902788 ;
+    wdt:P19 c:Q270,
+        c:Q9365159 ;
+    wdt:P20 c:Q2364887 ;
+    wdt:P22 c:Q4021169 ;
+    wdt:P25 c:Q110932341 ;
+    wdt:P26 c:Q37463 ;
+    wdt:P27 c:Q142,
+        c:Q34266 ;
+    wdt:P31 c:Q5 ;
+    wdt:P40 c:Q230068,
+        c:Q7504 ;
+    wdt:P463 c:Q11297474,
+        c:Q15647945,
+        c:Q1575786,
+        c:Q191583,
+        c:Q2370801,
+        c:Q253439,
+        c:Q2761462,
+        c:Q337555,
+        c:Q3603955,
+        c:Q4345832,
+        c:Q466089,
+        c:Q543804,
+        c:Q6706991,
+        c:Q83172 ;
+    wdt:P551 c:Q90 ;
+    wdt:P69 c:Q1048461,
+        c:Q209842,
+        c:Q3064332,
+        c:Q9383191 ;
+    wdt:P800 c:Q24041517 .
+
+c:Q142 a skos:Concept ;
+    skos:exactMatch wd:Q142 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "France"@en .
+
+c:Q38104 a skos:Concept ;
+    ex:broaderGeneric c:Q7191 ;
+    ex:broaderInstantive c:Q107494520,
+        c:Q7191 ;
+    ex:broaderPartitive c:Q7191 ;
+    ex:sitelinks 115 ;
+    schema1:description "yearly physics award given by the Royal Swedish Academy of Sciences"@en ;
+    skos:altLabel "Physics Nobel Prize"@en ;
+    skos:exactMatch wd:Q38104 ;
+    skos:inScheme <http://example.org/wdlink/doc/6ff0f6083519/scheme> ;
+    skos:prefLabel "Nobel Prize in Physics"@en ;
+    skos:related c:Q1754,
+        c:Q23810,
+        c:Q34,
+        c:Q7186 ;
+    wdt:P1346 c:Q7186 ;
+    wdt:P138 c:Q23810 ;
+    wdt:P17 c:Q34 ;
+    wdt:P276 c:Q1754 ;
+    wdt:P279 c:Q7191 ;
+    wdt:P31 c:Q107494520,
+        c:Q7191 ;
+    wdt:P361 c:Q7191 .
+
+<http://example.org/wdlink/doc/6ff0f6083519/scheme> a skos:ConceptScheme .
+

@@ -1,0 +1,5 @@
+SELECT ?a ?p ?b WHERE {
+  VALUES ?a { wd:Q7186 wd:Q37463 wd:Q38104 wd:Q11448 wd:Q90 wd:Q270 wd:Q1252978 wd:Q7194 }
+  VALUES ?b { wd:Q7186 wd:Q37463 wd:Q38104 wd:Q11448 wd:Q90 wd:Q270 wd:Q1252978 wd:Q7194 }
+  ?a ?p ?b . FILTER(STRSTARTS(STR(?p), "http://www.wikidata.org/prop/direct/"))
+}
