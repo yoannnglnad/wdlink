@@ -1,0 +1,658 @@
+{
+  "text": "Paris, son of Priam, abducted Helen and started the Trojan War.",
+  "mentions": [
+    {
+      "mention": "Paris",
+      "start": 0,
+      "end": 5,
+      "source": "ner",
+      "ner_label": "GPE",
+      "decision": "linked",
+      "selected": {
+        "qid": "Q167646",
+        "uri": "http://www.wikidata.org/entity/Q167646",
+        "label": "Paris",
+        "description": "mythological son of Priam, king of Troy",
+        "score": 0.854
+      },
+      "confidence": 1.0,
+      "evidence": {
+        "features": {
+          "txt": 0.7644,
+          "name": 1.0,
+          "type": 0.5,
+          "pop": 0.7288,
+          "local": 0.7665,
+          "coherence": 0.4375
+        },
+        "graph_links": [
+          {
+            "mention": "Priam",
+            "qid": "Q170473",
+            "label": "Priam",
+            "relatedness": 1.0,
+            "weight": 0.5568,
+            "direct": [
+              [
+                "P22",
+                "out"
+              ],
+              [
+                "P40",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q193433"
+            ],
+            "overlap": 0.0293
+          },
+          {
+            "mention": "Trojan War",
+            "qid": "Q42937",
+            "label": "Trojan War",
+            "relatedness": 1.0,
+            "weight": 0.3917,
+            "direct": [
+              [
+                "P607",
+                "out"
+              ]
+            ],
+            "shared_neighbours": [],
+            "overlap": 0.0
+          },
+          {
+            "mention": "Helen",
+            "qid": "Q164061",
+            "label": "Helen of Troy",
+            "relatedness": 1.0,
+            "weight": 0.3641,
+            "direct": [
+              [
+                "P26",
+                "out"
+              ],
+              [
+                "P451",
+                "out"
+              ],
+              [
+                "P26",
+                "in"
+              ],
+              [
+                "P451",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q62344048",
+              "Q390461",
+              "Q20828900",
+              "Q3646670"
+            ],
+            "overlap": 0.2491
+          }
+        ],
+        "card": "Paris, mythological son of Priam, king of Troy. instance of: mythological Greek character; spouse: Helen of Troy; father: Priam",
+        "search_queries": [
+          "Paris"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q90",
+          "uri": "http://www.wikidata.org/entity/Q90",
+          "label": "Paris",
+          "description": "capital and most populous city in France",
+          "score": 0.6698,
+          "features": {
+            "txt": 0.4895,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 1.0,
+            "local": 0.6698,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q830149",
+          "uri": "http://www.wikidata.org/entity/Q830149",
+          "label": "Paris",
+          "description": "city in and county seat of Lamar County, Texas, United States",
+          "score": 0.6312,
+          "features": {
+            "txt": 0.4972,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.6961,
+            "local": 0.628,
+            "coherence": 0.0159
+          }
+        },
+        {
+          "qid": "Q576584",
+          "uri": "http://www.wikidata.org/entity/Q576584",
+          "label": "Paris",
+          "description": "city in Illinois",
+          "score": 0.6296,
+          "features": {
+            "txt": 0.5058,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.652,
+            "local": 0.6257,
+            "coherence": 0.0195
+          }
+        },
+        {
+          "qid": "Q162121",
+          "uri": "http://www.wikidata.org/entity/Q162121",
+          "label": "Paris",
+          "description": "genus of plants",
+          "score": 0.615,
+          "features": {
+            "txt": 0.4856,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.6483,
+            "local": 0.615,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q483020",
+          "uri": "http://www.wikidata.org/entity/Q483020",
+          "label": "Paris Saint-Germain FC",
+          "description": "association football club in Paris, France having two UCL",
+          "score": 0.5949,
+          "features": {
+            "txt": 0.4439,
+            "name": 0.9,
+            "type": 0.5,
+            "pop": 0.7865,
+            "local": 0.5949,
+            "coherence": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "mention": "Priam",
+      "start": 14,
+      "end": 19,
+      "source": "ner",
+      "ner_label": "PERSON",
+      "decision": "linked",
+      "selected": {
+        "qid": "Q170473",
+        "uri": "http://www.wikidata.org/entity/Q170473",
+        "label": "Priam",
+        "description": "the legendary and last king of Troy during the Trojan war; son of Laomedon",
+        "score": 0.8537
+      },
+      "confidence": 1.0,
+      "evidence": {
+        "features": {
+          "txt": 0.7544,
+          "name": 1.0,
+          "type": 0.5,
+          "pop": 1.0,
+          "local": 0.8022,
+          "coherence": 0.2576
+        },
+        "graph_links": [
+          {
+            "mention": "Trojan War",
+            "qid": "Q42937",
+            "label": "Trojan War",
+            "relatedness": 1.0,
+            "weight": 0.3917,
+            "direct": [
+              [
+                "P607",
+                "out"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q22647"
+            ],
+            "overlap": 0.0655
+          },
+          {
+            "mention": "Paris",
+            "qid": "Q167646",
+            "label": "Paris",
+            "relatedness": 1.0,
+            "weight": 0.3664,
+            "direct": [
+              [
+                "P40",
+                "out"
+              ],
+              [
+                "P22",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q193433"
+            ],
+            "overlap": 0.0293
+          },
+          {
+            "mention": "Helen",
+            "qid": "Q164061",
+            "label": "Helen of Troy",
+            "relatedness": 0.0406,
+            "weight": 0.3641,
+            "direct": [],
+            "shared_neighbours": [
+              "Q167646",
+              "Q736813"
+            ],
+            "overlap": 0.0406
+          }
+        ],
+        "card": "Priam, the legendary and last king of Troy during the Trojan war; son of Laomedon. place of death: Troy; country of citizenship: Troy; child: Paris",
+        "search_queries": [
+          "Priam"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q7242509",
+          "uri": "http://www.wikidata.org/entity/Q7242509",
+          "label": "Priam",
+          "description": "horse",
+          "score": 0.6069,
+          "features": {
+            "txt": 0.5857,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.2604,
+            "local": 0.6069,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q63517609",
+          "uri": "http://www.wikidata.org/entity/Q63517609",
+          "label": "Priam",
+          "description": "operatic character in the opera King Priam by Michael Tippett; king of Troy",
+          "score": 0.5986,
+          "features": {
+            "txt": 0.6471,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.5986,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q55017749",
+          "uri": "http://www.wikidata.org/entity/Q55017749",
+          "label": "Priam",
+          "description": "operatic character in the opera Les Troyens by Hector Berlioz; king of Troy",
+          "score": 0.5932,
+          "features": {
+            "txt": 0.6363,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.5932,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q138303115",
+          "uri": "http://www.wikidata.org/entity/Q138303115",
+          "label": "Priam",
+          "description": "Indonesian racehorse",
+          "score": 0.5726,
+          "features": {
+            "txt": 0.546,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.1643,
+            "local": 0.5726,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q134126524",
+          "uri": "http://www.wikidata.org/entity/Q134126524",
+          "label": "Priam",
+          "description": "fictional character from Fire Emblem Awakening",
+          "score": 0.5565,
+          "features": {
+            "txt": 0.563,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.5565,
+            "coherence": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "mention": "Helen",
+      "start": 30,
+      "end": 35,
+      "source": "ner",
+      "ner_label": "PERSON",
+      "decision": "linked",
+      "selected": {
+        "qid": "Q164061",
+        "uri": "http://www.wikidata.org/entity/Q164061",
+        "label": "Helen of Troy",
+        "description": "daughter of Zeus in Greek mythology",
+        "score": 0.7598
+      },
+      "confidence": 0.9999,
+      "evidence": {
+        "features": {
+          "txt": 0.6577,
+          "name": 0.9,
+          "type": 0.5,
+          "pop": 1.0,
+          "local": 0.7339,
+          "coherence": 0.1297
+        },
+        "graph_links": [
+          {
+            "mention": "Paris",
+            "qid": "Q167646",
+            "label": "Paris",
+            "relatedness": 1.0,
+            "weight": 0.3664,
+            "direct": [
+              [
+                "P26",
+                "out"
+              ],
+              [
+                "P451",
+                "out"
+              ],
+              [
+                "P26",
+                "in"
+              ],
+              [
+                "P451",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q62344048",
+              "Q390461",
+              "Q20828900",
+              "Q3646670"
+            ],
+            "overlap": 0.2491
+          },
+          {
+            "mention": "Priam",
+            "qid": "Q170473",
+            "label": "Priam",
+            "relatedness": 0.0406,
+            "weight": 0.5568,
+            "direct": [],
+            "shared_neighbours": [
+              "Q167646",
+              "Q736813"
+            ],
+            "overlap": 0.0406
+          }
+        ],
+        "card": "Helen of Troy, daughter of Zeus in Greek mythology. instance of: legendary progenitor; spouse: Paris; child: Aganus",
+        "search_queries": [
+          "Helen"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q467223",
+          "uri": "http://www.wikidata.org/entity/Q467223",
+          "label": "Helen",
+          "description": "Indian film actress and dancer of Anglo-Burmese descent",
+          "score": 0.6579,
+          "features": {
+            "txt": 0.5286,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.7911,
+            "local": 0.6579,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q1248812",
+          "uri": "http://www.wikidata.org/entity/Q1248812",
+          "label": "Helen",
+          "description": "ancient Greek tragedy by Euripides",
+          "score": 0.6496,
+          "features": {
+            "txt": 0.5377,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.7052,
+            "local": 0.6496,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q1519442",
+          "uri": "http://www.wikidata.org/entity/Q1519442",
+          "label": "Helen",
+          "description": "island of Palau at Helen Reef",
+          "score": 0.5726,
+          "features": {
+            "txt": 0.4507,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.4814,
+            "local": 0.5726,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q116025943",
+          "uri": "http://www.wikidata.org/entity/Q116025943",
+          "label": "Helen",
+          "description": "",
+          "score": 0.5663,
+          "features": {
+            "txt": 0.5827,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.5663,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q110519933",
+          "uri": "http://www.wikidata.org/entity/Q110519933",
+          "label": "Helen",
+          "description": "",
+          "score": 0.5512,
+          "features": {
+            "txt": 0.5523,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.5512,
+            "coherence": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "mention": "Trojan War",
+      "start": 52,
+      "end": 62,
+      "source": "ner",
+      "ner_label": "EVENT",
+      "decision": "linked",
+      "selected": {
+        "qid": "Q42937",
+        "uri": "http://www.wikidata.org/entity/Q42937",
+        "label": "Trojan War",
+        "description": "legendary war in Greek mythology",
+        "score": 0.7952
+      },
+      "confidence": 1.0,
+      "evidence": {
+        "features": {
+          "txt": 0.6174,
+          "name": 1.0,
+          "type": 0.5,
+          "pop": 1.0,
+          "local": 0.7337,
+          "coherence": 0.3077
+        },
+        "graph_links": [
+          {
+            "mention": "Priam",
+            "qid": "Q170473",
+            "label": "Priam",
+            "relatedness": 1.0,
+            "weight": 0.5568,
+            "direct": [
+              [
+                "P607",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [
+              "Q22647"
+            ],
+            "overlap": 0.0655
+          },
+          {
+            "mention": "Paris",
+            "qid": "Q167646",
+            "label": "Paris",
+            "relatedness": 1.0,
+            "weight": 0.3664,
+            "direct": [
+              [
+                "P607",
+                "in"
+              ]
+            ],
+            "shared_neighbours": [],
+            "overlap": 0.0
+          }
+        ],
+        "card": "Trojan War, legendary war in Greek mythology. instance of: military operation; location: Troy; part of: Greek mythology",
+        "search_queries": [
+          "Trojan War"
+        ]
+      },
+      "alternatives": [
+        {
+          "qid": "Q674887",
+          "uri": "http://www.wikidata.org/entity/Q674887",
+          "label": "Trojan War",
+          "description": "1997 film by George Huang",
+          "score": 0.6605,
+          "features": {
+            "txt": 0.5852,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.6063,
+            "local": 0.6585,
+            "coherence": 0.01
+          }
+        },
+        {
+          "qid": "Q89814787",
+          "uri": "http://www.wikidata.org/entity/Q89814787",
+          "label": "The Trojan War",
+          "description": "set of four tapestries in the Cathedral of Zamora, Spain",
+          "score": 0.6112,
+          "features": {
+            "txt": 0.628,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.1483,
+            "local": 0.6112,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q131549951",
+          "uri": "http://www.wikidata.org/entity/Q131549951",
+          "label": "Trojan War",
+          "description": "2015 documentary",
+          "score": 0.587,
+          "features": {
+            "txt": 0.624,
+            "name": 1.0,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.587,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q89941245",
+          "uri": "http://www.wikidata.org/entity/Q89941245",
+          "label": "The Story of the Trojan War",
+          "description": "tapestry series after designs attributed to the Coëtivy Master and produced by Pasquier Grenier, extant in multiple editions",
+          "score": 0.5343,
+          "features": {
+            "txt": 0.5585,
+            "name": 0.9,
+            "type": 0.5,
+            "pop": 0.0,
+            "local": 0.5343,
+            "coherence": 0.0
+          }
+        },
+        {
+          "qid": "Q1040297",
+          "uri": "http://www.wikidata.org/entity/Q1040297",
+          "label": "The Trojan War Will Not Take Place",
+          "description": "1935 play by Jean Giraudoux",
+          "score": 0.5218,
+          "features": {
+            "txt": 0.5598,
+            "name": 0.4,
+            "type": 0.5,
+            "pop": 0.5795,
+            "local": 0.5218,
+            "coherence": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "graph": {
+    "triples": 2044,
+    "concepts": 302,
+    "relations": 319
+  },
+  "config": {
+    "w_txt": 0.5,
+    "w_name": 0.2,
+    "w_type": 0.15,
+    "w_pop": 0.15,
+    "beta": 0.2,
+    "verbalise_graph": true,
+    "coherence": "weighted",
+    "softmax_temperature": 0.1,
+    "direct_edge_strength": 1.0,
+    "nil_threshold": 0.42,
+    "min_margin": 0.0,
+    "confidence_temperature": 0.01,
+    "types": "common_noun",
+    "use_popularity": true
+  }
+}

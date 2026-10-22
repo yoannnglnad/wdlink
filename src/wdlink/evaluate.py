@@ -16,6 +16,7 @@ from pathlib import Path
 
 from wdlink.config import DEFAULT_RANKING, RankingConfig
 from wdlink.pipeline import Linker, Prepared
+from wdlink.rank import softmax
 from wdlink.wikidata import WikidataClient
 
 log = logging.getLogger(__name__)
@@ -33,6 +34,8 @@ BASELINE, GRAPHRAG = "baseline (text only)", "GraphRAG (full)"
 THETA_GRID = [round(0.20 + 0.02 * i, 2) for i in range(31)]  # 0.20 .. 0.80
 BETA_GRID = [0.1, 0.2, 0.3, 0.5, 0.7, 1.0]
 RECALL_KS = (1, 5, 10, 20, 40)
+TAU_GRID = [0.01, 0.02, 0.03, 0.05, 0.07, 0.1, 0.15, 0.2, 0.3]
+ECE_BINS = 5
 
 
 def load(path: Path) -> list[dict]:
@@ -110,7 +113,31 @@ def link_metrics(rows: list[dict]) -> dict:
         "nil_precision": (sum(1 for r in pred_nil if not r["gold"]) / len(pred_nil))
         if pred_nil
         else None,
+        "mean_confidence": mean_confidence(rows),
+        "ece": expected_calibration_error(rows),
     }
+
+
+def mean_confidence(rows: list[dict]) -> float | None:
+    conf = [r["confidence"] for r in rows if "confidence" in r]
+    return sum(conf) / len(conf) if conf else None
+
+
+def expected_calibration_error(rows: list[dict]) -> float | None:
+    """Gap between confidence and accuracy, averaged over equal-width confidence bins."""
+    rows = [r for r in rows if "confidence" in r]
+    if not rows:
+        return None
+    total = 0.0
+    for b in range(ECE_BINS):
+        lo, hi = b / ECE_BINS, (b + 1) / ECE_BINS
+        in_bin = [
+            r for r in rows if lo <= r["confidence"] < hi or (hi == 1 and r["confidence"] == 1)
+        ]
+        if in_bin:
+            gap = accuracy(in_bin) - sum(r["confidence"] for r in in_bin) / len(in_bin)
+            total += abs(gap) * len(in_bin) / len(rows)
+    return total
 
 
 def retrieval_metrics(rows: list[dict]) -> dict:
@@ -172,6 +199,25 @@ def tune(prepared: list, cfg: RankingConfig) -> RankingConfig:
     return dataclasses.replace(cfg, beta=beta, nil_threshold=thetas[len(thetas) // 2])
 
 
+def calibrate(prepared: list, cfg: RankingConfig) -> RankingConfig:
+    """Temperature scaling on dev: the softmax temperature minimising the NLL of the gold option.
+
+    It changes the reported confidence only, never the ranking or the NIL decision.
+    """
+    scored = []  # (scores of candidates + NIL option, index of the gold option)
+    for doc, gold_prep, _ in prepared:
+        for gm, lm in zip(doc["mentions"], Linker.rank(gold_prep, cfg), strict=True):
+            options = [c.qid for c in lm.candidates] + [None]
+            if gm["qid"] in options:
+                scores = [c.score for c in lm.candidates] + [cfg.nil_threshold]
+                scored.append((scores, options.index(gm["qid"])))
+
+    def nll(tau: float) -> float:
+        return -sum(math.log(softmax(s, tau)[i] + 1e-12) for s, i in scored) / max(1, len(scored))
+
+    return dataclasses.replace(cfg, confidence_temperature=min(TAU_GRID, key=nll))
+
+
 def mcnemar(rows_a: list[dict], rows_b: list[dict]) -> dict:
     """Exact two-sided McNemar test on paired per-mention correctness."""
     b = sum(1 for x, y in zip(rows_a, rows_b, strict=True) if x["correct"] and not y["correct"])
@@ -224,6 +270,8 @@ def markdown_report(results: dict) -> str:
             "accuracy_with_context",
             "nil_recall",
             "nil_precision",
+            "mean_confidence",
+            "ece",
         ]
         lines += [
             "",
@@ -253,9 +301,14 @@ def markdown_report(results: dict) -> str:
             f"only GraphRAG correct = {mc['only_graphrag_correct']}, exact p = {mc['p_value']:.4f}",
             "",
         ]
-    lines += ["## Tuned parameters (dev)", "", "| system | nil_threshold | beta |", "|---|---|---|"]
+    lines += [
+        "## Tuned parameters (dev)",
+        "",
+        "| system | nil_threshold | beta | confidence temperature |",
+        "|---|---|---|---|",
+    ]
     for name, p in results["tuned"].items():
-        lines.append(f"| {name} | {p['nil_threshold']} | {p['beta']} |")
+        lines.append(f"| {name} | {p['nil_threshold']} | {p['beta']} | {p['tau']} |")
     lines += [
         "",
         f"Wikidata calls: {results['api_stats']}",
@@ -274,9 +327,15 @@ def main(args: argparse.Namespace) -> None:
     splits = {p.stem: load(p) for p in sorted(data_dir.glob("*.jsonl"))}
     prepared = {name: prepare_all(linker, docs) for name, docs in splits.items()}
 
-    tuned = {name: tune(prepared["dev"], cfg) for name, cfg in SYSTEMS.items()}
+    tuned = {
+        name: calibrate(prepared["dev"], tune(prepared["dev"], cfg))
+        for name, cfg in SYSTEMS.items()
+    }
     results = {
-        "tuned": {n: {"nil_threshold": c.nil_threshold, "beta": c.beta} for n, c in tuned.items()},
+        "tuned": {
+            n: {"nil_threshold": c.nil_threshold, "beta": c.beta, "tau": c.confidence_temperature}
+            for n, c in tuned.items()
+        },
         "splits": {},
     }
     errors = []

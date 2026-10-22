@@ -1,0 +1,102 @@
+[
+  {
+    "split": "dev",
+    "doc": "dev-02",
+    "surface": "Mind",
+    "gold": "Q1936338",
+    "baseline": "Q450",
+    "graphrag": "Q450",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-03",
+    "surface": "FAIR principles",
+    "gold": "Q29032648",
+    "baseline": "Q29032644",
+    "graphrag": "Q29032644",
+    "graphrag_decision": "linked",
+    "gold_retrieved": false
+  },
+  {
+    "split": "test",
+    "doc": "test-02",
+    "surface": "Hubble",
+    "gold": "Q43027",
+    "baseline": "Q2513",
+    "graphrag": "Q43027",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "test",
+    "doc": "test-03",
+    "surface": "Kepler",
+    "gold": "Q47272",
+    "baseline": "Q8963",
+    "graphrag": "Q8963",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "test",
+    "doc": "test-05",
+    "surface": "Galileo",
+    "gold": "Q105425030",
+    "baseline": "Q307",
+    "graphrag": "Q193902",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "test",
+    "doc": "test-06",
+    "surface": "FAIR principles",
+    "gold": "Q29032648",
+    "baseline": "Q29032644",
+    "graphrag": "Q29032644",
+    "graphrag_decision": "linked",
+    "gold_retrieved": false
+  },
+  {
+    "split": "test",
+    "doc": "test-08",
+    "surface": "curies",
+    "gold": "Q229354",
+    "baseline": "Q1966799",
+    "graphrag": "Q1966799",
+    "graphrag_decision": "linked",
+    "gold_retrieved": false
+  },
+  {
+    "split": "test",
+    "doc": "test-12",
+    "surface": "Michael Jordan",
+    "gold": "Q3308285",
+    "baseline": "Q41421",
+    "graphrag": "Q3308285",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "test",
+    "doc": "test-23",
+    "surface": "Saturn",
+    "gold": "Q134388",
+    "baseline": "Q193",
+    "graphrag": "Q134388",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "test",
+    "doc": "test-26",
+    "surface": "ORCID",
+    "gold": "Q19861084",
+    "baseline": "Q51044",
+    "graphrag": "Q51044",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  }
+]

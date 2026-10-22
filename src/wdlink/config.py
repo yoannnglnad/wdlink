@@ -197,7 +197,7 @@ class RankingConfig:
     # selection: link only if S1 >= nil_threshold and S1 - S2 >= min_margin, else NIL
     nil_threshold: float = 0.42  # tuned on dev
     min_margin: float = 0.0
-    confidence_temperature: float = 0.1
+    confidence_temperature: float = 0.01  # temperature scaling on dev (min NLL)
     # entity-type signal: "ner" (spaCy label vs P31/P279 closure, plus the common-noun rule),
     # "common_noun" (only: lower-case terms are not people/works/companies), or "none"
     # spaCy NER labels proved too noisy to help (dev: 0.860 with them, 0.953 without)

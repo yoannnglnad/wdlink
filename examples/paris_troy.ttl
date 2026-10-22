@@ -1,0 +1,2369 @@
+@prefix c: <http://example.org/wdlink/concept/> .
+@prefix ex: <http://example.org/wdlink/> .
+@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .
+@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:broaderGeneric rdfs:subPropertyOf skos:broader .
+
+ex:broaderInstantive rdfs:subPropertyOf skos:broader .
+
+ex:broaderPartitive rdfs:subPropertyOf skos:broader .
+
+<http://example.org/wdlink/doc/aa60c61bd11b#char=0,5> a nif:Phrase ;
+    ex:hasCandidate c:Q162121,
+        c:Q16684871,
+        c:Q167646,
+        c:Q3365239,
+        c:Q3382754,
+        c:Q483020,
+        c:Q576584,
+        c:Q830149,
+        c:Q90 ;
+    nif:anchorOf "Paris" ;
+    nif:beginIndex "0"^^xsd:nonNegativeInteger ;
+    nif:endIndex "5"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
+    itsrdf:taClassRef wd:Q22988604 ;
+    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taIdentRef wd:Q167646 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
+
+<http://example.org/wdlink/doc/aa60c61bd11b#char=14,19> a nif:Phrase ;
+    ex:hasCandidate c:Q134126524,
+        c:Q138303115,
+        c:Q170473,
+        c:Q17488450,
+        c:Q18344476,
+        c:Q3402824,
+        c:Q55017749,
+        c:Q63517609,
+        c:Q7242509 ;
+    nif:anchorOf "Priam" ;
+    nif:beginIndex "14"^^xsd:nonNegativeInteger ;
+    nif:endIndex "19"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
+    itsrdf:taClassRef wd:Q22988604 ;
+    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taIdentRef wd:Q170473 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
+
+<http://example.org/wdlink/doc/aa60c61bd11b#char=30,35> a nif:Phrase ;
+    ex:hasCandidate c:Q110325821,
+        c:Q110519933,
+        c:Q116025943,
+        c:Q1248812,
+        c:Q1519442,
+        c:Q164061,
+        c:Q467223,
+        c:Q75394641 ;
+    nif:anchorOf "Helen" ;
+    nif:beginIndex "30"^^xsd:nonNegativeInteger ;
+    nif:endIndex "35"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
+    itsrdf:taClassRef wd:Q22988604,
+        wd:Q6517872 ;
+    itsrdf:taConfidence 9.999e-01 ;
+    itsrdf:taIdentRef wd:Q164061 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
+
+<http://example.org/wdlink/doc/aa60c61bd11b#char=52,62> a nif:Phrase ;
+    ex:hasCandidate c:Q1040297,
+        c:Q131549951,
+        c:Q137460544,
+        c:Q33133648,
+        c:Q42937,
+        c:Q674887,
+        c:Q7845118,
+        c:Q7845119,
+        c:Q89814787,
+        c:Q89941245 ;
+    nif:anchorOf "Trojan War" ;
+    nif:beginIndex "52"^^xsd:nonNegativeInteger ;
+    nif:endIndex "62"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
+    itsrdf:taClassRef wd:Q24336068,
+        wd:Q645883 ;
+    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taIdentRef wd:Q42937 ;
+    prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
+
+ex:narrowerPartitive rdfs:subPropertyOf skos:narrower .
+
+c:Q1040297 a skos:Concept ;
+    ex:broaderInstantive c:Q7725634 ;
+    ex:sitelinks 14 ;
+    schema1:description "1935 play by Jean Giraudoux"@en ;
+    skos:altLabel "Tiger at the Gates"@en ;
+    skos:exactMatch wd:Q1040297 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "The Trojan War Will Not Take Place"@en ;
+    skos:related c:Q309974,
+        c:Q42937,
+        c:Q80930 ;
+    wdt:P136 c:Q80930 ;
+    wdt:P144 c:Q42937 ;
+    wdt:P31 c:Q7725634 ;
+    wdt:P50 c:Q309974 ;
+    wdt:P921 c:Q42937 .
+
+c:Q110325821 a skos:Concept ;
+    ex:broaderInstantive c:Q5 ;
+    ex:sitelinks 0 ;
+    skos:exactMatch wd:Q110325821 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen"@en ;
+    skos:related c:Q110325816 ;
+    wdt:P31 c:Q5 ;
+    wdt:P40 c:Q110325816 .
+
+c:Q110519933 a skos:Concept ;
+    ex:broaderInstantive c:Q5 ;
+    ex:sitelinks 0 ;
+    skos:exactMatch wd:Q110519933 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen"@en ;
+    skos:related c:Q110519931 ;
+    wdt:P31 c:Q5 ;
+    wdt:P40 c:Q110519931 .
+
+c:Q116025943 a skos:Concept ;
+    ex:broaderInstantive c:Q5 ;
+    ex:sitelinks 0 ;
+    skos:exactMatch wd:Q116025943 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen"@en ;
+    skos:related c:Q116025939 ;
+    wdt:P31 c:Q5 ;
+    wdt:P40 c:Q116025939 .
+
+c:Q1248812 a skos:Concept ;
+    ex:broaderInstantive c:Q116476516 ;
+    ex:sitelinks 24 ;
+    schema1:description "ancient Greek tragedy by Euripides"@en ;
+    skos:altLabel "Eur. Hel."@en ;
+    skos:exactMatch wd:Q1248812 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen"@en ;
+    skos:related c:Q34620,
+        c:Q48305 ;
+    wdt:P136 c:Q34620 ;
+    wdt:P31 c:Q116476516 ;
+    wdt:P50 c:Q48305 .
+
+c:Q131549951 a skos:Concept ;
+    ex:broaderInstantive c:Q21191270 ;
+    ex:sitelinks 0 ;
+    schema1:description "2015 documentary"@en ;
+    skos:exactMatch wd:Q131549951 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Trojan War"@en ;
+    wdt:P31 c:Q21191270 .
+
+c:Q134126524 a skos:Concept ;
+    ex:broaderInstantive c:Q15632617,
+        c:Q1569167 ;
+    ex:sitelinks 0 ;
+    schema1:description "fictional character from Fire Emblem Awakening"@en ;
+    skos:altLabel "Paris"@en ;
+    skos:exactMatch wd:Q134126524 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    wdt:P31 c:Q15632617,
+        c:Q1569167 .
+
+c:Q137460544 a skos:Concept ;
+    ex:broaderInstantive c:Q71631512 ;
+    ex:sitelinks 1 ;
+    schema1:description "Role-playing game supplement"@en ;
+    skos:exactMatch wd:Q137460544 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Trojan War: Roleplaying in the Age of Homeric Adventure"@en ;
+    wdt:P31 c:Q71631512 .
+
+c:Q138303115 a skos:Concept ;
+    ex:broaderInstantive c:Q726 ;
+    ex:sitelinks 1 ;
+    schema1:description "Indonesian racehorse"@en ;
+    skos:exactMatch wd:Q138303115 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q252 ;
+    wdt:P17 c:Q252 ;
+    wdt:P31 c:Q726 .
+
+c:Q1519442 a skos:Concept ;
+    ex:broaderInstantive c:Q139595919,
+        c:Q23442 ;
+    ex:broaderPartitive c:Q165594 ;
+    ex:sitelinks 8 ;
+    schema1:description "island of Palau at Helen Reef"@en ;
+    skos:altLabel "Helen Island"@en ;
+    skos:exactMatch wd:Q1519442 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen"@en ;
+    skos:related c:Q3516752,
+        c:Q695,
+        c:Q98 ;
+    wdt:P131 c:Q3516752 ;
+    wdt:P17 c:Q695 ;
+    wdt:P206 c:Q98 ;
+    wdt:P31 c:Q139595919,
+        c:Q23442 ;
+    wdt:P361 c:Q165594 .
+
+c:Q162121 a skos:Concept ;
+    ex:broaderInstantive c:Q16521 ;
+    ex:sitelinks 45 ;
+    schema1:description "genus of plants"@en ;
+    skos:exactMatch wd:Q162121 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    wdt:P31 c:Q16521 .
+
+c:Q16684871 a skos:Concept ;
+    ex:broaderInstantive c:Q207452 ;
+    ex:broaderPartitive c:Q4514086 ;
+    ex:sitelinks 2 ;
+    skos:exactMatch wd:Q16684871 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q2634589 ;
+    wdt:P176 c:Q2634589 ;
+    wdt:P31 c:Q207452 ;
+    wdt:P361 c:Q4514086 .
+
+c:Q17488450 a skos:Concept ;
+    ex:broaderInstantive c:Q17413155,
+        c:Q17480853 ;
+    ex:sitelinks 0 ;
+    schema1:description "fictional moon from the Serenityverse"@en ;
+    skos:exactMatch wd:Q17488450 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q17488449 ;
+    wdt:P31 c:Q17413155,
+        c:Q17480853 ;
+    wdt:P397 c:Q17488449 .
+
+c:Q18344476 a skos:Concept ;
+    ex:broaderInstantive c:Q17343829 ;
+    ex:sitelinks 2 ;
+    schema1:description "human settlement in United States of America"@en ;
+    skos:altLabel "Priam, MN"@en,
+        "Priam, Minnesota"@en ;
+    skos:exactMatch wd:Q18344476 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q1527,
+        c:Q30 ;
+    wdt:P131 c:Q1527 ;
+    wdt:P17 c:Q30 ;
+    wdt:P31 c:Q17343829 .
+
+c:Q33133648 a skos:Concept ;
+    ex:broaderInstantive c:Q7889 ;
+    ex:sitelinks 1 ;
+    schema1:description "1988 video game"@en ;
+    skos:exactMatch wd:Q33133648 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Trojan Warrior"@en ;
+    wdt:P31 c:Q7889 .
+
+c:Q3365239 a skos:Concept ;
+    ex:broaderInstantive c:Q207452 ;
+    ex:sitelinks 4 ;
+    schema1:description "1849 Russian ship of the line"@en ;
+    skos:exactMatch wd:Q3365239 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    wdt:P31 c:Q207452 .
+
+c:Q3382754 a skos:Concept ;
+    ex:broaderInstantive c:Q5 ;
+    ex:sitelinks 8 ;
+    schema1:description "French painter (1745-1819)"@en ;
+    skos:altLabel "Adrien Paris"@en,
+        "Adrien Pâris"@en,
+        "M. Paris"@en,
+        "M. Pâris"@en,
+        "Paris"@en,
+        "Pierre Adrien Paris"@en,
+        "Pierre Adrien Pâris"@en,
+        "Pierre of Paris"@en,
+        "Pierre-Adrien Paris"@en ;
+    skos:exactMatch wd:Q3382754 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Pierre-Adrien Pâris"@en ;
+    skos:related c:Q1028181,
+        c:Q10732476,
+        c:Q115733345,
+        c:Q11609173,
+        c:Q13365770,
+        c:Q142,
+        c:Q15296811,
+        c:Q22811707,
+        c:Q2468727,
+        c:Q337531,
+        c:Q337586,
+        c:Q37776,
+        c:Q42973,
+        c:Q90 ;
+    wdt:P106 c:Q1028181,
+        c:Q10732476,
+        c:Q13365770,
+        c:Q15296811,
+        c:Q22811707,
+        c:Q2468727,
+        c:Q42973 ;
+    wdt:P166 c:Q11609173 ;
+    wdt:P19 c:Q37776 ;
+    wdt:P20 c:Q37776 ;
+    wdt:P22 c:Q115733345 ;
+    wdt:P27 c:Q142 ;
+    wdt:P31 c:Q5 ;
+    wdt:P463 c:Q337531,
+        c:Q337586 ;
+    wdt:P69 c:Q337586 ;
+    wdt:P937 c:Q90 .
+
+c:Q3402824 a skos:Concept ;
+    ex:broaderInstantive c:Q15731356 ;
+    ex:sitelinks 2 ;
+    schema1:description "apple cultivar"@en ;
+    skos:exactMatch wd:Q3402824 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q3187926,
+        c:Q3187943 ;
+    wdt:P31 c:Q15731356 ;
+    wdt:P40 c:Q3187926,
+        c:Q3187943 .
+
+c:Q467223 a skos:Concept ;
+    ex:broaderInstantive c:Q5 ;
+    ex:sitelinks 36 ;
+    schema1:description "Indian film actress and dancer of Anglo-Burmese descent"@en ;
+    skos:altLabel "Helen Ann Richardson Khan"@en,
+        "Helen Jairag Richardson"@en,
+        "Helen Khan"@en,
+        "Helen Richardson Khan"@en ;
+    skos:exactMatch wd:Q467223 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen"@en ;
+    skos:related c:Q10798782,
+        c:Q10800557,
+        c:Q24286263,
+        c:Q30132541,
+        c:Q33999,
+        c:Q37995,
+        c:Q4661031,
+        c:Q55657899,
+        c:Q5716684,
+        c:Q668,
+        c:Q6817869,
+        c:Q7199770,
+        c:Q7404563,
+        c:Q91010590 ;
+    wdt:P106 c:Q10798782,
+        c:Q10800557,
+        c:Q33999,
+        c:Q5716684 ;
+    wdt:P166 c:Q30132541 ;
+    wdt:P19 c:Q37995 ;
+    wdt:P26 c:Q7404563 ;
+    wdt:P27 c:Q668 ;
+    wdt:P31 c:Q5 ;
+    wdt:P40 c:Q24286263 ;
+    wdt:P800 c:Q4661031,
+        c:Q55657899,
+        c:Q6817869,
+        c:Q7199770,
+        c:Q91010590 .
+
+c:Q483020 a skos:Concept ;
+    ex:broaderInstantive c:Q476028 ;
+    ex:narrowerPartitive c:Q2945336 ;
+    ex:sitelinks 103 ;
+    schema1:description "association football club in Paris, France having two UCL"@en ;
+    skos:altLabel "PSG"@en,
+        "PSGFC"@en,
+        "Paris"@en,
+        "Paris SG"@en,
+        "Paris Saint Germain"@en,
+        "Paris Saint-Germain F.C."@en,
+        "Paris Saint-Germain FC"@en,
+        "Paris Saint-Germain Football Club"@en ;
+    skos:exactMatch wd:Q483020 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris Saint-Germain FC"@en ;
+    skos:related c:Q142,
+        c:Q60847808,
+        c:Q90 ;
+    wdt:P138 c:Q60847808 ;
+    wdt:P159 c:Q90 ;
+    wdt:P17 c:Q142 ;
+    wdt:P31 c:Q476028 ;
+    wdt:P527 c:Q2945336 .
+
+c:Q55017749 a skos:Concept ;
+    ex:broaderInstantive c:Q15632617,
+        c:Q50386450 ;
+    ex:sitelinks 0 ;
+    schema1:description "operatic character in the opera Les Troyens by Hector Berlioz; king of Troy"@en ;
+    skos:exactMatch wd:Q55017749 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q170473 ;
+    wdt:P144 c:Q170473 ;
+    wdt:P31 c:Q15632617,
+        c:Q50386450 .
+
+c:Q576584 a skos:Concept ;
+    ex:broaderInstantive c:Q1093829 ;
+    ex:sitelinks 46 ;
+    schema1:description "city in Illinois"@en ;
+    skos:altLabel "Paris Illinois"@en,
+        "Paris, IL"@en,
+        "Paris, Illinois"@en ;
+    skos:exactMatch wd:Q576584 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q30,
+        c:Q484124 ;
+    wdt:P131 c:Q484124 ;
+    wdt:P1376 c:Q484124 ;
+    wdt:P17 c:Q30 ;
+    wdt:P31 c:Q1093829 .
+
+c:Q63517609 a skos:Concept ;
+    ex:broaderInstantive c:Q15632617,
+        c:Q50386450 ;
+    ex:sitelinks 0 ;
+    schema1:description "operatic character in the opera King Priam by Michael Tippett; king of Troy"@en ;
+    skos:exactMatch wd:Q63517609 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q63517608,
+        c:Q63517613,
+        c:Q63517614 ;
+    wdt:P26 c:Q63517608 ;
+    wdt:P31 c:Q15632617,
+        c:Q50386450 ;
+    wdt:P40 c:Q63517613,
+        c:Q63517614 .
+
+c:Q674887 a skos:Concept ;
+    ex:broaderInstantive c:Q11424 ;
+    ex:sitelinks 16 ;
+    schema1:description "1997 film by George Huang"@en ;
+    skos:exactMatch wd:Q674887 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Trojan War"@en ;
+    skos:related c:Q1146335,
+        c:Q170538,
+        c:Q30,
+        c:Q5540807,
+        c:Q860626 ;
+    wdt:P136 c:Q1146335,
+        c:Q860626 ;
+    wdt:P31 c:Q11424 ;
+    wdt:P495 c:Q30 ;
+    wdt:P57 c:Q5540807 ;
+    wdt:P921 c:Q170538 .
+
+c:Q7242509 a skos:Concept ;
+    ex:broaderInstantive c:Q26401003,
+        c:Q726 ;
+    ex:sitelinks 2 ;
+    schema1:description "horse"@en ;
+    skos:exactMatch wd:Q7242509 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q5189804,
+        c:Q5371990,
+        c:Q61987139,
+        c:Q62023101 ;
+    wdt:P22 c:Q5371990 ;
+    wdt:P25 c:Q62023101 ;
+    wdt:P31 c:Q26401003,
+        c:Q726 ;
+    wdt:P40 c:Q5189804,
+        c:Q61987139 .
+
+c:Q75394641 a skos:Concept ;
+    ex:broaderInstantive c:Q5 ;
+    ex:sitelinks 0 ;
+    schema1:description "Peerage person ID=114782"@en ;
+    skos:exactMatch wd:Q75394641 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen"@en ;
+    skos:related c:Q131048362,
+        c:Q2287599,
+        c:Q4065845,
+        c:Q4093754,
+        c:Q4231303,
+        c:Q61754394 ;
+    wdt:P26 c:Q4231303 ;
+    wdt:P31 c:Q5 ;
+    wdt:P40 c:Q131048362,
+        c:Q2287599,
+        c:Q4065845,
+        c:Q4093754,
+        c:Q61754394 .
+
+c:Q7845118 a skos:Concept ;
+    ex:broaderGeneric c:Q7968621 ;
+    ex:broaderInstantive c:Q20742825 ;
+    ex:broaderPartitive c:Q5602028 ;
+    ex:sitelinks 1 ;
+    skos:exactMatch wd:Q7845118 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Trojan War in popular culture"@en ;
+    skos:related c:Q42937 ;
+    wdt:P279 c:Q7968621 ;
+    wdt:P31 c:Q20742825 ;
+    wdt:P361 c:Q5602028 ;
+    wdt:P921 c:Q42937 .
+
+c:Q7845119 a skos:Concept ;
+    ex:broaderInstantive c:Q11424 ;
+    ex:sitelinks 2 ;
+    schema1:description "2002 film by Salik Silverstein"@en ;
+    skos:exactMatch wd:Q7845119 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Trojan Warrior"@en ;
+    skos:related c:Q114028143,
+        c:Q157443,
+        c:Q408 ;
+    wdt:P136 c:Q157443 ;
+    wdt:P31 c:Q11424 ;
+    wdt:P495 c:Q408 ;
+    wdt:P57 c:Q114028143 .
+
+c:Q830149 a skos:Concept ;
+    ex:broaderInstantive c:Q1093829,
+        c:Q62049 ;
+    ex:sitelinks 60 ;
+    schema1:description "city in and county seat of Lamar County, Texas, United States"@en ;
+    skos:altLabel "Paris, TX"@en,
+        "Paris, Texas"@en ;
+    skos:exactMatch wd:Q830149 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q113313,
+        c:Q30,
+        c:Q90 ;
+    wdt:P131 c:Q113313 ;
+    wdt:P1376 c:Q113313 ;
+    wdt:P138 c:Q90 ;
+    wdt:P17 c:Q30 ;
+    wdt:P31 c:Q1093829,
+        c:Q62049 .
+
+c:Q1028181 a skos:Concept ;
+    skos:exactMatch wd:Q1028181 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "painter"@en .
+
+c:Q1066984 a skos:Concept ;
+    skos:exactMatch wd:Q1066984 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "financial center"@en .
+
+c:Q106866423 a skos:Concept ;
+    skos:exactMatch wd:Q106866423 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Lysithous"@en .
+
+c:Q10732476 a skos:Concept ;
+    skos:exactMatch wd:Q10732476 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "art collector"@en .
+
+c:Q1077936 a skos:Concept ;
+    skos:exactMatch wd:Q1077936 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Gorgythion"@en .
+
+c:Q10798782 a skos:Concept ;
+    skos:exactMatch wd:Q10798782 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "television actor"@en .
+
+c:Q10800557 a skos:Concept ;
+    skos:exactMatch wd:Q10800557 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "film actor"@en .
+
+c:Q108178728 a skos:Concept ;
+    skos:exactMatch wd:Q108178728 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "national capital"@en .
+
+c:Q10855271 a skos:Concept ;
+    skos:exactMatch wd:Q10855271 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Knight of the Legion of Honour"@en .
+
+c:Q1087725 a skos:Concept ;
+    skos:exactMatch wd:Q1087725 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Chromius"@en .
+
+c:Q110325816 a skos:Concept ;
+    skos:exactMatch wd:Q110325816 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Heinrich von Hanstein"@en .
+
+c:Q110519931 a skos:Concept ;
+    skos:exactMatch wd:Q110519931 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Elizabeth (Helen) Cawdrey"@en .
+
+c:Q114028143 a skos:Concept ;
+    skos:exactMatch wd:Q114028143 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Salik Silverstein"@en .
+
+c:Q11418818 a skos:Concept ;
+    skos:exactMatch wd:Q11418818 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "commercial capital city"@en .
+
+c:Q1146335 a skos:Concept ;
+    skos:exactMatch wd:Q1146335 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "teen film"@en .
+
+c:Q1154304 a skos:Concept ;
+    skos:exactMatch wd:Q1154304 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Nicostratus"@en .
+
+c:Q115733345 a skos:Concept ;
+    skos:exactMatch wd:Q115733345 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Pierre-François Pâris"@en .
+
+c:Q116025939 a skos:Concept ;
+    skos:exactMatch wd:Q116025939 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Tristram Carlyon"@en .
+
+c:Q11609173 a skos:Concept ;
+    skos:exactMatch wd:Q11609173 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Knight of the Order of Saint Michael"@en .
+
+c:Q116476516 a skos:Concept ;
+    skos:exactMatch wd:Q116476516 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "dramatic work"@en .
+
+c:Q1178583 a skos:Concept ;
+    skos:exactMatch wd:Q1178583 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Laodice"@en .
+
+c:Q1187811 a skos:Concept ;
+    skos:exactMatch wd:Q1187811 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "college town"@en .
+
+c:Q1200957 a skos:Concept ;
+    skos:exactMatch wd:Q1200957 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "tourist destination"@en .
+
+c:Q12059906 a skos:Concept ;
+    skos:exactMatch wd:Q12059906 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "herder"@en .
+
+c:Q1206546 a skos:Concept ;
+    skos:exactMatch wd:Q1206546 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Laothoe"@en .
+
+c:Q12881223 a skos:Concept ;
+    skos:exactMatch wd:Q12881223 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Morraphius"@en .
+
+c:Q129261406 a skos:Concept ;
+    skos:exactMatch wd:Q129261406 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Alastor"@en .
+
+c:Q131048362 a skos:Concept ;
+    skos:exactMatch wd:Q131048362 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Q131048362"@en .
+
+c:Q1320718 a skos:Concept ;
+    skos:exactMatch wd:Q1320718 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Theseus"@en .
+
+c:Q1331212 a skos:Concept ;
+    skos:exactMatch wd:Q1331212 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Lycaon"@en .
+
+c:Q13365770 a skos:Concept ;
+    skos:exactMatch wd:Q13365770 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "copper engraver"@en .
+
+c:Q13419376 a skos:Concept ;
+    skos:exactMatch wd:Q13419376 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Idomeneus"@en .
+
+c:Q134445478 a skos:Concept ;
+    skos:exactMatch wd:Q134445478 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "cultural capital"@en .
+
+c:Q13917 a skos:Concept ;
+    skos:exactMatch wd:Q13917 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Île-de-France"@en .
+
+c:Q139564011 a skos:Concept ;
+    skos:exactMatch wd:Q139564011 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Q139564011"@en .
+
+c:Q139595919 a skos:Concept ;
+    skos:exactMatch wd:Q139595919 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "reef island"@en .
+
+c:Q1422929 a skos:Concept ;
+    skos:exactMatch wd:Q1422929 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "primate city"@en .
+
+c:Q14601881 a skos:Concept ;
+    skos:exactMatch wd:Q14601881 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Laodocus"@en .
+
+c:Q1471 a skos:Concept ;
+    skos:exactMatch wd:Q1471 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Seine"@en .
+
+c:Q1527 a skos:Concept ;
+    skos:exactMatch wd:Q1527 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Minnesota"@en .
+
+c:Q15296811 a skos:Concept ;
+    skos:exactMatch wd:Q15296811 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "draftsperson"@en .
+
+c:Q1530099 a skos:Concept ;
+    skos:exactMatch wd:Q1530099 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Glaucus"@en .
+
+c:Q1549591 a skos:Concept ;
+    skos:exactMatch wd:Q1549591 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "big city"@en .
+
+c:Q1569167 a skos:Concept ;
+    skos:exactMatch wd:Q1569167 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "video game character"@en .
+
+c:Q15696 a skos:Concept ;
+    skos:exactMatch wd:Q15696 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Zamora"@en .
+
+c:Q15731356 a skos:Concept ;
+    skos:exactMatch wd:Q15731356 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "apple cultivar"@en .
+
+c:Q15736227 a skos:Concept ;
+    skos:exactMatch wd:Q15736227 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Bias"@en .
+
+c:Q15736237 a skos:Concept ;
+    skos:exactMatch wd:Q15736237 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hippodamas"@en .
+
+c:Q157443 a skos:Concept ;
+    skos:exactMatch wd:Q157443 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "comedy film"@en .
+
+c:Q15816269 a skos:Concept ;
+    skos:exactMatch wd:Q15816269 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aristodeme"@en .
+
+c:Q15816305 a skos:Concept ;
+    skos:exactMatch wd:Q15816305 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Lysimache"@en .
+
+c:Q15816312 a skos:Concept ;
+    skos:exactMatch wd:Q15816312 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hypeirochus"@en .
+
+c:Q15816322 a skos:Concept ;
+    skos:exactMatch wd:Q15816322 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Clonius"@en .
+
+c:Q15816329 a skos:Concept ;
+    skos:exactMatch wd:Q15816329 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Deiopites"@en .
+
+c:Q15816336 a skos:Concept ;
+    skos:exactMatch wd:Q15816336 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Ascanius"@en .
+
+c:Q15816339 a skos:Concept ;
+    skos:exactMatch wd:Q15816339 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Astygonus"@en .
+
+c:Q15816352 a skos:Concept ;
+    skos:exactMatch wd:Q15816352 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Atas"@en .
+
+c:Q15816362 a skos:Concept ;
+    skos:exactMatch wd:Q15816362 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Chersidamas"@en .
+
+c:Q15816366 a skos:Concept ;
+    skos:exactMatch wd:Q15816366 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Philaemon"@en .
+
+c:Q15816374 a skos:Concept ;
+    skos:exactMatch wd:Q15816374 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Melanippus"@en .
+
+c:Q159666 a skos:Concept ;
+    skos:exactMatch wd:Q159666 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hector"@en .
+
+c:Q1609412 a skos:Concept ;
+    skos:exactMatch wd:Q1609412 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Telestas"@en .
+
+c:Q161741 a skos:Concept ;
+    skos:exactMatch wd:Q161741 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "1st arrondissement of Paris"@en .
+
+c:Q163948 a skos:Concept ;
+    skos:exactMatch wd:Q163948 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "10ᵗʰ arrondissement of Paris"@en .
+
+c:Q16521 a skos:Concept ;
+    skos:exactMatch wd:Q16521 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "taxon"@en .
+
+c:Q165594 a skos:Concept ;
+    skos:exactMatch wd:Q165594 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen Reef"@en .
+
+c:Q1658551 a skos:Concept ;
+    skos:exactMatch wd:Q1658551 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Ilione"@en .
+
+c:Q169293 a skos:Concept ;
+    skos:exactMatch wd:Q169293 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "11th arrondissement of Paris"@en .
+
+c:Q170538 a skos:Concept ;
+    skos:exactMatch wd:Q170538 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "virginity"@en .
+
+c:Q170779 a skos:Concept ;
+    skos:exactMatch wd:Q170779 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Cassandra"@en .
+
+c:Q17115124 a skos:Concept ;
+    skos:exactMatch wd:Q17115124 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aegeoneus"@en .
+
+c:Q17115343 a skos:Concept ;
+    skos:exactMatch wd:Q17115343 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hyperion"@en .
+
+c:Q171689 a skos:Concept ;
+    skos:exactMatch wd:Q171689 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "12th arrondissement of Paris"@en .
+
+c:Q171839 a skos:Concept ;
+    skos:exactMatch wd:Q171839 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Menelaus"@en .
+
+c:Q17343829 a skos:Concept ;
+    skos:exactMatch wd:Q17343829 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "unincorporated community"@en .
+
+c:Q17413155 a skos:Concept ;
+    skos:exactMatch wd:Q17413155 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "fictional astronomical object in the Serenityverse"@en .
+
+c:Q17480853 a skos:Concept ;
+    skos:exactMatch wd:Q17480853 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "fictional moon"@en .
+
+c:Q17488449 a skos:Concept ;
+    skos:exactMatch wd:Q17488449 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Ithaca"@en .
+
+c:Q175129 a skos:Concept ;
+    skos:exactMatch wd:Q175129 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "13th arrondissement of Paris"@en .
+
+c:Q182019 a skos:Concept ;
+    skos:exactMatch wd:Q182019 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Leda"@en .
+
+c:Q18609861 a skos:Concept ;
+    skos:exactMatch wd:Q18609861 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "group of tapestries"@en .
+
+c:Q187153 a skos:Concept ;
+    skos:exactMatch wd:Q187153 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "14th arrondissement of Paris"@en .
+
+c:Q1878963 a skos:Concept ;
+    skos:exactMatch wd:Q1878963 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Lysianassa"@en .
+
+c:Q191066 a skos:Concept ;
+    skos:exactMatch wd:Q191066 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "15th arrondissement of Paris"@en .
+
+c:Q1924574 a skos:Concept ;
+    skos:exactMatch wd:Q1924574 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Mestor"@en .
+
+c:Q19259287 a skos:Concept ;
+    skos:exactMatch wd:Q19259287 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Amycus"@en .
+
+c:Q192673 a skos:Concept ;
+    skos:exactMatch wd:Q192673 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Iphigenia"@en .
+
+c:Q194420 a skos:Concept ;
+    skos:exactMatch wd:Q194420 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "16th arrondissement of Paris"@en .
+
+c:Q197297 a skos:Concept ;
+    skos:exactMatch wd:Q197297 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "17th arrondissement of Paris"@en .
+
+c:Q200126 a skos:Concept ;
+    skos:exactMatch wd:Q200126 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "18th arrondissement of Paris"@en .
+
+c:Q200250 a skos:Concept ;
+    skos:exactMatch wd:Q200250 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "metropolis"@en .
+
+c:Q204622 a skos:Concept ;
+    skos:exactMatch wd:Q204622 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "19th arrondissement of Paris"@en .
+
+c:Q20742825 a skos:Concept ;
+    skos:exactMatch wd:Q20742825 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "cultural depiction"@en .
+
+c:Q20801797 a skos:Concept ;
+    skos:exactMatch wd:Q20801797 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Idaeus"@en .
+
+c:Q208511 a skos:Concept ;
+    skos:exactMatch wd:Q208511 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "global city"@en .
+
+c:Q209549 a skos:Concept ;
+    skos:exactMatch wd:Q209549 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "2nd arrondissement of Paris"@en .
+
+c:Q210720 a skos:Concept ;
+    skos:exactMatch wd:Q210720 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "20th arrondissement of Paris"@en .
+
+c:Q21191270 a skos:Concept ;
+    skos:exactMatch wd:Q21191270 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "television series episode"@en .
+
+c:Q21548096 a skos:Concept ;
+    skos:exactMatch wd:Q21548096 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Agavus"@en .
+
+c:Q21548762 a skos:Concept ;
+    skos:exactMatch wd:Q21548762 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aristomache"@en .
+
+c:Q223140 a skos:Concept ;
+    skos:exactMatch wd:Q223140 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "3rd arrondissement of Paris"@en .
+
+c:Q2240381 a skos:Concept ;
+    skos:exactMatch wd:Q2240381 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "fashion capital"@en .
+
+c:Q22811707 a skos:Concept ;
+    skos:exactMatch wd:Q22811707 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "decorator"@en .
+
+c:Q2287599 a skos:Concept ;
+    skos:exactMatch wd:Q2287599 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Dmitry of Suzdal"@en .
+
+c:Q22923920 a skos:Concept ;
+    skos:exactMatch wd:Q22923920 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "territorial collectivity of France with special status"@en .
+
+c:Q22965422 a skos:Concept ;
+    skos:exactMatch wd:Q22965422 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Diores"@en .
+
+c:Q230127 a skos:Concept ;
+    skos:exactMatch wd:Q230127 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "4th arrondissement of Paris"@en .
+
+c:Q23442 a skos:Concept ;
+    skos:exactMatch wd:Q23442 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "island"@en .
+
+c:Q23818213 a skos:Concept ;
+    skos:exactMatch wd:Q23818213 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Zeuxippe"@en .
+
+c:Q238723 a skos:Concept ;
+    skos:exactMatch wd:Q238723 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "5th arrondissement of Paris"@en .
+
+c:Q24286263 a skos:Concept ;
+    skos:exactMatch wd:Q24286263 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Arpita Khan"@en .
+
+c:Q24336068 a skos:Concept ;
+    skos:exactMatch wd:Q24336068 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "mythical war"@en .
+
+c:Q245546 a skos:Concept ;
+    skos:exactMatch wd:Q245546 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "6th arrondissement of Paris"@en .
+
+c:Q246663 a skos:Concept ;
+    skos:exactMatch wd:Q246663 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hipponous"@en .
+
+c:Q2468727 a skos:Concept ;
+    skos:exactMatch wd:Q2468727 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "classical scholar"@en .
+
+c:Q2506621 a skos:Concept ;
+    skos:exactMatch wd:Q2506621 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Chaon"@en .
+
+c:Q252 a skos:Concept ;
+    skos:exactMatch wd:Q252 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Indonesia"@en .
+
+c:Q259463 a skos:Concept ;
+    skos:exactMatch wd:Q259463 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "7th arrondissement of Paris"@en .
+
+c:Q2634589 a skos:Concept ;
+    skos:exactMatch wd:Q2634589 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Black Sea Shipyard"@en .
+
+c:Q26401003 a skos:Concept ;
+    skos:exactMatch wd:Q26401003 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "individual animal"@en .
+
+c:Q2665478 a skos:Concept ;
+    skos:exactMatch wd:Q2665478 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Corythus"@en .
+
+c:Q270230 a skos:Concept ;
+    skos:exactMatch wd:Q270230 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "8th arrondissement of Paris"@en .
+
+c:Q2727598 a skos:Concept ;
+    skos:exactMatch wd:Q2727598 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Croix de guerre 1914–1918"@en .
+
+c:Q275118 a skos:Concept ;
+    skos:exactMatch wd:Q275118 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "9th arrondissement of Paris"@en .
+
+c:Q2826489 a skos:Concept ;
+    skos:exactMatch wd:Q2826489 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Agathon"@en .
+
+c:Q29 a skos:Concept ;
+    skos:exactMatch wd:Q29 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Spain"@en .
+
+c:Q2942864 a skos:Concept ;
+    skos:exactMatch wd:Q2942864 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Cathedral of Zamora"@en .
+
+c:Q2945336 a skos:Concept ;
+    skos:exactMatch wd:Q2945336 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris Saint-Germain FC Youth Academy"@en .
+
+c:Q29626641 a skos:Concept ;
+    skos:exactMatch wd:Q29626641 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Polydorus"@en .
+
+c:Q2990283 a skos:Concept ;
+    skos:exactMatch wd:Q2990283 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Companion of the Liberation"@en .
+
+c:Q30132541 a skos:Concept ;
+    skos:exactMatch wd:Q30132541 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Padma Shri in arts"@en .
+
+c:Q3037285 a skos:Concept ;
+    skos:exactMatch wd:Q3037285 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Doryclus"@en .
+
+c:Q309974 a skos:Concept ;
+    skos:exactMatch wd:Q309974 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Jean Giraudoux"@en .
+
+c:Q3136176 a skos:Concept ;
+    skos:exactMatch wd:Q3136176 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hippothous"@en .
+
+c:Q3155610 a skos:Concept ;
+    skos:exactMatch wd:Q3155610 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Isus"@en .
+
+c:Q3187926 a skos:Concept ;
+    skos:exactMatch wd:Q3187926 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Judaine"@en .
+
+c:Q3187943 a skos:Concept ;
+    skos:exactMatch wd:Q3187943 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Judeline"@en .
+
+c:Q332324 a skos:Concept ;
+    skos:exactMatch wd:Q332324 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Laomedon"@en .
+
+c:Q3332745 a skos:Concept ;
+    skos:exactMatch wd:Q3332745 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Medesicaste"@en .
+
+c:Q337531 a skos:Concept ;
+    skos:exactMatch wd:Q337531 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Académie des beaux-arts"@en .
+
+c:Q3392477 a skos:Concept ;
+    skos:exactMatch wd:Q3392477 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Pleisthenes"@en .
+
+c:Q33999 a skos:Concept ;
+    skos:exactMatch wd:Q33999 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "actor"@en .
+
+c:Q34201 a skos:Concept ;
+    skos:exactMatch wd:Q34201 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Zeus"@en .
+
+c:Q34620 a skos:Concept ;
+    skos:exactMatch wd:Q34620 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Greek tragedy"@en .
+
+c:Q346634 a skos:Concept ;
+    skos:exactMatch wd:Q346634 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Polydorus"@en .
+
+c:Q34726 a skos:Concept ;
+    skos:exactMatch wd:Q34726 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Greek mythology"@en .
+
+c:Q3510841 a skos:Concept ;
+    skos:exactMatch wd:Q3510841 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Alexirrhoe"@en .
+
+c:Q3516752 a skos:Concept ;
+    skos:exactMatch wd:Q3516752 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hatohobei"@en .
+
+c:Q3622225 a skos:Concept ;
+    skos:exactMatch wd:Q3622225 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aretus"@en .
+
+c:Q3705324 a skos:Concept ;
+    skos:exactMatch wd:Q3705324 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Democoon"@en .
+
+c:Q3708571 a skos:Concept ;
+    skos:exactMatch wd:Q3708571 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Dios"@en .
+
+c:Q3715373 a skos:Concept ;
+    skos:exactMatch wd:Q3715373 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Dryops"@en .
+
+c:Q3718501 a skos:Concept ;
+    skos:exactMatch wd:Q3718501 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Echemmon"@en .
+
+c:Q3734203 a skos:Concept ;
+    skos:exactMatch wd:Q3734203 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Euphorion"@en .
+
+c:Q3735178 a skos:Concept ;
+    skos:exactMatch wd:Q3735178 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Evander"@en .
+
+c:Q3747915 a skos:Concept ;
+    skos:exactMatch wd:Q3747915 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Phorbas"@en .
+
+c:Q375174 a skos:Concept ;
+    skos:exactMatch wd:Q375174 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Creusa"@en .
+
+c:Q37995 a skos:Concept ;
+    skos:exactMatch wd:Q37995 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Yangon"@en .
+
+c:Q3892897 a skos:Concept ;
+    skos:exactMatch wd:Q3892897 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Pammon"@en .
+
+c:Q40219631 a skos:Concept ;
+    skos:exactMatch wd:Q40219631 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Leucippe"@en .
+
+c:Q4065845 a skos:Concept ;
+    skos:exactMatch wd:Q4065845 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Andrey Konstantinovich"@en .
+
+c:Q408 a skos:Concept ;
+    skos:exactMatch wd:Q408 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Australia"@en .
+
+c:Q4093754 a skos:Concept ;
+    skos:exactMatch wd:Q4093754 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Boris Konstantinovich"@en .
+
+c:Q409520 a skos:Concept ;
+    skos:exactMatch wd:Q409520 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aesacus"@en .
+
+c:Q410424 a skos:Concept ;
+    skos:exactMatch wd:Q410424 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aethiolas"@en .
+
+c:Q41746 a skos:Concept ;
+    skos:exactMatch wd:Q41746 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Achilles"@en .
+
+c:Q4231303 a skos:Concept ;
+    skos:exactMatch wd:Q4231303 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Konstantin Vasilyevich"@en .
+
+c:Q42973 a skos:Concept ;
+    skos:exactMatch wd:Q42973 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "architect"@en .
+
+c:Q4408851 a skos:Concept ;
+    skos:exactMatch wd:Q4408851 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Armogaras"@en .
+
+c:Q4514086 a skos:Concept ;
+    skos:exactMatch wd:Q4514086 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Black Sea Fleet of the Russian Empire"@en .
+
+c:Q46 a skos:Concept ;
+    skos:exactMatch wd:Q46 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Europe"@en .
+
+c:Q4661031 a skos:Concept ;
+    skos:exactMatch wd:Q4661031 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aa Jaane Jaan"@en .
+
+c:Q471822 a skos:Concept ;
+    skos:exactMatch wd:Q471822 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "megalopolis"@en .
+
+c:Q476028 a skos:Concept ;
+    skos:exactMatch wd:Q476028 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "association football club"@en .
+
+c:Q48268 a skos:Concept ;
+    skos:exactMatch wd:Q48268 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "International Union for Conservation of Nature"@en .
+
+c:Q48305 a skos:Concept ;
+    skos:exactMatch wd:Q48305 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Euripides"@en .
+
+c:Q484170 a skos:Concept ;
+    skos:exactMatch wd:Q484170 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "commune of France"@en .
+
+c:Q485087 a skos:Concept ;
+    skos:exactMatch wd:Q485087 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "C40 Cities Climate Leadership Group"@en .
+
+c:Q5189804 a skos:Concept ;
+    skos:exactMatch wd:Q5189804 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Crucifix"@en .
+
+c:Q51929311 a skos:Concept ;
+    skos:exactMatch wd:Q51929311 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "largest city"@en .
+
+c:Q5371990 a skos:Concept ;
+    skos:exactMatch wd:Q5371990 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Emilius"@en .
+
+c:Q55287285 a skos:Concept ;
+    skos:exactMatch wd:Q55287285 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Antinoos"@en .
+
+c:Q5540807 a skos:Concept ;
+    skos:exactMatch wd:Q5540807 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "George Huang"@en .
+
+c:Q55421302 a skos:Concept ;
+    skos:exactMatch wd:Q55421302 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Archemachus"@en .
+
+c:Q55657899 a skos:Concept ;
+    skos:exactMatch wd:Q55657899 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Yeh Mera Dil Yaar Ka Diwana"@en .
+
+c:Q55855188 a skos:Concept ;
+    skos:exactMatch wd:Q55855188 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Astynomus"@en .
+
+c:Q55996294 a skos:Concept ;
+    skos:exactMatch wd:Q55996294 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Axion"@en .
+
+c:Q5602028 a skos:Concept ;
+    skos:exactMatch wd:Q5602028 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Greek mythology in popular culture"@en .
+
+c:Q56153963 a skos:Concept ;
+    skos:exactMatch wd:Q56153963 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Brissonius"@en .
+
+c:Q5716684 a skos:Concept ;
+    skos:exactMatch wd:Q5716684 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "dancer"@en .
+
+c:Q57436428 a skos:Concept ;
+    skos:exactMatch wd:Q57436428 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Chrysolaus"@en .
+
+c:Q582141 a skos:Concept ;
+    skos:exactMatch wd:Q582141 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Antiphus"@en .
+
+c:Q58821297 a skos:Concept ;
+    skos:exactMatch wd:Q58821297 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Corythus"@en .
+
+c:Q59238305 a skos:Concept ;
+    skos:exactMatch wd:Q59238305 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Thronius"@en .
+
+c:Q59746195 a skos:Concept ;
+    skos:exactMatch wd:Q59746195 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Demnosia"@en .
+
+c:Q59773036 a skos:Concept ;
+    skos:exactMatch wd:Q59773036 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Demosthea"@en .
+
+c:Q60181410 a skos:Concept ;
+    skos:exactMatch wd:Q60181410 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Dolon"@en .
+
+c:Q60221584 a skos:Concept ;
+    skos:exactMatch wd:Q60221584 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Echephron"@en .
+
+c:Q60649443 a skos:Concept ;
+    skos:exactMatch wd:Q60649443 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Evagoras"@en .
+
+c:Q6081853 a skos:Concept ;
+    skos:exactMatch wd:Q6081853 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Polites"@en .
+
+c:Q60847808 a skos:Concept ;
+    skos:exactMatch wd:Q60847808 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Saint-Germain-en-Laye"@en .
+
+c:Q61754394 a skos:Concept ;
+    skos:exactMatch wd:Q61754394 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Yevdokiya Konstantinovna"@en .
+
+c:Q61987139 a skos:Concept ;
+    skos:exactMatch wd:Q61987139 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Miss Letty"@en .
+
+c:Q62023101 a skos:Concept ;
+    skos:exactMatch wd:Q62023101 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Cressida"@en .
+
+c:Q62049 a skos:Concept ;
+    skos:exactMatch wd:Q62049 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "county seat"@en .
+
+c:Q63517608 a skos:Concept ;
+    skos:exactMatch wd:Q63517608 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hecuba"@en .
+
+c:Q63517613 a skos:Concept ;
+    skos:exactMatch wd:Q63517613 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en .
+
+c:Q63517614 a skos:Concept ;
+    skos:exactMatch wd:Q63517614 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hector"@en .
+
+c:Q645883 a skos:Concept ;
+    skos:exactMatch wd:Q645883 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "military operation"@en .
+
+c:Q6517872 a skos:Concept ;
+    skos:exactMatch wd:Q6517872 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "legendary progenitor"@en .
+
+c:Q655184 a skos:Concept ;
+    skos:exactMatch wd:Q655184 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Cebriones"@en .
+
+c:Q656902 a skos:Concept ;
+    skos:exactMatch wd:Q656902 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Parisii"@en .
+
+c:Q658523 a skos:Concept ;
+    skos:exactMatch wd:Q658523 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hermione"@en .
+
+c:Q668 a skos:Concept ;
+    skos:exactMatch wd:Q668 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "India"@en .
+
+c:Q67652870 a skos:Concept ;
+    skos:exactMatch wd:Q67652870 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "World Tourism Cities Federation"@en .
+
+c:Q6817869 a skos:Concept ;
+    skos:exactMatch wd:Q6817869 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Mera Naam Chin Chin Chu"@en .
+
+c:Q695 a skos:Concept ;
+    skos:exactMatch wd:Q695 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Palau"@en .
+
+c:Q71631512 a skos:Concept ;
+    skos:exactMatch wd:Q71631512 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "tabletop role-playing game supplement"@en .
+
+c:Q7199770 a skos:Concept ;
+    skos:exactMatch wd:Q7199770 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Piya Tu Ab To Aaja"@en .
+
+c:Q72211 a skos:Concept ;
+    skos:exactMatch wd:Q72211 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Arisbe"@en .
+
+c:Q7226532 a skos:Concept ;
+    skos:exactMatch wd:Q7226532 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Polymedon"@en .
+
+c:Q729332 a skos:Concept ;
+    skos:exactMatch wd:Q729332 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helenus"@en .
+
+c:Q7404563 a skos:Concept ;
+    skos:exactMatch wd:Q7404563 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Salim Khan"@en .
+
+c:Q750236 a skos:Concept ;
+    skos:exactMatch wd:Q750236 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Polyxena"@en .
+
+c:Q7725634 a skos:Concept ;
+    skos:exactMatch wd:Q7725634 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "literary work"@en .
+
+c:Q7889 a skos:Concept ;
+    skos:exactMatch wd:Q7889 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "video game"@en .
+
+c:Q79141101 a skos:Concept ;
+    skos:exactMatch wd:Q79141101 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "set of wall hangings"@en .
+
+c:Q7968621 a skos:Concept ;
+    skos:exactMatch wd:Q7968621 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "war in popular culture"@en .
+
+c:Q80930 a skos:Concept ;
+    skos:exactMatch wd:Q80930 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "tragedy"@en .
+
+c:Q858671 a skos:Concept ;
+    skos:exactMatch wd:Q858671 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Oenone"@en .
+
+c:Q860626 a skos:Concept ;
+    skos:exactMatch wd:Q860626 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "romantic comedy"@en .
+
+c:Q867342 a skos:Concept ;
+    skos:exactMatch wd:Q867342 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Troilus"@en .
+
+c:Q89817852 a skos:Concept ;
+    skos:exactMatch wd:Q89817852 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "The Rape of Helen"@en .
+
+c:Q89818847 a skos:Concept ;
+    skos:exactMatch wd:Q89818847 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Achilles' Tent"@en .
+
+c:Q89819425 a skos:Concept ;
+    skos:exactMatch wd:Q89819425 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "The Death of Achilles"@en .
+
+c:Q89857251 a skos:Concept ;
+    skos:exactMatch wd:Q89857251 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "The Destruction of Troy"@en .
+
+c:Q89940498 a skos:Concept ;
+    skos:exactMatch wd:Q89940498 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "The War of Troy"@en .
+
+c:Q91010590 a skos:Concept ;
+    skos:exactMatch wd:Q91010590 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "O Haseena Zulfonwali Jaane Jahan"@en .
+
+c:Q91121889 a skos:Concept ;
+    skos:exactMatch wd:Q91121889 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Medusa"@en .
+
+c:Q9383972 a skos:Concept ;
+    skos:exactMatch wd:Q9383972 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "League of Historical Cities"@en .
+
+c:Q96746729 a skos:Concept ;
+    skos:exactMatch wd:Q96746729 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris Centre"@en .
+
+c:Q98 a skos:Concept ;
+    skos:exactMatch wd:Q98 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Pacific Ocean"@en .
+
+c:Q990991 a skos:Concept ;
+    skos:exactMatch wd:Q990991 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Astyoche"@en .
+
+c:Q113313 a skos:Concept ;
+    skos:exactMatch wd:Q113313 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Lamar County"@en .
+
+c:Q16665915 a skos:Concept ;
+    skos:exactMatch wd:Q16665915 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Grand Paris"@en .
+
+c:Q337586 a skos:Concept ;
+    skos:exactMatch wd:Q337586 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Académie Royale d'Architecture"@en .
+
+c:Q37776 a skos:Concept ;
+    skos:exactMatch wd:Q37776 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Besançon"@en .
+
+c:Q484124 a skos:Concept ;
+    skos:exactMatch wd:Q484124 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Edgar County"@en .
+
+c:Q89814787 a skos:Concept ;
+    ex:broaderInstantive c:Q18609875,
+        c:Q79141101 ;
+    ex:broaderPartitive c:Q89941245 ;
+    ex:narrowerPartitive c:Q89817852,
+        c:Q89818847,
+        c:Q89819425,
+        c:Q89857251 ;
+    ex:sitelinks 1 ;
+    schema1:description "set of four tapestries in the Cathedral of Zamora, Spain"@en ;
+    skos:altLabel "Story of the Trojan War"@en ;
+    skos:exactMatch wd:Q89814787 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "The Trojan War"@en ;
+    skos:related c:Q15696,
+        c:Q29,
+        c:Q2942864,
+        c:Q42937 ;
+    wdt:P131 c:Q15696 ;
+    wdt:P17 c:Q29 ;
+    wdt:P276 c:Q2942864 ;
+    wdt:P31 c:Q18609875,
+        c:Q79141101 ;
+    wdt:P361 c:Q89941245 ;
+    wdt:P527 c:Q89817852,
+        c:Q89818847,
+        c:Q89819425,
+        c:Q89857251 ;
+    wdt:P921 c:Q42937 .
+
+c:Q89941245 a skos:Concept ;
+    ex:broaderInstantive c:Q18609861,
+        c:Q18609875 ;
+    ex:narrowerPartitive c:Q89814787,
+        c:Q89940498 ;
+    ex:sitelinks 0 ;
+    schema1:description "tapestry series after designs attributed to the Coëtivy Master and produced by Pasquier Grenier, extant in multiple editions"@en ;
+    skos:altLabel "Story of the Trojan War"@en,
+        "The Trojan War"@en ;
+    skos:exactMatch wd:Q89941245 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "The Story of the Trojan War"@en ;
+    wdt:P31 c:Q18609861,
+        c:Q18609875 ;
+    wdt:P527 c:Q89814787,
+        c:Q89940498 .
+
+c:Q1093829 a skos:Concept ;
+    skos:exactMatch wd:Q1093829 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "city in the United States"@en .
+
+c:Q11424 a skos:Concept ;
+    skos:exactMatch wd:Q11424 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "film"@en .
+
+c:Q164061 a skos:Concept ;
+    ex:broaderInstantive c:Q22988604,
+        c:Q6517872 ;
+    ex:sitelinks 95 ;
+    schema1:description "daughter of Zeus in Greek mythology"@en ;
+    skos:altLabel "Helen"@en,
+        "Helen of Argos"@en,
+        "Helen of Sparta"@en ;
+    skos:exactMatch wd:Q164061 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helen of Troy"@en ;
+    skos:related c:Q1154304,
+        c:Q12881223,
+        c:Q1320718,
+        c:Q167646,
+        c:Q171839,
+        c:Q182019,
+        c:Q192673,
+        c:Q20828900,
+        c:Q3392477,
+        c:Q34201,
+        c:Q3646670,
+        c:Q3734203,
+        c:Q390461,
+        c:Q410424,
+        c:Q41746,
+        c:Q58821297,
+        c:Q59238305,
+        c:Q62344048,
+        c:Q658523,
+        c:Q736813 ;
+    wdt:P22 c:Q34201 ;
+    wdt:P25 c:Q182019 ;
+    wdt:P26 c:Q1320718,
+        c:Q167646,
+        c:Q171839,
+        c:Q41746,
+        c:Q736813 ;
+    wdt:P31 c:Q22988604,
+        c:Q6517872 ;
+    wdt:P40 c:Q1154304,
+        c:Q12881223,
+        c:Q192673,
+        c:Q20828900,
+        c:Q3392477,
+        c:Q3646670,
+        c:Q3734203,
+        c:Q390461,
+        c:Q410424,
+        c:Q58821297,
+        c:Q59238305,
+        c:Q62344048,
+        c:Q658523 ;
+    wdt:P451 c:Q167646 .
+
+c:Q18609875 a skos:Concept ;
+    skos:exactMatch wd:Q18609875 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "tapestry series"@en .
+
+c:Q193433 a skos:Concept ;
+    skos:exactMatch wd:Q193433 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Hecuba"@en .
+
+c:Q207452 a skos:Concept ;
+    skos:exactMatch wd:Q207452 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "ship of the line"@en .
+
+c:Q20828900 a skos:Concept ;
+    skos:exactMatch wd:Q20828900 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Idaeus"@en .
+
+c:Q3646670 a skos:Concept ;
+    skos:exactMatch wd:Q3646670 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Bunicus"@en .
+
+c:Q390461 a skos:Concept ;
+    skos:exactMatch wd:Q390461 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Aganus"@en .
+
+c:Q50386450 a skos:Concept ;
+    skos:exactMatch wd:Q50386450 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "operatic character"@en .
+
+c:Q62344048 a skos:Concept ;
+    skos:exactMatch wd:Q62344048 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Helena"@en .
+
+c:Q726 a skos:Concept ;
+    skos:exactMatch wd:Q726 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "horse"@en .
+
+c:Q736813 a skos:Concept ;
+    skos:exactMatch wd:Q736813 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Deiphobus"@en .
+
+<http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> a nif:Context ;
+    nif:isString "Paris, son of Priam, abducted Helen and started the Trojan War." .
+
+<http://example.org/wdlink/doc/aa60c61bd11b/run> a prov:Activity ;
+    ex:beta 2e-01 ;
+    ex:coherence "weighted" ;
+    ex:confidence_temperature 1e-02 ;
+    ex:direct_edge_strength 1e+00 ;
+    ex:embedding_model "BAAI/bge-small-en-v1.5" ;
+    ex:min_margin 0e+00 ;
+    ex:nil_threshold 4.2e-01 ;
+    ex:softmax_temperature 1e-01 ;
+    ex:types "common_noun" ;
+    ex:use_popularity true ;
+    ex:verbalise_graph true ;
+    ex:w_name 2e-01 ;
+    ex:w_pop 1.5e-01 ;
+    ex:w_txt 5e-01 ;
+    ex:w_type 1.5e-01 ;
+    prov:endedAtTime "2026-10-22T14:52:16.326857+00:00"^^xsd:dateTime .
+
+c:Q170473 a skos:Concept ;
+    ex:broaderInstantive c:Q22988604 ;
+    ex:sitelinks 67 ;
+    schema1:description "the legendary and last king of Troy during the Trojan war; son of Laomedon"@en ;
+    skos:exactMatch wd:Q170473 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Priam"@en ;
+    skos:related c:Q106866423,
+        c:Q1077936,
+        c:Q1087725,
+        c:Q1178583,
+        c:Q1206546,
+        c:Q129261406,
+        c:Q1331212,
+        c:Q13419376,
+        c:Q139564011,
+        c:Q14601881,
+        c:Q1530099,
+        c:Q15736227,
+        c:Q15736237,
+        c:Q15816269,
+        c:Q15816305,
+        c:Q15816312,
+        c:Q15816322,
+        c:Q15816329,
+        c:Q15816336,
+        c:Q15816339,
+        c:Q15816352,
+        c:Q15816362,
+        c:Q15816366,
+        c:Q15816374,
+        c:Q159666,
+        c:Q1609412,
+        c:Q1658551,
+        c:Q167646,
+        c:Q170779,
+        c:Q17115124,
+        c:Q17115343,
+        c:Q1878963,
+        c:Q1924574,
+        c:Q19259287,
+        c:Q193433,
+        c:Q20801797,
+        c:Q21548096,
+        c:Q21548762,
+        c:Q22647,
+        c:Q22965422,
+        c:Q23818213,
+        c:Q246663,
+        c:Q2506621,
+        c:Q2826489,
+        c:Q29626641,
+        c:Q3037285,
+        c:Q3136176,
+        c:Q3155610,
+        c:Q332324,
+        c:Q3332745,
+        c:Q346634,
+        c:Q3510841,
+        c:Q3622225,
+        c:Q3705324,
+        c:Q3708571,
+        c:Q3715373,
+        c:Q3718501,
+        c:Q3735178,
+        c:Q3747915,
+        c:Q375174,
+        c:Q3892897,
+        c:Q40219631,
+        c:Q409520,
+        c:Q42937,
+        c:Q4408851,
+        c:Q55287285,
+        c:Q55421302,
+        c:Q55855188,
+        c:Q55996294,
+        c:Q56153963,
+        c:Q57436428,
+        c:Q582141,
+        c:Q59746195,
+        c:Q59773036,
+        c:Q60181410,
+        c:Q60221584,
+        c:Q60649443,
+        c:Q6081853,
+        c:Q655184,
+        c:Q72211,
+        c:Q7226532,
+        c:Q729332,
+        c:Q736813,
+        c:Q750236,
+        c:Q867342,
+        c:Q91121889,
+        c:Q990991 ;
+    wdt:P20 c:Q22647 ;
+    wdt:P22 c:Q332324 ;
+    wdt:P25 c:Q23818213,
+        c:Q40219631 ;
+    wdt:P26 c:Q1206546,
+        c:Q193433,
+        c:Q3510841,
+        c:Q72211 ;
+    wdt:P27 c:Q22647 ;
+    wdt:P31 c:Q22988604 ;
+    wdt:P40 c:Q106866423,
+        c:Q1077936,
+        c:Q1087725,
+        c:Q1178583,
+        c:Q129261406,
+        c:Q1331212,
+        c:Q13419376,
+        c:Q139564011,
+        c:Q14601881,
+        c:Q1530099,
+        c:Q15736227,
+        c:Q15736237,
+        c:Q15816269,
+        c:Q15816305,
+        c:Q15816312,
+        c:Q15816322,
+        c:Q15816329,
+        c:Q15816336,
+        c:Q15816339,
+        c:Q15816352,
+        c:Q15816362,
+        c:Q15816366,
+        c:Q15816374,
+        c:Q159666,
+        c:Q1609412,
+        c:Q1658551,
+        c:Q167646,
+        c:Q170779,
+        c:Q17115124,
+        c:Q17115343,
+        c:Q1878963,
+        c:Q1924574,
+        c:Q19259287,
+        c:Q20801797,
+        c:Q21548096,
+        c:Q21548762,
+        c:Q22965422,
+        c:Q246663,
+        c:Q2506621,
+        c:Q2826489,
+        c:Q29626641,
+        c:Q3037285,
+        c:Q3136176,
+        c:Q3155610,
+        c:Q3332745,
+        c:Q346634,
+        c:Q3622225,
+        c:Q3705324,
+        c:Q3708571,
+        c:Q3715373,
+        c:Q3718501,
+        c:Q3735178,
+        c:Q3747915,
+        c:Q375174,
+        c:Q3892897,
+        c:Q409520,
+        c:Q4408851,
+        c:Q55287285,
+        c:Q55421302,
+        c:Q55855188,
+        c:Q55996294,
+        c:Q56153963,
+        c:Q57436428,
+        c:Q582141,
+        c:Q59746195,
+        c:Q59773036,
+        c:Q60181410,
+        c:Q60221584,
+        c:Q60649443,
+        c:Q6081853,
+        c:Q655184,
+        c:Q7226532,
+        c:Q729332,
+        c:Q736813,
+        c:Q750236,
+        c:Q867342,
+        c:Q91121889,
+        c:Q990991 ;
+    wdt:P607 c:Q42937 .
+
+c:Q15632617 a skos:Concept ;
+    skos:exactMatch wd:Q15632617 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "fictional human"@en .
+
+c:Q167646 a skos:Concept ;
+    ex:broaderInstantive c:Q22988604 ;
+    ex:sitelinks 73 ;
+    schema1:description "mythological son of Priam, king of Troy"@en ;
+    skos:altLabel "Alexander"@en,
+        "Alexandros"@en ;
+    skos:exactMatch wd:Q167646 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q12059906,
+        c:Q164061,
+        c:Q170473,
+        c:Q193433,
+        c:Q20828900,
+        c:Q2665478,
+        c:Q3646670,
+        c:Q390461,
+        c:Q42937,
+        c:Q62344048,
+        c:Q858671 ;
+    wdt:P106 c:Q12059906 ;
+    wdt:P22 c:Q170473 ;
+    wdt:P25 c:Q193433 ;
+    wdt:P26 c:Q164061,
+        c:Q858671 ;
+    wdt:P31 c:Q22988604 ;
+    wdt:P40 c:Q20828900,
+        c:Q2665478,
+        c:Q3646670,
+        c:Q390461,
+        c:Q62344048 ;
+    wdt:P451 c:Q164061 ;
+    wdt:P607 c:Q42937 .
+
+c:Q22647 a skos:Concept ;
+    skos:exactMatch wd:Q22647 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Troy"@en .
+
+c:Q22988604 a skos:Concept ;
+    skos:exactMatch wd:Q22988604 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "mythological Greek character"@en .
+
+c:Q142 a skos:Concept ;
+    skos:exactMatch wd:Q142 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "France"@en .
+
+c:Q90 a skos:Concept ;
+    ex:broaderInstantive c:Q1066984,
+        c:Q108178728,
+        c:Q11418818,
+        c:Q1187811,
+        c:Q1200957,
+        c:Q134445478,
+        c:Q1422929,
+        c:Q1549591,
+        c:Q200250,
+        c:Q208511,
+        c:Q2240381,
+        c:Q22923920,
+        c:Q471822,
+        c:Q484170,
+        c:Q51929311 ;
+    ex:broaderPartitive c:Q13917 ;
+    ex:sitelinks 366 ;
+    schema1:description "capital and most populous city in France"@en ;
+    skos:altLabel "City of Light"@en,
+        "City of Love"@en,
+        "Lutetia"@en,
+        "Paris"@en ;
+    skos:exactMatch wd:Q90 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Paris"@en ;
+    skos:related c:Q10855271,
+        c:Q142,
+        c:Q1471,
+        c:Q161741,
+        c:Q163948,
+        c:Q16665915,
+        c:Q169293,
+        c:Q171689,
+        c:Q175129,
+        c:Q187153,
+        c:Q191066,
+        c:Q194420,
+        c:Q197297,
+        c:Q200126,
+        c:Q204622,
+        c:Q209549,
+        c:Q210720,
+        c:Q223140,
+        c:Q230127,
+        c:Q238723,
+        c:Q245546,
+        c:Q259463,
+        c:Q270230,
+        c:Q2727598,
+        c:Q275118,
+        c:Q2990283,
+        c:Q46,
+        c:Q48268,
+        c:Q485087,
+        c:Q656902,
+        c:Q67652870,
+        c:Q9383972,
+        c:Q96746729 ;
+    wdt:P131 c:Q16665915 ;
+    wdt:P1376 c:Q142,
+        c:Q16665915 ;
+    wdt:P138 c:Q656902 ;
+    wdt:P150 c:Q161741,
+        c:Q163948,
+        c:Q169293,
+        c:Q171689,
+        c:Q175129,
+        c:Q187153,
+        c:Q191066,
+        c:Q194420,
+        c:Q197297,
+        c:Q200126,
+        c:Q204622,
+        c:Q209549,
+        c:Q210720,
+        c:Q223140,
+        c:Q230127,
+        c:Q238723,
+        c:Q245546,
+        c:Q259463,
+        c:Q270230,
+        c:Q275118,
+        c:Q96746729 ;
+    wdt:P166 c:Q10855271,
+        c:Q2727598,
+        c:Q2990283 ;
+    wdt:P17 c:Q142 ;
+    wdt:P206 c:Q1471 ;
+    wdt:P30 c:Q46 ;
+    wdt:P31 c:Q1066984,
+        c:Q108178728,
+        c:Q11418818,
+        c:Q1187811,
+        c:Q1200957,
+        c:Q134445478,
+        c:Q1422929,
+        c:Q1549591,
+        c:Q200250,
+        c:Q208511,
+        c:Q2240381,
+        c:Q22923920,
+        c:Q471822,
+        c:Q484170,
+        c:Q51929311 ;
+    wdt:P361 c:Q13917 ;
+    wdt:P463 c:Q48268,
+        c:Q485087,
+        c:Q67652870,
+        c:Q9383972 .
+
+c:Q30 a skos:Concept ;
+    skos:exactMatch wd:Q30 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "United States"@en .
+
+c:Q42937 a skos:Concept ;
+    ex:broaderInstantive c:Q24336068,
+        c:Q645883 ;
+    ex:broaderPartitive c:Q34726 ;
+    ex:sitelinks 106 ;
+    schema1:description "legendary war in Greek mythology"@en ;
+    skos:exactMatch wd:Q42937 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "Trojan War"@en ;
+    skos:related c:Q22647 ;
+    wdt:P138 c:Q22647 ;
+    wdt:P276 c:Q22647 ;
+    wdt:P31 c:Q24336068,
+        c:Q645883 ;
+    wdt:P361 c:Q34726 .
+
+c:Q5 a skos:Concept ;
+    skos:exactMatch wd:Q5 ;
+    skos:inScheme <http://example.org/wdlink/doc/aa60c61bd11b/scheme> ;
+    skos:prefLabel "human"@en .
+
+<http://example.org/wdlink/doc/aa60c61bd11b/scheme> a skos:ConceptScheme .
+

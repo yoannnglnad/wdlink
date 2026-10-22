@@ -11,7 +11,7 @@ from wdlink.config import DEFAULT_RANKING
 
 
 def _print_table(result: dict) -> None:
-    rows = [("Mention", "Candidate concept", "Wikidata ID", "Confidence", "Decision")]
+    rows = [("Mention", "Candidate concept", "Wikidata ID", "Score", "Confidence", "Decision")]
     for m in result["mentions"]:
         sel = m["selected"]
         rows.append(
@@ -19,7 +19,8 @@ def _print_table(result: dict) -> None:
                 m["mention"],
                 sel["label"] if sel else "—",
                 sel["qid"] if sel else "NIL",
-                f"{m['confidence']:.2f}",
+                f"{sel['score']:.2f}" if sel else "—",
+                f"{m['confidence']:.3f}",
                 m["decision"],
             )
         )

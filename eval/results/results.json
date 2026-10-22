@@ -1,0 +1,494 @@
+{
+  "tuned": {
+    "baseline (text only)": {
+      "nil_threshold": 0.4,
+      "beta": 0.0,
+      "tau": 0.01
+    },
+    "A1 graph verbalisation only": {
+      "nil_threshold": 0.42,
+      "beta": 0.0,
+      "tau": 0.01
+    },
+    "A2 graph coherence only": {
+      "nil_threshold": 0.4,
+      "beta": 0.5,
+      "tau": 0.01
+    },
+    "A3 naive coherence": {
+      "nil_threshold": 0.42,
+      "beta": 0.3,
+      "tau": 0.01
+    },
+    "A4 no entity types": {
+      "nil_threshold": 0.44,
+      "beta": 0.2,
+      "tau": 0.01
+    },
+    "A5 spaCy NER entity types": {
+      "nil_threshold": 0.4,
+      "beta": 0.3,
+      "tau": 0.05
+    },
+    "GraphRAG (full)": {
+      "nil_threshold": 0.42,
+      "beta": 0.2,
+      "tau": 0.01
+    }
+  },
+  "splits": {
+    "dev": {
+      "docs": 12,
+      "retrieval": {
+        "n_in_kb": 40,
+        "retrieval_recall@1": 0.775,
+        "retrieval_recall@5": 0.9,
+        "retrieval_recall@10": 0.925,
+        "retrieval_recall@20": 0.95,
+        "retrieval_recall@40": 0.975,
+        "retrieval_recall@all": 0.975,
+        "after_prerank_recall": 0.975,
+        "ranked_recall@1": 0.95,
+        "ranked_recall@3": 0.975,
+        "ranked_recall@5": 0.975
+      },
+      "d2kb": {
+        "API top-1 (wbsearchentities)": {
+          "n": 43,
+          "accuracy": 0.7906976744186046,
+          "accuracy_in_kb": 0.775,
+          "accuracy_ambiguous": 0.42857142857142855,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": null,
+          "accuracy_with_context": 0.775,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": null,
+          "ece": null
+        },
+        "baseline (text only)": {
+          "n": 43,
+          "accuracy": 0.9534883720930233,
+          "accuracy_in_kb": 0.95,
+          "accuracy_ambiguous": 0.9285714285714286,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9473684210526315,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.958789069363011,
+          "ece": 0.045686243556343306
+        },
+        "A1 graph verbalisation only": {
+          "n": 43,
+          "accuracy": 0.9534883720930233,
+          "accuracy_in_kb": 0.95,
+          "accuracy_ambiguous": 0.9285714285714286,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9473684210526315,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9725816129005335,
+          "ece": 0.04530648018454885
+        },
+        "A2 graph coherence only": {
+          "n": 43,
+          "accuracy": 0.9767441860465116,
+          "accuracy_in_kb": 0.975,
+          "accuracy_ambiguous": 1.0,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9736842105263158,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9704620646727803,
+          "ece": 0.04838383944571405
+        },
+        "A3 naive coherence": {
+          "n": 43,
+          "accuracy": 0.9534883720930233,
+          "accuracy_in_kb": 0.95,
+          "accuracy_ambiguous": 0.9285714285714286,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9473684210526315,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9727275179544541,
+          "ece": 0.029217386766592295
+        },
+        "A4 no entity types": {
+          "n": 43,
+          "accuracy": 0.9534883720930233,
+          "accuracy_in_kb": 0.95,
+          "accuracy_ambiguous": 0.9285714285714286,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9473684210526315,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9860845198030588,
+          "ece": 0.032596147710035495
+        },
+        "A5 spaCy NER entity types": {
+          "n": 43,
+          "accuracy": 0.8604651162790697,
+          "accuracy_in_kb": 0.85,
+          "accuracy_ambiguous": 0.6428571428571429,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": 0.0,
+          "accuracy_with_context": 0.8947368421052632,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.8491441677227975,
+          "ece": 0.046920929672331205
+        },
+        "GraphRAG (full)": {
+          "n": 43,
+          "accuracy": 0.9534883720930233,
+          "accuracy_in_kb": 0.95,
+          "accuracy_ambiguous": 0.9285714285714286,
+          "accuracy_unambiguous": 0.9615384615384616,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9473684210526315,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9820435677070409,
+          "ece": 0.03865889194441861
+        }
+      },
+      "a2kb": {
+        "baseline (text only)": {
+          "predicted_links": 48,
+          "gold_links": 40,
+          "strong_precision": 0.75,
+          "strong_recall": 0.9,
+          "strong_f1": 0.8181818181818182,
+          "weak_precision": 0.7708333333333334,
+          "weak_recall": 0.925,
+          "weak_f1": 0.840909090909091
+        },
+        "GraphRAG (full)": {
+          "predicted_links": 48,
+          "gold_links": 40,
+          "strong_precision": 0.75,
+          "strong_recall": 0.9,
+          "strong_f1": 0.8181818181818182,
+          "weak_precision": 0.7708333333333334,
+          "weak_recall": 0.925,
+          "weak_f1": 0.840909090909091
+        }
+      },
+      "mcnemar": {
+        "only_baseline_correct": 0,
+        "only_graphrag_correct": 0,
+        "p_value": 1.0
+      }
+    },
+    "kore50_dywc": {
+      "docs": 50,
+      "retrieval": {
+        "n_in_kb": 141,
+        "retrieval_recall@1": 0.2695035460992908,
+        "retrieval_recall@5": 0.48936170212765956,
+        "retrieval_recall@10": 0.5673758865248227,
+        "retrieval_recall@20": 0.723404255319149,
+        "retrieval_recall@40": 0.8368794326241135,
+        "retrieval_recall@all": 0.8368794326241135,
+        "after_prerank_recall": 0.7092198581560284,
+        "ranked_recall@1": 0.5815602836879432,
+        "ranked_recall@3": 0.7092198581560284,
+        "ranked_recall@5": 0.7092198581560284
+      },
+      "d2kb": {
+        "API top-1 (wbsearchentities)": {
+          "n": 141,
+          "accuracy": 0.22695035460992907,
+          "accuracy_in_kb": 0.22695035460992907,
+          "accuracy_ambiguous": 0.22695035460992907,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": null,
+          "accuracy_with_context": 0.22695035460992907,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": null,
+          "ece": null
+        },
+        "baseline (text only)": {
+          "n": 141,
+          "accuracy": 0.5177304964539007,
+          "accuracy_in_kb": 0.5177304964539007,
+          "accuracy_ambiguous": 0.5177304964539007,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": 0.5,
+          "accuracy_with_context": 0.5179856115107914,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": 0.8697706397423477,
+          "ece": 0.3520401432884471
+        },
+        "A1 graph verbalisation only": {
+          "n": 141,
+          "accuracy": 0.5319148936170213,
+          "accuracy_in_kb": 0.5319148936170213,
+          "accuracy_ambiguous": 0.5319148936170213,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": 0.0,
+          "accuracy_with_context": 0.539568345323741,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": 0.8704656435172522,
+          "ece": 0.3385507499002308
+        },
+        "A2 graph coherence only": {
+          "n": 141,
+          "accuracy": 0.5602836879432624,
+          "accuracy_in_kb": 0.5602836879432624,
+          "accuracy_ambiguous": 0.5602836879432624,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": 0.5,
+          "accuracy_with_context": 0.5611510791366906,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": 0.8860851422120969,
+          "ece": 0.3258014542688345
+        },
+        "A3 naive coherence": {
+          "n": 141,
+          "accuracy": 0.574468085106383,
+          "accuracy_in_kb": 0.574468085106383,
+          "accuracy_ambiguous": 0.574468085106383,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": 0.0,
+          "accuracy_with_context": 0.5827338129496403,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": 0.8807066492760566,
+          "ece": 0.30623856416967354
+        },
+        "A4 no entity types": {
+          "n": 141,
+          "accuracy": 0.5815602836879432,
+          "accuracy_in_kb": 0.5815602836879432,
+          "accuracy_ambiguous": 0.5815602836879432,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": 0.0,
+          "accuracy_with_context": 0.5899280575539568,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": 0.9002780479162583,
+          "ece": 0.31871776422831494
+        },
+        "A5 spaCy NER entity types": {
+          "n": 141,
+          "accuracy": 0.524822695035461,
+          "accuracy_in_kb": 0.524822695035461,
+          "accuracy_ambiguous": 0.524822695035461,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": 0.0,
+          "accuracy_with_context": 0.5323741007194245,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": 0.6193301590551195,
+          "ece": 0.09450746401965851
+        },
+        "GraphRAG (full)": {
+          "n": 141,
+          "accuracy": 0.5815602836879432,
+          "accuracy_in_kb": 0.5815602836879432,
+          "accuracy_ambiguous": 0.5815602836879432,
+          "accuracy_unambiguous": null,
+          "accuracy_isolated": 0.0,
+          "accuracy_with_context": 0.5899280575539568,
+          "nil_recall": null,
+          "nil_precision": null,
+          "mean_confidence": 0.8833043720482397,
+          "ece": 0.3105004913609566
+        }
+      },
+      "a2kb": {
+        "baseline (text only)": {
+          "predicted_links": 175,
+          "gold_links": 141,
+          "strong_precision": 0.38857142857142857,
+          "strong_recall": 0.48226950354609927,
+          "strong_f1": 0.430379746835443,
+          "weak_precision": 0.3942857142857143,
+          "weak_recall": 0.48936170212765956,
+          "weak_f1": 0.43670886075949367
+        },
+        "GraphRAG (full)": {
+          "predicted_links": 175,
+          "gold_links": 141,
+          "strong_precision": 0.4342857142857143,
+          "strong_recall": 0.5390070921985816,
+          "strong_f1": 0.48101265822784806,
+          "weak_precision": 0.44,
+          "weak_recall": 0.5460992907801419,
+          "weak_f1": 0.4873417721518987
+        }
+      },
+      "mcnemar": {
+        "only_baseline_correct": 4,
+        "only_graphrag_correct": 13,
+        "p_value": 0.049041748046875
+      }
+    },
+    "test": {
+      "docs": 28,
+      "retrieval": {
+        "n_in_kb": 91,
+        "retrieval_recall@1": 0.6813186813186813,
+        "retrieval_recall@5": 0.8791208791208791,
+        "retrieval_recall@10": 0.9120879120879121,
+        "retrieval_recall@20": 0.967032967032967,
+        "retrieval_recall@40": 0.978021978021978,
+        "retrieval_recall@all": 0.978021978021978,
+        "after_prerank_recall": 0.967032967032967,
+        "ranked_recall@1": 0.945054945054945,
+        "ranked_recall@3": 0.967032967032967,
+        "ranked_recall@5": 0.967032967032967
+      },
+      "d2kb": {
+        "API top-1 (wbsearchentities)": {
+          "n": 97,
+          "accuracy": 0.6907216494845361,
+          "accuracy_in_kb": 0.6703296703296703,
+          "accuracy_ambiguous": 0.39473684210526316,
+          "accuracy_unambiguous": 0.8679245283018868,
+          "accuracy_isolated": null,
+          "accuracy_with_context": 0.6703296703296703,
+          "nil_recall": 1.0,
+          "nil_precision": 0.8571428571428571,
+          "mean_confidence": null,
+          "ece": null
+        },
+        "baseline (text only)": {
+          "n": 97,
+          "accuracy": 0.9175257731958762,
+          "accuracy_in_kb": 0.9120879120879121,
+          "accuracy_ambiguous": 0.8157894736842105,
+          "accuracy_unambiguous": 0.9811320754716981,
+          "accuracy_isolated": 0.75,
+          "accuracy_with_context": 0.9195402298850575,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9656311889516287,
+          "ece": 0.06427212452470586
+        },
+        "A1 graph verbalisation only": {
+          "n": 97,
+          "accuracy": 0.9278350515463918,
+          "accuracy_in_kb": 0.9230769230769231,
+          "accuracy_ambiguous": 0.8421052631578947,
+          "accuracy_unambiguous": 0.9811320754716981,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9195402298850575,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9713117495378579,
+          "ece": 0.06087897535133428
+        },
+        "A2 graph coherence only": {
+          "n": 97,
+          "accuracy": 0.9381443298969072,
+          "accuracy_in_kb": 0.9340659340659341,
+          "accuracy_ambiguous": 0.868421052631579,
+          "accuracy_unambiguous": 0.9811320754716981,
+          "accuracy_isolated": 0.75,
+          "accuracy_with_context": 0.9425287356321839,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9864732488265923,
+          "ece": 0.048328918929685105
+        },
+        "A3 naive coherence": {
+          "n": 97,
+          "accuracy": 0.9278350515463918,
+          "accuracy_in_kb": 0.9230769230769231,
+          "accuracy_ambiguous": 0.8421052631578947,
+          "accuracy_unambiguous": 0.9811320754716981,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9195402298850575,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9749907075657358,
+          "ece": 0.064557933379212
+        },
+        "A4 no entity types": {
+          "n": 97,
+          "accuracy": 0.9381443298969072,
+          "accuracy_in_kb": 0.9340659340659341,
+          "accuracy_ambiguous": 0.868421052631579,
+          "accuracy_unambiguous": 0.9811320754716981,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9310344827586207,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9763449231191714,
+          "ece": 0.04384871614969314
+        },
+        "A5 spaCy NER entity types": {
+          "n": 97,
+          "accuracy": 0.8969072164948454,
+          "accuracy_in_kb": 0.8901098901098901,
+          "accuracy_ambiguous": 0.7894736842105263,
+          "accuracy_unambiguous": 0.9622641509433962,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.8850574712643678,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.8144344006434984,
+          "ece": 0.09580448324459151
+        },
+        "GraphRAG (full)": {
+          "n": 97,
+          "accuracy": 0.9484536082474226,
+          "accuracy_in_kb": 0.945054945054945,
+          "accuracy_ambiguous": 0.8947368421052632,
+          "accuracy_unambiguous": 0.9811320754716981,
+          "accuracy_isolated": 1.0,
+          "accuracy_with_context": 0.9425287356321839,
+          "nil_recall": 1.0,
+          "nil_precision": 1.0,
+          "mean_confidence": 0.9727037346837483,
+          "ece": 0.05142829801028437
+        }
+      },
+      "a2kb": {
+        "baseline (text only)": {
+          "predicted_links": 105,
+          "gold_links": 91,
+          "strong_precision": 0.6476190476190476,
+          "strong_recall": 0.7472527472527473,
+          "strong_f1": 0.6938775510204083,
+          "weak_precision": 0.6666666666666666,
+          "weak_recall": 0.7692307692307693,
+          "weak_f1": 0.7142857142857142
+        },
+        "GraphRAG (full)": {
+          "predicted_links": 105,
+          "gold_links": 91,
+          "strong_precision": 0.6761904761904762,
+          "strong_recall": 0.7802197802197802,
+          "strong_f1": 0.7244897959183673,
+          "weak_precision": 0.6952380952380952,
+          "weak_recall": 0.8021978021978022,
+          "weak_f1": 0.7448979591836735
+        }
+      },
+      "mcnemar": {
+        "only_baseline_correct": 0,
+        "only_graphrag_correct": 3,
+        "p_value": 0.25
+      }
+    }
+  },
+  "api_stats": {
+    "cache_hits_terms": 54424,
+    "cache_hits_types": 5797,
+    "cache_hits_relations": 5797
+  },
+  "runtime_s": 199.3478982448578
+}
