@@ -172,6 +172,7 @@ def markdown(out: dict) -> str:
     else:
         star_cell, star_orgs = star["error"], "–"
     union_orgs = ", ".join(union["cities_typed_organization"]) or "none"
+    wbg_mb = r["wbgetentities_bytes"] / 1e6
     return f"""# Micro-benchmarks: data access and graph representation
 
 Sample: {out["sample_qids"]} candidate QIDs from the first {g["docs"]} dev documents. Network
@@ -182,7 +183,7 @@ timings are medians of {REPEATS} cache-bypassing requests from one laptop; they 
 | method | median time | response size |
 |---|---|---|
 | SPARQL, item-valued truthy statements | {r["sparql_s"]:.2f} s | {r["sparql_bytes"] / 1e6:.2f} MB |
-| `wbgetentities&props=claims` | {r["wbgetentities_s"]:.2f} s | {r["wbgetentities_bytes"] / 1e6:.2f} MB |
+| `wbgetentities&props=claims` | {r["wbgetentities_s"]:.2f} s | {wbg_mb:.2f} MB |
 
 ## Type closure
 
