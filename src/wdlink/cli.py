@@ -53,6 +53,12 @@ def cmd_eval(args: argparse.Namespace) -> None:
     eval_main(args)
 
 
+def cmd_bench(args: argparse.Namespace) -> None:
+    from wdlink.bench import main as bench_main
+
+    bench_main(args)
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="wdlink")
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -73,6 +79,13 @@ def main(argv: list[str] | None = None) -> None:
     e.add_argument("--spacy-model", default="en_core_web_sm")
     e.add_argument("--offline", action="store_true", help="use the Wikidata cache only")
     e.set_defaults(func=cmd_eval)
+
+    b = sub.add_parser("bench", help="benchmark design choices on the dev split")
+    b.add_argument("suite", help="suite name(s), comma-separated, or 'all'")
+    b.add_argument("--dev", default="eval/data/dev.jsonl")
+    b.add_argument("--out", default="eval/benchmarks")
+    b.add_argument("--offline", action="store_true", help="use the Wikidata cache only")
+    b.set_defaults(func=cmd_bench)
 
     args = parser.parse_args(argv)
     logging.basicConfig(

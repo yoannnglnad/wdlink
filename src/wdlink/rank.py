@@ -57,6 +57,7 @@ class GraphIndex:
         n = max(1, len(candidate_qids))
         self.idf = {x: math.log(1 + n / d) for x, d in df.items()}
         self.mass = {q: sum(self.idf[x] for x in ns) for q, ns in self.neighbours.items()}
+        self._memo: dict[tuple, tuple[float, dict]] = {}
 
     def direct_edges(self, a: str, b: str) -> list[tuple[str, str]]:
         """[(property, direction)] of statements a->b or b->a (negative properties never stored)."""
@@ -81,6 +82,13 @@ class GraphIndex:
         )
 
     def relatedness(self, a: str, b: str, cfg: RankingConfig) -> tuple[float, dict]:
+        """Memoised: evaluation re-ranks the same document under many configurations."""
+        key = (a, b, cfg.coherence, cfg.direct_edge_strength)
+        if key not in self._memo:
+            self._memo[key] = self._relatedness(a, b, cfg)
+        return self._memo[key]
+
+    def _relatedness(self, a: str, b: str, cfg: RankingConfig) -> tuple[float, dict]:
         if a == b:
             return 0.0, {}
         edges = self.direct_edges(a, b)

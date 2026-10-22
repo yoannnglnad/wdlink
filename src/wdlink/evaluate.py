@@ -156,6 +156,10 @@ def retrieval_metrics(rows: list[dict]) -> dict:
 
 def a2kb(prepared: list, cfg: RankingConfig) -> dict:
     """End-to-end micro P/R/F1 on linkable gold mentions (strong and weak span match)."""
+    return a2kb_metrics(a2kb_counts(prepared, cfg))
+
+
+def a2kb_counts(prepared: list, cfg: RankingConfig) -> dict:
     tp_strong = tp_weak = n_pred = n_gold = 0
     for doc, _, e2e_prep in prepared:
         preds = [
@@ -168,8 +172,19 @@ def a2kb(prepared: list, cfg: RankingConfig) -> dict:
         for s, e, q in gold:
             tp_strong += any(ps == s and pe == e and pq == q for ps, pe, pq in preds)
             tp_weak += any(ps < e and s < pe and pq == q for ps, pe, pq in preds)
+    return {
+        "predicted_links": n_pred,
+        "gold_links": n_gold,
+        "tp_strong": tp_strong,
+        "tp_weak": tp_weak,
+    }
+
+
+def a2kb_metrics(counts: dict) -> dict:
+    n_pred, n_gold = counts["predicted_links"], counts["gold_links"]
     out = {"predicted_links": n_pred, "gold_links": n_gold}
-    for name, tp in (("strong", tp_strong), ("weak", tp_weak)):
+    for name in ("strong", "weak"):
+        tp = counts[f"tp_{name}"]
         p = tp / n_pred if n_pred else 0.0
         r = tp / n_gold if n_gold else 0.0
         out[f"{name}_precision"], out[f"{name}_recall"] = p, r
@@ -177,26 +192,53 @@ def a2kb(prepared: list, cfg: RankingConfig) -> dict:
     return out
 
 
-def tune(prepared: list, cfg: RankingConfig) -> RankingConfig:
-    """Grid search on dev: NIL threshold, and beta when the system uses coherence.
+def scored_mentions(prepared: list, cfg: RankingConfig) -> list[tuple[str | None, list]]:
+    """(gold QID, [(candidate QID, score), ...] best first) for every gold mention."""
+    out = []
+    for doc, gold_prep, _ in prepared:
+        for gm, lm in zip(doc["mentions"], Linker.rank(gold_prep, cfg), strict=True):
+            out.append((gm["qid"], [(c.qid, c.score) for c in lm.candidates]))
+    return out
+
+
+def decide(ranked: list, theta: float, margin: float) -> str | None:
+    """The NIL rule of rank.select, applied to an already ranked list."""
+    if not ranked:
+        return None
+    second = ranked[1][1] if len(ranked) > 1 else -math.inf
+    if ranked[0][1] < theta or ranked[0][1] - second < margin:
+        return None
+    return ranked[0][0]
+
+
+def tune(
+    prepared: list, cfg: RankingConfig, margins: tuple[float, ...] | None = None
+) -> RankingConfig:
+    """Grid search on dev: NIL threshold, beta when the system uses coherence, and optionally
+    the top1-top2 margin. Ranking is computed once per beta; thresholds only re-decide.
 
     Ties are frequent on a small dev set, so the middle of the best plateau is taken rather
     than its edge (the lowest threshold would almost never return NIL).
     """
     betas = BETA_GRID if cfg.beta > 0 else [0.0]
-    scores = {
-        (beta, theta): accuracy(
-            d2kb(prepared, dataclasses.replace(cfg, beta=beta, nil_threshold=theta))
-        )
-        for beta in betas
-        for theta in THETA_GRID
-    }
+    margins = margins or (cfg.min_margin,)
+    scores = {}
+    for beta in betas:
+        scored = scored_mentions(prepared, dataclasses.replace(cfg, beta=beta))
+        for theta in THETA_GRID:
+            for margin in margins:
+                hits = sum(decide(r, theta, margin) == gold for gold, r in scored)
+                scores[(beta, theta, margin)] = hits / max(1, len(scored))
     best = max(scores.values())
     plateau = [k for k, acc in scores.items() if acc >= best - 1e-9]
-    plateau_betas = sorted({b for b, _ in plateau})
-    beta = plateau_betas[len(plateau_betas) // 2]
-    thetas = sorted(t for b, t in plateau if b == beta)
-    return dataclasses.replace(cfg, beta=beta, nil_threshold=thetas[len(thetas) // 2])
+    beta = _median(sorted({b for b, _, _ in plateau}))
+    theta = _median(sorted({t for b, t, _ in plateau if b == beta}))
+    margin = _median(sorted({m for b, t, m in plateau if b == beta and t == theta}))
+    return dataclasses.replace(cfg, beta=beta, nil_threshold=theta, min_margin=margin)
+
+
+def _median(values: list[float]) -> float:
+    return values[len(values) // 2]
 
 
 def calibrate(prepared: list, cfg: RankingConfig) -> RankingConfig:

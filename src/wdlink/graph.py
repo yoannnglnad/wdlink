@@ -169,6 +169,8 @@ def mention_uri(text: str, m: Mention) -> URIRef:
     return URIRef(f"{doc_uri(text)}#char={m.start},{m.end}")
 
 
+# The same view as a SPARQL query over the local graph; kept for the micro-benchmark, where it
+# is ~100x slower in rdflib than the equivalent triple scan used by to_networkx.
 CONCEPT_EDGES = f"""
 SELECT ?s ?p ?o WHERE {{
   ?s ?p ?o .
@@ -179,12 +181,17 @@ SELECT ?s ?p ?o WHERE {{
 
 
 def to_networkx(g: Graph) -> nx.MultiDiGraph:
-    """Concept-to-concept relations of the RDF graph as a NetworkX multigraph (edge attr: prop)."""
+    """Concept-to-concept wdt: relations of the RDF graph as a NetworkX multigraph.
+
+    Equivalent to CONCEPT_EDGES, evaluated as a scan of the graph's triples.
+    """
+    concepts = set(g.subjects(RDF.type, SKOS.Concept))
     view = nx.MultiDiGraph()
-    for s, p, o in g.query(CONCEPT_EDGES):
-        view.add_edge(qid_of(s), qid_of(o), prop=qid_of(p))
+    for s, p, o in g:
+        if str(p).startswith(str(WDT)) and s in concepts and o in concepts:
+            view.add_edge(qid_of(s), qid_of(o), prop=qid_of(p))
     for node, label in g.subject_objects(SKOS.prefLabel):
-        if isinstance(node, URIRef) and str(node).startswith(str(CONCEPT)):
+        if node in concepts:
             view.add_node(qid_of(node), label=str(label))
     return view
 
