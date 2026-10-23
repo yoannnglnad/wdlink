@@ -188,7 +188,7 @@ class PipelineConfig:
     embedding_model: str = EMBEDDING_MODEL
     generic_noun_max_zipf: float | None = GENERIC_NOUN_MAX_ZIPF  # None keeps every noun chunk
     context_window: int | None = CONTEXT_WINDOW_SENTENCES  # None = the whole document
-    surname_expansion: bool = True
+    surname_expansion: bool = False  # redundant with human search (ADR-009)
     search_apis: tuple[str, ...] = ("wbs", "rest")  # among "wbs", "rest", "cirrus"
     human_search: bool = True
     search_limit: int = SEARCH_LIMIT

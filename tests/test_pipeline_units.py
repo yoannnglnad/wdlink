@@ -48,10 +48,15 @@ def test_extraction_offsets_and_filters():
     assert radio.is_common_noun and radio.ner_label is None
 
 
-def test_surname_expanded_with_full_name():
-    _, mentions = extract_mentions("Marie Curie lived in Paris. Curie discovered polonium.")
-    curie = next(m for m in mentions if m.text == "Curie")
-    assert curie.queries == ["Curie", "Marie Curie"]
+def test_surname_expansion_is_optional():
+    from wdlink.config import DEFAULT_PIPELINE
+
+    text = "Marie Curie lived in Paris. Curie discovered polonium."
+    _, mentions = extract_mentions(text)
+    assert next(m for m in mentions if m.text == "Curie").queries == ["Curie"]
+    pcfg = dataclasses.replace(DEFAULT_PIPELINE, surname_expansion=True)
+    _, mentions = extract_mentions(text, pcfg=pcfg)
+    assert next(m for m in mentions if m.text == "Curie").queries == ["Curie", "Marie Curie"]
 
 
 # --- local features -----------------------------------------------------------------------------
