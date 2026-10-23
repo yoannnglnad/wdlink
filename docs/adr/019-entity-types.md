@@ -15,7 +15,7 @@ The assignment asks to compare candidates on "textual relevance, entity types, a
 | spaCy `sm` NER label vs P31/P279 closure | 0.801 | 0.682 | −7.3 [−11.5, −3.6] | 0.001 |
 | spaCy `trf` NER label vs P31/P279 closure | 0.864 | 0.773 | −1.0 [−3.8, +1.5] | 0.688 |
 
-The **casing rule** says that a lower-case, non-NER term cannot be a person, song, single, album, film, TV series, video game or literary work.
+The **casing rule** says that a lower-case, non-NER term cannot be a person, a musical group, a musical work (song, single, album, release group), a film, a TV series, a video game or a literary work (`config.COMMON_NOUN_INCOMPATIBLE`).
 
 ## Decision
 
@@ -31,3 +31,4 @@ Use the casing rule. Keep NER typing only as an option (`types="ner"`) for the a
 
 - **Typing is the open question.** With `trf` labels, NER typing does not differ significantly from the casing rule on dev. In the final evaluation it scores higher on the held-out data: 0.948 against 0.938 on test, and 0.631 against 0.567 on KORE50, whose mentions are mostly people and places. It scores lower on dev (0.864 against 0.880).
 - **The default does not change.** ADR-003 forbids choosing a configuration on test data, so the casing rule stays. NER typing with `trf` labels is the first variant to re-test once a larger dev split is available. It is one flag (`types="ner"`).
+- **The casing rule itself is not free everywhere.** In the final evaluation, dropping all type signal (ablation A4) scores 0.874 against 0.880 on dev, but 0.582 against 0.567 on KORE50, and its confidence is worse calibrated on test (ECE 0.142 against 0.069). These are single runs with tuned thresholds, not cross-validated comparisons.

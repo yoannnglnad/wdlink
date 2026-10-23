@@ -129,8 +129,8 @@ def mentions_from_spans(
 def expand_short_mentions(mentions: list[Mention]) -> None:
     """In-document expansion: "Curie" after "Marie Curie" also searches "Marie Curie".
 
-    Wikidata search often misses a person given only by surname (Q7186 is not in the top 20
-    for "Curie"); the longer mention elsewhere in the document is the best query.
+    Off by default (ADR-009): the human search covers bare surnames, and on dev the expansion
+    fired twice, both times wrongly ("Jordan" -> "Jordan River").
     """
     for m in mentions:
         if m.is_common_noun:

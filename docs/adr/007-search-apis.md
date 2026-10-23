@@ -38,7 +38,7 @@ Keep `wbsearchentities` + REST search + the human search for bare names. CirrusS
 ## Why
 
 - **`wbsearchentities` alone is significantly worse** (−3.7 points, p = 0.016). This is the most common choice in tutorials.
-- **The human search earns its request.** It adds 1 to 2.6 points with every combination. In retrieval, it lifts `wbsearchentities` from 0.919 to 0.942 and REST from 0.948 to 0.971.
+- **The human search earns its request.** It adds between 0 and 2.6 points depending on the combination, and 1.0 point on the default pair. In retrieval, it lifts `wbsearchentities` from 0.919 to 0.942 and REST from 0.948 to 0.971.
 - **Why not REST + humans alone?** It ties with the default on dev for one request less per query, so ADR-003 would pick it. But on the independent probe of 19 hard ambiguous mentions, REST alone found 17–18 and the union of both APIs found all 19, with "Curie" → Marie Curie found only by REST and other mentions only by `wbsearchentities`. As in ADR-008, the dev tie is broken by evidence that the cheaper option is weaker on harder text.
 - **Why not CirrusSearch?**
   - It retrieves the most: adding it raises gold retrieval from 0.971 to 0.988.

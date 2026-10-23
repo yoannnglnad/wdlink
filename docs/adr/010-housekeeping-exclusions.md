@@ -28,7 +28,7 @@ Exclude these items (`exclude_housekeeping=True`).
 ## Why
 
 - **Keeping them is never better.** It loses 2 mentions on dev. The interval touches 0, so the accuracy difference alone is not conclusive.
-- **Exclusion is also the cheaper option.** It means fewer candidates per mention, and fewer terms, types and relations to fetch: every kept article must be fetched, although it has no statements in the main graph. Under ADR-003, the cheaper option wins a tie.
+- **Exclusion also gives fewer candidates per mention** (8.76 instead of 9.23), so less pre-ranking and ranking work. Fetch volume is not the argument: terms are fetched for every search hit before the filter, and types and relations for the kept candidates before the P31 filter. Under ADR-003, the cheaper option wins a tie.
 - **The rule is definitional, not tuned.** A disambiguation page or a category is by definition not a referent. Name items are excluded because the mention "Curie" denotes a person or a unit, not the surname as a word.
 
 ## Consequences

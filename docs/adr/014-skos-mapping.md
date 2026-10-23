@@ -26,7 +26,7 @@ The assignment asks for a "GraphRAG-inspired approach based on RDF (SKOS)". Each
 
 The mapping decides what the graph *means*, not which candidate wins: the ranker reads the same edges whichever SKOS sub-property labels them. It is therefore judged against the specifications cited above, not by accuracy.
 
-The only measurable aspect is cost, measured in ADR-015: building the graph takes about 11 ms per document.
+The only measurable aspect is cost, measured in ADR-015: building the graph takes 6.5 ms per document, or 8 ms with its NetworkX view.
 
 ## Consequences
 

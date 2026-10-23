@@ -50,3 +50,5 @@ A protocol cannot be benchmarked against itself. It is justified by standard pra
 
 - With a dev split of this size, small differences are noise. A variant is called better only when its bootstrap interval excludes 0.
 - When the interval contains 0, the cheaper or simpler option wins, and the ADR says so.
+- One exception: when evidence from outside dev, never from test or KORE50, shows the cheaper option is weaker on harder text, the ADR may keep the costlier one and must cite that evidence. ADR-007 and ADR-008 use the design-phase retrieval probe this way.
+- Each benchmark ran under the defaults of its day. The suites run before ADR-009 (query expansion on) and before ADR-004 (`sm` extraction) are not re-run: their ★ row is the default at that time, and their accuracy comparisons are unaffected (the `query_expansion` rows are identical). Re-running `wdlink bench` today uses the current defaults, so committed tables are reproducible from their git revision, not from HEAD.

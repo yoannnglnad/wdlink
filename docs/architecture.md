@@ -98,7 +98,7 @@ All three are measured with gold spans (D2KB) and end to end (A2KB, strong match
 | KORE50, accuracy | 0.227 | 0.518 | **0.567** | 11 / 4, p = 0.12 |
 | KORE50, end-to-end F1 | – | 0.461 | **0.513** | |
 
-Test NILs are all detected (precision and recall 1.0), and the test ECE is 0.069. Preparation takes about 0.5 s per document on a laptop, mostly embeddings; ranking takes 3 ms.
+Test NILs are all detected (precision and recall 1.0). Confidence is well calibrated on test (ECE 0.069), and over-confident on KORE50: mean confidence 0.651 for an accuracy of 0.567. Preparation takes about 0.5 s per document on a laptop, mostly embeddings; ranking takes 3 ms.
 
 **What the evaluation shows.**
 
@@ -108,6 +108,6 @@ Test NILs are all detected (precision and recall 1.0), and the test ECE is 0.069
 
 **Next steps.**
 
-- Deeper retrieval: CirrusSearch and K = 20 cost about 30% more compute.
+- Deeper retrieval: K = 20 costs 31% more preparation time; CirrusSearch costs one more request per query (not timed).
 - A larger dev split, to re-test NER typing and learn the weights.
 - An LLM re-ranker for low-margin mentions, fed the retrieved facts. It was kept out of the core so that the graph ablation stays clean ([ADR-024](adr/024-no-llm-in-core.md)).

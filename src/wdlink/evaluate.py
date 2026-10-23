@@ -271,7 +271,7 @@ def mcnemar(rows_a: list[dict], rows_b: list[dict]) -> dict:
 
 
 def api_top1(prepared: list, client: WikidataClient) -> dict:
-    """Trivial reference: first wbsearchentities hit for the surface form, never NIL."""
+    """Trivial reference: first wbsearchentities hit for the surface form (NIL only if none)."""
     rows = []
     for doc, _, _ in prepared:
         for gm in doc["mentions"]:

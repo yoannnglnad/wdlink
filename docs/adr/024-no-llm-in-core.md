@@ -16,11 +16,11 @@ The core pipeline uses no LLM:
 ## Why no benchmark
 
 1. **It would break the comparison the assignment asks for.** The assignment asks whether *graph* context improves selection. An LLM brings its own world knowledge, so adding one would make the graph's effect impossible to isolate in the ablations.
-2. **Reproducibility.** The evaluation runs offline and is fully deterministic. LLM outputs change across model versions and need a paid API, so a reviewer could not reproduce the numbers.
-3. **Scope.** The assignment asks for a lightweight, modular solution. Every component here runs on a laptop CPU.
+2. **Reproducibility.** Given the cached Wikidata snapshot, the evaluation runs offline and is deterministic. LLM outputs change across model versions and need a paid API, so a reviewer could not reproduce the numbers.
+3. **Scope.** The assignment asks for a lightweight, modular solution. Every component here runs on a laptop; the benchmarks ran on an Apple-silicon Mac, where sentence-transformers uses the integrated GPU through MPS.
 4. **Cost of a fair benchmark.** A fair comparison would need several prompts, temperature 0, repeated runs and the same tuning protocol. That is a separate study, not a toggle.
 
 ## Consequences
 
-- The pipeline needs no API key and its results can be reproduced exactly.
+- The pipeline needs no API key, and its results can be reproduced exactly from the cached snapshot.
 - The architecture document names the LLM re-ranker as the first extension to evaluate.

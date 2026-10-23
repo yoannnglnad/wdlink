@@ -4,7 +4,7 @@
 
 ## Context
 
-Wikidata search does not return Marie Curie (Q7186) in the top 20 for the query "Curie". The first design therefore added *in-document expansion*: a short mention is also searched under any longer mention of the same document that contains it, so "Curie" after "Marie Curie" is also searched as "Marie Curie". Later, a second mechanism was added for bare names: a search restricted to humans (`haswbstatement:P31=Q5`, ADR-007), which returns Q7186 first for "Curie".
+`wbsearchentities` does not return Marie Curie (Q7186) in its top 20 for the query "Curie"; the REST search ranks it 17th. The first design therefore added *in-document expansion*: a short mention is also searched under any longer mention of the same document that contains it, so "Curie" after "Marie Curie" is also searched as "Marie Curie". Later, a second mechanism was added for bare names: a search restricted to humans (`haswbstatement:P31=Q5`, ADR-007), which returns Q7186 first for "Curie".
 
 ## Options measured
 

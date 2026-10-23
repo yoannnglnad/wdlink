@@ -27,7 +27,7 @@ Keep the sentence ±1.
 
 ## Why the benchmark cannot decide
 
-Dev documents are 1 to 3 sentences long (19 words on average, see `eval/README.md`), so the four windows give almost the same text. The benchmark therefore measures nothing here. That is a limit of the data, not evidence that the window does not matter.
+Dev documents are short: 51 of the 52 are a single sentence, and the mean is 22.6 words (`eval/README.md`). The four windows therefore give almost the same text, and the benchmark cannot measure anything here. That is a limit of the data, not evidence that the window does not matter.
 
 ## Why ±1 anyway
 

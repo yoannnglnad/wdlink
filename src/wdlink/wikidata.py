@@ -1,7 +1,8 @@
 """Wikidata access: search, terms, types and relations, with an entity-keyed disk cache.
 
-Etiquette (Wikimedia 2026): descriptive User-Agent, <= 200 req/min for UA-identified clients,
-back off on 429 using Retry-After (min 5 s), batch 50 IDs per wbgetentities call.
+Etiquette (Wikimedia 2026): descriptive User-Agent, 150 req/min (the limit is 200 for clients
+identified by User-Agent), honour Retry-After on 429/5xx or back off exponentially from 5 s,
+50 IDs per wbgetentities call.
 Responses are cached per entity, not per batch, so changing batch composition never
 invalidates the cache and evaluations are reproducible offline.
 """
@@ -317,7 +318,7 @@ def _values(qids: list[str]) -> str:
 
 
 def _types_query(qids: list[str]) -> str:
-    # depth 1 = direct P31; the explicit UNION is ~30x faster than wdt:P31/wdt:P279* on WDQS
+    # depth 1 = direct P31; bounded on purpose: wdt:P31/wdt:P279* reaches overly general classes
     instance_paths = ["wdt:P31"] + [
         "wdt:P31" + "/wdt:P279" * d for d in range(1, config.TYPE_DEPTH + 1)
     ]

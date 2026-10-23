@@ -130,7 +130,7 @@ RELATION_PROPERTIES: dict[str, str] = {
 TYPE_PROPERTIES = {"P31": "instance of", "P279": "subclass of"}
 # Statements that assert a NEGATIVE or ambiguous relation must never count as evidence.
 NEGATIVE_PROPERTIES = frozenset({"P1889", "P460"})  # different from, said to be the same as
-TYPE_DEPTH = 3  # P31/P279{0..3}; the unbounded P279* path is slow and noisy on WDQS
+TYPE_DEPTH = 3  # P31/P279{0..3}; unbounded P279* types capitals as organizations (ADR-013)
 MAX_VALUES_PER_PROPERTY_IN_CARD = 4
 MAX_FACTS_PER_CANDIDATE = 24  # pool of verbalised facts the card is built from
 # Query-focused selection: only the facts closest to the mention's context go into the card.

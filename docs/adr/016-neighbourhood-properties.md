@@ -9,13 +9,13 @@ Coherence (ADR-020) compares candidates through their neighbours: two candidates
 - from **all** item-valued statements;
 - from a **whitelist** of about 40 descriptive properties: location, country, field of work, award received, educated at, employer, part of, author, performer, discoverer, named after, and so on.
 
-Some properties are excluded in both cases:
+Some properties are excluded:
 
-- type properties (P31/P279), which link everything to hubs such as *human*;
-- negative statements (P1889, P460);
-- P1346 "winner", which gives hundreds of values to every prize.
+- type properties (P31/P279), which link everything to hubs such as *human*: excluded from neighbourhoods and from direct candidate-to-candidate evidence in both variants;
+- negative statements (P1889, P460): never stored;
+- P1346 "winner", which gives hundreds of values to every prize: not in the whitelist (the "all properties" variant includes it).
 
-Direct statements *between two candidates* are always used, whatever their property.
+Direct statements *between two candidates* count with any other property.
 
 ## Options measured
 

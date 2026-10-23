@@ -39,4 +39,4 @@ Keep the four features and the default weights, with the strict name match.
 
 ## Consequences
 
-Weights live in `RankingConfig` (`src/wdlink/config.py`). The table above shows that no single weight change moves accuracy by more than 3 points, except removing popularity.
+Weights live in `RankingConfig` (`src/wdlink/config.py`). The table above shows that no single weight change moves accuracy by more than 3.1 points, except removing popularity.

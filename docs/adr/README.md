@@ -19,7 +19,7 @@ uv run wdlink bench micro        # data-access and graph-representation micro-be
 | [001](001-runtime-python-uv.md) | Python 3.12, uv, spaCy models as locked URL dependencies | version constraints (no benchmark) | – |
 | [002](002-wikidata-access-etiquette.md) | User-Agent, 150 req/min, Retry-After, per-entity cache, offline mode | Wikimedia policy (no benchmark: probing the limit would abuse a public service) | – |
 | [003](003-evaluation-protocol.md) | Gold data, D2KB/A2KB, cross-validated benchmarks, held-out test | methodology (no benchmark) | – |
-| [004](004-spacy-model.md) | spaCy pipeline for extraction | `spacy_model` | see ADR |
+| [004](004-spacy-model.md) | spaCy `en_core_web_trf` (sm as the light option) | `spacy_model` | **yes**: sm → trf, A2KB F1 +3.4 [+0.5, +6.7] |
 | [005](005-generic-noun-filter.md) | Drop one-word common nouns with Zipf ≥ 3.5 | `generic_filter` | **yes**: 4.5 → 3.5, A2KB F1 +4.6 |
 | [006](006-context-window.md) | Sentence ±1 as mention context | `context_window` (inconclusive on short docs) + model limit | no |
 | [007](007-search-apis.md) | `wbsearchentities` + REST + human search | `search_apis` + retrieval probe | confirmed (wbs alone −3.7, p = 0.016) |

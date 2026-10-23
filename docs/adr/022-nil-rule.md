@@ -9,7 +9,7 @@ The assignment says the top candidate should be selected "when sufficient eviden
 - the best score is too low (absolute threshold θ);
 - the best candidate barely beats the second one (margin δ).
 
-The dev split contains 18 NIL mentions, 12 of which are hard: invented entities whose names collide with real items, such as "Thomas Berger" or "Nordic Snow and Ice Data Centre". This is the case the rule has to handle.
+The dev split contains 18 NIL mentions, 12 of which are hard: invented entities whose names collide with real items ("Thomas Berger", "Sophie Martin") or nearly match them ("Nordic Snow and Ice Data Centre"). This is the case the rule has to handle.
 
 ## Options measured
 
@@ -36,4 +36,4 @@ Use θ only (`min_margin = 0`).
 
 - A mention is NIL when its best score S is below θ, which the final evaluation tunes on all of dev.
 - The ranking is still returned for NIL mentions, so a human reviewer can see the near-misses.
-- One third of hard NILs are still linked to a namesake (NIL recall 0.667). This is the main known weakness. Coherence is a bonus only, so a namesake with no connection to the rest of the text is never penalised; it just gets no bonus.
+- Half of the hard NILs (6 of 12) are still linked to a namesake, while every plain NIL is detected; NIL recall is 0.667 over all 18 NILs. This is the main known weakness. Coherence is a bonus only, so a namesake with no connection to the rest of the text is never penalised; it just gets no bonus.

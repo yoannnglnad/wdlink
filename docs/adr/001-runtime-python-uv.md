@@ -28,4 +28,4 @@ uv was chosen for its lockfile. Its install speed against pip was not measured, 
 
 ## Consequences
 
-`uv sync` and the `en_core_web_sm` model are enough to run everything. The larger models are optional extras (`--extra trf`, `--extra models`) used only for the benchmarks in ADR-004 and ADR-019.
+`uv sync` installs everything needed, including the default `en_core_web_trf` pipeline and the lightweight `en_core_web_sm`. The `md` and `lg` pipelines are an optional extra (`--extra models`), used only by the benchmark in ADR-004.

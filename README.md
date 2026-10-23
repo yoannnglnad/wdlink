@@ -2,7 +2,7 @@
 
 `wdlink` finds the meaningful terms in a plain-text document and links each one to a Wikidata item (QID). For every mention, it returns a calibrated confidence, the alternatives it considered, and the evidence behind its choice. It needs no local copy of Wikidata:
 
-1. two search APIs propose candidates;
+1. two search APIs, plus a people search for bare names, propose candidates;
 2. a small RDF/SKOS graph is built around them;
 3. that graph helps decide which candidate fits the context.
 
@@ -50,7 +50,7 @@ The first run downloads the models and fills `.cache/wikidata/`. Later runs are 
 
 - [`docs/architecture.md`](docs/architecture.md): the architecture and ranking strategy, the 1–2 page written deliverable.
 - [`docs/adr/`](docs/adr/README.md): one decision record per choice, 25 in all, with the benchmark that settled it or the reason it cannot be benchmarked. Six choices changed because of their benchmark: the generic-word cut-off, the query expansion, the graph view, the selection of facts, entity typing, and the spaCy pipeline.
-- [`eval/benchmarks/`](eval/benchmarks/): the raw benchmark tables, each a 5-fold cross-validation on dev with paired bootstrap intervals and McNemar tests.
+- [`eval/benchmarks/`](eval/benchmarks/): the raw benchmark tables; each suite is a 5-fold cross-validation on dev with paired bootstrap intervals and McNemar tests, and `micro.md` holds the data-access micro-benchmarks.
 - [`eval/README.md`](eval/README.md): the annotation guideline and dataset statistics.
 
 ## Layout

@@ -20,7 +20,7 @@ The fusion with the local score L can be additive, S = L + βG, or convex, S = (
 | naive: Jaccard overlap, unweighted mean over all candidates | 0.869 | 0.803 | −0.5 [−1.6, +0.0] |
 | **★ weighted pairwise:** idf-weighted overlap, direct edges, p_L weights, best candidate per other mention | **0.874** | 0.803 | – |
 | personalised PageRank on the local graph | 0.874 | 0.833 | +0.0 [−2.5, +2.6] |
-| weighted, neighbours from *all* properties (2,836 triples/doc) | 0.874 | 0.803 | +0.0 [+0.0, +0.0] |
+| weighted, neighbours from *all* properties (2,837 triples/doc) | 0.874 | 0.803 | +0.0 [+0.0, +0.0] |
 | weighted, convex fusion | 0.874 | 0.803 | +0.0 [+0.0, +0.0] |
 
 The tuned β was 0.1 in 4 of 5 folds.
@@ -59,10 +59,10 @@ Keep the **weighted pairwise** coherence as an **additive** bonus with a small �
   - Both reach the same accuracy. PageRank is slightly better on ambiguous mentions, but its interval spans −2.5 to +2.6.
   - The pairwise score is *explainable*: each bonus is traced to a named statement (Marie Curie —award received→ Nobel Prize in Physics) or to named shared neighbours, which the JSON evidence reports.
   - PageRank gives a stationary probability with no such trace.
-- **Why the guards.**
-  - Naive coherence loses 0.5 points. It lets wrong readings support each other, for example the unit *curie* and the quantity *activity*.
-  - It lets hubs (*human*, *France*) count.
-  - It lets candidates of the same mention support each other.
+- **Why the guards.** Naive coherence loses 0.5 points. It drops three of them:
+  - the p_L weighting, so a wrong reading lends full support, as in the unit *curie* and the quantity *activity* supporting each other;
+  - the best-candidate-per-mention rule, so every candidate of another mention counts;
+  - the idf weighting, so a shared hub neighbour such as *France* counts as much as a rare one.
 - **Why the whitelist of properties.** Neighbours from all properties give identical accuracy for 2.2× the triples. The whitelist keeps the graph small and its facts readable.
 - **Why additive fusion.** Convex fusion ties on accuracy. But it rescales every score by (1−β), so a mention with no related mention loses score for no reason. Additive fusion leaves S = L when there is no graph evidence, so θ means the same thing for isolated and connected mentions.
 - **Why a small β.** A large β trades errors: at β = 1 it fixes 4 and breaks 7. Related-but-wrong entities, such as a scientist's relatives or a city's districts, are close in the graph by construction.

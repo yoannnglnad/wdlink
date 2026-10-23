@@ -14,11 +14,13 @@ The fix is query-focused: each fact is embedded on its own, and only the facts c
 
 | Card | CV accuracy | Δ vs 3 facts [95% CI] | ms/doc |
 |---|---|---|---|
-| no facts (label + description) | 0.864 | −1.0 [−2.6, +0.0] | 327 |
+| no facts (label + description) | 0.864 | −1.0 [−2.6, +0.0] | shared* |
 | 1 closest fact | 0.874 | +0.0 [+0.0, +0.0] | 321 |
 | **3 closest facts** | **0.874** | – | 327 |
 | 5 closest facts | 0.874 | +0.0 [−1.5, +1.4] | 329 |
 | all facts, up to 24 (initial design) | 0.869 | −0.5 [−1.6, +0.0] | 450 |
+
+\* "No facts" changes only the ranking configuration, so it reuses the default preparation, which embeds every fact. Its time is not a facts-free measurement.
 
 ## Decision
 
@@ -28,7 +30,7 @@ Add the **3 facts closest to the context** (`facts_per_card=3`).
 
 - **Facts help, if they are selected.** A card without facts is 1.0 point worse, and appending all facts is 0.5 point worse and 38% slower. Neither interval excludes 0, but both point the same way as the earlier error analysis.
 - **1, 3 and 5 facts form a plateau.** 3 is its middle, the same rule ADR-003 uses for thresholds. In addition, the JSON evidence shows the facts that were used, and 3 facts explain a decision better than 1 does.
-- **Speed is unchanged.** The cost of embedding every fact individually is paid by all variants except "no facts". It is the same whatever the number of facts kept.
+- **Speed is unchanged between 1, 3 and 5 facts** (321–329 ms/doc): every fact is embedded once to be scored, whatever the number kept. Only the longer cards of "all facts" cost more (450 ms/doc).
 - **Selection by context makes it retrieval, not decoration.** In "Paris, son of Priam, abducted Helen and started the Trojan War" (`examples/paris_troy.json`), the facts retrieved for the Trojan prince are *instance of: mythological Greek character; spouse: Helen of Troy; father: Priam*. These are exactly the relations the sentence talks about.
 
 ## Consequences

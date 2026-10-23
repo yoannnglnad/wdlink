@@ -6,11 +6,11 @@
 
 The assignment asks for "relevant terms, named entities, and noun phrases", and lists "fully automated linking of every possible noun phrase" as out of scope. spaCy's noun chunks include generic words ("research", "study", "team", "planet"). Every such word gets linked to *some* Wikidata item, so each one is a false positive end to end.
 
-The filter applies to one-word common nouns only:
+The filter applies to noun chunks that are not named entities (`extract._is_specific`):
 
-- **always kept:** proper nouns and noun compounds;
-- **kept:** a one-word common noun whose English Zipf frequency (`wordfreq`) is below the cut-off;
-- **dropped:** a one-word common noun at or above the cut-off.
+- **always kept:** chunks containing a proper noun, and multi-word chunks containing a noun compound;
+- **kept:** other chunks with at least one non-stop-word noun or adjective whose English Zipf frequency (`wordfreq`) is below the cut-off;
+- **dropped:** the rest, for example "research" or "closest planet".
 
 The cut-off does not affect linking with gold spans (D2KB is identical for every variant); only the extraction changes.
 
@@ -46,12 +46,11 @@ Cut-off **3.5**.
 |---|---|
 | radioactivity | 2.91 |
 | photosynthesis | 3.03 |
-| metadata | 3.36 |
 | helium | 3.42 |
 
-At 3.0, photosynthesis, metadata and helium would be dropped, and radioactivity, the assignment's own example, would only just pass.
+At 3.0, photosynthesis and helium would be dropped, and radioactivity, the assignment's own example, would only just pass. These values are recorded in [`evidence.md`](../../eval/benchmarks/evidence.md).
 
 ## Consequences
 
-- One-word common nouns at or above 3.5, such as "physics" (4.39) or "protein" (4.53), are no longer extracted on their own. They are still linked inside a named entity or a compound ("Nobel Prize in Physics", "protein folding").
+- One-word common nouns between 3.5 and 4.5, such as "physics" (4.39), are no longer extracted on their own. They are still linked inside a named entity or a compound ("Nobel Prize in Physics").
 - A domain-specific stop list would beat a frequency cut-off for a given corpus. The cut-off is used because it needs no hand-built resource.

@@ -6,7 +6,7 @@ specialisations of skos:broader (generic / instantive / partitive) so that insta
 subclass-of chains are never mixed; other relations keep their wdt: predicate and, when the
 pair is not hierarchical (SKOS integrity condition S27), a skos:related link.
 Mentions are NIF phrases; links use the ITS 2.0 RDF vocabulary (taIdentRef, taConfidence).
-The ranker reads a NetworkX view derived from this RDF graph with a SPARQL query.
+The ranker reads a NetworkX view derived from this RDF graph by scanning its triples (ADR-015).
 """
 
 import hashlib
@@ -170,7 +170,7 @@ def mention_uri(text: str, m: Mention) -> URIRef:
 
 
 # The same view as a SPARQL query over the local graph; kept for the micro-benchmark, where it
-# is ~100x slower in rdflib than the equivalent triple scan used by to_networkx.
+# is ~145x slower in rdflib than the equivalent triple scan used by to_networkx (micro.md).
 CONCEPT_EDGES = f"""
 SELECT ?s ?p ?o WHERE {{
   ?s ?p ?o .
