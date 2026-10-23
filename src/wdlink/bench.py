@@ -95,7 +95,7 @@ SUITES: dict[str, dict] = {
                 _p(generic_noun_max_zipf=z),
                 reference=z == 4.5,
             )
-            for z in (None, 3.5, 4.0, 4.5, 5.0)
+            for z in (None, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0)
         ],
     },
     "context_window": {
