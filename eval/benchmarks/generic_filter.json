@@ -38,8 +38,14 @@
       "a2kb_weak_precision": 0.46779661016949153,
       "a2kb_weak_recall": 0.7976878612716763,
       "a2kb_weak_f1": 0.5897435897435898,
+      "a2kb_f1_delta_vs_reference": -0.12927638399336505,
+      "a2kb_f1_delta_ci95": [
+        -0.1644858209275386,
+        -0.09464524119738127
+      ],
       "candidates_per_mention": 8.764397905759163,
       "triples_per_doc": 1294.173076923077,
+      "rank_ms_per_doc": 10.557455923005294,
       "delta_vs_reference": 0.0,
       "delta_ci95": [
         0.0,
@@ -112,8 +118,14 @@
       "a2kb_weak_precision": 0.7103825136612022,
       "a2kb_weak_recall": 0.7514450867052023,
       "a2kb_weak_f1": 0.7303370786516853,
+      "a2kb_f1_delta_vs_reference": 0.0016657076228837608,
+      "a2kb_f1_delta_ci95": [
+        -0.01994627934739357,
+        0.02156679608802714
+      ],
       "candidates_per_mention": 8.764397905759163,
       "triples_per_doc": 1294.173076923077,
+      "rank_ms_per_doc": 3.7843894229948862,
       "delta_vs_reference": 0.0,
       "delta_ci95": [
         0.0,
@@ -186,8 +198,14 @@
       "a2kb_weak_precision": 0.7021276595744681,
       "a2kb_weak_recall": 0.7630057803468208,
       "a2kb_weak_f1": 0.7313019390581716,
+      "a2kb_f1_delta_vs_reference": 0.002941813321785003,
+      "a2kb_f1_delta_ci95": [
+        -0.011896893588896229,
+        0.01615620973337306
+      ],
       "candidates_per_mention": 8.764397905759163,
       "triples_per_doc": 1294.173076923077,
+      "rank_ms_per_doc": 3.8039655578009284,
       "delta_vs_reference": 0.0,
       "delta_ci95": [
         0.0,
@@ -229,7 +247,7 @@
     },
     {
       "variant": "Zipf < 3.5",
-      "reference": false,
+      "reference": true,
       "n": 191,
       "accuracy": 0.8743455497382199,
       "accuracy_in_kb": 0.8959537572254336,
@@ -260,8 +278,14 @@
       "a2kb_weak_precision": 0.6818181818181818,
       "a2kb_weak_recall": 0.7803468208092486,
       "a2kb_weak_f1": 0.7277628032345013,
+      "a2kb_f1_delta_vs_reference": 0.0,
+      "a2kb_f1_delta_ci95": [
+        0.0,
+        0.0
+      ],
       "candidates_per_mention": 8.764397905759163,
       "triples_per_doc": 1294.173076923077,
+      "rank_ms_per_doc": 4.043564096159221,
       "delta_vs_reference": 0.0,
       "delta_ci95": [
         0.0,
@@ -334,8 +358,14 @@
       "a2kb_weak_precision": 0.6330275229357798,
       "a2kb_weak_recall": 0.7976878612716763,
       "a2kb_weak_f1": 0.7058823529411764,
+      "a2kb_f1_delta_vs_reference": -0.020777466031531633,
+      "a2kb_f1_delta_ci95": [
+        -0.03956478733926794,
+        0.002037178507766857
+      ],
       "candidates_per_mention": 8.764397905759163,
       "triples_per_doc": 1294.173076923077,
+      "rank_ms_per_doc": 3.926281250012555,
       "delta_vs_reference": 0.0,
       "delta_ci95": [
         0.0,
@@ -377,7 +407,7 @@
     },
     {
       "variant": "Zipf < 4.5",
-      "reference": true,
+      "reference": false,
       "n": 191,
       "accuracy": 0.8743455497382199,
       "accuracy_in_kb": 0.8959537572254336,
@@ -408,8 +438,14 @@
       "a2kb_weak_precision": 0.592274678111588,
       "a2kb_weak_recall": 0.7976878612716763,
       "a2kb_weak_f1": 0.6798029556650246,
+      "a2kb_f1_delta_vs_reference": -0.04610093874895449,
+      "a2kb_f1_delta_ci95": [
+        -0.07083125495143916,
+        -0.01905207425205735
+      ],
       "candidates_per_mention": 8.764397905759163,
       "triples_per_doc": 1294.173076923077,
+      "rank_ms_per_doc": 3.821681096059575,
       "delta_vs_reference": 0.0,
       "delta_ci95": [
         0.0,
@@ -482,8 +518,14 @@
       "a2kb_weak_precision": 0.5393700787401575,
       "a2kb_weak_recall": 0.791907514450867,
       "a2kb_weak_f1": 0.6416861826697893,
+      "a2kb_f1_delta_vs_reference": -0.07856480049489645,
+      "a2kb_f1_delta_ci95": [
+        -0.11066967844804687,
+        -0.04605001984914647
+      ],
       "candidates_per_mention": 8.764397905759163,
       "triples_per_doc": 1294.173076923077,
+      "rank_ms_per_doc": 3.2648325384518384,
       "delta_vs_reference": 0.0,
       "delta_ci95": [
         0.0,
