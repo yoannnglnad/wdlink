@@ -1,5 +1,8 @@
 # Recherche de conception — pipeline d'entity linking texte → Wikidata
 
+> **Statut : journal de recherche initial (22/10/2026), remplacé par les ADR.** Plusieurs choix proposés ici ont été changés après benchmark (typage NER, cartes avec tous les faits, expansion des requêtes, seuil Zipf, modèle spaCy) et la mesure « P279* = 41 s » n'a pas été reproduite. La référence est `docs/adr/README.md`.
+
+
 Date : 2026-10-22. Préparation du test technique CODATA. Toutes les mesures ci-dessous ont été faites en live sur l'API Wikidata ce jour-là ; les requêtes et scripts de mesure sont dans `probes/`.
 
 ## 1. Décisions proposées
