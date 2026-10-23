@@ -1,5 +1,7 @@
 # wdlink
 
+[![ci](https://github.com/yoannnglnad/wdlink/actions/workflows/ci.yml/badge.svg)](https://github.com/yoannnglnad/wdlink/actions/workflows/ci.yml)
+
 **Text-to-Wikidata entity linking with a GraphRAG re-ranker over a local RDF/SKOS graph.**
 
 `wdlink` finds the meaningful terms in an English text and links each one to a Wikidata item (QID). Candidates come from the Wikidata search APIs. For each document, `wdlink` builds a small SKOS graph around the candidates and uses it to choose the reading that fits the context. Every link comes with a calibrated confidence, the alternatives considered, and the evidence behind the choice. No local copy of Wikidata is needed.
