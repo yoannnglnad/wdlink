@@ -4,7 +4,7 @@
 
 ## Context
 
-The type signal (ADR-019) and the housekeeping filter (ADR-010) need each candidate's classes. These are its `instance of` (P31) values and their superclasses (P279). The complete closure `wdt:P31/wdt:P279*` is the textbook query. Wikidata's upper ontology is deep and tangled, though, so the full closure reaches very general classes.
+The type signal (ADR-019) needs each candidate's classes. The housekeeping filter (ADR-010) only looks at direct P31 values, so it does not depend on the closure. These are its `instance of` (P31) values and their superclasses (P279). The complete closure `wdt:P31/wdt:P279*` is the textbook query. Wikidata's upper ontology is deep and tangled, though, so the full closure reaches very general classes.
 
 ## Options measured
 
@@ -27,5 +27,5 @@ Use the bounded closure: P31 followed by up to 3 P279 hops, written as an explic
 
 ## Consequences
 
-- An item whose relevant class is more than 3 hops above its P31 is not recognised as belonging to it: the casing rule and the housekeeping filter simply do not fire for it. They never fire wrongly.
-- The depth is a constant (`TYPE_DEPTH = 3`, `config.py`). It was not benchmarked against 2 or 4 on accuracy: since NER typing was rejected (ADR-019), types only feed the casing rule and the housekeeping filter, which use classes close to P31.
+- An item whose relevant class is more than 3 hops above its P31 is not recognised as belonging to it: the casing rule simply does not fire for it, and never fires wrongly.
+- The depth is a constant (`TYPE_DEPTH = 3`, `config.py`). It was not benchmarked against 2 or 4 on accuracy: since NER typing was rejected (ADR-019), the closure only feeds the casing rule, whose classes (song, film, human…) sit within one or two hops of P31.
