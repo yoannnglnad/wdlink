@@ -46,6 +46,13 @@ uv run pytest                              # 27 tests (2 need the network or a w
 
 The first run downloads the models and fills `.cache/wikidata/`. Later runs are reproducible from that cache.
 
+**Reproducing the published numbers.** Wikidata changes every day. The exact snapshot behind `eval/results/` and `eval/benchmarks/` (taken 22–23 October 2026) is committed as `eval/wikidata-cache.tar.gz` (8 MB, with a SHA-256 file):
+
+```bash
+scripts/cache_snapshot.sh restore          # verifies the checksum, unpacks into .cache/wikidata
+uv run wdlink eval --offline               # no network: reproduces eval/results/results.json exactly
+```
+
 ## Design and its evidence
 
 - [`docs/architecture.md`](docs/architecture.md): the architecture and ranking strategy, the 1–2 page written deliverable.

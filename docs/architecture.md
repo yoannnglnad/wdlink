@@ -20,7 +20,7 @@ All Wikidata calls go through one client ([ADR-002](adr/002-wikidata-access-etiq
 
 spaCy `en_core_web_trf` ([ADR-004](adr/004-spacy-model.md)) gives the named entities, minus dates and quantities, and the noun chunks that do not overlap them. `trf` beats `sm` by 3.4 end-to-end F1 points, with an interval excluding 0; `sm` stays as the lightweight option.
 
-Each mention keeps its character offsets and its sentence ±1 as context ([ADR-006](adr/006-context-window.md)). A one-word common noun is kept only if its Zipf frequency is below 3.5 ([ADR-005](adr/005-generic-noun-filter.md)): "radioactivity" passes, "research" does not. Lowering the cut-off from 4.5 to 3.5 raised end-to-end F1 by 4.6 points, an interval excluding 0.
+Each mention keeps its character offsets and its sentence ±1 as context ([ADR-006](adr/006-context-window.md)). A one-word common noun is kept only if its Zipf frequency is below 3.5 ([ADR-005](adr/005-generic-noun-filter.md)): "radioactivity" passes, "research" does not. Lowering the cut-off from 4.5 to 3.5 raised end-to-end F1 by 4.4 points, an interval excluding 0.
 
 ## 2. Candidate retrieval
 

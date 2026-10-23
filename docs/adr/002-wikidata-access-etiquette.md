@@ -25,4 +25,5 @@ The cache changes no result: it makes runs repeatable and fast. The final evalua
 ## Consequences
 
 - A run that must fetch most entities is bounded by the rate limit; a warm run takes under 2 minutes for the three splits.
-- Results are tied to the Wikidata snapshot in the cache (October 2026). Shipping the cache would let a reviewer reproduce every number exactly.
+- Results are tied to the Wikidata snapshot in the cache (22–23 October 2026). That snapshot is committed as `eval/wikidata-cache.tar.gz` (8 MB compressed; `scripts/cache_snapshot.sh restore`), so a reviewer can reproduce every number offline.
+- A `manifest.json` in the cache records the settings that shape its content: languages, search depth and query templates. A cache built with other settings is refused.

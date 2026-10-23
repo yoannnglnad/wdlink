@@ -36,7 +36,7 @@ SKIPPED_NER_LABELS = frozenset(
 )
 # A one-word common noun more frequent than this (Zipf scale) is too generic to link
 # ("research" 5.4, "planet" 4.7) while specific terms pass ("radioactivity" 2.9, "helium" 3.4).
-# Benchmarked on dev end to end (ADR-005): 4.5 -> 3.5 raises A2KB F1 from 0.660 to 0.706.
+# Benchmarked on dev end to end (ADR-005): 4.5 -> 3.5 raises A2KB F1 from 0.696 to 0.741.
 GENERIC_NOUN_MAX_ZIPF = 3.5
 CONTEXT_WINDOW_SENTENCES = 1  # sentences on each side of the mention used as its context
 

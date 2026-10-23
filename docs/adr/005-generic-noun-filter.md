@@ -20,13 +20,15 @@ End to end on dev: our extraction, then linking. Thresholds are tuned by cross-v
 
 | Cut-off | Predicted links | A2KB precision | A2KB recall | A2KB F1 | ΔF1 vs 3.5 [95% CI] |
 |---|---|---|---|---|---|
-| no filter | 295 | 0.458 | 0.780 | 0.577 | −12.9 [−16.4, −9.5] |
-| Zipf < 5.0 | 254 | 0.528 | 0.775 | 0.628 | −7.9 [−11.1, −4.6] |
-| Zipf < 4.5 (initial default) | 233 | 0.575 | 0.775 | 0.660 | −4.6 [−7.1, −1.9] |
-| Zipf < 4.0 | 218 | 0.615 | 0.775 | 0.685 | −2.1 [−4.0, +0.2] |
-| **Zipf < 3.5** | 198 | 0.662 | 0.757 | 0.706 | – |
-| Zipf < 3.0 | 188 | 0.681 | 0.740 | 0.709 | +0.3 [−1.2, +1.6] |
-| Zipf < 2.5 | 183 | 0.689 | 0.728 | 0.708 | +0.2 [−2.0, +2.2] |
+| no filter | 297 | 0.485 | 0.832 | 0.613 | −12.8 [−16.6, −9.1] |
+| Zipf < 5.0 | 254 | 0.555 | 0.815 | 0.660 | −8.0 [−11.3, −4.8] |
+| Zipf < 4.5 (initial default) | 232 | 0.608 | 0.815 | 0.696 | −4.4 [−7.1, −1.7] |
+| Zipf < 4.0 | 216 | 0.648 | 0.809 | 0.720 | −2.1 [−4.0, +0.2] |
+| **Zipf < 3.5** | 197 | 0.695 | 0.792 | 0.741 | – |
+| Zipf < 3.0 | 184 | 0.728 | 0.775 | 0.751 | +1.0 [−0.6, +2.8] |
+| Zipf < 2.5 | 177 | 0.734 | 0.751 | 0.743 | +0.2 [−2.2, +2.8] |
+
+Extraction uses the current default, `en_core_web_trf`. The suite was first run with `en_core_web_sm`, which gave the same pattern: 4.5 → 3.5 raised F1 from 0.660 to 0.706 (+4.6 [+1.9, +7.1]), with a plateau from 2.5 to 3.5.
 
 ΔF1 is a paired, document-level bootstrap of the end-to-end F1 difference (2,000 resamples).
 
@@ -38,9 +40,9 @@ Cut-off **3.5**.
 
 ## Why
 
-- **The filter matters.** Without it, F1 drops to 0.577: 160 of the 295 predicted links are wrong.
-- **4.5 was too lenient, significantly.** Going from 4.5 to 3.5 removes 35 predicted links, of which 32 were wrong and only 3 right. It raises F1 by 4.6 points, and the interval [+1.9, +7.1] excludes 0.
-- **2.5–3.5 is a plateau** (F1 0.706–0.709, intervals around 0). Within it, 3.5 keeps the most recall (0.757 against 0.740 at 3.0). This matters for research text, because science words sit just around 3:
+- **The filter matters.** Without it, F1 drops to 0.613: 153 of the 297 predicted links are wrong.
+- **4.5 was too lenient, significantly.** Going from 4.5 to 3.5 removes 35 predicted links, of which 4 were right and 31 wrong. It raises F1 by 4.4 points, and the interval [+1.7, +7.1] excludes 0.
+- **2.5–3.5 is a plateau** (F1 0.741–0.751, intervals around 0). Within it, 3.5 keeps the most recall (0.792 against 0.775 at 3.0). This matters for research text, because science words sit just around 3:
 
 | Word | Zipf |
 |---|---|
