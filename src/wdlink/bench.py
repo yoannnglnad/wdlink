@@ -318,9 +318,21 @@ def power_source() -> str:
         out = subprocess.run(["pmset", "-g", "batt"], capture_output=True, text=True, timeout=5)
     except (OSError, subprocess.SubprocessError):
         return "unknown"
-    if "AC Power" in out.stdout:
-        return "AC"
-    return "battery" if "Battery Power" in out.stdout else "unknown"
+    source = (
+        "AC"
+        if "AC Power" in out.stdout
+        else "battery"
+        if "Battery Power" in out.stdout
+        else "unknown"
+    )
+    try:
+        settings = subprocess.run(["pmset", "-g"], capture_output=True, text=True, timeout=5).stdout
+    except (OSError, subprocess.SubprocessError):
+        return source
+    low_power = any(
+        line.split()[-1] == "1" for line in settings.splitlines() if "lowpowermode" in line
+    )
+    return f"{source}, Low Power Mode" if low_power else source
 
 
 def run_suite(name: str, dev_path: Path, out_dir: Path, offline: bool) -> dict:
@@ -420,7 +432,11 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
         lines.insert(
             4,
             f"Timings measured on: {', '.join(sources)} power"
-            + (" — not comparable to AC timings." if "battery" in sources else ".")
+            + (
+                " — throttled, not comparable to normal timings."
+                if any("battery" in x or "Low Power" in x for x in sources)
+                else "."
+            )
             + "\n",
         )
     for r in out["results"]:
