@@ -28,7 +28,7 @@ Build the rdflib SKOS graph first. The ranker reads a NetworkX view derived from
 ## Why
 
 - **RDF stays the single source of truth.** Every edge the ranker uses exists as a triple in the exported Turtle file, so the evidence in the JSON can be checked against the graph.
-- **The SPARQL view was the bottleneck.** rdflib's SPARQL engine took 222 ms per document, about 50% on top of the whole preparation (about 450 ms per document, mostly embeddings). The equivalent triple scan takes 1.5 ms and gives the same edges. The SPARQL query is kept in the code (`graph.CONCEPT_EDGES`) for documentation and for this benchmark.
+- **The SPARQL view was the bottleneck.** rdflib's SPARQL engine took 222 ms per document, about 50% on top of the whole preparation (about 450 ms per document, 71% of it embeddings, [`evidence.md`](../../eval/benchmarks/evidence.md)). The equivalent triple scan takes 1.5 ms and gives the same edges. The SPARQL query is kept in the code (`graph.CONCEPT_EDGES`) for documentation and for this benchmark.
 - **The RDF cost is negligible.** Building the graph plus the view costs 8 ms per document, against 0.7 ms without RDF. The whole preparation, dominated by embeddings, takes about 450 ms per document.
 
 ## Consequences

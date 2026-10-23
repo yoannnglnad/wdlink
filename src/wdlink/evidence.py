@@ -314,7 +314,7 @@ def markdown(e: dict) -> str:
 
 def main(args: argparse.Namespace) -> None:
     dev = load(Path(args.dev))
-    client = WikidataClient(offline=True)
+    client = WikidataClient()  # cache first; class labels for Paris may need a fetch
     evidence = {
         "spacy": spacy_models(),
         "timings": stage_timings(dev),

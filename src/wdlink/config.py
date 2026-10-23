@@ -23,7 +23,7 @@ SPARQL_VALUES_BATCH = 100  # QIDs per VALUES clause, keeps each query well under
 CACHE_DIR = Path(".cache/wikidata")
 
 LANGUAGE = "en"
-LABEL_LANGUAGES = "en|mul"  # many English labels now live under `mul` only (e.g. Q42, Q7186)
+LABEL_LANGUAGES = "en|mul"  # many English labels now live under `mul` only (e.g. Q42)
 
 # --- Term extraction -------------------------------------------------------------------------
 

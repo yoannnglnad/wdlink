@@ -26,7 +26,7 @@ Each mention keeps its character offsets and its sentence ±1 as context ([ADR-0
 
 Each mention is searched with `wbsearchentities` and the Wikibase REST search, top 20 each ([ADR-007](adr/007-search-apis.md), [ADR-008](adr/008-search-depth.md)). Bare capitalised words ("Lincoln", "Curie") are also searched among humans (`haswbstatement:P31=Q5`): both APIs miss Abraham Lincoln for "Lincoln". `wbsearchentities` alone loses 3.7 points (p = 0.016).
 
-- **Terms.** Labels, descriptions and aliases come from `wbgetentities` with `languages=en|mul`: Q7186 has no `en` label.
+- **Terms.** Labels, descriptions and aliases come from `wbgetentities` with `languages=en|mul`: Douglas Adams (Q42) has no `en` label, only `mul`.
 - **Exclusions.** Disambiguation pages, categories, name items and scholarly articles are dropped ([ADR-010](adr/010-housekeeping-exclusions.md)).
 - **Pre-ranking.** A cheap mixed score (similarity to the description, name match, search rank) keeps 10 candidates per mention ([ADR-011](adr/011-prerank-and-candidate-budget.md)). Trusting the search order instead loses 4.2 points at K = 5.
 
@@ -35,7 +35,7 @@ Each mention is searched with `wbsearchentities` and the Wikibase REST search, t
 Two batched SPARQL queries fetch, for every candidate, its item-valued statements, its types and its sitelinks ([ADR-012](adr/012-relations-via-sparql.md), [ADR-013](adr/013-bounded-type-closure.md)):
 
 - relations: 2× faster and 6× smaller than `wbgetentities`;
-- types: P31 followed by at most 3 P279 hops. The full `P279*` closure types every capital city as an "organization".
+- types: P31 followed by at most 3 P279 hops. The full `P279*` closure types all five capitals tested as "organization"; depth 3 types one.
 
 rdflib builds the SKOS graph ([ADR-014](adr/014-skos-mapping.md)):
 
@@ -98,7 +98,7 @@ All three are measured with gold spans (D2KB) and end to end (A2KB, strong match
 | KORE50, accuracy | 0.227 | 0.518 | **0.567** | 11 / 4, p = 0.12 |
 | KORE50, end-to-end F1 | – | 0.461 | **0.513** | |
 
-Test NILs are all detected (precision and recall 1.0). Confidence is well calibrated on test (ECE 0.069), and over-confident on KORE50: mean confidence 0.651 for an accuracy of 0.567. Preparation takes about 0.5 s per document on a laptop, mostly embeddings; ranking takes 3 ms.
+Test NILs are all detected (precision and recall 1.0). Confidence is well calibrated on test (ECE 0.069), and over-confident on KORE50: mean confidence 0.651 for an accuracy of 0.567. Preparation takes about 0.5 s per document on a laptop, 71% of it embeddings ([`evidence.md`](../eval/benchmarks/evidence.md)); ranking takes 3 ms.
 
 **What the evaluation shows.**
 

@@ -1,12 +1,12 @@
 # ADR-020 — Graph coherence: weighted pairwise relatedness, as an additive bonus
 
-**Status:** accepted · **Evidence:** benchmark [`coherence`](../../eval/benchmarks/coherence.md), error analysis on dev, final evaluation (`eval/results/results.md`).
+**Status:** accepted · **Evidence:** benchmark [`coherence`](../../eval/benchmarks/coherence.md), the dev error analysis in [`evidence.md`](../../eval/benchmarks/evidence.md), final evaluation (`eval/results/results.md`).
 
 ## Context
 
 The core principle of the assignment is that "graph-based contextual reasoning helps determine which concept is the right one". Each candidate needs a score for how well it fits the readings of the *other* mentions, computed on the document's local graph. Collective entity-linking methods include:
 
-- pairwise relatedness: AIDA, Milne–Witten (Hoffart et al., 2011);
+- pairwise relatedness: the Milne–Witten measure (Milne & Witten, 2008), used by AIDA (Hoffart et al., 2011);
 - random walks: personalised PageRank (Pershina et al., 2015);
 - dense-subgraph search.
 

@@ -1,10 +1,10 @@
 # ADR-018 — Retrieval augmentation: the 3 graph facts closest to the context
 
-**Status:** accepted · **Evidence:** benchmark [`graph_facts`](../../eval/benchmarks/graph_facts.md) (timings on AC power), plus a dev error analysis.
+**Status:** accepted · **Evidence:** benchmark [`graph_facts`](../../eval/benchmarks/graph_facts.md) (timings on AC power), plus the Enigma measurement in [`evidence.md`](../../eval/benchmarks/evidence.md).
 
 ## Context
 
-The "retrieval-augmented" half of GraphRAG enriches each candidate's text with facts from the local graph: *Marie Curie — award received: Nobel Prize in Physics*. The question is how many facts to add, and which ones. The first design appended every fact, ordered by QID and capped at 24. On the 12-document dev split this lowered accuracy. A rich, well-described candidate lost similarity because its card became a long list of unrelated facts: the Enigma cipher machine dropped from 0.62 to 0.54 cosine with "Alan Turing helped break the Enigma cipher". Mean-pooled sentence embeddings average over everything in the input.
+The "retrieval-augmented" half of GraphRAG enriches each candidate's text with facts from the local graph: *Marie Curie — award received: Nobel Prize in Physics*. The question is how many facts to add, and which ones. The first design appended every fact, ordered by QID and capped at 24. On the 12-document dev split this lowered accuracy. A rich, well-described candidate lost similarity because its card became a long list of unrelated facts: the Enigma cipher machine dropped from 0.62 to 0.53 cosine with "Alan Turing helped break the Enigma cipher". With the 3 closest facts it is 0.56 ([`evidence.md`](../../eval/benchmarks/evidence.md)). Mean-pooled sentence embeddings average over everything in the input.
 
 The fix is query-focused: each fact is embedded on its own, and only the facts closest to the mention's context go into the card.
 

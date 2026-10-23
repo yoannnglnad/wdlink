@@ -21,11 +21,11 @@ Use the bounded closure: P31 followed by up to 3 P279 hops, written as an explic
 
 ## Why
 
-- **The full closure is semantically wrong for this use.** Through long P279 chains, every capital city becomes an "organization". A type check built on it would accept a city for an ORG mention and reject nothing. Depth 3 keeps the classes a human would name, such as city, capital, or commune of France.
+- **The full closure reaches classes that make type checks meaningless.** Through long P279 chains, all five capitals tested become an "organization", so a type check built on it would accept a city for an ORG mention. Depth 3 does not remove generic classes: Paris still gets 75 classes, from "city" and "commune of France" to "government organization" and "datapoint" ([`evidence.md`](../../eval/benchmarks/evidence.md)). But it reaches "organization" for one capital out of five instead of all five.
 - **It returns 4× fewer rows** for the same query time, so the per-entity cache stays smaller.
 - **Correction to the design notes.** The design research recorded the transitive query as 41 s against 1.25 s. This was not reproduced: both take 0.57 s here. The choice rests on the quality difference, not on speed.
 
 ## Consequences
 
 - An item whose relevant class is more than 3 hops above its P31 is not recognised as belonging to it: the casing rule simply does not fire for it, and never fires wrongly.
-- The depth is a constant (`TYPE_DEPTH = 3`, `config.py`). It was not benchmarked against 2 or 4 on accuracy: since NER typing was rejected (ADR-019), the closure only feeds the casing rule, whose classes (song, film, human…) sit within one or two hops of P31.
+- The depth is a constant (`TYPE_DEPTH = 3`, `config.py`). It was not benchmarked against 2 or 4 on accuracy: since NER typing was rejected (ADR-019), the closure only feeds the casing rule. Its classes (human, song, single, film…) are what a candidate's P31 names directly or through a short chain: Kraftwerk's "Radioactivity" is a single, and a single is a musical work.

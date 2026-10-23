@@ -23,9 +23,9 @@ Use the casing rule. Keep NER typing only as an option (`types="ner"`) for the a
 
 ## Why
 
-- **NER typing hurts with `sm` and does not help on dev with `trf`.** With `sm` it costs 7.3 points, and the interval is far from 0. With `trf` the difference is not significant (−1.0 [−3.8, +1.5]); `trf` became the default extraction model later, for its spans (ADR-004). The labels are wrong too often on short, ambiguous mentions: `sm` tags "Lincoln" ORG, "Mind" LOC and "Freddie Mercury" ORG; `trf` tags "Higgs boson" LOC. A wrong label actively penalises the right candidate.
+- **NER typing hurts with `sm` and does not help on dev with `trf`.** With `sm` it costs 7.3 points, and the interval is far from 0. With `trf` the difference is not significant (−1.0 [−3.8, +1.5]); `trf` became the default extraction model later, for its spans (ADR-004). The labels are wrong too often on short, ambiguous mentions: `sm` tags "Lincoln" ORG, "Mind" LOC and "Freddie Mercury" ORG; `trf` tags "Higgs boson" LOC ([`evidence.md`](../../eval/benchmarks/evidence.md)). A wrong label actively penalises the right candidate.
 - **The casing rule is neutral on dev but kept for two reasons.** It ties exactly with having no type signal, changing no dev decision. It is kept because the assignment requires an entity-type comparison, and because it fixes the motivating case at no cost: "radioactivity" is never linked to Kraftwerk's single. It cannot hurt a correct link unless a lower-case mention really names a song or a person, which the annotation guideline excludes.
-- **The class list is deliberately narrow.** A first version also excluded "creative work" and "business". That rejected the software library "pandas", which Wikidata classes as a creative work. Lower-case software names are common in research text.
+- **The class list is deliberately narrow.** A first version also excluded "creative work" and "business". That rejected the software library "pandas", which Wikidata classes as a creative work within depth 3 ([`evidence.md`](../../eval/benchmarks/evidence.md)). Lower-case software names are common in research text.
 
 ## Consequences
 

@@ -37,7 +37,7 @@ Thresholds are tuned on dev only; test and KORE50 are held out. Full tables are 
 uv sync                                    # Python 3.12; spaCy en_core_web_trf (+ sm) included
 uv run wdlink link "text …" --json out.json --ttl graph.ttl
 uv run wdlink link --file doc.txt --no-graph          # text-only baseline, for comparison
-uv run wdlink link "…" --spacy-model en_core_web_sm  # 15 MB pipeline instead of 478 MB
+uv run wdlink link "…" --spacy-model en_core_web_sm  # 15 MB pipeline instead of 501 MB
 uv run wdlink eval                         # dev + test (+ KORE50-DYWC if present) → eval/results/
 uv run wdlink eval --offline               # re-run from the Wikidata cache only
 uv run wdlink bench <suite>|all|micro      # design benchmarks on dev → eval/benchmarks/

@@ -10,7 +10,7 @@ The search APIs return many items that a plain-text mention never refers to:
 - name items ("Curie (family name)", "Paris (given name)");
 - scholarly articles that share a title with a concept ("Radioactivity", scientific article published in 1958).
 
-Since the 2025 split of the query service, scholarly articles are absent from the main SPARQL graph, so they cannot be enriched at all.
+Since the [2025 split of the query service](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_graph_split), scholarly articles are absent from the main SPARQL graph, so they cannot be enriched at all.
 
 ## Options measured
 

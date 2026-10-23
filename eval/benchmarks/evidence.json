@@ -1,0 +1,205 @@
+{
+  "spacy": [
+    {
+      "model": "en_core_web_sm",
+      "size_mb": 15.24228,
+      "ner_f": 0.8433119744
+    },
+    {
+      "model": "en_core_web_md",
+      "size_mb": 56.5447,
+      "ner_f": 0.8473088243
+    },
+    {
+      "model": "en_core_web_lg",
+      "size_mb": 445.143556,
+      "ner_f": 0.8553967422
+    },
+    {
+      "model": "en_core_web_trf",
+      "size_mb": 500.718631,
+      "ner_f": 0.899287945
+    }
+  ],
+  "timings": {
+    "spaCy (extraction, context)": {
+      "ms_per_doc": 100.82549190337886,
+      "share": 0.1452747079722292
+    },
+    "retrieval (cached search + terms)": {
+      "ms_per_doc": 22.612320443351145,
+      "share": 0.03258102873557336
+    },
+    "pre-ranking (embeddings)": {
+      "ms_per_doc": 183.70762188351364,
+      "share": 0.2646956698904612
+    },
+    "enrichment + RDF graph + view": {
+      "ms_per_doc": 74.25415544219923,
+      "share": 0.1069893193075362
+    },
+    "fact and card embeddings": {
+      "ms_per_doc": 312.6337579812501,
+      "share": 0.4504592740942
+    }
+  },
+  "zipf": {
+    "radioactivity": 2.91,
+    "photosynthesis": 3.03,
+    "helium": 3.42,
+    "metadata": 3.36,
+    "physics": 4.39,
+    "protein": 4.53,
+    "planet": 4.68,
+    "research": 5.39,
+    "data": 5.34
+  },
+  "labels": {
+    "en": {
+      "Q7186": [
+        "en"
+      ],
+      "Q42": []
+    },
+    "en|mul": {
+      "Q7186": [
+        "en",
+        "mul"
+      ],
+      "Q42": [
+        "mul"
+      ]
+    }
+  },
+  "entities": {
+    "Q7186_item_statements": 156,
+    "Q7186_properties": 49,
+    "pandas_is_creative_work": true,
+    "paris_depth3_classes": [
+      "LAU 2",
+      "academic enclave",
+      "administrative centre",
+      "administrative territorial entity",
+      "administrative territorial entity of France",
+      "administrative territorial entity of a single country",
+      "administrative territorial entity of a specific level",
+      "big city",
+      "capital city",
+      "city",
+      "city or town",
+      "college town",
+      "commercial capital city",
+      "commune",
+      "commune of France",
+      "corporation",
+      "cultural capital",
+      "data",
+      "datapoint",
+      "economic capital city",
+      "electoral unit",
+      "fashion capital",
+      "financial center",
+      "finding",
+      "fourth-level administrative division",
+      "geographic entity",
+      "geographic location",
+      "geographical area",
+      "geographical feature",
+      "geopolitical region",
+      "global city",
+      "government organization",
+      "human settlement",
+      "human-geographic territorial entity",
+      "immaterial entity",
+      "infra-like generic quality",
+      "juridical person",
+      "largest city",
+      "local administrative unit in the NUTS system",
+      "local authority",
+      "local government",
+      "locality",
+      "location",
+      "megalopolis",
+      "metropolis",
+      "municipality",
+      "national capital",
+      "neighborhood",
+      "outlier",
+      "physical endurant",
+      "physical location",
+      "physical property",
+      "physical region",
+      "physico-chemical property",
+      "place",
+      "point of interest",
+      "political entity",
+      "political organization",
+      "political territorial entity",
+      "polity",
+      "primate city",
+      "region",
+      "seat",
+      "section of populated place",
+      "spatial region",
+      "spatial region or site",
+      "statistical territorial entity",
+      "territorial collectivity of France",
+      "territorial collectivity of France with special status",
+      "tourist destination",
+      "urban area",
+      "urban settlement"
+    ]
+  },
+  "ner": {
+    "Lincoln": {
+      "en_core_web_sm": "ORG",
+      "en_core_web_trf": "PERSON"
+    },
+    "Mind": {
+      "en_core_web_sm": "LOC",
+      "en_core_web_trf": "ORG"
+    },
+    "Higgs boson": {
+      "en_core_web_sm": null,
+      "en_core_web_trf": "LOC"
+    },
+    "Freddie Mercury": {
+      "en_core_web_sm": "ORG",
+      "en_core_web_trf": "PERSON"
+    }
+  },
+  "enigma": {
+    "label_description": 0.6191846132278442,
+    "all_facts": 0.5330163836479187,
+    "three_facts": 0.5624323487281799
+  },
+  "coherence": {
+    "flips": {
+      "0.1": {
+        "fixed": 2,
+        "broken": 0
+      },
+      "0.3": {
+        "fixed": 2,
+        "broken": 1
+      },
+      "1.0": {
+        "fixed": 4,
+        "broken": 7
+      }
+    },
+    "connectivity": {
+      "direct statement": 94,
+      "none": 35,
+      "shared neighbours": 31,
+      "gold not among kept candidates": 6,
+      "no other gold item in the document": 7
+    },
+    "errors": {
+      "wrong candidate ranked first": 9,
+      "gold not retrieved": 5,
+      "gold cut by the pre-ranking": 3,
+      "NIL linked to a namesake": 6
+    }
+  }
+}

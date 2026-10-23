@@ -4,7 +4,7 @@
 
 ## Context
 
-Recent entity-linking work uses LLMs for re-ranking or generation (ChatEL, LREC-COLING 2024; OneNet, EMNLP 2024; LELA, ISWC 2026). "GraphRAG" also often implies an LLM that reads a retrieved subgraph.
+Recent entity-linking work uses LLMs for re-ranking or generation (ChatEL, LREC-COLING 2024; OneNet, EMNLP 2024; LELA, [arXiv 2601.05192](https://arxiv.org/abs/2601.05192), 2026). "GraphRAG" also often implies an LLM that reads a retrieved subgraph.
 
 ## Decision
 

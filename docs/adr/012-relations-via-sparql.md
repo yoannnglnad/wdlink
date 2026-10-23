@@ -30,5 +30,5 @@ Use SPARQL for relations and for types (ADR-013). Use `wbgetentities` only for l
 
 ## Consequences
 
-- The pipeline depends on the query service, whose availability target is lower than the Action API's (95%).
+- The pipeline depends on the query service, which dropped connections several times during this project's runs.
 - The client retries dropped connections and 5xx errors with backoff. This was added after a real `RemoteDisconnected` interrupted a benchmark run.

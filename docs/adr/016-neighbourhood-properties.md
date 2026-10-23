@@ -4,7 +4,7 @@
 
 ## Context
 
-Coherence (ADR-020) compares candidates through their neighbours: two candidates that share rare neighbours are related. A popular item has hundreds of item-valued statements; Marie Curie (Q7186) has 297 properties. The neighbourhood can be built in two ways:
+Coherence (ADR-020) compares candidates through their neighbours: two candidates that share rare neighbours are related. A well-described item has many item-valued statements: Marie Curie (Q7186) has 156, under 49 properties ([`evidence.md`](../../eval/benchmarks/evidence.md)). The neighbourhood can be built in two ways:
 
 - from **all** item-valued statements;
 - from a **whitelist** of about 40 descriptive properties: location, country, field of work, award received, educated at, employer, part of, author, performer, discoverer, named after, and so on.
