@@ -33,8 +33,9 @@ SKIPPED_NER_LABELS = frozenset(
     {"DATE", "TIME", "PERCENT", "MONEY", "QUANTITY", "ORDINAL", "CARDINAL"}
 )
 # A one-word common noun more frequent than this (Zipf scale) is too generic to link
-# ("research" 5.4, "data" 5.3) while specific terms pass ("radioactivity" 2.9, "physics" 4.4).
-GENERIC_NOUN_MAX_ZIPF = 4.5
+# ("research" 5.4, "planet" 4.7) while specific terms pass ("radioactivity" 2.9, "helium" 3.4).
+# Benchmarked on dev end to end (ADR-005): 4.5 -> 3.5 raises A2KB F1 from 0.660 to 0.706.
+GENERIC_NOUN_MAX_ZIPF = 3.5
 CONTEXT_WINDOW_SENTENCES = 1  # sentences on each side of the mention used as its context
 
 # --- Candidate retrieval ---------------------------------------------------------------------

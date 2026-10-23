@@ -93,7 +93,7 @@ SUITES: dict[str, dict] = {
             Variant(
                 "no filter" if z is None else f"Zipf < {z}",
                 _p(generic_noun_max_zipf=z),
-                reference=z == 4.5,
+                reference=z == 3.5,
             )
             for z in (None, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0)
         ],
