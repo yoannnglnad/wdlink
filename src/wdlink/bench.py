@@ -373,6 +373,11 @@ def run_suite(name: str, dev_path: Path, out_dir: Path, offline: bool) -> dict:
             gc.collect()
         prepared, stats = prepared_by_pcfg[v.pcfg]
         rows, counts, tuned = cross_validate(prepared, v, e2e)
+        start = time.perf_counter()  # ranking cost alone: preparation is shared across variants
+        for _, gold, _ in prepared:
+            gold.index._memo.clear()  # time cold relatedness, not the cross-validation cache
+            Linker.rank(gold, v.rcfg)
+        stats = stats | {"rank_ms_per_doc": 1000 * (time.perf_counter() - start) / len(prepared)}
         results.append(Outcome(v, rows, stats, counts, tuned))
     ref = next(r for r in results if r.variant.reference)
     report = []
@@ -436,7 +441,11 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
             ("a2kb_strong_f1", "A2KB F1"),
         ]
     if timing:
-        cols += [("ms_per_doc", "ms/doc (warm)"), ("triples_per_doc", "triples/doc")]
+        cols += [
+            ("ms_per_doc", "prepare ms/doc"),
+            ("rank_ms_per_doc", "rank ms/doc"),
+            ("triples_per_doc", "triples/doc"),
+        ]
     if out["suite"] == "calibration":
         cols += [("mean_confidence", "mean confidence"), ("ece", "ECE")]
     lines = [
@@ -474,7 +483,14 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
         vals = []
         for key, _ in cols:
             v = r.get(key)
-            vals.append(f"{v:.0f}" if key in ("ms_per_doc", "triples_per_doc") and v else _f(v))
+            whole = ("ms_per_doc", "triples_per_doc")
+            vals.append(
+                f"{v:.0f}"
+                if key in whole and v
+                else f"{v:.1f}"
+                if key == "rank_ms_per_doc"
+                else _f(v)
+            )
         lo, hi = r["delta_ci95"]
         delta = (
             "–"
