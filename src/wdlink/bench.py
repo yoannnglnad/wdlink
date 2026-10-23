@@ -415,6 +415,14 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
         "| variant | " + " | ".join(c[1] for c in cols) + " | Δ vs ★ [95% CI] | p |",
         "|---" * (len(cols) + 3) + "|",
     ]
+    sources = sorted({r["power_source"] for r in out["results"] if "power_source" in r})
+    if sources:
+        lines.insert(
+            4,
+            f"Timings measured on: {', '.join(sources)} power"
+            + (" — not comparable to AC timings." if "battery" in sources else ".")
+            + "\n",
+        )
     for r in out["results"]:
         name = f"★ {r['variant']}" if r["reference"] else r["variant"]
         if "parameters" in r:
