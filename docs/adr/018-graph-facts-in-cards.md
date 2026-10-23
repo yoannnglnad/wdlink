@@ -29,7 +29,7 @@ Add the **3 facts closest to the context** (`facts_per_card=3`).
 - **Facts help, if they are selected.** A card without facts is 1.0 point worse, and appending all facts is 0.5 point worse and 38% slower. Neither interval excludes 0, but both point the same way as the earlier error analysis.
 - **1, 3 and 5 facts form a plateau.** 3 is its middle, the same rule ADR-003 uses for thresholds. In addition, the JSON evidence shows the facts that were used, and 3 facts explain a decision better than 1 does.
 - **Speed is unchanged.** The cost of embedding every fact individually is paid by all variants except "no facts". It is the same whatever the number of facts kept.
-- **Selection by context makes it retrieval, not decoration.** For "Paris" in a Trojan War sentence, the facts selected for the Trojan prince are about Priam and Troy; for the French capital, they are about France.
+- **Selection by context makes it retrieval, not decoration.** In "Paris, son of Priam, abducted Helen and started the Trojan War" (`examples/paris_troy.json`), the facts retrieved for the Trojan prince are *instance of: mythological Greek character; spouse: Helen of Troy; father: Priam*. These are exactly the relations the sentence talks about.
 
 ## Consequences
 
