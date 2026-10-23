@@ -244,13 +244,15 @@ class Outcome:
     variant: Variant
     rows: list[dict]
     stats: dict
-    counts: dict | None
+    doc_counts: dict[str, dict]  # A2KB counts per dev document (end-to-end suites only)
     tuned: list[dict]
 
 
-def cross_validate(prepared: list, v: Variant, e2e: bool) -> tuple[list[dict], dict | None, list]:
-    """Rows predicted by fold-tuned configurations, summed A2KB counts, tuned parameters."""
-    rows, counts, tuned = [], None, []
+def cross_validate(
+    prepared: list, v: Variant, e2e: bool
+) -> tuple[list[dict], dict[str, dict], list]:
+    """Rows predicted by fold-tuned configurations, A2KB counts per document, tuned values."""
+    rows, doc_counts, tuned = [], {}, []
     for f in range(FOLDS):
         train = [p for i, p in enumerate(prepared) if i % FOLDS != f]
         held = [p for i, p in enumerate(prepared) if i % FOLDS == f]
@@ -267,9 +269,29 @@ def cross_validate(prepared: list, v: Variant, e2e: bool) -> tuple[list[dict], d
         )
         rows += d2kb(held, cfg)
         if e2e:
-            c = a2kb_counts(held, cfg)
-            counts = c if counts is None else {k: counts[k] + c[k] for k in c}
-    return rows, counts, tuned
+            for p in held:
+                doc_counts[p[0]["id"]] = a2kb_counts([p], cfg)
+    return rows, doc_counts, tuned
+
+
+def _sum_counts(counts: list[dict]) -> dict:
+    return {k: sum(c[k] for c in counts) for k in counts[0]}
+
+
+def bootstrap_f1_delta(doc_counts: dict, ref_counts: dict) -> tuple[float, float, float]:
+    """Paired document-level bootstrap of the end-to-end (A2KB strong) F1 difference."""
+    docs = sorted(ref_counts)
+
+    def f1(sample: list[str], counts: dict) -> float:
+        return a2kb_metrics(_sum_counts([counts[d] for d in sample]))["strong_f1"]
+
+    rng = random.Random(0)
+    deltas = sorted(
+        f1(sample, doc_counts) - f1(sample, ref_counts)
+        for sample in (rng.choices(docs, k=len(docs)) for _ in range(BOOTSTRAP_SAMPLES))
+    )
+    point = f1(docs, doc_counts) - f1(docs, ref_counts)
+    return point, deltas[int(0.025 * BOOTSTRAP_SAMPLES)], deltas[int(0.975 * BOOTSTRAP_SAMPLES) - 1]
 
 
 def bootstrap_delta(rows: list[dict], ref: list[dict]) -> tuple[float, float, float]:
@@ -356,7 +378,10 @@ def run_suite(name: str, dev_path: Path, out_dir: Path, offline: bool) -> dict:
     report = []
     for r in results:
         point, lo, hi = bootstrap_delta(r.rows, ref.rows)
-        a2kb = a2kb_metrics(r.counts) if e2e and r.counts else {}
+        a2kb = a2kb_metrics(_sum_counts(list(r.doc_counts.values()))) if e2e else {}
+        if e2e:
+            f1_point, f1_lo, f1_hi = bootstrap_f1_delta(r.doc_counts, ref.doc_counts)
+            a2kb |= {"f1_delta_vs_reference": f1_point, "f1_delta_ci95": [f1_lo, f1_hi]}
         report.append(
             {
                 "variant": r.variant.name,
@@ -424,8 +449,11 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
         "Δ = accuracy difference with the reference (★), in points, with its 95% paired "
         "document-level bootstrap interval; p = exact McNemar test.",
         "",
-        "| variant | " + " | ".join(c[1] for c in cols) + " | Δ vs ★ [95% CI] | p |",
-        "|---" * (len(cols) + 3) + "|",
+        "| variant | "
+        + " | ".join(c[1] for c in cols)
+        + " | Δ vs ★ [95% CI] | p |"
+        + (" ΔF1 A2KB vs ★ [95% CI] |" if e2e else ""),
+        "|---" * (len(cols) + 3 + int(e2e)) + "|",
     ]
     sources = sorted({r["power_source"] for r in out["results"] if "power_source" in r})
     if sources:
@@ -454,7 +482,16 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
             else f"{_f(r['delta_vs_reference'], True)} [{_f(lo, True)}, {_f(hi, True)}]"
         )
         p = "–" if r["reference"] else f"{r['mcnemar_p']:.3f}"
-        lines.append(f"| {name} | " + " | ".join(vals) + f" | {delta} | {p} |")
+        row = f"| {name} | " + " | ".join(vals) + f" | {delta} | {p} |"
+        if e2e:
+            flo, fhi = r["a2kb_f1_delta_ci95"]
+            f1d = r["a2kb_f1_delta_vs_reference"]
+            row += (
+                " – |"
+                if r["reference"]
+                else f" {_f(f1d, True)} [{_f(flo, True)}, {_f(fhi, True)}] |"
+            )
+        lines.append(row)
     return "\n".join(lines) + "\n"
 
 
