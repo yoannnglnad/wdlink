@@ -204,6 +204,7 @@ CI (`.github/workflows/ci.yml`) runs lint, formatting, type checking and the off
 
 - **Small evaluation sets.** Dev has 191 mentions and test has 97. They are single-annotated, although every gold QID was verified against the live API. Differences of a few points are within noise.
 - **Namesakes of unknown entities.** Half of the hard NILs (invented entities named like real ones) are still linked to a namesake. The popularity prior also favours well-known items over long-tail ones.
+- **Span boundaries come from spaCy.** In "Marie Curie won the Nobel Prize in Physics.", `trf` returns "Nobel Prize" and "Physics" as two mentions, so the prize links to the generic Nobel Prize (Q7191). The longer sentence above keeps it whole.
 - **Retrieval caps accuracy on hard text** (see Results). Deeper search (CirrusSearch, 20 candidates) is the first lever.
 - **Typing is the open question.** NER typing with `trf` labels scores higher on test and KORE50 but not on dev, so it is not the default. It is the first thing to re-test with a larger dev split.
 - **No LLM in the core.** This keeps the graph's contribution measurable and the runs reproducible. An LLM re-ranker for low-margin mentions is the natural extension.
