@@ -13,9 +13,10 @@ import os
 import threading
 import time
 from collections import defaultdict
-from collections.abc import Iterable
+from collections.abc import Iterable, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from typing import Any
 
 import requests
 
@@ -135,7 +136,7 @@ class WikidataClient:
         self.stats["sparql_calls"] += 1
         return data["results"]["bindings"]
 
-    def _cached_many(self, kind: str, keys: list[str], fetch) -> dict[str, object]:
+    def _cached_many(self, kind: str, keys: list[str], fetch) -> dict[str, Any]:
         """Return {key: value} for every key, fetching only cache misses (in batches)."""
         out, missing = {}, []
         for key in dict.fromkeys(keys):
@@ -220,7 +221,7 @@ class WikidataClient:
     def search_many(
         self,
         queries: list[str],
-        human_queries: list[str] = (),
+        human_queries: Sequence[str] = (),
         apis: tuple[str, ...] = ("wbs", "rest"),
         limit: int = config.SEARCH_LIMIT,
     ) -> dict[str, dict[str, list[dict]]]:
@@ -263,7 +264,9 @@ class WikidataClient:
         """Direct P31, the P31/P279{0..3} (or P279{1..3} for classes) closure, and sitelinks."""
 
         def fetch(missing: list[str]) -> dict[str, dict]:
-            out = {q: {"p31": [], "types": [], "sitelinks": 0} for q in missing}
+            out: dict[str, dict[str, Any]] = {
+                q: {"p31": [], "types": [], "sitelinks": 0} for q in missing
+            }
             for batch in _chunks(missing, config.SPARQL_VALUES_BATCH):
                 for row in self.sparql(_types_query(batch)):
                     entry = out[_qid(row["item"]["value"])]

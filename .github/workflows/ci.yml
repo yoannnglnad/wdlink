@@ -16,5 +16,7 @@ jobs:
         run: |
           uv run ruff check src tests
           uv run ruff format --check src tests
+      - name: Type check
+        run: uvx ty@0.0.91 check src
       - name: Unit tests (offline)
         run: uv run pytest -m "not network" -q

@@ -238,6 +238,15 @@ SUITES: dict[str, dict] = {
 }
 
 
+@dataclass
+class Outcome:
+    variant: Variant
+    rows: list[dict]
+    stats: dict
+    counts: dict | None
+    tuned: list[dict]
+
+
 def cross_validate(prepared: list, v: Variant, e2e: bool) -> tuple[list[dict], dict | None, list]:
     """Rows predicted by fold-tuned configurations, summed A2KB counts, tuned parameters."""
     rows, counts, tuned = [], None, []
@@ -307,7 +316,7 @@ def run_suite(name: str, dev_path: Path, out_dir: Path, offline: bool) -> dict:
     client = WikidataClient(offline=offline)
     e2e, timing = suite.get("e2e", False), suite.get("timing", False)
     prepared_by_pcfg: dict[PipelineConfig, tuple[list, dict]] = {}
-    results = []
+    results: list[Outcome] = []
     for v in suite["variants"]:
         if v.pcfg not in prepared_by_pcfg:
             log.info("preparing %s", v.name)
@@ -317,33 +326,32 @@ def run_suite(name: str, dev_path: Path, out_dir: Path, offline: bool) -> dict:
             gc.collect()
         prepared, stats = prepared_by_pcfg[v.pcfg]
         rows, counts, tuned = cross_validate(prepared, v, e2e)
-        results.append(
-            {"variant": v, "rows": rows, "stats": stats, "counts": counts, "tuned": tuned}
-        )
-    ref = next(r for r in results if r["variant"].reference)
+        results.append(Outcome(v, rows, stats, counts, tuned))
+    ref = next(r for r in results if r.variant.reference)
     report = []
     for r in results:
-        point, lo, hi = bootstrap_delta(r["rows"], ref["rows"])
+        point, lo, hi = bootstrap_delta(r.rows, ref.rows)
+        a2kb = a2kb_metrics(r.counts) if e2e and r.counts else {}
         report.append(
             {
-                "variant": r["variant"].name,
-                "reference": r["variant"].reference,
-                **r["variant"].notes,
-                **link_metrics(r["rows"]),
-                **retrieval_metrics(r["rows"]),
-                **({f"a2kb_{k}": v for k, v in a2kb_metrics(r["counts"]).items()} if e2e else {}),
-                **r["stats"],
+                "variant": r.variant.name,
+                "reference": r.variant.reference,
+                **r.variant.notes,
+                **link_metrics(r.rows),
+                **retrieval_metrics(r.rows),
+                **{f"a2kb_{k}": v for k, v in a2kb.items()},
+                **r.stats,
                 "delta_vs_reference": point,
                 "delta_ci95": [lo, hi],
-                "mcnemar_p": mcnemar(ref["rows"], r["rows"])["p_value"],
-                "tuned_per_fold": r["tuned"],
+                "mcnemar_p": mcnemar(ref.rows, r.rows)["p_value"],
+                "tuned_per_fold": r.tuned,
             }
         )
     out = {
         "suite": name,
         "question": suite["question"],
         "dev_docs": len(docs),
-        "dev_mentions": len(ref["rows"]),
+        "dev_mentions": len(ref.rows),
         "folds": FOLDS,
         "results": report,
     }
