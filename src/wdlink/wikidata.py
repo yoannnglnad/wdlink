@@ -96,7 +96,16 @@ class WikidataClient:
         for attempt in range(config.MAX_RETRIES + 1):
             self.limiter.wait()
             self.stats["http_calls"] += 1
-            resp = self.session.request(method, url, **kwargs)
+            try:
+                resp = self.session.request(method, url, **kwargs)
+            except (requests.ConnectionError, requests.Timeout) as err:
+                # WDQS sometimes drops long-lived connections; treat it like a 503
+                if attempt == config.MAX_RETRIES:
+                    raise
+                log.warning("%s on %s, retrying in %.0fs", type(err).__name__, url, backoff)
+                time.sleep(backoff)
+                backoff *= 2
+                continue
             if resp.status_code == 200:
                 return resp.json()
             retryable = resp.status_code == 429 or resp.status_code >= 500

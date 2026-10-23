@@ -281,3 +281,25 @@ def test_ppr_handles_a_mention_without_candidates():
     cfg = dataclasses.replace(DEFAULT_RANKING, coherence="ppr")
     linked = _rank(per_mention, mentions, sims, cfg)
     assert linked[0].decision == "nil_no_candidate"
+
+
+def test_dropped_connection_is_retried(tmp_path, monkeypatch):
+    import requests
+
+    from wdlink import config as cfg
+
+    monkeypatch.setattr(cfg, "MIN_BACKOFF_S", 0)
+    client = WikidataClient(cache_dir=tmp_path)
+    ok = requests.Response()
+    ok.status_code, ok._content = 200, b'{"results": {"bindings": []}}'
+    calls = []
+
+    def flaky(*args, **kwargs):
+        calls.append(1)
+        if len(calls) == 1:
+            raise requests.ConnectionError("Remote end closed connection without response")
+        return ok
+
+    monkeypatch.setattr(client.session, "request", flaky)
+    assert client.sparql("SELECT * WHERE {}") == []
+    assert len(calls) == 2
