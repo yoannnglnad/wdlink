@@ -53,10 +53,20 @@ def _is_specific(span: Span, max_zipf: float | None) -> bool:
     return any(zipf_frequency(t.text.lower(), config.LANGUAGE) < max_zipf for t in content)
 
 
-def _mention(span: Span, source: str, ner_label: str | None, window: int | None) -> Mention:
-    is_common = ner_label is None and not any(
-        t.pos_ == "PROPN" or t.text[:1].isupper() for t in span
+def is_common_noun(text: str, ner_label: str | None, tokens: Span) -> bool:
+    """A lower-case term that is not a named entity ("radioactivity"), the casing rule's input.
+
+    One rule for extracted and gold mentions: no NER label, no proper-noun token, no capital.
+    """
+    return (
+        ner_label is None
+        and not any(t.pos_ == "PROPN" for t in tokens)
+        and not any(c.isupper() for c in text)
     )
+
+
+def _mention(span: Span, source: str, ner_label: str | None, window: int | None) -> Mention:
+    is_common = is_common_noun(span.text, ner_label, span)
     return Mention(
         text=span.text,
         start=span.start_char,
@@ -119,7 +129,7 @@ def mentions_from_spans(
         )
         m = _mention(span, "gold", ner_label, pcfg.context_window)
         m.text, m.start, m.end, m.queries = text[start:end], start, end, [text[start:end]]
-        m.is_common_noun = ner_label is None and not any(c.isupper() for c in m.text)
+        m.is_common_noun = is_common_noun(m.text, ner_label, span)
         mentions.append(m)
     if pcfg.surname_expansion:
         expand_short_mentions(mentions)
