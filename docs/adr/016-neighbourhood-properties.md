@@ -30,10 +30,10 @@ Keep the whitelist (`config.RELATION_PROPERTIES`).
 
 ## Why
 
-- **Same accuracy, mention by mention, with half the graph.** The extra properties add 1,543 triples per document but do not change a single decision on dev.
+- **Same accuracy, mention by mention, with half the graph.** The extra properties add 1,543 triples per document but do not change whether any dev mention is linked correctly.
 - **Readability.** The whitelist also defines which facts can be verbalised in the candidate cards (ADR-018). "award received: Nobel Prize in Physics" is a useful fact; "described by source: Brockhaus and Efron Encyclopedic Dictionary" or "on focus list of Wikimedia project" is not. Keeping one list for both keeps the evidence interpretable.
 - **Cost is not the argument.** Both variants cost the same time, and ranking takes under 4 ms per document either way.
 
 ## Consequences
 
-The whitelist is general-domain. A specialised corpus, such as chemistry or biodiversity, would benefit from adding its own relation properties, such as "found in taxon" (P703) or "parent taxon" (P171), and the `coherence` suite measures the effect of such a change directly.
+The whitelist is general-domain. For a specialised corpus, such as chemistry or biodiversity, add the domain's relation properties, such as "found in taxon" (P703) or "parent taxon" (P171), and measure the change with the `coherence` suite.
