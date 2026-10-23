@@ -20,6 +20,7 @@ import json
 import logging
 import random
 import statistics
+import subprocess
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -307,7 +308,19 @@ def prepare(linker: Linker, docs: list[dict], e2e: bool, timing: bool) -> tuple[
         for doc in docs:
             linker.prepare(doc["text"], [(m["start"], m["end"]) for m in doc["mentions"]])
         stats["ms_per_doc"] = 1000 * (time.perf_counter() - start) / len(docs)
+        stats["power_source"] = power_source()
     return prepared, stats
+
+
+def power_source() -> str:
+    """'AC' or 'battery' on macOS (timings on battery with Low Power Mode are not comparable)."""
+    try:
+        out = subprocess.run(["pmset", "-g", "batt"], capture_output=True, text=True, timeout=5)
+    except (OSError, subprocess.SubprocessError):
+        return "unknown"
+    if "AC Power" in out.stdout:
+        return "AC"
+    return "battery" if "Battery Power" in out.stdout else "unknown"
 
 
 def run_suite(name: str, dev_path: Path, out_dir: Path, offline: bool) -> dict:
