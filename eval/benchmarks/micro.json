@@ -1,0 +1,37 @@
+{
+  "sample_qids": 50,
+  "relations": {
+    "sparql_s": 0.7522422920010285,
+    "sparql_bytes": 348394,
+    "wbgetentities_s": 1.502174916000513,
+    "wbgetentities_bytes": 2243218
+  },
+  "types": {
+    "union_depth3": {
+      "seconds": 0.567014583000855,
+      "rows": 909,
+      "cities_typed_organization": [
+        "Q64"
+      ]
+    },
+    "transitive_p279_star": {
+      "seconds": 0.5709006670003873,
+      "rows": 3600,
+      "cities_typed_organization": [
+        "Q64",
+        "Q1490",
+        "Q84",
+        "Q90",
+        "Q270"
+      ]
+    }
+  },
+  "graph": {
+    "rdf_build_ms": 6.466458333306946,
+    "view_triple_scan_ms": 1.5275971660836756,
+    "view_sparql_ms": 221.83979850039273,
+    "direct_networkx_ms": 0.6835553310035417,
+    "triples_per_doc": 1200,
+    "docs": 6
+  }
+}
