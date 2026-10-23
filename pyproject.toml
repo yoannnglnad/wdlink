@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "spacy>=3.8.16,<3.9",
+    "en-core-web-trf",
     "en-core-web-sm",
     "sentence-transformers>=6.2",
     "rdflib>=7.6",
@@ -16,9 +17,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# transformer NER (89.9 F1 vs 84.3 for sm) — larger download, used for the NER comparison
-trf = ["en-core-web-trf"]
-# larger CNN pipelines, only for the spaCy model benchmark
+# larger CNN pipelines, only for the spaCy model benchmark (ADR-004)
 models = ["en-core-web-md", "en-core-web-lg"]
 
 [project.scripts]

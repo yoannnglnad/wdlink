@@ -27,7 +27,9 @@ LABEL_LANGUAGES = "en|mul"  # many English labels now live under `mul` only (e.g
 
 # --- Term extraction -------------------------------------------------------------------------
 
-SPACY_MODEL = "en_core_web_sm"
+# Transformer pipeline: end-to-end F1 +3.4 over en_core_web_sm on dev, interval excluding 0
+# (ADR-004). en_core_web_sm stays installed as the lightweight option (--spacy-model).
+SPACY_MODEL = "en_core_web_trf"
 # NER labels that never denote a linkable concept.
 SKIPPED_NER_LABELS = frozenset(
     {"DATE", "TIME", "PERCENT", "MONEY", "QUANTITY", "ORDINAL", "CARDINAL"}

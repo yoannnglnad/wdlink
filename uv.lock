@@ -1474,6 +1474,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "en-core-web-sm" },
+    { name = "en-core-web-trf" },
     { name = "networkx" },
     { name = "rapidfuzz" },
     { name = "rdflib" },
@@ -1488,9 +1489,6 @@ models = [
     { name = "en-core-web-lg" },
     { name = "en-core-web-md" },
 ]
-trf = [
-    { name = "en-core-web-trf" },
-]
 
 [package.dev-dependencies]
 dev = [
@@ -1503,7 +1501,7 @@ requires-dist = [
     { name = "en-core-web-lg", marker = "extra == 'models'", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl" },
     { name = "en-core-web-md", marker = "extra == 'models'", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl" },
     { name = "en-core-web-sm", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" },
-    { name = "en-core-web-trf", marker = "extra == 'trf'", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.8.0/en_core_web_trf-3.8.0-py3-none-any.whl" },
+    { name = "en-core-web-trf", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.8.0/en_core_web_trf-3.8.0-py3-none-any.whl" },
     { name = "networkx", specifier = ">=3.7" },
     { name = "rapidfuzz", specifier = ">=3.14" },
     { name = "rdflib", specifier = ">=7.6" },

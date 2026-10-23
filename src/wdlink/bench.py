@@ -82,7 +82,7 @@ SUITES: dict[str, dict] = {
         "e2e": True,
         "timing": True,
         "variants": [
-            Variant(m, _p(spacy_model=m), reference=m == "en_core_web_sm")
+            Variant(m, _p(spacy_model=m), reference=m == "en_core_web_trf")
             for m in ("en_core_web_sm", "en_core_web_md", "en_core_web_lg", "en_core_web_trf")
         ],
     },
@@ -192,7 +192,7 @@ SUITES: dict[str, dict] = {
         "variants": [
             Variant("no type signal", rcfg=_r(types="none")),
             Variant("casing rule only", rcfg=_r(types="common_noun"), reference=True),
-            Variant("spaCy sm NER labels", rcfg=_r(types="ner")),
+            Variant("spaCy sm NER labels", _p(spacy_model="en_core_web_sm"), _r(types="ner")),
             Variant("spaCy trf NER labels", _p(spacy_model="en_core_web_trf"), _r(types="ner")),
         ],
     },

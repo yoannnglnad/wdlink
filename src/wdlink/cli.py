@@ -7,7 +7,7 @@ import logging
 import sys
 from pathlib import Path
 
-from wdlink.config import DEFAULT_PIPELINE, DEFAULT_RANKING
+from wdlink.config import DEFAULT_PIPELINE, DEFAULT_RANKING, SPACY_MODEL
 
 
 def _print_table(result: dict) -> None:
@@ -70,13 +70,13 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--json", help="write the structured output to this file")
     p.add_argument("--ttl", help="write the local RDF/SKOS graph (Turtle) to this file")
     p.add_argument("--no-graph", action="store_true", help="baseline ranking without graph")
-    p.add_argument("--spacy-model", default="en_core_web_sm")
+    p.add_argument("--spacy-model", default=SPACY_MODEL)
     p.set_defaults(func=cmd_link)
 
     e = sub.add_parser("eval", help="evaluate baseline vs GraphRAG on the gold datasets")
     e.add_argument("--data-dir", default="eval/data")
     e.add_argument("--out", default="eval/results")
-    e.add_argument("--spacy-model", default="en_core_web_sm")
+    e.add_argument("--spacy-model", default=SPACY_MODEL)
     e.add_argument("--offline", action="store_true", help="use the Wikidata cache only")
     e.set_defaults(func=cmd_eval)
 
