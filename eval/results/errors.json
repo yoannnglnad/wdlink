@@ -20,6 +20,246 @@
     "gold_retrieved": false
   },
   {
+    "split": "dev",
+    "doc": "dev-13",
+    "surface": "Watson",
+    "gold": "Q83333",
+    "baseline": "Q12253",
+    "graphrag": "Q229535",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-13",
+    "surface": "Crick",
+    "gold": "Q123280",
+    "baseline": "Q326044",
+    "graphrag": "Q123280",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-13",
+    "surface": "double helix",
+    "gold": "Q60535862",
+    "baseline": "Q15063088",
+    "graphrag": "Q60535862",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-14",
+    "surface": "parallaxes",
+    "gold": "Q906561",
+    "baseline": "Q9301600",
+    "graphrag": "Q9301600",
+    "graphrag_decision": "linked",
+    "gold_retrieved": false
+  },
+  {
+    "split": "dev",
+    "doc": "dev-15",
+    "surface": "Thomas Berger",
+    "gold": null,
+    "baseline": "Q21125183",
+    "graphrag": "Q21125183",
+    "graphrag_decision": "linked",
+    "gold_retrieved": null
+  },
+  {
+    "split": "dev",
+    "doc": "dev-17",
+    "surface": "Dryad",
+    "gold": "Q5309616",
+    "baseline": "Q202474",
+    "graphrag": "Q202474",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-18",
+    "surface": "Tidewater",
+    "gold": null,
+    "baseline": "Q7800873",
+    "graphrag": "Q7800870",
+    "graphrag_decision": "linked",
+    "gold_retrieved": null
+  },
+  {
+    "split": "dev",
+    "doc": "dev-21",
+    "surface": "monarchs",
+    "gold": "Q212398",
+    "baseline": "Q116",
+    "graphrag": "Q116",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-21",
+    "surface": "oyamel fir",
+    "gold": "Q378592",
+    "baseline": "Q58304481",
+    "graphrag": "Q58304481",
+    "graphrag_decision": "linked",
+    "gold_retrieved": false
+  },
+  {
+    "split": "dev",
+    "doc": "dev-21",
+    "surface": "milkweed",
+    "gold": "Q162153",
+    "baseline": "Q212398",
+    "graphrag": "Q212398",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-22",
+    "surface": "Lena Fischer",
+    "gold": null,
+    "baseline": "Q51717963",
+    "graphrag": "Q51717963",
+    "graphrag_decision": "linked",
+    "gold_retrieved": null
+  },
+  {
+    "split": "dev",
+    "doc": "dev-22",
+    "surface": "PANGAEA",
+    "gold": "Q947684",
+    "baseline": "Q4398",
+    "graphrag": "Q4398",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-25",
+    "surface": "redshifts",
+    "gold": "Q76250",
+    "baseline": "Q2815842",
+    "graphrag": "Q2815842",
+    "graphrag_decision": "linked",
+    "gold_retrieved": false
+  },
+  {
+    "split": "dev",
+    "doc": "dev-27",
+    "surface": "DOIs",
+    "gold": "Q25670",
+    "baseline": "Q61397438",
+    "graphrag": "Q1012140",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-29",
+    "surface": "Sophie Martin",
+    "gold": null,
+    "baseline": "Q21264712",
+    "graphrag": "Q21264712",
+    "graphrag_decision": "linked",
+    "gold_retrieved": null
+  },
+  {
+    "split": "dev",
+    "doc": "dev-31",
+    "surface": "Boston",
+    "gold": "Q311975",
+    "baseline": "Q100",
+    "graphrag": "Q100",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-32",
+    "surface": "Perth",
+    "gold": "Q203000",
+    "baseline": "Q3183",
+    "graphrag": "Q203000",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-36",
+    "surface": "Potomac",
+    "gold": "Q179444",
+    "baseline": "Q755844",
+    "graphrag": "Q755844",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-37",
+    "surface": "Michael Jackson",
+    "gold": "Q167877",
+    "baseline": "Q2831",
+    "graphrag": "Q2831",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-38",
+    "surface": "Adi",
+    "gold": "Q76751",
+    "baseline": "Q56440",
+    "graphrag": "Q18401504",
+    "graphrag_decision": "linked",
+    "gold_retrieved": false
+  },
+  {
+    "split": "dev",
+    "doc": "dev-42",
+    "surface": "Bush",
+    "gold": "Q23505",
+    "baseline": "Q207",
+    "graphrag": "Q207",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-43",
+    "surface": "Munich",
+    "gold": "Q1726",
+    "baseline": "Q15789",
+    "graphrag": "Q15789",
+    "graphrag_decision": "linked",
+    "gold_retrieved": true
+  },
+  {
+    "split": "dev",
+    "doc": "dev-45",
+    "surface": "Northwind",
+    "gold": null,
+    "baseline": "Q1615654",
+    "graphrag": "Q1615654",
+    "graphrag_decision": "linked",
+    "gold_retrieved": null
+  },
+  {
+    "split": "dev",
+    "doc": "dev-45",
+    "surface": "Daniel Hughes",
+    "gold": null,
+    "baseline": "Q16232638",
+    "graphrag": "Q16232638",
+    "graphrag_decision": "linked",
+    "gold_retrieved": null
+  },
+  {
     "split": "test",
     "doc": "test-02",
     "surface": "Hubble",
@@ -75,7 +315,7 @@
     "surface": "Michael Jordan",
     "gold": "Q3308285",
     "baseline": "Q41421",
-    "graphrag": "Q3308285",
+    "graphrag": "Q41421",
     "graphrag_decision": "linked",
     "gold_retrieved": true
   },

@@ -50,7 +50,11 @@ Keep the **weighted pairwise** coherence as an **additive** bonus with a small �
 
 ## Why
 
-- **Why coherence at all.** On dev, the gain is small (+0.5 points, interval touching 0) because the local score leaves only 9 fixable errors. Where text is more ambiguous, the gain is larger and significant. On the held-out test split, GraphRAG beats the text-only baseline by +3.0 points (+7.9 on ambiguous mentions). On KORE50, the hardest public benchmark of the three, it gains +6.4 points (exact McNemar p = 0.049). The dev split under-represents that regime.
+- **Why coherence at all.** On dev, the gain is small (+0.5 points, interval touching 0) because the local score leaves only 9 fixable errors. Where text is more ambiguous, the gain grows. In the final evaluation, with thresholds tuned on all of dev, full GraphRAG (verbalised facts and coherence) beats the text-only baseline:
+  - on the held-out test split, by +2.0 points (0.918 → 0.938), and by +5.2 on ambiguous mentions (0.816 → 0.868); McNemar gives 2 corrections against 0 regressions, p = 0.50;
+  - on KORE50, the hardest benchmark of the three, by +4.9 points (0.518 → 0.567), with 11 corrections against 4 regressions, p = 0.12.
+
+  Coherence alone (ablation A2, no verbalised facts) reaches 0.938 on test (+2.0) and 0.539 on KORE50 (+2.1). Every comparison points the same way, but none is significant on its own at these sample sizes.
 - **Why pairwise rather than PageRank.**
   - Both reach the same accuracy. PageRank is slightly better on ambiguous mentions, but its interval spans −2.5 to +2.6.
   - The pairwise score is *explainable*: each bonus is traced to a named statement (Marie Curie —award received→ Nobel Prize in Physics) or to named shared neighbours, which the JSON evidence reports.
