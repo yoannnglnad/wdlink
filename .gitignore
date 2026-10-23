@@ -8,3 +8,5 @@ __pycache__/
 .claude/
 eval/raw/
 eval/data/kore50_dywc.jsonl
+eval/results/errors_external.json
+.DS_Store

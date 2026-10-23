@@ -31,6 +31,7 @@ SYSTEMS: dict[str, RankingConfig] = {
     "GraphRAG (full)": DEFAULT_RANKING,
 }
 BASELINE, GRAPHRAG = "baseline (text only)", "GraphRAG (full)"
+OWN_SPLITS = ("dev", "test")  # hand-annotated for this project
 THETA_GRID = [round(0.20 + 0.02 * i, 2) for i in range(31)]  # 0.20 .. 0.80
 BETA_GRID = [0.1, 0.2, 0.3, 0.5, 0.7, 1.0]
 RECALL_KS = (1, 5, 10, 20, 40)
@@ -412,7 +413,11 @@ def main(args: argparse.Namespace) -> None:
     results["runtime_s"] = time.time() - start
 
     (out_dir / "results.json").write_text(json.dumps(results, indent=2))
-    (out_dir / "errors.json").write_text(json.dumps(errors, indent=2, ensure_ascii=False))
+    # KORE50-DYWC annotations carry no licence: its per-mention errors stay out of the repository
+    own = [e for e in errors if e["split"] in OWN_SPLITS]
+    external = [e for e in errors if e["split"] not in OWN_SPLITS]
+    for name, rows in (("errors.json", own), ("errors_external.json", external)):
+        (out_dir / name).write_text(json.dumps(rows, indent=2, ensure_ascii=False))
     report = markdown_report(results)
     (out_dir / "results.md").write_text(report)
     print(report)
