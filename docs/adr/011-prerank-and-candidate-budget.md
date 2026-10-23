@@ -34,7 +34,7 @@ Use **K = 10** with the **mixed** pre-ranking.
 
 ## Why
 
-- **The mixed order is what makes a small K safe.** At K = 5, trusting the search engines' order loses the gold item for 10% of mentions and costs 4.2 points, which is significant. The mixed order keeps 94% of gold items at the same K.
+- **The mixed order is what makes a small K safe.** At K = 5, trusting the search engines' order keeps the gold item for only 89.6% of mentions, against 94.2% with the mixed order, and costs 4.2 points of accuracy, which is significant.
 - **K = 20 gains one mention for 31% more time.** That is +0.5 points, with an interval touching 0, for 501 ms/doc instead of 382 and 1.7× the triples. Under ADR-003, the cheaper option wins.
 - **The mixed order also builds a smaller graph, and faster.** At K = 10, it gives 1,294 triples/doc against 1,757 with the search order, in 382 ms/doc against 597.
 
