@@ -36,7 +36,7 @@ Cut-off **3.5**.
 
 ## Why
 
-- **The filter matters.** Without it, F1 drops to 0.577: 122 of the 295 predicted links are not gold mentions.
+- **The filter matters.** Without it, F1 drops to 0.577: 160 of the 295 predicted links are wrong.
 - **4.5 was too lenient.** Going from 4.5 to 3.5 removes 35 predicted links, of which 32 were wrong and only 3 right, and raises F1 from 0.660 to 0.706.
 - **2.5–3.5 is a plateau** (F1 0.706–0.709). Within it, 3.5 keeps the most recall (0.757 against 0.740 at 3.0). This matters for research text, because science words sit just around 3:
 
