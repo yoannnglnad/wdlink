@@ -28,15 +28,15 @@
 | A2 graph coherence only | 0.869 | 0.890 | 0.788 | 0.953 | 1.000 | 0.886 | 0.667 | 1.000 | 0.856 | 0.047 |
 | A3 naive coherence | 0.874 | 0.896 | 0.803 | 0.953 | 1.000 | 0.892 | 0.667 | 1.000 | 0.838 | 0.062 |
 | A4 no entity types | 0.874 | 0.896 | 0.803 | 0.953 | 1.000 | 0.892 | 0.667 | 1.000 | 0.774 | 0.101 |
-| A5 spaCy NER entity types | 0.812 | 0.827 | 0.712 | 0.897 | 0.571 | 0.837 | 0.667 | 1.000 | 0.809 | 0.037 |
+| A5 spaCy NER entity types | 0.864 | 0.884 | 0.773 | 0.953 | 0.857 | 0.886 | 0.667 | 1.000 | 0.810 | 0.056 |
 | GraphRAG (full) | 0.880 | 0.902 | 0.818 | 0.953 | 1.000 | 0.898 | 0.667 | 1.000 | 0.849 | 0.059 |
 
 ### End to end (A2KB, extraction + linking)
 
 | system | strong P | strong R | strong F1 | weak F1 |
 |---|---|---|---|---|
-| baseline (text only) | 0.657 | 0.751 | 0.701 | 0.717 |
-| GraphRAG (full) | 0.662 | 0.757 | 0.706 | 0.728 |
+| baseline (text only) | 0.685 | 0.780 | 0.730 | 0.735 |
+| GraphRAG (full) | 0.695 | 0.792 | 0.741 | 0.751 |
 
 McNemar baseline vs GraphRAG: only baseline correct = 0, only GraphRAG correct = 3, exact p = 0.2500
 
@@ -68,15 +68,15 @@ McNemar baseline vs GraphRAG: only baseline correct = 0, only GraphRAG correct =
 | A2 graph coherence only | 0.539 | 0.539 | 0.539 | – | 0.500 | 0.540 | – | – | 0.638 | 0.099 |
 | A3 naive coherence | 0.560 | 0.560 | 0.560 | – | 0.000 | 0.568 | – | – | 0.646 | 0.086 |
 | A4 no entity types | 0.582 | 0.582 | 0.582 | – | 0.000 | 0.590 | – | – | 0.546 | 0.069 |
-| A5 spaCy NER entity types | 0.582 | 0.582 | 0.582 | – | 0.000 | 0.590 | – | – | 0.669 | 0.087 |
+| A5 spaCy NER entity types | 0.631 | 0.631 | 0.631 | – | 0.000 | 0.640 | – | – | 0.700 | 0.073 |
 | GraphRAG (full) | 0.567 | 0.567 | 0.567 | – | 0.000 | 0.576 | – | – | 0.651 | 0.084 |
 
 ### End to end (A2KB, extraction + linking)
 
 | system | strong P | strong R | strong F1 | weak F1 |
 |---|---|---|---|---|
-| baseline (text only) | 0.430 | 0.482 | 0.455 | 0.462 |
-| GraphRAG (full) | 0.468 | 0.525 | 0.495 | 0.502 |
+| baseline (text only) | 0.425 | 0.504 | 0.461 | 0.468 |
+| GraphRAG (full) | 0.473 | 0.560 | 0.513 | 0.519 |
 
 McNemar baseline vs GraphRAG: only baseline correct = 4, only GraphRAG correct = 11, exact p = 0.1185
 
@@ -108,15 +108,15 @@ McNemar baseline vs GraphRAG: only baseline correct = 4, only GraphRAG correct =
 | A2 graph coherence only | 0.938 | 0.934 | 0.868 | 0.981 | 0.750 | 0.943 | 1.000 | 1.000 | 0.882 | 0.056 |
 | A3 naive coherence | 0.928 | 0.923 | 0.842 | 0.981 | 1.000 | 0.920 | 1.000 | 1.000 | 0.856 | 0.071 |
 | A4 no entity types | 0.938 | 0.934 | 0.868 | 0.981 | 1.000 | 0.931 | 1.000 | 1.000 | 0.796 | 0.142 |
-| A5 spaCy NER entity types | 0.918 | 0.912 | 0.868 | 0.943 | 1.000 | 0.908 | 1.000 | 1.000 | 0.867 | 0.078 |
+| A5 spaCy NER entity types | 0.948 | 0.945 | 0.895 | 0.981 | 1.000 | 0.943 | 1.000 | 1.000 | 0.846 | 0.103 |
 | GraphRAG (full) | 0.938 | 0.934 | 0.868 | 0.981 | 1.000 | 0.931 | 1.000 | 1.000 | 0.869 | 0.069 |
 
 ### End to end (A2KB, extraction + linking)
 
 | system | strong P | strong R | strong F1 | weak F1 |
 |---|---|---|---|---|
-| baseline (text only) | 0.701 | 0.747 | 0.723 | 0.745 |
-| GraphRAG (full) | 0.722 | 0.769 | 0.745 | 0.766 |
+| baseline (text only) | 0.750 | 0.824 | 0.785 | 0.806 |
+| GraphRAG (full) | 0.770 | 0.846 | 0.806 | 0.827 |
 
 McNemar baseline vs GraphRAG: only baseline correct = 0, only GraphRAG correct = 2, exact p = 0.5000
 
@@ -129,8 +129,8 @@ McNemar baseline vs GraphRAG: only baseline correct = 0, only GraphRAG correct =
 | A2 graph coherence only | 0.38 | 0.2 | 0.03 |
 | A3 naive coherence | 0.38 | 0.1 | 0.03 |
 | A4 no entity types | 0.4 | 0.2 | 0.05 |
-| A5 spaCy NER entity types | 0.36 | 1.0 | 0.05 |
+| A5 spaCy NER entity types | 0.36 | 0.3 | 0.05 |
 | GraphRAG (full) | 0.38 | 0.1 | 0.03 |
 
-Wikidata calls: {'cache_hits_terms': 74196, 'cache_hits_types': 8255, 'cache_hits_relations': 8255, 'http_calls': 522, 'sparql_calls': 10}
-Runtime: 260 s
+Wikidata calls: {'cache_hits_terms': 74399, 'cache_hits_types': 8328, 'cache_hits_relations': 8328, 'http_calls': 23, 'sparql_calls': 6}
+Runtime: 101 s

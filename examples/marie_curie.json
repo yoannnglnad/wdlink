@@ -13,9 +13,9 @@
         "uri": "http://www.wikidata.org/entity/Q7186",
         "label": "Marie Curie",
         "description": "Polish-born French physicist and chemist (1867–1934)",
-        "score": 0.9274
+        "score": 0.8873
       },
-      "confidence": 1.0,
+      "confidence": 0.999,
       "evidence": {
         "features": {
           "txt": 0.8447,
@@ -94,7 +94,7 @@
           "uri": "http://www.wikidata.org/entity/Q26963166",
           "label": "Marie Curie: The Courage of Knowledge",
           "description": "2016 film by Marie Noëlle",
-          "score": 0.6453,
+          "score": 0.645,
           "features": {
             "txt": 0.6487,
             "name": 0.9,
@@ -154,7 +154,7 @@
           "uri": "http://www.wikidata.org/entity/Q110634101",
           "label": "Marie Curie",
           "description": "",
-          "score": 0.5967,
+          "score": 0.596,
           "features": {
             "txt": 0.6405,
             "name": 1.0,
@@ -178,9 +178,9 @@
         "uri": "http://www.wikidata.org/entity/Q11448",
         "label": "radioactivity",
         "description": "process by which an unstable atom emits radiation",
-        "score": 0.8067
+        "score": 0.7881
       },
-      "confidence": 1.0,
+      "confidence": 0.9697,
       "evidence": {
         "features": {
           "txt": 0.5388,
@@ -302,9 +302,9 @@
         "uri": "http://www.wikidata.org/entity/Q90",
         "label": "Paris",
         "description": "capital and most populous city in France",
-        "score": 0.7529
+        "score": 0.7343
       },
-      "confidence": 1.0,
+      "confidence": 0.9073,
       "evidence": {
         "features": {
           "txt": 0.5813,
@@ -390,7 +390,7 @@
           "uri": "http://www.wikidata.org/entity/Q3382754",
           "label": "Pierre-Adrien Pâris",
           "description": "French painter (1745-1819)",
-          "score": 0.5957,
+          "score": 0.5954,
           "features": {
             "txt": 0.5683,
             "name": 0.9,
@@ -405,7 +405,7 @@
           "uri": "http://www.wikidata.org/entity/Q483020",
           "label": "Paris Saint-Germain FC",
           "description": "association football club in Paris, France having two UCL",
-          "score": 0.5905,
+          "score": 0.5898,
           "features": {
             "txt": 0.4321,
             "name": 0.9,
@@ -429,9 +429,9 @@
         "uri": "http://www.wikidata.org/entity/Q38104",
         "label": "Nobel Prize in Physics",
         "description": "yearly physics award given by the Royal Swedish Academy of Sciences",
-        "score": 0.7778
+        "score": 0.7592
       },
-      "confidence": 1.0,
+      "confidence": 0.9962,
       "evidence": {
         "features": {
           "txt": 0.6311,
@@ -551,7 +551,7 @@
     }
   ],
   "graph": {
-    "triples": 1574,
+    "triples": 1576,
     "concepts": 225,
     "relations": 228
   },
@@ -560,14 +560,16 @@
     "w_name": 0.2,
     "w_type": 0.15,
     "w_pop": 0.15,
-    "beta": 0.2,
+    "beta": 0.1,
     "verbalise_graph": true,
     "coherence": "weighted",
+    "fusion": "additive",
+    "name_match": "label",
     "softmax_temperature": 0.1,
     "direct_edge_strength": 1.0,
-    "nil_threshold": 0.42,
+    "nil_threshold": 0.38,
     "min_margin": 0.0,
-    "confidence_temperature": 0.01,
+    "confidence_temperature": 0.03,
     "types": "common_noun",
     "use_popularity": true
   }

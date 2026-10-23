@@ -6,16 +6,16 @@
       "start": 0,
       "end": 5,
       "source": "ner",
-      "ner_label": "GPE",
+      "ner_label": "PERSON",
       "decision": "linked",
       "selected": {
         "qid": "Q167646",
         "uri": "http://www.wikidata.org/entity/Q167646",
         "label": "Paris",
         "description": "mythological son of Priam, king of Troy",
-        "score": 0.854
+        "score": 0.8103
       },
-      "confidence": 1.0,
+      "confidence": 0.9828,
       "evidence": {
         "features": {
           "txt": 0.7644,
@@ -70,11 +70,11 @@
             "weight": 0.3641,
             "direct": [
               [
-                "P26",
+                "P451",
                 "out"
               ],
               [
-                "P451",
+                "P26",
                 "out"
               ],
               [
@@ -88,9 +88,9 @@
             ],
             "shared_neighbours": [
               "Q62344048",
-              "Q390461",
+              "Q3646670",
               "Q20828900",
-              "Q3646670"
+              "Q390461"
             ],
             "overlap": 0.2491
           }
@@ -121,7 +121,7 @@
           "uri": "http://www.wikidata.org/entity/Q830149",
           "label": "Paris",
           "description": "city in and county seat of Lamar County, Texas, United States",
-          "score": 0.6312,
+          "score": 0.6296,
           "features": {
             "txt": 0.4972,
             "name": 1.0,
@@ -136,7 +136,7 @@
           "uri": "http://www.wikidata.org/entity/Q576584",
           "label": "Paris",
           "description": "city in Illinois",
-          "score": 0.6296,
+          "score": 0.6277,
           "features": {
             "txt": 0.5058,
             "name": 1.0,
@@ -190,9 +190,9 @@
         "uri": "http://www.wikidata.org/entity/Q170473",
         "label": "Priam",
         "description": "the legendary and last king of Troy during the Trojan war; son of Laomedon",
-        "score": 0.8537
+        "score": 0.8279
       },
-      "confidence": 1.0,
+      "confidence": 0.998,
       "evidence": {
         "features": {
           "txt": 0.7544,
@@ -350,9 +350,9 @@
         "uri": "http://www.wikidata.org/entity/Q164061",
         "label": "Helen of Troy",
         "description": "daughter of Zeus in Greek mythology",
-        "score": 0.7598
+        "score": 0.7468
       },
-      "confidence": 0.9999,
+      "confidence": 0.9091,
       "evidence": {
         "features": {
           "txt": 0.6577,
@@ -379,19 +379,19 @@
                 "out"
               ],
               [
-                "P26",
+                "P451",
                 "in"
               ],
               [
-                "P451",
+                "P26",
                 "in"
               ]
             ],
             "shared_neighbours": [
               "Q62344048",
-              "Q390461",
+              "Q3646670",
               "Q20828900",
-              "Q3646670"
+              "Q390461"
             ],
             "overlap": 0.2491
           },
@@ -504,9 +504,9 @@
         "uri": "http://www.wikidata.org/entity/Q42937",
         "label": "Trojan War",
         "description": "legendary war in Greek mythology",
-        "score": 0.7952
+        "score": 0.7645
       },
-      "confidence": 1.0,
+      "confidence": 0.9614,
       "evidence": {
         "features": {
           "txt": 0.6174,
@@ -561,7 +561,7 @@
           "uri": "http://www.wikidata.org/entity/Q674887",
           "label": "Trojan War",
           "description": "1997 film by George Huang",
-          "score": 0.6605,
+          "score": 0.6595,
           "features": {
             "txt": 0.5852,
             "name": 1.0,
@@ -635,7 +635,7 @@
     }
   ],
   "graph": {
-    "triples": 2044,
+    "triples": 2046,
     "concepts": 302,
     "relations": 319
   },
@@ -644,14 +644,16 @@
     "w_name": 0.2,
     "w_type": 0.15,
     "w_pop": 0.15,
-    "beta": 0.2,
+    "beta": 0.1,
     "verbalise_graph": true,
     "coherence": "weighted",
+    "fusion": "additive",
+    "name_match": "label",
     "softmax_temperature": 0.1,
     "direct_edge_strength": 1.0,
-    "nil_threshold": 0.42,
+    "nil_threshold": 0.38,
     "min_margin": 0.0,
-    "confidence_temperature": 0.01,
+    "confidence_temperature": 0.03,
     "types": "common_noun",
     "use_popularity": true
   }

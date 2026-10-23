@@ -31,7 +31,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
     nif:endIndex "5"^^xsd:nonNegativeInteger ;
     nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
     itsrdf:taClassRef wd:Q22988604 ;
-    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taConfidence 9.828e-01 ;
     itsrdf:taIdentRef wd:Q167646 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
 
@@ -50,7 +50,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
     nif:endIndex "19"^^xsd:nonNegativeInteger ;
     nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
     itsrdf:taClassRef wd:Q22988604 ;
-    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taConfidence 9.98e-01 ;
     itsrdf:taIdentRef wd:Q170473 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
 
@@ -69,7 +69,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
     nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
     itsrdf:taClassRef wd:Q22988604,
         wd:Q6517872 ;
-    itsrdf:taConfidence 9.999e-01 ;
+    itsrdf:taConfidence 9.091e-01 ;
     itsrdf:taIdentRef wd:Q164061 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
 
@@ -90,7 +90,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
     nif:referenceContext <http://example.org/wdlink/doc/aa60c61bd11b#char=0,63> ;
     itsrdf:taClassRef wd:Q24336068,
         wd:Q645883 ;
-    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taConfidence 9.614e-01 ;
     itsrdf:taIdentRef wd:Q42937 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/aa60c61bd11b/run> .
 
@@ -1973,13 +1973,15 @@ c:Q736813 a skos:Concept ;
     nif:isString "Paris, son of Priam, abducted Helen and started the Trojan War." .
 
 <http://example.org/wdlink/doc/aa60c61bd11b/run> a prov:Activity ;
-    ex:beta 2e-01 ;
+    ex:beta 1e-01 ;
     ex:coherence "weighted" ;
-    ex:confidence_temperature 1e-02 ;
+    ex:confidence_temperature 3e-02 ;
     ex:direct_edge_strength 1e+00 ;
     ex:embedding_model "BAAI/bge-small-en-v1.5" ;
+    ex:fusion "additive" ;
     ex:min_margin 0e+00 ;
-    ex:nil_threshold 4.2e-01 ;
+    ex:name_match "label" ;
+    ex:nil_threshold 3.8e-01 ;
     ex:softmax_temperature 1e-01 ;
     ex:types "common_noun" ;
     ex:use_popularity true ;
@@ -1988,7 +1990,7 @@ c:Q736813 a skos:Concept ;
     ex:w_pop 1.5e-01 ;
     ex:w_txt 5e-01 ;
     ex:w_type 1.5e-01 ;
-    prov:endedAtTime "2026-10-22T14:52:16.326857+00:00"^^xsd:dateTime .
+    prov:endedAtTime "2026-10-23T16:47:25.900283+00:00"^^xsd:dateTime .
 
 c:Q170473 a skos:Concept ;
     ex:broaderInstantive c:Q22988604 ;

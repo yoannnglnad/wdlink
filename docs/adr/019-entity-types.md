@@ -29,5 +29,5 @@ Use the casing rule. Keep NER typing only as an option (`types="ner"`) for the a
 
 ## Consequences
 
-- The type signal is the weakest component of the system. A better one would come from a stronger typed extractor (GLiNER, ADR-004 next steps) or from types inferred from the other mentions' candidates.
-- These options were not built. They would need a training-free typer reliable on 1–3-word mentions, and none of the tested pipelines is.
+- **Typing is the open question.** With `trf` labels, NER typing does not differ significantly from the casing rule on dev. In the final evaluation it scores higher on the held-out data: 0.948 against 0.938 on test, and 0.631 against 0.567 on KORE50, whose mentions are mostly people and places. It scores lower on dev (0.864 against 0.880).
+- **The default does not change.** ADR-003 forbids choosing a configuration on test data, so the casing rule stays. NER typing with `trf` labels is the first variant to re-test once a larger dev split is available. It is one flag (`types="ner"`).

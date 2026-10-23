@@ -32,7 +32,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
     nif:endIndex "11"^^xsd:nonNegativeInteger ;
     nif:referenceContext <http://example.org/wdlink/doc/6ff0f6083519#char=0,92> ;
     itsrdf:taClassRef wd:Q5 ;
-    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taConfidence 9.99e-01 ;
     itsrdf:taIdentRef wd:Q7186 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
 
@@ -51,7 +51,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
     nif:beginIndex "34"^^xsd:nonNegativeInteger ;
     nif:endIndex "47"^^xsd:nonNegativeInteger ;
     nif:referenceContext <http://example.org/wdlink/doc/6ff0f6083519#char=0,92> ;
-    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taConfidence 9.697e-01 ;
     itsrdf:taIdentRef wd:Q11448 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
 
@@ -84,7 +84,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
         wd:Q471822,
         wd:Q484170,
         wd:Q51929311 ;
-    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taConfidence 9.073e-01 ;
     itsrdf:taIdentRef wd:Q90 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
 
@@ -105,7 +105,7 @@ ex:broaderPartitive rdfs:subPropertyOf skos:broader .
     nif:referenceContext <http://example.org/wdlink/doc/6ff0f6083519#char=0,92> ;
     itsrdf:taClassRef wd:Q107494520,
         wd:Q7191 ;
-    itsrdf:taConfidence 1e+00 ;
+    itsrdf:taConfidence 9.962e-01 ;
     itsrdf:taIdentRef wd:Q38104 ;
     prov:wasGeneratedBy <http://example.org/wdlink/doc/6ff0f6083519/run> .
 
@@ -1515,13 +1515,15 @@ c:Q5 a skos:Concept ;
     nif:isString "Marie Curie conducted research on radioactivity in Paris and won the Nobel Prize in Physics." .
 
 <http://example.org/wdlink/doc/6ff0f6083519/run> a prov:Activity ;
-    ex:beta 2e-01 ;
+    ex:beta 1e-01 ;
     ex:coherence "weighted" ;
-    ex:confidence_temperature 1e-02 ;
+    ex:confidence_temperature 3e-02 ;
     ex:direct_edge_strength 1e+00 ;
     ex:embedding_model "BAAI/bge-small-en-v1.5" ;
+    ex:fusion "additive" ;
     ex:min_margin 0e+00 ;
-    ex:nil_threshold 4.2e-01 ;
+    ex:name_match "label" ;
+    ex:nil_threshold 3.8e-01 ;
     ex:softmax_temperature 1e-01 ;
     ex:types "common_noun" ;
     ex:use_popularity true ;
@@ -1530,7 +1532,7 @@ c:Q5 a skos:Concept ;
     ex:w_pop 1.5e-01 ;
     ex:w_txt 5e-01 ;
     ex:w_type 1.5e-01 ;
-    prov:endedAtTime "2026-10-22T14:52:05.645146+00:00"^^xsd:dateTime .
+    prov:endedAtTime "2026-10-23T16:47:16.052321+00:00"^^xsd:dateTime .
 
 c:Q618779 a skos:Concept ;
     skos:exactMatch wd:Q618779 ;

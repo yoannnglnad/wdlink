@@ -27,7 +27,7 @@
     },
     "A5 spaCy NER entity types": {
       "nil_threshold": 0.36,
-      "beta": 1.0,
+      "beta": 0.3,
       "tau": 0.05
     },
     "GraphRAG (full)": {
@@ -76,8 +76,8 @@
           "accuracy_with_context": 0.8795180722891566,
           "nil_recall": 0.6666666666666666,
           "nil_precision": 1.0,
-          "mean_confidence": 0.8239289792799264,
-          "ece": 0.06290613580446583
+          "mean_confidence": 0.8239258259806,
+          "ece": 0.06290298250513969
         },
         "A1 graph verbalisation only": {
           "n": 191,
@@ -89,8 +89,8 @@
           "accuracy_with_context": 0.8855421686746988,
           "nil_recall": 0.6666666666666666,
           "nil_precision": 1.0,
-          "mean_confidence": 0.8294092666240089,
-          "ece": 0.0680494579454077
+          "mean_confidence": 0.8294060838375258,
+          "ece": 0.06804627515892459
         },
         "A2 graph coherence only": {
           "n": 191,
@@ -102,8 +102,8 @@
           "accuracy_with_context": 0.8855421686746988,
           "nil_recall": 0.6666666666666666,
           "nil_precision": 1.0,
-          "mean_confidence": 0.8562473839537165,
-          "ece": 0.04689501039497307
+          "mean_confidence": 0.8562424922302954,
+          "ece": 0.046890118671551906
         },
         "A3 naive coherence": {
           "n": 191,
@@ -115,8 +115,8 @@
           "accuracy_with_context": 0.891566265060241,
           "nil_recall": 0.6666666666666666,
           "nil_precision": 1.0,
-          "mean_confidence": 0.8375203311477544,
-          "ece": 0.062343083211146476
+          "mean_confidence": 0.8375180383168435,
+          "ece": 0.062340790380235496
         },
         "A4 no entity types": {
           "n": 191,
@@ -133,16 +133,16 @@
         },
         "A5 spaCy NER entity types": {
           "n": 191,
-          "accuracy": 0.8115183246073299,
-          "accuracy_in_kb": 0.8265895953757225,
-          "accuracy_ambiguous": 0.7121212121212122,
-          "accuracy_unambiguous": 0.897196261682243,
-          "accuracy_isolated": 0.5714285714285714,
-          "accuracy_with_context": 0.8373493975903614,
+          "accuracy": 0.8638743455497382,
+          "accuracy_in_kb": 0.884393063583815,
+          "accuracy_ambiguous": 0.7727272727272727,
+          "accuracy_unambiguous": 0.9532710280373832,
+          "accuracy_isolated": 0.8571428571428571,
+          "accuracy_with_context": 0.8855421686746988,
           "nil_recall": 0.6666666666666666,
           "nil_precision": 1.0,
-          "mean_confidence": 0.8094393286540826,
-          "ece": 0.03738551210669752
+          "mean_confidence": 0.8099136174309558,
+          "ece": 0.05592066037797446
         },
         "GraphRAG (full)": {
           "n": 191,
@@ -154,30 +154,30 @@
           "accuracy_with_context": 0.8975903614457831,
           "nil_recall": 0.6666666666666666,
           "nil_precision": 1.0,
-          "mean_confidence": 0.848763223384482,
-          "ece": 0.05863929269454744
+          "mean_confidence": 0.8487517137514906,
+          "ece": 0.05862778306155599
         }
       },
       "a2kb": {
         "baseline (text only)": {
-          "predicted_links": 198,
+          "predicted_links": 197,
           "gold_links": 173,
-          "strong_precision": 0.6565656565656566,
-          "strong_recall": 0.7514450867052023,
-          "strong_f1": 0.7008086253369272,
-          "weak_precision": 0.6717171717171717,
-          "weak_recall": 0.7687861271676301,
-          "weak_f1": 0.7169811320754716
+          "strong_precision": 0.6852791878172588,
+          "strong_recall": 0.7803468208092486,
+          "strong_f1": 0.7297297297297297,
+          "weak_precision": 0.6903553299492385,
+          "weak_recall": 0.7861271676300579,
+          "weak_f1": 0.7351351351351353
         },
         "GraphRAG (full)": {
-          "predicted_links": 198,
+          "predicted_links": 197,
           "gold_links": 173,
-          "strong_precision": 0.6616161616161617,
-          "strong_recall": 0.7572254335260116,
-          "strong_f1": 0.706199460916442,
-          "weak_precision": 0.6818181818181818,
-          "weak_recall": 0.7803468208092486,
-          "weak_f1": 0.7277628032345013
+          "strong_precision": 0.6954314720812182,
+          "strong_recall": 0.791907514450867,
+          "strong_f1": 0.7405405405405406,
+          "weak_precision": 0.7055837563451777,
+          "weak_recall": 0.8034682080924855,
+          "weak_f1": 0.7513513513513513
         }
       },
       "mcnemar": {
@@ -282,16 +282,16 @@
         },
         "A5 spaCy NER entity types": {
           "n": 141,
-          "accuracy": 0.5815602836879432,
-          "accuracy_in_kb": 0.5815602836879432,
-          "accuracy_ambiguous": 0.5815602836879432,
+          "accuracy": 0.6312056737588653,
+          "accuracy_in_kb": 0.6312056737588653,
+          "accuracy_ambiguous": 0.6312056737588653,
           "accuracy_unambiguous": null,
           "accuracy_isolated": 0.0,
-          "accuracy_with_context": 0.5899280575539568,
+          "accuracy_with_context": 0.6402877697841727,
           "nil_recall": null,
           "nil_precision": null,
-          "mean_confidence": 0.66875359619317,
-          "ece": 0.08719331250522674
+          "mean_confidence": 0.7004212599611999,
+          "ece": 0.07277883084002659
         },
         "GraphRAG (full)": {
           "n": 141,
@@ -309,24 +309,24 @@
       },
       "a2kb": {
         "baseline (text only)": {
-          "predicted_links": 158,
+          "predicted_links": 167,
           "gold_links": 141,
-          "strong_precision": 0.43037974683544306,
-          "strong_recall": 0.48226950354609927,
-          "strong_f1": 0.45484949832775917,
-          "weak_precision": 0.43670886075949367,
-          "weak_recall": 0.48936170212765956,
-          "weak_f1": 0.4615384615384615
+          "strong_precision": 0.4251497005988024,
+          "strong_recall": 0.5035460992907801,
+          "strong_f1": 0.461038961038961,
+          "weak_precision": 0.4311377245508982,
+          "weak_recall": 0.5106382978723404,
+          "weak_f1": 0.4675324675324676
         },
         "GraphRAG (full)": {
-          "predicted_links": 158,
+          "predicted_links": 167,
           "gold_links": 141,
-          "strong_precision": 0.46835443037974683,
-          "strong_recall": 0.524822695035461,
-          "strong_f1": 0.49498327759197325,
-          "weak_precision": 0.47468354430379744,
-          "weak_recall": 0.5319148936170213,
-          "weak_f1": 0.5016722408026756
+          "strong_precision": 0.47305389221556887,
+          "strong_recall": 0.5602836879432624,
+          "strong_f1": 0.5129870129870129,
+          "weak_precision": 0.47904191616766467,
+          "weak_recall": 0.5673758865248227,
+          "weak_f1": 0.5194805194805194
         }
       },
       "mcnemar": {
@@ -431,16 +431,16 @@
         },
         "A5 spaCy NER entity types": {
           "n": 97,
-          "accuracy": 0.9175257731958762,
-          "accuracy_in_kb": 0.9120879120879121,
-          "accuracy_ambiguous": 0.868421052631579,
-          "accuracy_unambiguous": 0.9433962264150944,
+          "accuracy": 0.9484536082474226,
+          "accuracy_in_kb": 0.945054945054945,
+          "accuracy_ambiguous": 0.8947368421052632,
+          "accuracy_unambiguous": 0.9811320754716981,
           "accuracy_isolated": 1.0,
-          "accuracy_with_context": 0.9080459770114943,
+          "accuracy_with_context": 0.9425287356321839,
           "nil_recall": 1.0,
           "nil_precision": 1.0,
-          "mean_confidence": 0.8673571011464302,
-          "ece": 0.077574945172259
+          "mean_confidence": 0.845755349476022,
+          "ece": 0.1026982587714006
         },
         "GraphRAG (full)": {
           "n": 97,
@@ -458,24 +458,24 @@
       },
       "a2kb": {
         "baseline (text only)": {
-          "predicted_links": 97,
+          "predicted_links": 100,
           "gold_links": 91,
-          "strong_precision": 0.7010309278350515,
-          "strong_recall": 0.7472527472527473,
-          "strong_f1": 0.723404255319149,
-          "weak_precision": 0.7216494845360825,
-          "weak_recall": 0.7692307692307693,
-          "weak_f1": 0.7446808510638298
+          "strong_precision": 0.75,
+          "strong_recall": 0.8241758241758241,
+          "strong_f1": 0.7853403141361257,
+          "weak_precision": 0.77,
+          "weak_recall": 0.8461538461538461,
+          "weak_f1": 0.8062827225130889
         },
         "GraphRAG (full)": {
-          "predicted_links": 97,
+          "predicted_links": 100,
           "gold_links": 91,
-          "strong_precision": 0.7216494845360825,
-          "strong_recall": 0.7692307692307693,
-          "strong_f1": 0.7446808510638298,
-          "weak_precision": 0.7422680412371134,
-          "weak_recall": 0.7912087912087912,
-          "weak_f1": 0.7659574468085107
+          "strong_precision": 0.77,
+          "strong_recall": 0.8461538461538461,
+          "strong_f1": 0.8062827225130889,
+          "weak_precision": 0.79,
+          "weak_recall": 0.8681318681318682,
+          "weak_f1": 0.8272251308900523
         }
       },
       "mcnemar": {
@@ -486,11 +486,11 @@
     }
   },
   "api_stats": {
-    "cache_hits_terms": 74196,
-    "cache_hits_types": 8255,
-    "cache_hits_relations": 8255,
-    "http_calls": 522,
-    "sparql_calls": 10
+    "cache_hits_terms": 74399,
+    "cache_hits_types": 8328,
+    "cache_hits_relations": 8328,
+    "http_calls": 23,
+    "sparql_calls": 6
   },
-  "runtime_s": 259.7635500431061
+  "runtime_s": 100.69134902954102
 }

@@ -134,7 +134,7 @@ TYPE_DEPTH = 3  # P31/P279{0..3}; the unbounded P279* path is slow and noisy on 
 MAX_VALUES_PER_PROPERTY_IN_CARD = 4
 MAX_FACTS_PER_CANDIDATE = 24  # pool of verbalised facts the card is built from
 # Query-focused selection: only the facts closest to the mention's context go into the card.
-# Appending every fact dilutes the embedding of well-described items (measured on dev).
+# Appending every fact dilutes the embedding of well-described items (ADR-018).
 FACTS_PER_CARD = 3
 
 # --- Entity types ----------------------------------------------------------------------------
@@ -220,7 +220,7 @@ class RankingConfig:
     w_type: float = 0.15
     w_pop: float = 0.15
     # final score S = L + beta * G  (coherence is a bonus: S == L when there is no graph evidence)
-    beta: float = 0.20  # tuned on dev
+    beta: float = 0.10  # tuned on dev (52 documents, eval/results/results.md)
     # the card embedded for s_txt: label+description only, or also the verbalised graph facts
     verbalise_graph: bool = True
     # coherence variant: "weighted" (idf + softmax weights + c1/c2), "naive" (ablation A3),
@@ -233,12 +233,12 @@ class RankingConfig:
     softmax_temperature: float = 0.1  # sharpness of p_L(c') used to weight other mentions
     direct_edge_strength: float = 1.0
     # selection: link only if S1 >= nil_threshold and S1 - S2 >= min_margin, else NIL
-    nil_threshold: float = 0.42  # tuned on dev
+    nil_threshold: float = 0.38  # tuned on dev
     min_margin: float = 0.0
-    confidence_temperature: float = 0.01  # temperature scaling on dev (min NLL)
+    confidence_temperature: float = 0.03  # temperature scaling on dev (min NLL), ADR-023
     # entity-type signal: "ner" (spaCy label vs P31/P279 closure, plus the common-noun rule),
     # "common_noun" (only: lower-case terms are not people/works/companies), or "none"
-    # spaCy NER labels proved too noisy to help (dev: 0.860 with them, 0.953 without)
+    # spaCy NER labels: -7.3 points with sm (p = 0.001), not significant with trf (ADR-019)
     types: str = "common_noun"
     use_popularity: bool = True
     extra: dict = field(default_factory=dict)
