@@ -41,7 +41,7 @@ uv run wdlink link "…" --spacy-model en_core_web_sm  # 15 MB pipeline instead 
 uv run wdlink eval                         # dev + test (+ KORE50-DYWC if present) → eval/results/
 uv run wdlink eval --offline               # re-run from the Wikidata cache only
 uv run wdlink bench <suite>|all|micro      # design benchmarks on dev → eval/benchmarks/
-uv run pytest                              # 27 tests (2 need the network or a warm cache)
+uv run pytest                              # 43 tests (2 need the network or a warm cache)
 ```
 
 The first run downloads the models and fills `.cache/wikidata/`. Later runs are reproducible from that cache.
