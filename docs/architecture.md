@@ -96,7 +96,7 @@ All three are measured with gold spans (D2KB) and end to end (A2KB, strong match
 | test, ambiguous mentions | 0.395 | 0.816 | **0.868** | |
 | test, end-to-end F1 | – | 0.785 | **0.806** | |
 | KORE50, accuracy | 0.227 | 0.518 | **0.567** | 11 / 4, p = 0.12 |
-| KORE50, end-to-end F1 | – | 0.461 | **0.513** | |
+| KORE50, end-to-end F1 | – | 0.497 | **0.552** | |
 
 Test NILs are all detected (precision and recall 1.0). Confidence is well calibrated on test (ECE 0.069), and over-confident on KORE50: mean confidence 0.651 for an accuracy of 0.567. Preparation takes about 0.5 s per document on a laptop, 71% of it embeddings ([`evidence.md`](../eval/benchmarks/evidence.md)); ranking takes 3 ms.
 

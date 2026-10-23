@@ -29,7 +29,7 @@ Thresholds are tuned on dev only; test and KORE50 are held out. Full tables are 
 | test, ambiguous mentions | 0.395 | 0.816 | **0.868** |
 | test, end-to-end F1 | – | 0.785 | **0.806** |
 | KORE50-DYWC accuracy (141 hard mentions) | 0.227 | 0.518 | **0.567** |
-| KORE50-DYWC, end-to-end F1 | – | 0.461 | **0.513** |
+| KORE50-DYWC, end-to-end F1 | – | 0.497 | **0.552** |
 
 ## Quick start
 

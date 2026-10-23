@@ -1990,7 +1990,7 @@ c:Q736813 a skos:Concept ;
     ex:w_pop 1.5e-01 ;
     ex:w_txt 5e-01 ;
     ex:w_type 1.5e-01 ;
-    prov:endedAtTime "2026-10-23T16:47:25.900283+00:00"^^xsd:dateTime .
+    prov:endedAtTime "2026-10-23T17:22:02.411906+00:00"^^xsd:dateTime .
 
 c:Q170473 a skos:Concept ;
     ex:broaderInstantive c:Q22988604 ;
