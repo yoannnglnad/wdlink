@@ -37,7 +37,7 @@ Keep the **top 20 per API**.
 - **5 is too shallow.** It loses the gold item for 2.3% of dev mentions, and accuracy follows.
 - **On dev, 10, 20 and 50 tie.** Recall saturates at 10, because dev mentions are mostly retrievable early.
 - **Harder mentions need a deeper search.** On the independent probe of hard ambiguous mentions, recall keeps growing between 10 and 50. Under ADR-003 a tie on dev would normally favour the cheaper option (10). Here there is evidence from outside dev that 10 is not enough on hard text, while 20 already reaches 19/19 with the union.
-- **The extra cost is small.** No extra search request is made, only roughly double the terms to fetch and candidates to embed in the pre-ranking. The pre-ranking cut (ADR-011) then keeps 10 candidates per mention, so the graph stage does not grow.
+- **The extra cost is small.** No extra search request is made, only more terms to fetch and more candidates to embed in the pre-ranking. The pre-ranking cut (ADR-011) then keeps 10 candidates per mention, so the graph stage does not grow.
 
 ## Consequences
 
