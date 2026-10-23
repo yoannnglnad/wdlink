@@ -2,9 +2,10 @@
 
 Every candidate (and every neighbour we keep) becomes a local skos:Concept mapped to its
 Wikidata item with skos:exactMatch. Hierarchical Wikidata properties use SKOS-Primer §4.7
-specialisations of skos:broader (generic / instantive / partitive) so that instance-of and
-subclass-of chains are never mixed; other relations keep their wdt: predicate and, when the
-pair is not hierarchical (SKOS integrity condition S27), a skos:related link.
+specialisations of skos:broader (generic / instantive / partitive), so instance-of and
+subclass-of links stay distinguishable (a SKOS reasoner still merges both into
+skos:broaderTransitive, as it should); other relations keep their wdt: predicate and, unless the
+pair is linked through the transitive broader closure (integrity condition S27), skos:related.
 Mentions are NIF phrases; links use the ITS 2.0 RDF vocabulary (taIdentRef, taConfidence).
 The ranker reads a NetworkX view derived from this RDF graph by scanning its triples (ADR-015).
 """
@@ -148,9 +149,20 @@ def build_graph(
                 elif p not in config.TYPE_PROPERTIES:
                     related_pairs.add((node, concept(v)))
 
-    hierarchical = {(s, o) for p in HIERARCHY.values() for s, o in g.subject_objects(p)}
+    broader = nx.DiGraph()  # child -> parent over every hierarchical link, narrower reversed
+    for p, prop in HIERARCHY.items():
+        for s, o in g.subject_objects(prop):
+            if p == "P527":  # has part(s) points down the hierarchy
+                broader.add_edge(o, s)
+            else:
+                broader.add_edge(s, o)
     for a, b in related_pairs:
-        if (a, b) not in hierarchical and (b, a) not in hierarchical:
+        linked = (
+            a in broader
+            and b in broader
+            and (nx.has_path(broader, a, b) or nx.has_path(broader, b, a))
+        )
+        if not linked:  # S27: skos:related is disjoint with skos:broaderTransitive
             g.add((a, SKOS.related, b))
 
     for m, cands in zip(mentions, per_mention, strict=True):

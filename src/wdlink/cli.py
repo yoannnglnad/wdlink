@@ -4,6 +4,7 @@ import argparse
 import dataclasses
 import json
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -31,13 +32,14 @@ def _print_table(result: dict) -> None:
 
 def cmd_link(args: argparse.Namespace) -> None:
     from wdlink.pipeline import Linker
+    from wdlink.wikidata import WikidataClient
 
     text = Path(args.file).read_text() if args.file else args.text
     cfg = DEFAULT_RANKING
     if args.no_graph:
         cfg = dataclasses.replace(cfg, beta=0.0, verbalise_graph=False)
     pcfg = dataclasses.replace(DEFAULT_PIPELINE, spacy_model=args.spacy_model)
-    result, graph = Linker(pcfg=pcfg).link(text, cfg)
+    result, graph = Linker(client=WikidataClient(offline=args.offline), pcfg=pcfg).link(text, cfg)
     _print_table(result)
     if args.json:
         Path(args.json).write_text(json.dumps(result, indent=2, ensure_ascii=False))
@@ -71,6 +73,7 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--ttl", help="write the local RDF/SKOS graph (Turtle) to this file")
     p.add_argument("--no-graph", action="store_true", help="baseline ranking without graph")
     p.add_argument("--spacy-model", default=SPACY_MODEL)
+    p.add_argument("--offline", action="store_true", help="use the Wikidata and model caches only")
     p.set_defaults(func=cmd_link)
 
     e = sub.add_parser("eval", help="evaluate baseline vs GraphRAG on the gold datasets")
@@ -88,6 +91,9 @@ def main(argv: list[str] | None = None) -> None:
     b.set_defaults(func=cmd_bench)
 
     args = parser.parse_args(argv)
+    if getattr(args, "offline", False):
+        # models must come from the local Hugging Face cache too, not only Wikidata data
+        os.environ.setdefault("HF_HUB_OFFLINE", "1")
     logging.basicConfig(
         level=logging.INFO if args.verbose else logging.WARNING,
         format="%(levelname)s %(name)s: %(message)s",

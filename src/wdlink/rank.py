@@ -1,7 +1,7 @@
 """Stage 4 — GraphRAG-style candidate selection.
 
 For each mention m and candidate c:
-  L(m,c) = w_txt*s_txt + w_name*s_name + w_type*s_type + w_pop*s_pop      (local evidence)
+  L(m,c) = (w_txt*s_txt + w_name*s_name + w_type*s_type + w_pop*s_pop) / sum of active w
   G(m,c) = mean over other mentions m' of max_{c' in C(m')} r(c,c') * p_L(c')   (coherence)
   S(m,c) = L(m,c) + beta * G(m,c)
 s_txt compares the mention's context with the candidate "card"; with verbalise_graph the card
@@ -56,7 +56,9 @@ class GraphIndex:
                 df[x] = df.get(x, 0) + 1
         n = max(1, len(candidate_qids))
         self.idf = {x: math.log(1 + n / d) for x, d in df.items()}
-        self.mass = {q: sum(self.idf[x] for x in ns) for q, ns in self.neighbours.items()}
+        self.mass = {
+            q: math.fsum(self.idf[x] for x in sorted(ns)) for q, ns in self.neighbours.items()
+        }
         self._memo: dict[tuple, tuple[float, dict]] = {}
 
     def direct_edges(self, a: str, b: str) -> list[tuple[str, str]]:
@@ -67,7 +69,7 @@ class GraphIndex:
                 for d in self.view.get_edge_data(src, dst).values():
                     if d["prop"] not in COHERENCE_EXCLUDED_PROPS:
                         edges.append((d["prop"], direction))
-        return edges
+        return sorted(set(edges))  # sorted: the JSON evidence must not depend on hash order
 
     def overlap(self, a: str, b: str, weighted: bool = True) -> tuple[float, list[str]]:
         shared = self.neighbours.get(a, set()) & self.neighbours.get(b, set())
@@ -76,9 +78,9 @@ class GraphIndex:
         if not weighted:  # ablation: plain Jaccard
             union = self.neighbours[a] | self.neighbours[b]
             return len(shared) / len(union), sorted(shared)
-        num = sum(self.idf[x] for x in shared)
+        num = math.fsum(self.idf[x] for x in sorted(shared))
         return num / math.sqrt(self.mass[a] * self.mass[b]), sorted(
-            shared, key=lambda x: -self.idf[x]
+            shared, key=lambda x: (-self.idf[x], x)
         )
 
     def relatedness(self, a: str, b: str, cfg: RankingConfig) -> tuple[float, dict]:

@@ -314,7 +314,11 @@ def test_f1_bootstrap_of_identical_systems_is_zero():
     from wdlink.bench import bootstrap_f1_delta
 
     counts = {
-        f"d{i}": {"predicted_links": 3, "gold_links": 3, "tp_strong": i % 3, "tp_weak": i % 3}
+        f"d{i}": {
+            "predicted_links": 3,
+            "gold_links": 3,
+            **{k: i % 3 for k in ("tp_strong", "tp_weak", "tp_strong_pred", "tp_weak_pred")},
+        }
         for i in range(10)
     }
     assert bootstrap_f1_delta(counts, counts) == (0.0, 0.0, 0.0)

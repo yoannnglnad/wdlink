@@ -16,6 +16,8 @@ import time
 from collections import defaultdict
 from collections.abc import Iterable, Sequence
 from concurrent.futures import ThreadPoolExecutor
+from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
 
@@ -46,10 +48,31 @@ class RateLimiter:
 
 
 class DiskCache:
-    """One JSON file per (kind, key). Writes are atomic."""
+    """One JSON file per (kind, key). Writes are atomic.
 
-    def __init__(self, root: Path):
+    Keys hold only the entity or the query, so a manifest records the settings that shape the
+    cached content (languages, type depth, query templates). Opening a cache built with other
+    settings fails loudly instead of silently mixing stale entries.
+    """
+
+    def __init__(self, root: Path, fingerprint: dict | None = None):
         self.root = Path(root)
+        if fingerprint is not None:
+            self._check_manifest(fingerprint)
+
+    def _check_manifest(self, fingerprint: dict) -> None:
+        manifest = self.root / "manifest.json"
+        if manifest.exists():
+            recorded = json.loads(manifest.read_text())
+            if recorded != fingerprint:
+                changed = sorted(k for k in fingerprint if recorded.get(k) != fingerprint[k])
+                raise RuntimeError(
+                    f"cache {self.root} was built with other settings ({', '.join(changed)}); "
+                    "use another cache directory or delete it"
+                )
+        else:
+            self.root.mkdir(parents=True, exist_ok=True)
+            manifest.write_text(json.dumps(fingerprint, indent=2))
 
     def _path(self, kind: str, key: str) -> Path:
         return self.root / kind / (hashlib.sha1(key.encode()).hexdigest() + ".json")
@@ -68,6 +91,43 @@ class DiskCache:
         os.replace(tmp, path)
 
 
+TRANSIENT_ERRORS = (
+    requests.ConnectionError,
+    requests.Timeout,
+    requests.exceptions.ChunkedEncodingError,
+    json.JSONDecodeError,
+)
+
+
+def retry_after(resp: requests.Response, default: float) -> float:
+    """Seconds to wait from a Retry-After header: delta-seconds or an HTTP date (RFC 9110)."""
+    value = resp.headers.get("Retry-After")
+    if value is None:
+        return default
+    try:
+        return max(0.0, float(value))
+    except ValueError:
+        pass
+    try:
+        when = parsedate_to_datetime(value)
+    except (TypeError, ValueError):
+        return default
+    return max(0.0, (when - datetime.now(UTC)).total_seconds())
+
+
+def cache_fingerprint() -> dict:
+    """The settings that determine what the cache contains."""
+    probe = ["Q1"]
+    return {
+        "language": config.LANGUAGE,
+        "label_languages": config.LABEL_LANGUAGES,
+        "search_fetch_limit": config.SEARCH_FETCH_LIMIT,
+        "human_search_limit": config.HUMAN_SEARCH_LIMIT,
+        "types_query": hashlib.sha1(_types_query(probe).encode()).hexdigest()[:12],
+        "relations_query": hashlib.sha1(_relations_query(probe).encode()).hexdigest()[:12],
+    }
+
+
 def _qid(uri: str) -> str:
     return uri.rsplit("/", 1)[-1]
 
@@ -79,7 +139,7 @@ def _chunks(items: list[str], size: int) -> Iterable[list[str]]:
 
 class WikidataClient:
     def __init__(self, cache_dir: Path = config.CACHE_DIR, offline: bool = False):
-        self.cache = DiskCache(cache_dir)
+        self.cache = DiskCache(cache_dir, cache_fingerprint())
         self.offline = offline  # fail on cache miss instead of calling the network
         self.session = requests.Session()
         self.session.headers.update(
@@ -100,20 +160,20 @@ class WikidataClient:
             self.stats["http_calls"] += 1
             try:
                 resp = self.session.request(method, url, **kwargs)
-            except (requests.ConnectionError, requests.Timeout) as err:
-                # WDQS sometimes drops long-lived connections; treat it like a 503
+                if resp.status_code == 200:
+                    return resp.json()
+            except TRANSIENT_ERRORS as err:
+                # WDQS drops long-lived connections and can truncate a body; treat it like a 503
                 if attempt == config.MAX_RETRIES:
                     raise
                 log.warning("%s on %s, retrying in %.0fs", type(err).__name__, url, backoff)
                 time.sleep(backoff)
                 backoff *= 2
                 continue
-            if resp.status_code == 200:
-                return resp.json()
             retryable = resp.status_code == 429 or resp.status_code >= 500
             if not retryable or attempt == config.MAX_RETRIES:
                 resp.raise_for_status()
-            wait = float(resp.headers.get("Retry-After", backoff))
+            wait = retry_after(resp, backoff)
             log.warning("HTTP %s on %s, retrying in %.0fs", resp.status_code, url, wait)
             time.sleep(wait)
             backoff *= 2

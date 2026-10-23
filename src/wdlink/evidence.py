@@ -314,12 +314,12 @@ def markdown(e: dict) -> str:
 
 def main(args: argparse.Namespace) -> None:
     dev = load(Path(args.dev))
-    client = WikidataClient()  # cache first; class labels for Paris may need a fetch
+    client = WikidataClient(offline=args.offline)  # cache first; Paris class labels may fetch
     evidence = {
         "spacy": spacy_models(),
         "timings": stage_timings(dev),
         "zipf": zipf(),
-        "labels": live_labels(),
+        "labels": {} if args.offline else live_labels(),
         "entities": entity_facts(client),
         "ner": ner_labels(dev),
         "enigma": enigma_cards(dev),

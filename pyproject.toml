@@ -14,6 +14,8 @@ dependencies = [
     "rapidfuzz>=3.14",
     "wordfreq>=3.1",
     "requests>=2.34",
+    # CPU wheels on Linux (CI): the default index pulls several GB of CUDA libraries
+    "torch>=2.5",
 ]
 
 [project.optional-dependencies]
@@ -27,6 +29,7 @@ wdlink = "wdlink.cli:main"
 dev = ["pytest>=9.1", "ruff>=0.17"]
 
 [tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
 en-core-web-md = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl" }
 en-core-web-lg = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl" }
 en-core-web-trf = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.8.0/en_core_web_trf-3.8.0-py3-none-any.whl" }
@@ -49,3 +52,8 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = ["network: needs the Wikidata API (or a warm cache)"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

@@ -5,7 +5,7 @@ from pathlib import Path
 
 # --- Wikidata access -------------------------------------------------------------------------
 
-USER_AGENT = "wdlink/0.1 (https://github.com/yoannnguenlo/wdlink; yoann@qomment.io) python-requests"
+USER_AGENT = "wdlink/0.1 (entity-linking research prototype; yoann@qomment.io) python-requests"
 ACTION_API = "https://www.wikidata.org/w/api.php"
 REST_SEARCH_API = "https://www.wikidata.org/w/rest.php/wikibase/v1/search/items"
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"

@@ -138,8 +138,8 @@ SUITES: dict[str, dict] = {
     "query_expansion": {
         "question": "Should a short mention also be searched as the longer mention containing it?",
         "variants": [
-            Variant("with expansion", _p(surname_expansion=True), reference=True),
-            Variant("without expansion", _p(surname_expansion=False)),
+            Variant("with expansion", _p(surname_expansion=True)),
+            Variant("without expansion", _p(surname_expansion=False), reference=True),
         ],
     },
     "exclusions": {
@@ -484,13 +484,14 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
         for key, _ in cols:
             v = r.get(key)
             whole = ("ms_per_doc", "triples_per_doc")
-            vals.append(
-                f"{v:.0f}"
-                if key in whole and v
-                else f"{v:.1f}"
-                if key == "rank_ms_per_doc"
-                else _f(v)
-            )
+            if v is None:  # e.g. rank times, absent from reports produced before they existed
+                vals.append("–")
+            elif key in whole:
+                vals.append(f"{v:.0f}")
+            elif key == "rank_ms_per_doc":
+                vals.append(f"{v:.1f}")
+            else:
+                vals.append(_f(v))
         lo, hi = r["delta_ci95"]
         delta = (
             "–"

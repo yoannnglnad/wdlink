@@ -33,7 +33,7 @@ SYSTEMS: dict[str, RankingConfig] = {
 BASELINE, GRAPHRAG = "baseline (text only)", "GraphRAG (full)"
 OWN_SPLITS = ("dev", "test")  # hand-annotated for this project
 THETA_GRID = [round(0.20 + 0.02 * i, 2) for i in range(31)]  # 0.20 .. 0.80
-BETA_GRID = [0.1, 0.2, 0.3, 0.5, 0.7, 1.0]
+BETA_GRID = [0.02, 0.05, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0]  # 0.1 was the edge
 RECALL_KS = (1, 5, 10, 20, 40)
 TAU_GRID = [0.01, 0.02, 0.03, 0.05, 0.07, 0.1, 0.15, 0.2, 0.3]
 ECE_BINS = 5
@@ -41,9 +41,13 @@ ECE_BINS = 5
 
 def load(path: Path) -> list[dict]:
     """Read a JSONL split. KORE50-DYWC also annotates pronouns and common nouns: only its
-    named-entity mentions (kore50_core) are kept."""
+    named-entity mentions (kore50_core) are scored, and the spans of the others are kept as
+    `ignored_spans` so that end-to-end predictions on them count neither for nor against."""
     docs = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
     for doc in docs:
+        doc["ignored_spans"] = [
+            (m["start"], m["end"]) for m in doc["mentions"] if not m.get("kore50_core", True)
+        ]
         doc["mentions"] = [m for m in doc["mentions"] if m.get("kore50_core", True)]
     return [d for d in docs if d["mentions"]]
 
@@ -161,33 +165,55 @@ def a2kb(prepared: list, cfg: RankingConfig) -> dict:
 
 
 def a2kb_counts(prepared: list, cfg: RankingConfig) -> dict:
-    tp_strong = tp_weak = n_pred = n_gold = 0
+    """Micro counts for end-to-end linking.
+
+    A prediction matches a gold mention when the QIDs are equal and the spans are identical
+    (strong) or overlap (weak). Recall counts matched gold mentions, precision counts matched
+    predictions, so neither can exceed 1. Predictions on ignored spans are left out.
+    """
+    keys = (
+        "predicted_links",
+        "gold_links",
+        "tp_strong",
+        "tp_weak",
+        "tp_strong_pred",
+        "tp_weak_pred",
+    )
+    counts = dict.fromkeys(keys, 0)
     for doc, _, e2e_prep in prepared:
+        ignored = doc.get("ignored_spans", [])
         preds = [
             (m.start, m.end, p["pred"])
             for m, p in zip(e2e_prep.mentions, predictions(e2e_prep, cfg), strict=True)
-            if p["pred"]
+            if p["pred"] and not any(_overlap((m.start, m.end), span) for span in ignored)
         ]
         gold = [(g["start"], g["end"], g["qid"]) for g in doc["mentions"] if g["qid"]]
-        n_pred, n_gold = n_pred + len(preds), n_gold + len(gold)
-        for s, e, q in gold:
-            tp_strong += any(ps == s and pe == e and pq == q for ps, pe, pq in preds)
-            tp_weak += any(ps < e and s < pe and pq == q for ps, pe, pq in preds)
-    return {
-        "predicted_links": n_pred,
-        "gold_links": n_gold,
-        "tp_strong": tp_strong,
-        "tp_weak": tp_weak,
-    }
+        counts["predicted_links"] += len(preds)
+        counts["gold_links"] += len(gold)
+        for name, match in (("strong", _same_span), ("weak", _overlap)):
+            counts[f"tp_{name}"] += sum(
+                any(match(p, g) and p[2] == g[2] for p in preds) for g in gold
+            )
+            counts[f"tp_{name}_pred"] += sum(
+                any(match(p, g) and p[2] == g[2] for g in gold) for p in preds
+            )
+    return counts
+
+
+def _same_span(a: tuple, b: tuple) -> bool:
+    return a[0] == b[0] and a[1] == b[1]
+
+
+def _overlap(a: tuple, b: tuple) -> bool:
+    return a[0] < b[1] and b[0] < a[1]
 
 
 def a2kb_metrics(counts: dict) -> dict:
     n_pred, n_gold = counts["predicted_links"], counts["gold_links"]
     out = {"predicted_links": n_pred, "gold_links": n_gold}
     for name in ("strong", "weak"):
-        tp = counts[f"tp_{name}"]
-        p = tp / n_pred if n_pred else 0.0
-        r = tp / n_gold if n_gold else 0.0
+        p = counts[f"tp_{name}_pred"] / n_pred if n_pred else 0.0
+        r = counts[f"tp_{name}"] / n_gold if n_gold else 0.0
         out[f"{name}_precision"], out[f"{name}_recall"] = p, r
         out[f"{name}_f1"] = 2 * p * r / (p + r) if p + r else 0.0
     return out
@@ -360,6 +386,13 @@ def markdown_report(results: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def split_errors(errors: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Errors on our own splits, and on external benchmarks. KORE50-DYWC annotations carry no
+    licence, so their per-mention errors go to a gitignored file."""
+    own = [e for e in errors if e["split"] in OWN_SPLITS]
+    return own, [e for e in errors if e["split"] not in OWN_SPLITS]
+
+
 def main(args: argparse.Namespace) -> None:
     start = time.time()
     data_dir, out_dir = Path(args.data_dir), Path(args.out)
@@ -413,9 +446,7 @@ def main(args: argparse.Namespace) -> None:
     results["runtime_s"] = time.time() - start
 
     (out_dir / "results.json").write_text(json.dumps(results, indent=2))
-    # KORE50-DYWC annotations carry no licence: its per-mention errors stay out of the repository
-    own = [e for e in errors if e["split"] in OWN_SPLITS]
-    external = [e for e in errors if e["split"] not in OWN_SPLITS]
+    own, external = split_errors(errors)
     for name, rows in (("errors.json", own), ("errors_external.json", external)):
         (out_dir / name).write_text(json.dumps(rows, indent=2, ensure_ascii=False))
     report = markdown_report(results)

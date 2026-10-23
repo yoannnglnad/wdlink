@@ -10,3 +10,8 @@ eval/raw/
 eval/data/kore50_dywc.jsonl
 eval/results/errors_external.json
 .DS_Store
+skills-lock.json
+**/errors_external.json
+dist/
+build/
+*.egg-info/

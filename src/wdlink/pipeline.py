@@ -66,7 +66,8 @@ class Linker:
         else:
             mentions = mentions_from_spans(text, spans, self.nlp, pcfg)
         found = retrieve_candidates(mentions, self.client, pcfg)
-        all_qids = [[c.qid for c in cands] for cands in found]
+        # ordered by best rank over all APIs, so recall@k means 'in the top k of some API'
+        all_qids = [[c.qid for c in sorted(cands, key=lambda c: c.search_rank)] for cands in found]
         kept = prerank(mentions, found, self.embedder, pcfg)
         neighbour_labels = enrich(kept, self.client, pcfg.exclude_housekeeping)
         graph = build_graph(text, mentions, kept, neighbour_labels, pcfg.all_relations)
