@@ -512,6 +512,11 @@ def markdown(out: dict, e2e: bool, timing: bool) -> str:
 
 
 def main(args: argparse.Namespace) -> None:
+    if args.suite == "evidence":
+        from wdlink.evidence import main as evidence_main
+
+        evidence_main(args)
+        return
     if args.suite == "micro":
         from wdlink.microbench import main as micro_main
 
