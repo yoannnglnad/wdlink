@@ -1,0 +1,273 @@
+{
+  "suite": "search_limit",
+  "question": "How many results should each search API return?",
+  "dev_docs": 52,
+  "dev_mentions": 191,
+  "folds": 5,
+  "results": [
+    {
+      "variant": "top 5 per API",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8586387434554974,
+      "accuracy_in_kb": 0.8786127167630058,
+      "accuracy_ambiguous": 0.7878787878787878,
+      "accuracy_unambiguous": 0.9345794392523364,
+      "accuracy_isolated": 0.8571428571428571,
+      "accuracy_with_context": 0.8795180722891566,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9699966021870038,
+      "ece": 0.11135785873150636,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8786127167630058,
+      "retrieval_recall@10": 0.9479768786127167,
+      "retrieval_recall@20": 0.9479768786127167,
+      "retrieval_recall@40": 0.9479768786127167,
+      "retrieval_recall@all": 0.9479768786127167,
+      "after_prerank_recall": 0.9479768786127167,
+      "ranked_recall@1": 0.8786127167630058,
+      "ranked_recall@3": 0.9364161849710982,
+      "ranked_recall@5": 0.9479768786127167,
+      "candidates_per_mention": 7.010471204188482,
+      "triples_per_doc": 1573.7692307692307,
+      "delta_vs_reference": -0.015706806282722512,
+      "delta_ci95": [
+        -0.04419889502762431,
+        0.01020408163265306
+      ],
+      "mcnemar_p": 0.453125,
+      "tuned_per_fold": [
+        {
+          "beta": 0.3,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.3,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 1.0,
+          "theta": 0.4,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.3,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "top 10 per API",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9643800464535988,
+      "ece": 0.09003449671537894,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9190751445086706,
+      "retrieval_recall@20": 0.9710982658959537,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.9595375722543352,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9479768786127167,
+      "ranked_recall@5": 0.9595375722543352,
+      "candidates_per_mention": 8.55497382198953,
+      "triples_per_doc": 1389.1923076923076,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.4,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "top 20 per API",
+      "reference": true,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9645609733605948,
+      "ece": 0.09021542362237486,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9132947976878613,
+      "retrieval_recall@20": 0.9364161849710982,
+      "retrieval_recall@40": 0.9710982658959537,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.764397905759163,
+      "triples_per_doc": 1293.4423076923076,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    },
+    {
+      "variant": "top 50 per API",
+      "reference": false,
+      "n": 191,
+      "accuracy": 0.8743455497382199,
+      "accuracy_in_kb": 0.8959537572254336,
+      "accuracy_ambiguous": 0.803030303030303,
+      "accuracy_unambiguous": 0.9532710280373832,
+      "accuracy_isolated": 1.0,
+      "accuracy_with_context": 0.891566265060241,
+      "nil_recall": 0.6666666666666666,
+      "nil_precision": 1.0,
+      "mean_confidence": 0.9658970639413338,
+      "ece": 0.09155151420311389,
+      "n_in_kb": 173,
+      "retrieval_recall@1": 0.6994219653179191,
+      "retrieval_recall@5": 0.8497109826589595,
+      "retrieval_recall@10": 0.9075144508670521,
+      "retrieval_recall@20": 0.930635838150289,
+      "retrieval_recall@40": 0.930635838150289,
+      "retrieval_recall@all": 0.9710982658959537,
+      "after_prerank_recall": 0.953757225433526,
+      "ranked_recall@1": 0.8959537572254336,
+      "ranked_recall@3": 0.9421965317919075,
+      "ranked_recall@5": 0.953757225433526,
+      "candidates_per_mention": 8.93717277486911,
+      "triples_per_doc": 1253.2307692307693,
+      "delta_vs_reference": 0.0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_p": 1.0,
+      "tuned_per_fold": [
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.2,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        },
+        {
+          "beta": 0.1,
+          "theta": 0.38,
+          "margin": 0.0,
+          "tau": 0.01
+        }
+      ]
+    }
+  ]
+}
